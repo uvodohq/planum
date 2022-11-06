@@ -1,5 +1,5 @@
 ---
-"@acme/core": patch
+'@uvodohq/planum': patch
 ---
 
 button test

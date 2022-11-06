@@ -1,8 +1,8 @@
 {
   "name": "eslint-config-planum",
   "version": "0.0.0",
-  "main": "index.js",
   "license": "MIT",
+  "main": "index.js",
   "dependencies": {
     "@antfu/eslint-config-react": "^0.29.3",
     "eslint-config-prettier": "^8.5.0",

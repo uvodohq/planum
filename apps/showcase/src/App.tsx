@@ -1,6 +1,6 @@
-import { Button } from "@acme/core"
-import { useState } from "react"
-import "./App.css"
+import { Button } from '@uvodohq/planum'
+import { useState } from 'react'
+import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)

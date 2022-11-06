@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "file-icons.file-icons",
+    "GitHub.copilot",
+    "streetsidesoftware.code-spell-checker",
+    "EditorConfig.EditorConfig",
+    "richie5um2.vscode-sort-json",
+    "unional.vscode-sort-package-json",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode"
+  ]
+}

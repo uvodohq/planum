@@ -1,4 +1,4 @@
-const path = require("path");
+const path = require("path")
 
 module.exports = {
   stories: ["../stories/**/*.stories.mdx", "../stories/**/*.stories.tsx"],
@@ -14,14 +14,14 @@ module.exports = {
       resolve: {
         alias: [
           {
-            find: "@acme/core",
+            find: "@uvodohq/planum",
             replacement: path.resolve(
               __dirname,
-              "../../../packages/acme-core/"
+              "../../../packages/planum/"
             ),
           },
         ],
       },
-    };
+    }
   },
-};
+}
