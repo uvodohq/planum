@@ -13,7 +13,7 @@
     "build": "tsup",
     "dev": "tsup --watch",
     "lint": "TIMING=1 eslint \"src/**/*.ts*\"",
-    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
+    "clean": "rimraf .turbo && rimraf node_modules && rimraf dist"
   },
   "devDependencies": {
     "@types/react": "^18.0.9",

@@ -6,7 +6,7 @@
     "dev": "start-storybook -p 6006",
     "build": "build-storybook --docs",
     "preview-storybook": "serve storybook-static",
-    "clean": "rm -rf .turbo && rm -rf node_modules"
+    "clean": "rimraf .turbo && rimraf node_modules"
   },
   "dependencies": {
     "@uvodohq/planum": "*",
