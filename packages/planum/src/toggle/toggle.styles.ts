@@ -1,7 +1,6 @@
 import type * as Stitches from '@stitches/react'
 
-import { paragraphCss } from '~/ui/text'
-
+import { paragraphCss } from '../text'
 import { styled } from '../theme'
 
 export const StyledLabel = styled('label', paragraphCss, {

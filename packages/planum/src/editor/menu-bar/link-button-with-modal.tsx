@@ -1,7 +1,10 @@
 import type { Editor } from '@tiptap/react'
 import { useState } from 'react'
-import { Box, Dialog, InputUrl, Modal, Tooltip, useModalState } from 'src'
 
+import InputUrl from '../../input-url'
+import { Box } from '../../layout'
+import { Dialog, Modal, useModalState } from '../../modal'
+import { Tooltip } from '../../tooltip'
 import { LinkIcon } from '../icons'
 import { ToggleButton } from '../toggle-button'
 import { DialogFooter } from './dialog-footer'

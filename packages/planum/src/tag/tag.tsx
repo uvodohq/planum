@@ -3,9 +3,8 @@ import { useHover } from '@react-aria/interactions'
 import type { Ref } from 'react'
 import { forwardRef, useRef } from 'react'
 
-import { __DEV__ } from '~/utils/assertion'
-
 import type { CSS } from '../theme'
+import { __DEV__ } from '../utils/assertion'
 import { RemoveIcon } from './remove-icon'
 import {
   IconContainer,

@@ -9,10 +9,9 @@ import type { FocusableRef } from '@react-types/shared'
 import type { AriaSwitchProps } from '@react-types/switch'
 import * as React from 'react'
 
-import { __DEV__ } from '~/utils/assertion'
-
-import { Paragraph } from '../../text'
+import { Paragraph } from '../text'
 import type { CSS } from '../theme'
+import { __DEV__ } from '../utils/assertion'
 import type { StyledSwitchVariants } from './toggle.styles'
 import { StyledLabel, StyledSwitch, StyledThumb } from './toggle.styles'
 

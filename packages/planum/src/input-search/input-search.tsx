@@ -5,12 +5,11 @@ import { useSearchFieldState } from '@react-stately/searchfield'
 import type { AriaTextFieldProps } from '@react-types/textfield'
 import * as React from 'react'
 
-import { __DEV__ } from '~/utils/assertion'
-
-import Loader from '../../loader'
 import Field from '../field'
 import type { StyledInputVariants } from '../input/input.styles'
+import Loader from '../loader'
 import type { CSS } from '../theme'
+import { __DEV__ } from '../utils/assertion'
 import {
   Prefix,
   StyledInput,

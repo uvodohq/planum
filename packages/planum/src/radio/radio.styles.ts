@@ -1,5 +1,4 @@
-import { paragraphCss } from '~/ui/text'
-
+import { paragraphCss } from '../text'
 import type { VariantProps } from '../theme'
 import { styled } from '../theme'
 

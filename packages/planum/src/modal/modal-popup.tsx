@@ -1,8 +1,7 @@
 import { FloatingPortal } from '@floating-ui/react-dom-interactions'
 import { AnimatePresence } from 'framer-motion'
 
-import { useMediaQuery } from '~/hooks'
-
+import { useMediaQuery } from '../hooks'
 import { BottomSheet } from './popups/bottom-sheet'
 import { DesktopPopup } from './popups/desktop-popup'
 import { Drawer } from './popups/drawer'

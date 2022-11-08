@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
-import { css, styled } from 'src'
+
+import { css, styled } from '../../theme'
 
 // Desktop styles
 export const Underlay = styled(motion.div, {

@@ -120,6 +120,4 @@ export const Button = forwardRef(_Button) as ButtonComponent & {
   displayName?: string
 }
 
-export default Button
-
 if (__DEV__) Button.displayName = 'Button'

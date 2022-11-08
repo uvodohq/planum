@@ -1,4 +1,4 @@
-import { styled } from 'src'
+import { styled } from '../theme'
 
 export const ActionButton = styled('button', {
   padding: 8,

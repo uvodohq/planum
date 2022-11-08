@@ -1,11 +1,10 @@
 import { forwardRef } from 'react'
 
-import type { Item } from '~/ui/tag/use-tag-list'
-import { generateId } from '~/utils/generate-id'
-
-import { Spacer } from '../../..'
-import type { TagGroupProps } from '../../tag'
-import { TagGroup } from '../../tag'
+import { Spacer } from '../layout'
+import type { TagGroupProps } from '../tag/tag-group'
+import { TagGroup } from '../tag/tag-group'
+import type { Item } from '../tag/use-tag-list'
+import { generateId } from '../utils/generate-id'
 import { TagSelectInput } from './tag-select-input'
 
 export type TagItem = string

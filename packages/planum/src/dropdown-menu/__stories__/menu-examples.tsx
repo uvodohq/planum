@@ -3,10 +3,9 @@ import { forwardRef } from 'react'
 import { DotsThreeIcon } from 'src/../example/demo/assets/icons'
 import { Menu, MenuItem } from 'src/ui/dropdown-menu'
 
-import Button from '~/ui/button'
-import { Box, Flex } from '~/ui/layout'
-
+import { Button } from '../button'
 import { ListIcon } from '../icons'
+import { Box, Flex } from '../layout'
 
 export const menuItems = (
   <>

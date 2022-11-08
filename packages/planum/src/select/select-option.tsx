@@ -1,7 +1,6 @@
 import React, { useContext } from 'react'
 
-import { subheaderCss } from '~/ui/text'
-
+import { subheaderCss } from '../text'
 import { styled } from '../theme'
 // import { CheckIcon, IconContainer } from './icons'
 import type { Value } from './select-component'

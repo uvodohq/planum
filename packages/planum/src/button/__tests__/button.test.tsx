@@ -1,8 +1,7 @@
 import { vi } from 'vitest'
 import { debug } from 'vitest-preview'
 
-import { render, screen, userEvent } from '~/test'
-
+import { render, screen, userEvent } from '../../test'
 import type { ButtonProps } from '../'
 import Button from '../'
 

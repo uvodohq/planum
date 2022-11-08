@@ -1,8 +1,7 @@
 import * as React from 'react'
 
-import { useMergeRefs } from '~/hooks'
-import Button from '~/ui/button'
-
+import { Button } from '../button'
+import { useMergeRefs } from '../hooks'
 import Input from '../input'
 import { PlusIcon } from './icons'
 

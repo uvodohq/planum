@@ -2,8 +2,7 @@ import { VisuallyHidden } from '@react-aria/visually-hidden'
 import type { Editor } from '@tiptap/react'
 import * as React from 'react'
 
-import { Tooltip } from '~/ui/tooltip'
-
+import { Tooltip } from '../../tooltip'
 import {
   ListBulletsIcon,
   PaletteIcon,

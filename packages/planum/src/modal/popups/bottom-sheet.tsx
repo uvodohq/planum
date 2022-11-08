@@ -4,7 +4,7 @@ import {
 } from '@floating-ui/react-dom-interactions'
 import { motion } from 'framer-motion'
 
-import { styled } from '../theme'
+import { styled } from '../../theme'
 import type { useModal, UseModalProps } from '../use-modal'
 import type { ModalState } from '../use-modal-state'
 import { Underlay } from './popups.styles'

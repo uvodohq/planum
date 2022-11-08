@@ -1,9 +1,9 @@
 import * as React from 'react'
-import { Subheader } from 'src'
 
-import type { InputProps } from '~/.'
-import { Input } from '~/.'
-import { __DEV__ } from '~/utils/assertion'
+import Input from '../input'
+import type { InputProps } from '../input/input'
+import { Subheader } from '../text'
+import { __DEV__ } from '../utils/assertion'
 
 export interface InputUrlProps extends Omit<InputProps, 'prefix' | 'suffix'> {
   prefix?: React.ReactNode

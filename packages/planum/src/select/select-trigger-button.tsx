@@ -1,8 +1,7 @@
 import type { HTMLAttributes } from 'react'
 
-import Loader from '~/ui/loader'
-import { subheaderCss } from '~/ui/text'
-
+import Loader from '../loader'
+import { subheaderCss } from '../text'
 import type { VariantProps } from '../theme'
 import { styled } from '../theme'
 import { IconContainer, SelectDownIcon } from './icons'

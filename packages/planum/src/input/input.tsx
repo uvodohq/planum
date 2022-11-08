@@ -4,10 +4,9 @@ import type { AriaTextFieldOptions } from '@react-aria/textfield'
 import { mergeProps, useObjectRef } from '@react-aria/utils'
 import * as React from 'react'
 
-import { __DEV__ } from '~/utils/assertion'
-
 import Field from '../field'
 import type { CSS } from '../theme'
+import { __DEV__ } from '../utils/assertion'
 import type { StyledInputVariants } from './input.styles'
 import {
   IconWrapper,

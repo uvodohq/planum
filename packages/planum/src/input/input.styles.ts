@@ -1,5 +1,4 @@
-import { subheaderCss } from '~/ui/text'
-
+import { subheaderCss } from '../text'
 import type { VariantProps } from '../theme'
 import { css, styled } from '../theme'
 

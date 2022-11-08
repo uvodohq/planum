@@ -1,5 +1,5 @@
-import { customScrollbar, styled } from 'src/theme'
-import { H3, Paragraph } from 'src/ui/text'
+import { H3, Paragraph } from '../../text'
+import { customScrollbar, styled } from '../../theme'
 
 export const StyledDialogContainer = styled('div', {
   maxHeight: '100%',

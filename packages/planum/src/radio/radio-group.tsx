@@ -4,10 +4,9 @@ import { useRadioGroupState } from '@react-stately/radio'
 import type { AriaRadioGroupProps } from '@react-types/radio'
 import type { DOMRef } from '@react-types/shared'
 import type { ReactElement } from 'react'
-import React from 'react'
+import * as React from 'react'
 
-import { __DEV__ } from '~/utils/assertion'
-
+import { __DEV__ } from '../utils/assertion'
 import { RadioContext } from './context'
 import type { RadioProps } from './radio'
 

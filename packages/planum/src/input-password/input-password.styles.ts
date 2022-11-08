@@ -1,5 +1,4 @@
-import { Button } from '~/ui/button'
-
+import { Button } from '../button'
 import { styled } from '../theme'
 
 export const PasswordToggleButton = styled(Button, {

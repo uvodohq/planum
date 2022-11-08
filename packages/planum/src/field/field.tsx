@@ -1,9 +1,8 @@
 import type { HTMLAttributes, ReactNode, Ref } from 'react'
-import React from 'react'
+import * as React from 'react'
 
-import { Box } from '~/ui/layout'
-import { __DEV__ } from '~/utils/assertion'
-
+import { Box } from '../layout'
+import { __DEV__ } from '../utils/assertion'
 import type { StyledMessageVariants } from './field.styles'
 import { FieldContainer, StyledLabel, StyledMessage } from './field.styles'
 

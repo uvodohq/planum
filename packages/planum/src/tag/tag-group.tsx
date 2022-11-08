@@ -1,8 +1,7 @@
 // TODO: layout animation has bug in admin, all tag group shares same layout affetc each
 import { AnimatePresence, motion } from 'framer-motion'
 
-import Tag from '~/ui/tag'
-
+import Tag from '../tag'
 import { styled } from '../theme'
 import type { Item, UseTagListProps } from './use-tag-list'
 import { useTagList } from './use-tag-list'

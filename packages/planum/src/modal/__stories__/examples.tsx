@@ -1,9 +1,8 @@
-import React from 'react'
+import * as React from 'react'
 import { Box, Button, Dialog, Flex, Modal, Stack, styled } from 'src'
 
-import Input from '~/ui/form/input'
-
 import SelectComponent from '../../form/select/__stories__/select-example'
+import Input from '../form/input'
 import useModalState from '../use-modal-state'
 
 const NativeButton = styled('button', {

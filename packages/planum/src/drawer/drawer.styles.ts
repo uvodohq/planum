@@ -1,4 +1,4 @@
-import { styled } from 'src'
+import { styled } from '../theme'
 
 export const UnderlayCover = styled('div', {
   position: 'absolute',

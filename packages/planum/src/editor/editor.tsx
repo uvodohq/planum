@@ -15,9 +15,8 @@ import StarterKit from '@tiptap/starter-kit'
 import type { RefObject } from 'react'
 import { forwardRef, useEffect, useImperativeHandle } from 'react'
 
-import { __DEV__ } from '~/utils/assertion'
-
-import Field from '../form/field'
+import Field from '../field'
+import { __DEV__ } from '../utils/assertion'
 import { editorClass, EditorContainer, placeholderClass } from './editor.styles'
 import type { MenuBarProps } from './menu-bar/menu-bar'
 import { MenuBar } from './menu-bar/menu-bar'

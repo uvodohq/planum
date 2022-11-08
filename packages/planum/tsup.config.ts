@@ -2,19 +2,20 @@ import type { Options } from 'tsup'
 import { defineConfig } from 'tsup'
 
 export default defineConfig((options: Options) => {
-  const isDev = !!options.watch
+  const isProd = !options.watch
 
   const formats: Options['format'] = ['esm']
 
-  if (!isDev) {
+  if (isProd) {
     formats.push('cjs')
   }
 
   return {
     entry: ['src/index.tsx'],
-    minify: !isDev,
+    minify: isProd,
     format: formats,
     dts: true,
     external: ['react'],
+    metafile: isProd,
   }
 })

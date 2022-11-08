@@ -1,9 +1,8 @@
 import { useId } from '@floating-ui/react-dom-interactions'
 import React, { useContext } from 'react'
 
+import { subheaderCss } from '../text'
 import { styled } from '../theme'
-import { subheaderCss } from '~/ui/text'
-
 import { AutoCompleteContext } from './context'
 // import { CheckIcon, IconContainer } from './icons'
 

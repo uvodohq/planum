@@ -8,10 +8,9 @@ import type { AriaRadioProps } from '@react-types/radio'
 import type { FocusableRef } from '@react-types/shared'
 import * as React from 'react'
 
-import { Paragraph } from '~/ui/text'
-import { __DEV__ } from '~/utils/assertion'
-
+import { Paragraph } from '../text'
 import type { CSS } from '../theme'
+import { __DEV__ } from '../utils/assertion'
 import { useRadioProvider } from './context'
 import { StyledLabel, StyledRadioSvg } from './radio.styles'
 

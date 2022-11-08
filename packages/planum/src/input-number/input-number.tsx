@@ -6,10 +6,9 @@ import { useNumberFieldState } from '@react-stately/numberfield'
 import type { AriaNumberFieldProps } from '@react-types/numberfield'
 import * as React from 'react'
 
-import { __DEV__ } from '~/utils/assertion'
-
 import Field from '../field'
 import type { CSS } from '../theme'
+import { __DEV__ } from '../utils/assertion'
 import type { StyledInputVariants } from './input-number.styles'
 import {
   IconWrapper,

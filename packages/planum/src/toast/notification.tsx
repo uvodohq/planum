@@ -1,4 +1,4 @@
-import Button from '../button'
+import { Button } from '../button'
 import CloseIcon from './close-icon'
 import type { StyledNotificationVariants } from './notification.styles'
 import {

@@ -4,7 +4,8 @@ import {
   FloatingPortal,
 } from '@floating-ui/react-dom-interactions'
 import { AnimatePresence, motion } from 'framer-motion'
-import { styled } from 'src'
+
+import { styled } from '../theme'
 
 const StyledDesktopPopup = styled('div', {
   outline: '0',

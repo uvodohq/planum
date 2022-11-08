@@ -8,9 +8,8 @@ import { useToggleState } from '@react-stately/toggle'
 import type { AriaCheckboxProps, ToggleProps } from '@react-types/checkbox'
 import * as React from 'react'
 
-import { useIsFirstRender } from '~/hooks'
-import { Paragraph } from '~/ui/text'
-
+import { useIsFirstRender } from '../hooks'
+import { Paragraph } from '../text'
 import type { CSS } from '../theme'
 import type { StyledCheckboxVariants } from './checkbox.styles'
 import { StyledCheckbox, StyledIndicator, StyledLabel } from './checkbox.styles'

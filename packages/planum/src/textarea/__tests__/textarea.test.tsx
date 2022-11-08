@@ -1,6 +1,6 @@
 import { vi } from 'vitest'
 
-import { render, screen, userEvent } from '~/test'
+import { render, screen, userEvent } from '../../test'
 
 import Textarea from '../textarea'
 

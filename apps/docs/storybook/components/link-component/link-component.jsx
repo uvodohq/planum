@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 
 const LinkComponent = ({ children, href, target: originalTarget, rel }) => {
   const onClick = (event) => {

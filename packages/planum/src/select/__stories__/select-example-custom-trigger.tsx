@@ -1,10 +1,9 @@
 import { styled } from '@stitches/react'
 
-import { subheaderCss } from '~/ui/text'
-
 import { UserIcon } from '../icons'
 import type { SelectProps } from '../select'
 import Select from '../select'
+import { subheaderCss } from '../text'
 
 const StyledButton = styled('button', subheaderCss, {
   fw: '$regular',

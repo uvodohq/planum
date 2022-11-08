@@ -1,10 +1,9 @@
 import { mergeProps } from '@react-aria/utils'
 import { useContext } from 'react'
 
-import { SearchIcon } from '~/ui/form/input-search/search-icon'
-
 import type { InputProps } from '../input'
 import Input from '../input'
+import { SearchIcon } from '../input-search/search-icon'
 import { AutoCompleteContext } from './context'
 
 export interface SearchInputProps extends InputProps {}

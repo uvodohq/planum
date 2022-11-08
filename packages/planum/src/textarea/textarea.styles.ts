@@ -1,6 +1,5 @@
-import { subheaderCss } from '~/ui/text'
-
 import { sharedInputCss } from '../input/input.styles'
+import { subheaderCss } from '../text'
 import type { VariantProps } from '../theme'
 import { css, styled } from '../theme'
 

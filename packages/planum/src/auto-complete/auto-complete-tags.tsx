@@ -1,9 +1,8 @@
 import { forwardRef } from 'react'
 
-import { Box, Spacer } from '~/ui/layout'
-import type { TagGroupProps } from '~/ui/tag'
-import { TagGroup } from '~/ui/tag'
-
+import { Box, Spacer } from '../layout'
+import type { TagGroupProps } from '../tag'
+import { TagGroup } from '../tag'
 import type { AutoCompleteProps } from '.'
 import { AutoComplete } from '.'
 

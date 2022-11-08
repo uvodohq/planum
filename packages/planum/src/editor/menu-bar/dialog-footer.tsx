@@ -1,10 +1,9 @@
 /* eslint-disable react/no-children-prop */
 import type { ButtonProps } from '@react-types/button'
 
-import Button from '~/ui/button'
-import { Box, Flex, Spacer } from '~/ui/layout'
-
-import { styled } from '../theme'
+import { Button } from '../../button'
+import { Box, Flex, Spacer } from '../../layout'
+import { styled } from '../../theme'
 
 const StyledFooter = styled('div', {
   p: '$32',

@@ -1,7 +1,7 @@
 import { useUpdateEffect } from '@react-aria/utils'
 import { useMemo, useState } from 'react'
 
-import { usePrevious } from '~/hooks'
+import { usePrevious } from '../hooks'
 
 export interface UseSelectStateProps {
   items: any[]

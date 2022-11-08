@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { Box, Button, Flag, Spacer, Tag, TagGroup } from 'src'
 
-import type { CountryCode } from '~/ui/flag/types'
 import { generateId } from '~/utils/generate-id'
 
+import type { CountryCode } from '../flag/types'
 import data from './data.json'
 
 const items = [

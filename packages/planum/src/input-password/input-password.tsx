@@ -1,10 +1,11 @@
 import { useToggleState } from '@react-stately/toggle'
 import * as React from 'react'
-import type { InputProps } from 'src'
-import { Box, Button, Input } from 'src'
 
-import { __DEV__ } from '~/utils/assertion'
-
+import { Button } from '../button'
+import type { InputProps } from '../input'
+import Input from '../input'
+import { Box } from '../layout'
+import { __DEV__ } from '../utils/assertion'
 import EyeIcon from './icons/eye'
 import EyeSlashIcon from './icons/eye-slash'
 

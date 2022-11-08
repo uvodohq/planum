@@ -4,7 +4,6 @@ import type { Ref } from 'react'
 import { forwardRef } from 'react'
 
 import Field from '../field'
-import type { CSS } from '../theme'
 import type { InputProps, Value } from './select-component'
 import { SelectComponent } from './select-component'
 import { Option } from './select-option'

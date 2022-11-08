@@ -2,10 +2,9 @@ import { useBreadcrumbs } from '@react-aria/breadcrumbs'
 import { useDOMRef } from '@react-spectrum/utils'
 import type { DOMRef, ItemProps } from '@react-types/shared'
 import type { ReactElement } from 'react'
-import React from 'react'
+import * as React from 'react'
 
-import { __DEV__ } from '~/utils/assertion'
-
+import { __DEV__ } from '../utils/assertion'
 import BreadcrumbItem from './breadcrumb-item'
 import { NavList } from './breadcrumbs.styles'
 

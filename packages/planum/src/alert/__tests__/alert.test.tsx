@@ -1,7 +1,7 @@
 import { vi } from 'vitest'
 
-import { render, screen, userEvent, waitFor } from '~/test'
-import Button from '~/ui/button'
+import { render, screen, userEvent, waitFor } from '../../test'
+import { Button } from '../button'
 
 import type { AlertProps } from '..'
 import Alert from '..'

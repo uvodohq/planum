@@ -1,6 +1,6 @@
 import { useContext } from 'react'
-import type { CSS } from 'src/theme'
 
+import type { CSS } from '../../theme'
 import { ModalContext } from '../modal-context'
 import type { ModalState } from '../use-modal-state'
 import { CloseIcon } from './close-icon'

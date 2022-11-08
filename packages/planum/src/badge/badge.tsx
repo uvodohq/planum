@@ -12,5 +12,3 @@ export interface BadgeProps extends StyledBadgeVariants {
 export default function Badge(props: BadgeProps) {
   return <StyledBadge {...props} />
 }
-
-Badge.displayName = 'Badge'

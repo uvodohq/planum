@@ -1,7 +1,9 @@
 import { forwardRef } from 'react'
-import { Flex, Paragraph, paragraphCss, styled } from 'src'
 
+import { Flex } from '../layout'
+import { Paragraph, paragraphCss } from '../text'
 import type { CSS } from '../theme'
+import { styled } from '../theme'
 
 const StyledMenuItem = styled('li', paragraphCss, {
   display: 'flex',
@@ -48,7 +50,7 @@ export const MenuItem = forwardRef<HTMLLIElement, MenuItemProps>(
     const { label, icon, disabled, closeMenu, onSelect, iconCss, ...rest } =
       props
 
-    function onChoose(e) {
+    function onChoose(e: any) {
       e.stopPropagation()
       closeMenu?.()
       onSelect?.()

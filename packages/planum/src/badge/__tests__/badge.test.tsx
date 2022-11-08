@@ -1,5 +1,4 @@
-import { render, screen } from '~/test'
-
+import { render, screen } from '../../test'
 import Badge from '../badge'
 import type { BadgeVariantTypes } from '../badge.styles'
 
