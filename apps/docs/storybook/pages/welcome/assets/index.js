@@ -1,0 +1,8 @@
+export { default as clarity } from './clarity.png'
+export { default as components } from './components.png'
+export { default as delight } from './delight.png'
+export { default as foundations } from './foundations.png'
+export { default as gettingStarted } from './getting-started.png'
+export { default as headerBanner } from './header-banner.png'
+export { default as path } from './path.png'
+export { default as speed } from './speed.png'

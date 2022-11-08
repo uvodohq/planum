@@ -1,0 +1,145 @@
+import { useLocale } from '@react-aria/i18n'
+import { useFocus } from '@react-aria/interactions'
+import { useNumberField } from '@react-aria/numberfield'
+import { mergeProps, useObjectRef } from '@react-aria/utils'
+import { useNumberFieldState } from '@react-stately/numberfield'
+import type { AriaNumberFieldProps } from '@react-types/numberfield'
+import * as React from 'react'
+
+import { __DEV__ } from '~/utils/assertion'
+
+import Field from '../field'
+import type { CSS } from '../theme'
+import type { StyledInputVariants } from './input-number.styles'
+import {
+  IconWrapper,
+  Prefix,
+  StyledInput,
+  StyledInputContainer,
+  Suffix,
+} from './input-number.styles'
+
+function useFocused() {
+  const [isFocused, setIsFocused] = React.useState(false)
+
+  const { focusProps } = useFocus({
+    onBlur: () => setIsFocused(false),
+    onFocus: () => setIsFocused(true),
+  })
+
+  return {
+    isFocused,
+    focusProps,
+  }
+}
+
+interface Props {
+  label?: string
+  description?: React.ReactNode
+  errorMessage?: string
+  successMessage?: string
+
+  leftIcon?: React.ReactNode
+  rightIcon?: React.ReactNode
+  suffix?: React.ReactNode
+  prefix?: React.ReactNode
+
+  size?: 'default' | any
+  css?: CSS
+  status?: 'success' | 'normal' | 'error'
+}
+
+export type InputNumberProps = Omit<StyledInputVariants, 'isFocused'> &
+  AriaNumberFieldProps &
+  Props
+
+function _InputNumber(
+  props: InputNumberProps,
+  forwardedRef: React.ForwardedRef<HTMLInputElement>,
+) {
+  const {
+    label,
+    description,
+    errorMessage,
+    successMessage,
+    status,
+    isDisabled,
+
+    leftIcon,
+    rightIcon,
+    suffix,
+    prefix,
+  } = props
+
+  const inputRef = useObjectRef(forwardedRef)
+
+  const { locale } = useLocale()
+  const state = useNumberFieldState({ ...props, locale })
+
+  const {
+    labelProps,
+    inputProps,
+    descriptionProps,
+    errorMessageProps,
+    groupProps,
+  } = useNumberField(props, state, inputRef)
+
+  const { isFocused, focusProps } = useFocused()
+
+  const hasLeftIcon = !!leftIcon
+  const hasRightIcon = !!rightIcon
+
+  const hasPrefix = prefix || hasLeftIcon
+  const hasSuffix = suffix || hasRightIcon
+
+  return (
+    <Field
+      {...{
+        label,
+        description,
+        errorMessage,
+        successMessage,
+        status,
+
+        labelProps,
+        descriptionProps,
+        errorMessageProps,
+      }}>
+      <StyledInputContainer
+        onClick={() =>
+          inputRef.current?.focus({
+            preventScroll: true,
+          })
+        }
+        status={status}
+        isFocused={isFocused}
+        isDisabled={isDisabled}
+        {...groupProps}>
+        {hasPrefix && (
+          <Prefix
+            css={{
+              mr: hasLeftIcon ? '$10' : 0,
+            }}>
+            {hasLeftIcon && <IconWrapper>{leftIcon}</IconWrapper>}
+            {prefix}
+          </Prefix>
+        )}
+
+        <StyledInput {...mergeProps(inputProps, focusProps)} ref={inputRef} />
+
+        {hasSuffix && (
+          <Suffix>
+            {hasRightIcon && <IconWrapper>{rightIcon}</IconWrapper>}
+            {suffix}
+          </Suffix>
+        )}
+      </StyledInputContainer>
+    </Field>
+  )
+}
+
+const InputNumber = React.forwardRef(_InputNumber)
+
+export default InputNumber
+
+if (__DEV__) InputNumber.displayName = 'InputNumber'

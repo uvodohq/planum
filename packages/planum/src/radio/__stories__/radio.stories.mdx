@@ -1,0 +1,57 @@
+import { Box, Flex, Radio, RadioGroup } from 'src'
+
+import { ArgsTable, Story, Canvas, Meta } from '@storybook/addon-docs'
+
+<Meta title="Components/Radio" component={Radio} />
+
+<!--- Component template -->
+
+export const radioTemplate = (args) => <Radio {...args} />
+
+<!--- Component documentation -->
+
+# Radio
+
+- [Overview](#overview)
+- [Variants](#variants)
+- [Props](#props)
+
+## Overview
+
+Allow users to turn an single option on or off. They are usually used to activate or deactivate a specific setting.
+
+<Canvas>
+  <Story name="Overview">
+    <RadioGroup>
+      <Radio value="Regular">Regular</Radio>
+    </RadioGroup>
+  </Story>
+</Canvas>
+
+## Variants
+
+### States
+
+<Canvas>
+  <Story name="States">
+    <RadioGroup defaultValue="Selected">
+      <Flex css={{ gap: 16, flexDirection: 'column' }}>
+        <Radio value="Regular">Regular</Radio>
+        <Radio value="Selected">Selected</Radio>
+        <Radio value="Disabled" isDisabled>
+          Disabled
+        </Radio>
+      </Flex>
+    </RadioGroup>
+  </Story>
+</Canvas>
+
+## Props
+
+RadioGroup props
+
+<ArgsTable of={RadioGroup} />
+
+Radio Props
+
+<ArgsTable of={Radio} />

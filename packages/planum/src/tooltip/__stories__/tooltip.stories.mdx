@@ -1,0 +1,169 @@
+import { Flex, Button, Box } from 'src'
+import Tooltip from '../tooltip.tsx'
+import { ArgsTable, Story, Canvas, Meta } from '@storybook/addon-docs'
+
+<Meta
+  title="Components/Tooltip"
+  component={Tooltip}
+  parameters={{
+    chromatic: { disableSnapshot: true },
+  }}
+/>
+
+<!--- Component template -->
+
+export const tooltipTemplate = (args) => <Tooltip {...args} />
+
+<!--- Component documentation -->
+
+# Tooltip
+
+- [Overview](#overview)
+- [Variants](#variants)
+- [Props](#props)
+
+## Overview
+
+Tooltip components are used to display additional information about an element when the user hovers over or focuses on the element. They are shown on hover and focus, and are hidden on mouse leave or blur. The tooltips can be placed on the top, bottom, left, right and so on.
+
+## Variants
+
+### Simple
+
+In the simple variant of tooltip, you can add a label and children elements.
+
+<Canvas>
+  <Story name="Simple">
+    <Tooltip label="text">
+      <Button css={{ width: 80 }} variant="secondary" size="sm">
+        Simple
+      </Button>
+    </Tooltip>
+  </Story>
+</Canvas>
+
+### With shown always
+
+The tooltip will be shown always when you set the <b>isOpen</b> prop to <b>true</b>.
+
+<Canvas>
+  <Story name="Shown always">
+    <Tooltip label="text" placement="top" isOpen={true}>
+      <Button css={{ width: 80 }} variant="secondary" size="sm">
+        Simple
+      </Button>
+    </Tooltip>
+  </Story>
+</Canvas>
+
+### Tooltips with placements
+
+The tooltips can be placed on the top, bottom, left, right of elements.
+
+<Canvas>
+  <Story name="With placements">
+    <Box>
+      <Flex
+        css={{
+          ml: 100,
+          mb: 20,
+          maxWidth: 'fit-content',
+          justifyContent: 'space-between',
+          gap: 20,
+        }}>
+        <Tooltip label="text" placement="top-start">
+          <Button css={{ width: 80 }} variant="secondary" size="sm">
+            TS
+          </Button>
+        </Tooltip>
+        <Tooltip label="text" placement="top">
+          <Button css={{ width: 80 }} variant="secondary" size="sm">
+            TOP
+          </Button>
+        </Tooltip>
+        <Tooltip label="text" placement="top-end">
+          <Button css={{ width: 80 }} variant="secondary" size="sm">
+            TE
+          </Button>
+        </Tooltip>
+      </Flex>
+      <Flex css={{ justifyContent: 'space-between' }}>
+        <Flex
+          css={{
+            width: 100,
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            gap: 20,
+          }}>
+          <Tooltip label="text" placement="left-start">
+            <Button css={{ width: 80 }} variant="secondary" size="sm">
+              LS
+            </Button>
+          </Tooltip>
+          <Tooltip label="text" placement="left">
+            <Button css={{ width: 80 }} variant="secondary" size="sm">
+              LEFT
+            </Button>
+          </Tooltip>
+          <Tooltip label="text" placement="left-end">
+            <Button css={{ width: 80 }} variant="secondary" size="sm">
+              LE
+            </Button>
+          </Tooltip>
+        </Flex>
+        <Flex
+          css={{
+            ml: 300,
+            width: 100,
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            gap: 20,
+          }}>
+          <Tooltip label="text" placement="right-start">
+            <Button css={{ width: 80 }} variant="secondary" size="sm">
+              RS
+            </Button>
+          </Tooltip>
+          <Tooltip label="text" placement="right">
+            <Button css={{ width: 80 }} variant="secondary" size="sm">
+              RIGHT
+            </Button>
+          </Tooltip>
+          <Tooltip label="text" placement="right-end">
+            <Button css={{ width: 80 }} variant="secondary" size="sm">
+              RE
+            </Button>
+          </Tooltip>
+        </Flex>
+      </Flex>
+      <Flex
+        css={{
+          ml: 100,
+          mt: 20,
+          maxWidth: 'fit-content',
+          justifyContent: 'space-between',
+          gap: 20,
+        }}>
+        <Tooltip label="text" placement="bottom-start">
+          <Button css={{ width: 80 }} variant="secondary" size="sm">
+            BS
+          </Button>
+        </Tooltip>
+        <Tooltip label="text" placement="bottom">
+          <Button css={{ width: 80 }} variant="secondary" size="sm">
+            BOTTOM
+          </Button>
+        </Tooltip>
+        <Tooltip label="text" placement="bottom-end">
+          <Button css={{ width: 80 }} variant="secondary" size="sm">
+            BE
+          </Button>
+        </Tooltip>
+      </Flex>
+    </Box>
+  </Story>
+</Canvas>
+
+## Props
+
+<ArgsTable of={Tooltip} />

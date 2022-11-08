@@ -1,0 +1,45 @@
+import { useRadioGroup } from '@react-aria/radio'
+import { useDOMRef } from '@react-spectrum/utils'
+import { useRadioGroupState } from '@react-stately/radio'
+import type { AriaRadioGroupProps } from '@react-types/radio'
+import type { DOMRef } from '@react-types/shared'
+import type { ReactElement } from 'react'
+import React from 'react'
+
+import { __DEV__ } from '~/utils/assertion'
+
+import { RadioContext } from './context'
+import type { RadioProps } from './radio'
+
+export type RadioGroupProps = AriaRadioGroupProps & {
+  children: ReactElement<RadioProps> | ReactElement<RadioProps>[]
+}
+
+function _RadioGroup(props: RadioGroupProps, ref: DOMRef<HTMLDivElement>) {
+  const { children } = props
+  const domRef = useDOMRef(ref)
+
+  const state = useRadioGroupState(props)
+  const { radioGroupProps } = useRadioGroup(props, state)
+
+  return (
+    <div {...radioGroupProps} ref={domRef}>
+      <div>
+        <RadioContext.Provider
+          value={{
+            state,
+          }}>
+          {children}
+        </RadioContext.Provider>
+      </div>
+    </div>
+  )
+}
+
+const RadioGroup = React.forwardRef(_RadioGroup)
+
+export default RadioGroup
+
+if (__DEV__) {
+  RadioGroup.displayName = 'RadioGroup'
+}

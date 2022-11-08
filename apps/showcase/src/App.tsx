@@ -1,4 +1,4 @@
-import { Button } from '@uvodohq/planum'
+import { Alert } from '@uvodohq/planum'
 import { useState } from 'react'
 import './App.css'
 
@@ -20,8 +20,9 @@ function App() {
         Click on the Vite and React logos to learn more
       </p>
 
-      <Button>BUTTON SIMPLE</Button>
+      {/* <Button>BUTTON SIMPLE</Button> */}
       {/* <ButtonPrimary>PRIMARY BUTTON</ButtonPrimary> */}
+      <Alert title="Title" message="Message" variant="primary" />
     </div>
   )
 }

@@ -1,0 +1,10 @@
+// Vitest Snapshot v1
+
+exports[`<Tooltip /> > should render the tooltip trigger without popup content 1`] = `
+<div
+  class="c-PJLV c-PJLV-ibzwKCF-css"
+  data-testid="trigger"
+>
+  trigger
+</div>
+`;

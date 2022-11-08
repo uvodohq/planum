@@ -1,0 +1,87 @@
+import { UserIcon } from '~/../example/demo/assets/icons'
+import Tag from '../tag.tsx'
+import { ArgsTable, Story, Canvas, Meta } from '@storybook/addon-docs'
+import { Flag, Box } from 'src'
+
+<Meta title="Components/Tag" component={Tag} />
+
+<!--- Component template -->
+
+export const tagTemplate = (args) => <Tag {...args} />
+
+<!--- Component documentation -->
+
+# Tag
+
+- [Overview](#overview)
+- [Props](#props)
+- [Usage](#usage)
+
+## Overview
+
+Tags are compact elements that represent an input, attribute, or action. They may display text, icons, or both.
+
+## Variants
+
+### States
+
+<Canvas>
+  <Story name="States">
+    <Tag>Regular</Tag>
+    <Tag>Hover</Tag>
+    <Tag>Active</Tag>
+  </Story>
+</Canvas>
+
+### Icons
+
+<Canvas>
+  <Story name="With Icon">
+    <Tag removable={false}>Unremovable</Tag>
+    <Tag leftIcon={<UserIcon />} removable={false}>
+      Left icon
+    </Tag>
+    <Tag rightIcon={<UserIcon />} removable={false}>
+      Right icon
+    </Tag>
+    <Tag>Active</Tag>
+  </Story>
+</Canvas>
+
+### Flag
+
+<Canvas>
+  <Story name="With Flag">
+    <Box css={{ display: 'flex', gap: 32, mb: 28 }}>
+      <Tag leftIcon={<Flag country="us" />}>United States</Tag>
+      <Tag leftIcon={<Flag country="az" />}>Azerbaijan</Tag>
+      <Tag leftIcon={<Flag country="dk" />}>Denmark</Tag>
+    </Box>
+  </Story>
+</Canvas>
+
+### Alignment of Remove Button
+
+<Canvas>
+  <Story name="Align Remove Button">
+    <Tag removeButtonAlign="left">Left align</Tag>
+    <Tag removeButtonAlign="right">Right align</Tag>
+  </Story>
+</Canvas>
+
+### Remove Button with Icons
+
+<Canvas>
+  <Story name="Remove Button With Icon">
+    <Tag leftIcon={<UserIcon />} removeButtonAlign="left">
+      With Right icon
+    </Tag>
+    <Tag rightIcon={<UserIcon />} removeButtonAlign="right">
+      With Right Icon
+    </Tag>
+  </Story>
+</Canvas>
+
+## Props
+
+<ArgsTable of={Tag} />

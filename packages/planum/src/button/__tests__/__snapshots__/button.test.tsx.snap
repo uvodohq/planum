@@ -1,0 +1,52 @@
+// Vitest Snapshot v1
+
+exports[`<Button /> > should show loading and not accept onClick 1`] = `
+<button
+  aria-busy="true"
+  aria-label="Loading"
+  class="c-eDYXqN c-eDYXqN-KUnxm-size-md c-eDYXqN-eEPmHB-variant-primary c-eDYXqN-jUrwBA-isLoading-true"
+  disabled=""
+  type="button"
+>
+  <span
+    class="c-kxAGWb c-kxAGWb-icKbjjX-css"
+  >
+    <span
+      class="c-dbzzBd"
+    >
+      Button
+    </span>
+  </span>
+  <span
+    class="c-dwigtZ"
+  >
+    <span
+      class="c-ihyEMT c-ihyEMT-hSOPyJ-speed-fast c-ihyEMT-hRvkRI-size-default c-ihyEMT-bVexMK-theme-dark"
+      role="progressbar"
+      style="--planum-loader-percentage: 100;"
+    >
+      <svg
+        class="c-gIjBTH"
+        viewBox="0 0 50 50"
+      >
+        <circle
+          class="c-cfQGJc"
+          cx="25"
+          cy="25"
+          fill="none"
+          r="22"
+          stroke-width="4"
+        />
+        <circle
+          class="c-PJLV"
+          cx="25"
+          cy="25"
+          fill="none"
+          r="22"
+          stroke-width="4"
+        />
+      </svg>
+    </span>
+  </span>
+</button>
+`;

@@ -1,0 +1,1432 @@
+import { PlusIcon } from '~/../example/demo/assets/icons'
+import { H3, Flex } from 'src'
+import { Button } from '../button'
+import FlexCol from './flex.tsx'
+import { ArgsTable, Story, Canvas, Meta } from '@storybook/addon-docs'
+
+<Meta title="Components/Button" component={Button} />
+
+<!--- Component template -->
+
+export const buttonTemplate = (args) => <Button {...args} />
+
+<!--- Component documentation -->
+
+# Button
+
+- [Overview](#overview)
+- [Props](#props)
+- [Usage](#usage)
+
+## Overview
+
+Buttons allow users to trigger an action or event with a single click.
+For example, you can use a button for allowing the functionality of submitting a form, opening a dialog, canceling an action,
+or performing a delete operation.
+
+## Variants
+
+### Primary
+
+#### Default
+
+<Canvas>
+  <Story name="Primary">
+    <FlexCol>
+      <Button>Button</Button>
+      <Button size="sm">Button</Button>
+    </FlexCol>
+    <FlexCol>
+      <Button leftIcon={<PlusIcon size={24} />}>Button</Button>
+      <Button leftIcon={<PlusIcon size={24} />} size="sm">
+        Button
+      </Button>
+    </FlexCol>
+    <FlexCol>
+      <Button icon={<PlusIcon size={24} />} />
+      <Button icon={<PlusIcon size={24} />} size="sm" />
+    </FlexCol>
+    <FlexCol>
+      <Button icon={<PlusIcon size={24} />} rounded />
+      <Button icon={<PlusIcon size={24} />} rounded size="sm" />
+    </FlexCol>
+    <FlexCol>
+      <Button leftIcon={<PlusIcon size={24} />} rounded>
+        Button
+      </Button>
+      <Button leftIcon={<PlusIcon size={24} />} rounded size="sm">
+        Button
+      </Button>
+    </FlexCol>
+    <FlexCol>
+      <Button rounded>Button</Button>
+      <Button rounded size="sm">
+        Button
+      </Button>
+    </FlexCol>
+  </Story>
+</Canvas>
+
+#### Disabled
+
+<Canvas>
+  <Story name="Primary Disabled">
+    <FlexCol>
+      <Button isDisabled>Button</Button>
+      <Button isDisabled size="sm">
+        Button
+      </Button>
+    </FlexCol>
+    <FlexCol>
+      <Button isDisabled leftIcon={<PlusIcon size={24} />}>
+        Button
+      </Button>
+      <Button isDisabled leftIcon={<PlusIcon size={24} />} size="sm">
+        Button
+      </Button>
+    </FlexCol>
+    <FlexCol>
+      <Button isDisabled icon={<PlusIcon size={24} />} />
+      <Button isDisabled icon={<PlusIcon size={24} />} size="sm" />
+    </FlexCol>
+    <FlexCol>
+      <Button isDisabled icon={<PlusIcon size={24} />} rounded />
+      <Button isDisabled icon={<PlusIcon size={24} />} rounded size="sm" />
+    </FlexCol>
+    <FlexCol>
+      <Button isDisabled leftIcon={<PlusIcon size={24} />} rounded>
+        Button
+      </Button>
+      <Button isDisabled leftIcon={<PlusIcon size={24} />} rounded size="sm">
+        Button
+      </Button>
+    </FlexCol>
+    <FlexCol>
+      <Button isDisabled rounded>
+        Button
+      </Button>
+      <Button isDisabled rounded size="sm">
+        Button
+      </Button>
+    </FlexCol>
+  </Story>
+</Canvas>
+
+#### Loading
+
+<Canvas>
+  <Story name="Primary Loading">
+    <FlexCol>
+      <Button isLoading>Button</Button>
+      <Button isLoading size="sm">
+        Button
+      </Button>
+    </FlexCol>
+    <FlexCol>
+      <Button isLoading leftIcon={<PlusIcon size={24} />}>
+        Button
+      </Button>
+      <Button isLoading leftIcon={<PlusIcon size={24} />} size="sm">
+        Button
+      </Button>
+    </FlexCol>
+    <FlexCol>
+      <Button isLoading icon={<PlusIcon size={24} />} />
+      <Button isLoading icon={<PlusIcon size={24} />} size="sm" />
+    </FlexCol>
+    <FlexCol>
+      <Button isLoading icon={<PlusIcon size={24} />} rounded />
+      <Button isLoading icon={<PlusIcon size={24} />} rounded size="sm" />
+    </FlexCol>
+    <FlexCol>
+      <Button isLoading leftIcon={<PlusIcon size={24} />} rounded>
+        Button
+      </Button>
+      <Button isLoading leftIcon={<PlusIcon size={24} />} rounded size="sm">
+        Button
+      </Button>
+    </FlexCol>
+    <FlexCol>
+      <Button isLoading rounded>
+        Button
+      </Button>
+      <Button isLoading rounded size="sm">
+        Button
+      </Button>
+    </FlexCol>
+  </Story>
+</Canvas>
+
+### Secondary
+
+#### Default
+
+<Canvas>
+  <Story name="Secondary">
+    <FlexCol>
+      <Button variant="secondary">Button</Button>
+      <Button variant="secondary" size="sm">
+        Button
+      </Button>
+    </FlexCol>
+    <FlexCol>
+      <Button variant="secondary" leftIcon={<PlusIcon size={24} />}>
+        Button
+      </Button>
+      <Button variant="secondary" leftIcon={<PlusIcon size={24} />} size="sm">
+        Button
+      </Button>
+    </FlexCol>
+    <FlexCol>
+      <Button variant="secondary" icon={<PlusIcon size={24} />} />
+      <Button variant="secondary" icon={<PlusIcon size={24} />} size="sm" />
+    </FlexCol>
+    <FlexCol>
+      <Button variant="secondary" icon={<PlusIcon size={24} />} rounded />
+      <Button
+        variant="secondary"
+        icon={<PlusIcon size={24} />}
+        rounded
+        size="sm"
+      />
+    </FlexCol>
+    <FlexCol>
+      <Button variant="secondary" leftIcon={<PlusIcon size={24} />} rounded>
+        Button
+      </Button>
+      <Button
+        variant="secondary"
+        leftIcon={<PlusIcon size={24} />}
+        rounded
+        size="sm">
+        Button
+      </Button>
+    </FlexCol>
+    <FlexCol>
+      <Button variant="secondary" rounded>
+        Button
+      </Button>
+      <Button variant="secondary" rounded size="sm">
+        Button
+      </Button>
+    </FlexCol>
+  </Story>
+</Canvas>
+
+#### Disabled
+
+<Canvas>
+  <Story name="Secondary Disabled">
+    <FlexCol>
+      <Button variant="secondary" isDisabled>
+        Button
+      </Button>
+      <Button variant="secondary" isDisabled size="sm">
+        Button
+      </Button>
+    </FlexCol>
+    <FlexCol>
+      <Button variant="secondary" isDisabled leftIcon={<PlusIcon size={24} />}>
+        Button
+      </Button>
+      <Button
+        variant="secondary"
+        isDisabled
+        leftIcon={<PlusIcon size={24} />}
+        size="sm">
+        Button
+      </Button>
+    </FlexCol>
+    <FlexCol>
+      <Button variant="secondary" isDisabled icon={<PlusIcon size={24} />} />
+      <Button
+        variant="secondary"
+        isDisabled
+        icon={<PlusIcon size={24} />}
+        size="sm"
+      />
+    </FlexCol>
+    <FlexCol>
+      <Button
+        variant="secondary"
+        isDisabled
+        icon={<PlusIcon size={24} />}
+        rounded
+      />
+      <Button
+        variant="secondary"
+        isDisabled
+        icon={<PlusIcon size={24} />}
+        rounded
+        size="sm"
+      />
+    </FlexCol>
+    <FlexCol>
+      <Button
+        variant="secondary"
+        isDisabled
+        leftIcon={<PlusIcon size={24} />}
+        rounded>
+        Button
+      </Button>
+      <Button
+        variant="secondary"
+        isDisabled
+        leftIcon={<PlusIcon size={24} />}
+        rounded
+        size="sm">
+        Button
+      </Button>
+    </FlexCol>
+    <FlexCol>
+      <Button variant="secondary" isDisabled rounded>
+        Button
+      </Button>
+      <Button variant="secondary" isDisabled rounded size="sm">
+        Button
+      </Button>
+    </FlexCol>
+  </Story>
+</Canvas>
+
+#### Loading
+
+<Canvas>
+  <Story name="Secondary Loading">
+    <FlexCol>
+      <Button variant="secondary" isLoading>
+        Button
+      </Button>
+      <Button variant="secondary" isLoading size="sm">
+        Button
+      </Button>
+    </FlexCol>
+    <FlexCol>
+      <Button variant="secondary" isLoading leftIcon={<PlusIcon size={24} />}>
+        Button
+      </Button>
+      <Button
+        variant="secondary"
+        isLoading
+        leftIcon={<PlusIcon size={24} />}
+        size="sm">
+        Button
+      </Button>
+    </FlexCol>
+    <FlexCol>
+      <Button variant="secondary" isLoading icon={<PlusIcon size={24} />} />
+      <Button
+        variant="secondary"
+        isLoading
+        icon={<PlusIcon size={24} />}
+        size="sm"
+      />
+    </FlexCol>
+    <FlexCol>
+      <Button
+        variant="secondary"
+        isLoading
+        icon={<PlusIcon size={24} />}
+        rounded
+      />
+      <Button
+        variant="secondary"
+        isLoading
+        icon={<PlusIcon size={24} />}
+        rounded
+        size="sm"
+      />
+    </FlexCol>
+    <FlexCol>
+      <Button
+        variant="secondary"
+        isLoading
+        leftIcon={<PlusIcon size={24} />}
+        rounded>
+        Button
+      </Button>
+      <Button
+        variant="secondary"
+        isLoading
+        leftIcon={<PlusIcon size={24} />}
+        rounded
+        size="sm">
+        Button
+      </Button>
+    </FlexCol>
+    <FlexCol>
+      <Button variant="secondary" isLoading rounded>
+        Button
+      </Button>
+      <Button variant="secondary" isLoading rounded size="sm">
+        Button
+      </Button>
+    </FlexCol>
+  </Story>
+</Canvas>
+
+### Flat
+
+#### Default
+
+<Canvas>
+  <Story name="Flat">
+    <FlexCol>
+      <Button variant="flat">Button</Button>
+      <Button variant="flat" size="sm">
+        Button
+      </Button>
+    </FlexCol>
+    <FlexCol>
+      <Button variant="flat" leftIcon={<PlusIcon size={24} />}>
+        Button
+      </Button>
+      <Button variant="flat" leftIcon={<PlusIcon size={24} />} size="sm">
+        Button
+      </Button>
+    </FlexCol>
+    <FlexCol>
+      <Button variant="flat" icon={<PlusIcon size={24} />} />
+      <Button variant="flat" icon={<PlusIcon size={24} />} size="sm" />
+    </FlexCol>
+    <FlexCol>
+      <Button variant="flat" icon={<PlusIcon size={24} />} rounded />
+      <Button variant="flat" icon={<PlusIcon size={24} />} rounded size="sm" />
+    </FlexCol>
+    <FlexCol>
+      <Button variant="flat" leftIcon={<PlusIcon size={24} />} rounded>
+        Button
+      </Button>
+      <Button
+        variant="flat"
+        leftIcon={<PlusIcon size={24} />}
+        rounded
+        size="sm">
+        Button
+      </Button>
+    </FlexCol>
+    <FlexCol>
+      <Button variant="flat" rounded>
+        Button
+      </Button>
+      <Button variant="flat" rounded size="sm">
+        Button
+      </Button>
+    </FlexCol>
+  </Story>
+</Canvas>
+
+#### Disabled
+
+<Canvas>
+  <Story name="Flat Disabled">
+    <FlexCol>
+      <Button variant="flat" isDisabled>
+        Button
+      </Button>
+      <Button variant="flat" isDisabled size="sm">
+        Button
+      </Button>
+    </FlexCol>
+    <FlexCol>
+      <Button variant="flat" isDisabled leftIcon={<PlusIcon size={24} />}>
+        Button
+      </Button>
+      <Button
+        variant="flat"
+        isDisabled
+        leftIcon={<PlusIcon size={24} />}
+        size="sm">
+        Button
+      </Button>
+    </FlexCol>
+    <FlexCol>
+      <Button variant="flat" isDisabled icon={<PlusIcon size={24} />} />
+      <Button
+        variant="flat"
+        isDisabled
+        icon={<PlusIcon size={24} />}
+        size="sm"
+      />
+    </FlexCol>
+    <FlexCol>
+      <Button variant="flat" isDisabled icon={<PlusIcon size={24} />} rounded />
+      <Button
+        variant="flat"
+        isDisabled
+        icon={<PlusIcon size={24} />}
+        rounded
+        size="sm"
+      />
+    </FlexCol>
+    <FlexCol>
+      <Button
+        variant="flat"
+        isDisabled
+        leftIcon={<PlusIcon size={24} />}
+        rounded>
+        Button
+      </Button>
+      <Button
+        variant="flat"
+        isDisabled
+        leftIcon={<PlusIcon size={24} />}
+        rounded
+        size="sm">
+        Button
+      </Button>
+    </FlexCol>
+    <FlexCol>
+      <Button variant="flat" isDisabled rounded>
+        Button
+      </Button>
+      <Button variant="flat" isDisabled rounded size="sm">
+        Button
+      </Button>
+    </FlexCol>
+  </Story>
+</Canvas>
+
+#### Loading
+
+<Canvas>
+  <Story name="Flat Loading">
+    <FlexCol>
+      <Button variant="flat" isLoading>
+        Button
+      </Button>
+      <Button variant="flat" isLoading size="sm">
+        Button
+      </Button>
+    </FlexCol>
+    <FlexCol>
+      <Button variant="flat" isLoading leftIcon={<PlusIcon size={24} />}>
+        Button
+      </Button>
+      <Button
+        variant="flat"
+        isLoading
+        leftIcon={<PlusIcon size={24} />}
+        size="sm">
+        Button
+      </Button>
+    </FlexCol>
+    <FlexCol>
+      <Button variant="flat" isLoading icon={<PlusIcon size={24} />} />
+      <Button
+        variant="flat"
+        isLoading
+        icon={<PlusIcon size={24} />}
+        size="sm"
+      />
+    </FlexCol>
+    <FlexCol>
+      <Button variant="flat" isLoading icon={<PlusIcon size={24} />} rounded />
+      <Button
+        variant="flat"
+        isLoading
+        icon={<PlusIcon size={24} />}
+        rounded
+        size="sm"
+      />
+    </FlexCol>
+    <FlexCol>
+      <Button
+        variant="flat"
+        isLoading
+        leftIcon={<PlusIcon size={24} />}
+        rounded>
+        Button
+      </Button>
+      <Button
+        variant="flat"
+        isLoading
+        leftIcon={<PlusIcon size={24} />}
+        rounded
+        size="sm">
+        Button
+      </Button>
+    </FlexCol>
+    <FlexCol>
+      <Button variant="flat" isLoading rounded>
+        Button
+      </Button>
+      <Button variant="flat" isLoading rounded size="sm">
+        Button
+      </Button>
+    </FlexCol>
+  </Story>
+</Canvas>
+
+### Danger
+
+#### Default
+
+<Canvas>
+  <Story name="Danger">
+    <FlexCol>
+      <Button variant="danger">Button</Button>
+      <Button variant="danger" size="sm">
+        Button
+      </Button>
+    </FlexCol>
+    <FlexCol>
+      <Button variant="danger" leftIcon={<PlusIcon size={24} />}>
+        Button
+      </Button>
+      <Button variant="danger" leftIcon={<PlusIcon size={24} />} size="sm">
+        Button
+      </Button>
+    </FlexCol>
+    <FlexCol>
+      <Button variant="danger" icon={<PlusIcon size={24} />} />
+      <Button variant="danger" icon={<PlusIcon size={24} />} size="sm" />
+    </FlexCol>
+    <FlexCol>
+      <Button variant="danger" icon={<PlusIcon size={24} />} rounded />
+      <Button
+        variant="danger"
+        icon={<PlusIcon size={24} />}
+        rounded
+        size="sm"
+      />
+    </FlexCol>
+    <FlexCol>
+      <Button variant="danger" leftIcon={<PlusIcon size={24} />} rounded>
+        Button
+      </Button>
+      <Button
+        variant="danger"
+        leftIcon={<PlusIcon size={24} />}
+        rounded
+        size="sm">
+        Button
+      </Button>
+    </FlexCol>
+    <FlexCol>
+      <Button variant="danger" rounded>
+        Button
+      </Button>
+      <Button variant="danger" rounded size="sm">
+        Button
+      </Button>
+    </FlexCol>
+  </Story>
+</Canvas>
+
+#### Disabled
+
+<Canvas>
+  <Story name="Danger Disabled">
+    <FlexCol>
+      <Button variant="danger" isDisabled>
+        Button
+      </Button>
+      <Button variant="danger" isDisabled size="sm">
+        Button
+      </Button>
+    </FlexCol>
+    <FlexCol>
+      <Button variant="danger" isDisabled leftIcon={<PlusIcon size={24} />}>
+        Button
+      </Button>
+      <Button
+        variant="danger"
+        isDisabled
+        leftIcon={<PlusIcon size={24} />}
+        size="sm">
+        Button
+      </Button>
+    </FlexCol>
+    <FlexCol>
+      <Button
+        variant="danger"
+        isDisabled
+        icon={<PlusIcon size={24} />}
+        rounded
+      />
+      <Button
+        variant="danger"
+        isDisabled
+        icon={<PlusIcon size={24} />}
+        rounded
+        size="sm"
+      />
+    </FlexCol>
+    <FlexCol>
+      <Button variant="danger" isDisabled icon={<PlusIcon size={24} />} />
+      <Button
+        variant="danger"
+        isDisabled
+        icon={<PlusIcon size={24} />}
+        size="sm"
+      />
+    </FlexCol>
+    <FlexCol>
+      <Button
+        variant="danger"
+        isDisabled
+        leftIcon={<PlusIcon size={24} />}
+        rounded>
+        Button
+      </Button>
+      <Button
+        variant="danger"
+        isDisabled
+        leftIcon={<PlusIcon size={24} />}
+        rounded
+        size="sm">
+        Button
+      </Button>
+    </FlexCol>
+    <FlexCol>
+      <Button variant="danger" isDisabled rounded>
+        Button
+      </Button>
+      <Button variant="danger" isDisabled rounded size="sm">
+        Button
+      </Button>
+    </FlexCol>
+  </Story>
+</Canvas>
+
+#### Loading
+
+<Canvas>
+  <Story name="Danger Loading">
+    <FlexCol>
+      <Button variant="danger" isLoading>
+        Button
+      </Button>
+      <Button variant="danger" isLoading size="sm">
+        Button
+      </Button>
+    </FlexCol>
+    <FlexCol>
+      <Button variant="danger" isLoading leftIcon={<PlusIcon size={24} />}>
+        Button
+      </Button>
+      <Button
+        variant="danger"
+        isLoading
+        leftIcon={<PlusIcon size={24} />}
+        size="sm">
+        Button
+      </Button>
+    </FlexCol>
+    <FlexCol>
+      <Button variant="danger" isLoading icon={<PlusIcon size={24} />} />
+      <Button
+        variant="danger"
+        isLoading
+        icon={<PlusIcon size={24} />}
+        size="sm"
+      />
+    </FlexCol>
+    <FlexCol>
+      <Button
+        variant="danger"
+        isLoading
+        icon={<PlusIcon size={24} />}
+        rounded
+      />
+      <Button
+        variant="danger"
+        isLoading
+        icon={<PlusIcon size={24} />}
+        rounded
+        size="sm"
+      />
+    </FlexCol>
+    <FlexCol>
+      <Button
+        variant="danger"
+        isLoading
+        leftIcon={<PlusIcon size={24} />}
+        rounded>
+        Button
+      </Button>
+      <Button
+        variant="danger"
+        isLoading
+        leftIcon={<PlusIcon size={24} />}
+        rounded
+        size="sm">
+        Button
+      </Button>
+    </FlexCol>
+    <FlexCol>
+      <Button variant="danger" isLoading rounded>
+        Button
+      </Button>
+      <Button variant="danger" isLoading rounded size="sm">
+        Button
+      </Button>
+    </FlexCol>
+  </Story>
+</Canvas>
+
+### Secondary Danger
+
+#### Default
+
+<Canvas>
+  <Story name="Secondary Danger">
+    <FlexCol>
+      <Button variant="secondaryDanger">Button</Button>
+      <Button variant="secondaryDanger" size="sm">
+        Button
+      </Button>
+    </FlexCol>
+    <FlexCol>
+      <Button variant="secondaryDanger" leftIcon={<PlusIcon size={24} />}>
+        Button
+      </Button>
+      <Button
+        variant="secondaryDanger"
+        leftIcon={<PlusIcon size={24} />}
+        size="sm">
+        Button
+      </Button>
+    </FlexCol>
+    <FlexCol>
+      <Button variant="secondaryDanger" icon={<PlusIcon size={24} />} />
+      <Button
+        variant="secondaryDanger"
+        icon={<PlusIcon size={24} />}
+        size="sm"
+      />
+    </FlexCol>
+    <FlexCol>
+      <Button variant="secondaryDanger" icon={<PlusIcon size={24} />} rounded />
+      <Button
+        variant="secondaryDanger"
+        icon={<PlusIcon size={24} />}
+        rounded
+        size="sm"
+      />
+    </FlexCol>
+    <FlexCol>
+      <Button
+        variant="secondaryDanger"
+        leftIcon={<PlusIcon size={24} />}
+        rounded>
+        Button
+      </Button>
+      <Button
+        variant="secondaryDanger"
+        leftIcon={<PlusIcon size={24} />}
+        rounded
+        size="sm">
+        Button
+      </Button>
+    </FlexCol>
+    <FlexCol>
+      <Button variant="secondaryDanger" rounded>
+        Button
+      </Button>
+      <Button variant="secondaryDanger" rounded size="sm">
+        Button
+      </Button>
+    </FlexCol>
+  </Story>
+</Canvas>
+
+#### Disabled
+
+<Canvas>
+  <Story name="Secondary Danger Disabled">
+    <FlexCol>
+      <Button variant="secondaryDanger" isDisabled>
+        Button
+      </Button>
+      <Button variant="secondaryDanger" isDisabled size="sm">
+        Button
+      </Button>
+    </FlexCol>
+    <FlexCol>
+      <Button
+        variant="secondaryDanger"
+        isDisabled
+        leftIcon={<PlusIcon size={24} />}>
+        Button
+      </Button>
+      <Button
+        variant="secondaryDanger"
+        isDisabled
+        leftIcon={<PlusIcon size={24} />}
+        size="sm">
+        Button
+      </Button>
+    </FlexCol>
+    <FlexCol>
+      <Button
+        variant="secondaryDanger"
+        isDisabled
+        icon={<PlusIcon size={24} />}
+      />
+      <Button
+        variant="secondaryDanger"
+        isDisabled
+        icon={<PlusIcon size={24} />}
+        size="sm"
+      />
+    </FlexCol>
+    <FlexCol>
+      <Button
+        variant="secondaryDanger"
+        isDisabled
+        icon={<PlusIcon size={24} />}
+        rounded
+      />
+      <Button
+        variant="secondaryDanger"
+        isDisabled
+        icon={<PlusIcon size={24} />}
+        rounded
+        size="sm"
+      />
+    </FlexCol>
+    <FlexCol>
+      <Button
+        variant="secondaryDanger"
+        isDisabled
+        leftIcon={<PlusIcon size={24} />}
+        rounded>
+        Button
+      </Button>
+      <Button
+        variant="secondaryDanger"
+        isDisabled
+        leftIcon={<PlusIcon size={24} />}
+        rounded
+        size="sm">
+        Button
+      </Button>
+    </FlexCol>
+    <FlexCol>
+      <Button variant="secondaryDanger" isDisabled rounded>
+        Button
+      </Button>
+      <Button variant="secondaryDanger" isDisabled rounded size="sm">
+        Button
+      </Button>
+    </FlexCol>
+  </Story>
+</Canvas>
+
+#### Loading
+
+<Canvas>
+  <Story name="Secondary Danger Loading">
+    <FlexCol>
+      <Button variant="secondaryDanger" isLoading>
+        Button
+      </Button>
+      <Button variant="secondaryDanger" isLoading size="sm">
+        Button
+      </Button>
+    </FlexCol>
+    <FlexCol>
+      <Button
+        variant="secondaryDanger"
+        isLoading
+        leftIcon={<PlusIcon size={24} />}>
+        Button
+      </Button>
+      <Button
+        variant="secondaryDanger"
+        isLoading
+        leftIcon={<PlusIcon size={24} />}
+        size="sm">
+        Button
+      </Button>
+    </FlexCol>
+    <FlexCol>
+      <Button
+        variant="secondaryDanger"
+        isLoading
+        icon={<PlusIcon size={24} />}
+      />
+      <Button
+        variant="secondaryDanger"
+        isLoading
+        icon={<PlusIcon size={24} />}
+        size="sm"
+      />
+    </FlexCol>
+    <FlexCol>
+      <Button
+        variant="secondaryDanger"
+        isLoading
+        icon={<PlusIcon size={24} />}
+        rounded
+      />
+      <Button
+        variant="secondaryDanger"
+        isLoading
+        icon={<PlusIcon size={24} />}
+        rounded
+        size="sm"
+      />
+    </FlexCol>
+    <FlexCol>
+      <Button
+        variant="secondaryDanger"
+        isLoading
+        leftIcon={<PlusIcon size={24} />}
+        rounded>
+        Button
+      </Button>
+      <Button
+        variant="secondaryDanger"
+        isLoading
+        leftIcon={<PlusIcon size={24} />}
+        rounded
+        size="sm">
+        Button
+      </Button>
+    </FlexCol>
+    <FlexCol>
+      <Button variant="secondaryDanger" isLoading rounded>
+        Button
+      </Button>
+      <Button variant="secondaryDanger" isLoading rounded size="sm">
+        Button
+      </Button>
+    </FlexCol>
+  </Story>
+</Canvas>
+
+### Flat Danger
+
+#### Default
+
+<Canvas>
+  <Story name="Flat Danger">
+    <FlexCol>
+      <Button variant="flatDanger">Button</Button>
+      <Button variant="flatDanger" size="sm">
+        Button
+      </Button>
+    </FlexCol>
+    <FlexCol>
+      <Button variant="flatDanger" leftIcon={<PlusIcon size={24} />}>
+        Button
+      </Button>
+      <Button variant="flatDanger" leftIcon={<PlusIcon size={24} />} size="sm">
+        Button
+      </Button>
+    </FlexCol>
+    <FlexCol>
+      <Button variant="flatDanger" icon={<PlusIcon size={24} />} />
+      <Button variant="flatDanger" icon={<PlusIcon size={24} />} size="sm" />
+    </FlexCol>
+    <FlexCol>
+      <Button variant="flatDanger" icon={<PlusIcon size={24} />} rounded />
+      <Button
+        variant="flatDanger"
+        icon={<PlusIcon size={24} />}
+        rounded
+        size="sm"
+      />
+    </FlexCol>
+    <FlexCol>
+      <Button variant="flatDanger" leftIcon={<PlusIcon size={24} />} rounded>
+        Button
+      </Button>
+      <Button
+        variant="flatDanger"
+        leftIcon={<PlusIcon size={24} />}
+        rounded
+        size="sm">
+        Button
+      </Button>
+    </FlexCol>
+    <FlexCol>
+      <Button variant="flatDanger" rounded>
+        Button
+      </Button>
+      <Button variant="flatDanger" rounded size="sm">
+        Button
+      </Button>
+    </FlexCol>
+  </Story>
+</Canvas>
+
+#### Disabled
+
+<Canvas>
+  <Story name="Flat Danger Disabled">
+    <FlexCol>
+      <Button variant="flatDanger" isDisabled>
+        Button
+      </Button>
+      <Button variant="flatDanger" isDisabled size="sm">
+        Button
+      </Button>
+    </FlexCol>
+    <FlexCol>
+      <Button variant="flatDanger" isDisabled leftIcon={<PlusIcon size={24} />}>
+        Button
+      </Button>
+      <Button
+        variant="flatDanger"
+        isDisabled
+        leftIcon={<PlusIcon size={24} />}
+        size="sm">
+        Button
+      </Button>
+    </FlexCol>
+    <FlexCol>
+      <Button variant="flatDanger" isDisabled icon={<PlusIcon size={24} />} />
+      <Button
+        variant="flatDanger"
+        isDisabled
+        icon={<PlusIcon size={24} />}
+        size="sm"
+      />
+    </FlexCol>
+    <FlexCol>
+      <Button
+        variant="flatDanger"
+        isDisabled
+        icon={<PlusIcon size={24} />}
+        rounded
+      />
+      <Button
+        variant="flatDanger"
+        isDisabled
+        icon={<PlusIcon size={24} />}
+        rounded
+        size="sm"
+      />
+    </FlexCol>
+    <FlexCol>
+      <Button
+        variant="flatDanger"
+        isDisabled
+        leftIcon={<PlusIcon size={24} />}
+        rounded>
+        Button
+      </Button>
+      <Button
+        variant="flatDanger"
+        isDisabled
+        leftIcon={<PlusIcon size={24} />}
+        rounded
+        size="sm">
+        Button
+      </Button>
+    </FlexCol>
+    <FlexCol>
+      <Button variant="flatDanger" isDisabled rounded>
+        Button
+      </Button>
+      <Button variant="flatDanger" isDisabled rounded size="sm">
+        Button
+      </Button>
+    </FlexCol>
+  </Story>
+</Canvas>
+
+#### Loading
+
+<Canvas>
+  <Story name="Flat Danger Loading">
+    <FlexCol>
+      <Button variant="flatDanger" isLoading>
+        Button
+      </Button>
+      <Button variant="flatDanger" isLoading size="sm">
+        Button
+      </Button>
+    </FlexCol>
+    <FlexCol>
+      <Button variant="flatDanger" isLoading leftIcon={<PlusIcon size={24} />}>
+        Button
+      </Button>
+      <Button
+        variant="flatDanger"
+        isLoading
+        leftIcon={<PlusIcon size={24} />}
+        size="sm">
+        Button
+      </Button>
+    </FlexCol>
+    <FlexCol>
+      <Button variant="flatDanger" isLoading icon={<PlusIcon size={24} />} />
+      <Button
+        variant="flatDanger"
+        isLoading
+        icon={<PlusIcon size={24} />}
+        size="sm"
+      />
+    </FlexCol>
+    <FlexCol>
+      <Button
+        variant="flatDanger"
+        isLoading
+        icon={<PlusIcon size={24} />}
+        rounded
+      />
+      <Button
+        variant="flatDanger"
+        isLoading
+        icon={<PlusIcon size={24} />}
+        rounded
+        size="sm"
+      />
+    </FlexCol>
+    <FlexCol>
+      <Button
+        variant="flatDanger"
+        isLoading
+        leftIcon={<PlusIcon size={24} />}
+        rounded>
+        Button
+      </Button>
+      <Button
+        variant="flatDanger"
+        isLoading
+        leftIcon={<PlusIcon size={24} />}
+        rounded
+        size="sm">
+        Button
+      </Button>
+    </FlexCol>
+    <FlexCol>
+      <Button variant="flatDanger" isLoading rounded>
+        Button
+      </Button>
+      <Button variant="flatDanger" isLoading rounded size="sm">
+        Button
+      </Button>
+    </FlexCol>
+  </Story>
+</Canvas>
+
+### Secondary Dark
+
+#### Default
+
+<Canvas>
+  <Story name="Secondary Dark">
+    <FlexCol>
+      <Button variant="secondaryDark">Button</Button>
+      <Button variant="secondaryDark" size="sm">
+        Button
+      </Button>
+    </FlexCol>
+    <FlexCol>
+      <Button variant="secondaryDark" leftIcon={<PlusIcon size={24} />}>
+        Button
+      </Button>
+      <Button
+        variant="secondaryDark"
+        leftIcon={<PlusIcon size={24} />}
+        size="sm">
+        Button
+      </Button>
+    </FlexCol>
+    <FlexCol>
+      <Button variant="secondaryDark" icon={<PlusIcon size={24} />} />
+      <Button variant="secondaryDark" icon={<PlusIcon size={24} />} size="sm" />
+    </FlexCol>
+    <FlexCol>
+      <Button variant="secondaryDark" icon={<PlusIcon size={24} />} rounded />
+      <Button
+        variant="secondaryDark"
+        icon={<PlusIcon size={24} />}
+        rounded
+        size="sm"
+      />
+    </FlexCol>
+    <FlexCol>
+      <Button variant="secondaryDark" leftIcon={<PlusIcon size={24} />} rounded>
+        Button
+      </Button>
+      <Button
+        variant="secondaryDark"
+        leftIcon={<PlusIcon size={24} />}
+        rounded
+        size="sm">
+        Button
+      </Button>
+    </FlexCol>
+    <FlexCol>
+      <Button variant="secondaryDark" rounded>
+        Button
+      </Button>
+      <Button variant="secondaryDark" rounded size="sm">
+        Button
+      </Button>
+    </FlexCol>
+  </Story>
+</Canvas>
+
+#### Disabled
+
+<Canvas>
+  <Story name="Secondary Dark Disabled">
+    <FlexCol>
+      <Button variant="secondaryDark" isDisabled>
+        Button
+      </Button>
+      <Button variant="secondaryDark" isDisabled size="sm">
+        Button
+      </Button>
+    </FlexCol>
+    <FlexCol>
+      <Button
+        variant="secondaryDark"
+        isDisabled
+        leftIcon={<PlusIcon size={24} />}>
+        Button
+      </Button>
+      <Button
+        variant="secondaryDark"
+        isDisabled
+        leftIcon={<PlusIcon size={24} />}
+        size="sm">
+        Button
+      </Button>
+    </FlexCol>
+    <FlexCol>
+      <Button
+        variant="secondaryDark"
+        isDisabled
+        icon={<PlusIcon size={24} />}
+      />
+      <Button
+        variant="secondaryDark"
+        isDisabled
+        icon={<PlusIcon size={24} />}
+        size="sm"
+      />
+    </FlexCol>
+    <FlexCol>
+      <Button
+        variant="secondaryDark"
+        isDisabled
+        icon={<PlusIcon size={24} />}
+        rounded
+      />
+      <Button
+        variant="secondaryDark"
+        isDisabled
+        icon={<PlusIcon size={24} />}
+        rounded
+        size="sm"
+      />
+    </FlexCol>
+    <FlexCol>
+      <Button
+        variant="secondaryDark"
+        isDisabled
+        leftIcon={<PlusIcon size={24} />}
+        rounded>
+        Button
+      </Button>
+      <Button
+        variant="secondaryDark"
+        isDisabled
+        leftIcon={<PlusIcon size={24} />}
+        rounded
+        size="sm">
+        Button
+      </Button>
+    </FlexCol>
+    <FlexCol>
+      <Button variant="secondaryDark" isDisabled rounded>
+        Button
+      </Button>
+      <Button variant="secondaryDark" isDisabled rounded size="sm">
+        Button
+      </Button>
+    </FlexCol>
+  </Story>
+</Canvas>
+
+#### Loading
+
+<Canvas>
+  <Story name="Secondary Dark Loading">
+    <FlexCol>
+      <Button variant="secondaryDark" isLoading>
+        Button
+      </Button>
+      <Button variant="secondaryDark" isLoading size="sm">
+        Button
+      </Button>
+    </FlexCol>
+    <FlexCol>
+      <Button
+        variant="secondaryDark"
+        isLoading
+        leftIcon={<PlusIcon size={24} />}>
+        Button
+      </Button>
+      <Button
+        variant="secondaryDark"
+        isLoading
+        leftIcon={<PlusIcon size={24} />}
+        size="sm">
+        Button
+      </Button>
+    </FlexCol>
+    <FlexCol>
+      <Button variant="secondaryDark" isLoading icon={<PlusIcon size={24} />} />
+      <Button
+        variant="secondaryDark"
+        isLoading
+        icon={<PlusIcon size={24} />}
+        size="sm"
+      />
+    </FlexCol>
+    <FlexCol>
+      <Button
+        variant="secondaryDark"
+        isLoading
+        icon={<PlusIcon size={24} />}
+        rounded
+      />
+      <Button
+        variant="secondaryDark"
+        isLoading
+        icon={<PlusIcon size={24} />}
+        rounded
+        size="sm"
+      />
+    </FlexCol>
+    <FlexCol>
+      <Button
+        variant="secondaryDark"
+        isLoading
+        leftIcon={<PlusIcon size={24} />}
+        rounded>
+        Button
+      </Button>
+      <Button
+        variant="secondaryDark"
+        isLoading
+        leftIcon={<PlusIcon size={24} />}
+        rounded
+        size="sm">
+        Button
+      </Button>
+    </FlexCol>
+    <FlexCol>
+      <Button variant="secondaryDark" isLoading rounded>
+        Button
+      </Button>
+      <Button variant="secondaryDark" isLoading rounded size="sm">
+        Button
+      </Button>
+    </FlexCol>
+  </Story>
+</Canvas>
+
+## Props
+
+<ArgsTable of={Button} />

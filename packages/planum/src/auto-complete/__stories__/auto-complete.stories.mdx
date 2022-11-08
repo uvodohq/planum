@@ -1,0 +1,135 @@
+import { Flex } from 'src'
+import Button from '~/ui/button'
+import { ArgsTable, Story, Canvas, Meta } from '@storybook/addon-docs'
+import { AutoComplete } from '../auto-complete'
+import { countryList } from './options'
+import { GlobeIcon } from '../icons'
+import { AutoCompleteTagsExample } from './auto-complete-tags-example'
+
+<Meta title="Components/AutoComplete" component={AutoComplete} />
+
+<!--- Component template -->
+
+export const autoCompleteTemplate = (args) => <AutoComplete {...args} />
+
+<!--- Component documentation -->
+
+# AutoComplete
+
+- [Overview](#overview)
+- [Variants](#variants)
+- [Props](#props)
+
+## Overview
+
+<b>AutoComplete</b> is a component that allows users to search for and select from
+a pre-populated list of values as they type, leveraging searching functionality.
+This component is used when you need an input box instead of a selector and suggestions
+or helping text.
+
+<Canvas>
+  <AutoComplete
+    placeholder="Search countries"
+    aria-label="label"
+    labelKey="name"
+    options={countryList}
+  />
+</Canvas>
+
+## Variants
+
+### AutoComplete with options
+
+<b>options</b> can be passed to the component to display a list of suggestions.
+
+<Canvas>
+  <Story name="With options">
+    <AutoComplete
+      placeholder="Search countries"
+      aria-label="label"
+      labelKey="name"
+      options={countryList}
+    />
+  </Story>
+</Canvas>
+
+### AutoComplete is disbaled
+
+<b>isDisabled</b> can be passed to the component to disable the input.
+
+<Canvas>
+  <Story name="Disabled">
+    <AutoComplete
+      placeholder="Search countries"
+      aria-label="label"
+      labelKey="name"
+      isDisabled={true}
+      options={countryList}
+    />
+  </Story>
+</Canvas>
+
+### AutoComplete with error status
+
+<b>status</b> can be passed to the component to display a indicator. Error status
+is used to indicate that the input is invalid.
+
+<Canvas>
+  <Story name="With error status ">
+    <AutoComplete
+      placeholder="Search countries"
+      aria-label="label"
+      labelKey="name"
+      options={countryList}
+      status="error"
+      errorMessage="This field is required"
+    />
+  </Story>
+</Canvas>
+
+### AutoComplete with label and description
+
+<b>prefix</b> and <b>suffix</b> can be passed to the component to display a icon,
+text.
+
+<Canvas>
+  <Story name="With label/description">
+    <Flex css={{ gap: '$16', width: '100%' }}>
+      <AutoComplete
+        placeholder="Search countries"
+        aria-label="label"
+        label="Label"
+        description="Description"
+        rightIcon={<GlobeIcon />}
+        labelKey="name"
+        options={countryList}
+      />
+      <AutoComplete
+        placeholder="Search countries"
+        aria-label="label"
+        label="Label"
+        description="Description"
+        labelKey="name"
+        suffix="EN"
+        options={countryList}
+      />
+    </Flex>
+  </Story>
+</Canvas>
+
+### AutoComplete with tags
+
+<b>tags</b> can be added by choosing from the list of options.
+
+<Canvas>
+  <Story name="With tags">
+    <AutoCompleteTagsExample
+      label="Custom country tags"
+      description="Add countries to your list"
+    />
+  </Story>
+</Canvas>
+
+## Props
+
+<ArgsTable of={AutoComplete} />

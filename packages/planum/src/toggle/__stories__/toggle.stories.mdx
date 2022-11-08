@@ -1,0 +1,53 @@
+import { Box, Flex } from 'src'
+import Toggle from '../toggle'
+import { ArgsTable, Story, Canvas, Meta } from '@storybook/addon-docs'
+
+<Meta title="Components/Toggle" component={Toggle} />
+
+<!--- Component template -->
+
+export const toggleTemplate = (args) => <Toggle {...args} />
+
+<!--- Component documentation -->
+
+# Toggle
+
+- [Overview](#overview)
+- [Variants](#variants)
+- [Props](#props)
+
+## Overview
+
+Allow users to turn an single option on or off. They are usually used to activate or deactivate a specific setting.
+
+<Canvas>
+  <Story name="Overview">{toggleTemplate.bind({})}</Story>
+</Canvas>
+
+## Variants
+
+### States
+
+<Canvas>
+  <Story name="States">
+    <Flex css={{ gap: 16, flexDirection: 'column' }}>
+      <Toggle />
+      <Toggle defaultSelected />
+    </Flex>
+  </Story>
+</Canvas>
+
+### Disabled
+
+<Canvas>
+  <Story name="Disabled">
+    <Flex css={{ gap: 16, flexDirection: 'column' }}>
+      <Toggle isDisabled />
+      <Toggle isDisabled defaultSelected />
+    </Flex>
+  </Story>
+</Canvas>
+
+## Props
+
+<ArgsTable of={Toggle} />

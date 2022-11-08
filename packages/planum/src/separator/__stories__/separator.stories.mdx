@@ -1,0 +1,54 @@
+import { Box, Flex } from '../../..'
+
+import Separator from '../separator'
+import { ArgsTable, Story, Canvas, Meta } from '@storybook/addon-docs'
+
+<Meta title="Components/Separator" component={Separator} />
+
+<!--- Component template -->
+
+export const separatorTemplate = (args) => <Separator {...args} />
+
+<!--- Component documentation -->
+
+# Separator
+
+- [Overview](#overview)
+- [Variants](#variants)
+- [Props](#props)
+
+## Overview
+
+Separator adds line between areas.
+
+<Canvas>
+  <Separator />
+</Canvas>
+
+## Variants
+
+### States
+
+<Canvas>
+  <Story name="States">
+    <Flex css={{ gap: 8 }}>
+      <Box>Left</Box> <Separator orientation="vertical" /> <Box>Right</Box>
+    </Flex>
+    <Flex
+      css={{
+        gap: 8,
+        maxWidth: 200,
+        width: '100%',
+        flexDirection: 'column',
+        alignItems: 'center',
+        ml: 100,
+      }}>
+      <Box>Top</Box> <Separator orientation="horizontal" />
+      <Box>Bottom</Box>
+    </Flex>
+  </Story>
+</Canvas>
+
+## Props
+
+<ArgsTable of={Separator} />
