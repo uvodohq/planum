@@ -11,3 +11,4 @@ export {
   styled,
   theme,
 } from './stitches.config'
+export * as tokens from './tokens'

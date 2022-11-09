@@ -1,30 +1,51 @@
-import { Alert } from '@uvodohq/planum'
-import { useState } from 'react'
-import './App.css'
+import './styles/app.css'
+import './styles/reset.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+import { Flex } from '@uvodohq/planum'
 
+import {
+  AlertPage,
+  ButtonDarkPage,
+  ButtonWhitePage,
+  ColorPage,
+  EditorPage,
+  EffectPage,
+  ExtraComponentsPage,
+  FormElementsPage,
+  HomePage,
+  ImagePage,
+  InputPage,
+  NotificationPage,
+  OverlaysPage,
+  SelectPage,
+  TagsBadgePage,
+  TextareaPage,
+  TypographyPage,
+} from './pages'
+
+export default function DemoApp() {
   return (
-    <div className="App">
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-
-      {/* <Button>BUTTON SIMPLE</Button> */}
-      {/* <ButtonPrimary>PRIMARY BUTTON</ButtonPrimary> */}
-      <Alert title="Title" message="Message" variant="primary" />
-    </div>
+    <Flex
+      css={{
+        flexWrap: 'nowrap',
+      }}>
+      <HomePage />
+      <ColorPage />
+      <TypographyPage />
+      <EffectPage />
+      <ButtonDarkPage />
+      <ButtonWhitePage />
+      <InputPage />
+      <TextareaPage />
+      <FormElementsPage />
+      <SelectPage />
+      <OverlaysPage />
+      <TagsBadgePage />
+      <NotificationPage />
+      <AlertPage />
+      <EditorPage />
+      <ImagePage />
+      <ExtraComponentsPage />
+    </Flex>
   )
 }
-
-export default App

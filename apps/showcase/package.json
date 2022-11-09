@@ -6,17 +6,21 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "yarn build && vite preview"
+    "preview": "yarn build && vite preview",
+    "clean": "rimraf .turbo node_modules dist"
   },
   "dependencies": {
     "@uvodohq/planum": "*",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-error-boundary": "^3.1.4",
+    "react-intersection-observer": "^9.4.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.22",
     "@types/react-dom": "^18.0.7",
     "@vitejs/plugin-react": "^2.2.0",
+    "rollup-plugin-visualizer": "^5.7.1",
     "typescript": "^4.6.4",
     "vite": "^3.2.0"
   }

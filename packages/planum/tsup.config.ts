@@ -14,7 +14,7 @@ export default defineConfig((options: Options) => {
     entry: ['src/index.tsx'],
     minify: isProd,
     format: formats,
-    dts: true,
+    dts: isProd,
     external: ['react'],
     metafile: isProd,
   }

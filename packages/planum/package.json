@@ -13,7 +13,7 @@
     "build": "tsup",
     "dev": "tsup --watch",
     "lint": "TIMING=1 eslint \"src/**/*.ts*\"",
-    "clean": "rimraf .turbo && rimraf node_modules && rimraf dist"
+    "clean": "rimraf .turbo node_modules dist"
   },
   "dependencies": {
     "@floating-ui/react-dom-interactions": "^0.9.3",

@@ -1,8 +1,12 @@
+import { styled } from '@stitches/react'
 import * as React from 'react'
-import { Box, Button, Dialog, Flex, Modal, Stack, styled } from 'src'
 
-import SelectComponent from '../../form/select/__stories__/select-example'
-import Input from '../form/input'
+import { Button } from '../../button'
+import Input from '../../input'
+import { Box, Flex, Stack } from '../../layout'
+import SelectComponent from '../../select/__stories__/select-example'
+import Dialog from '../dialog/dialog'
+import Modal from '../modal'
 import useModalState from '../use-modal-state'
 
 const NativeButton = styled('button', {

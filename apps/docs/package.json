@@ -7,7 +7,7 @@
     "build": "build-storybook --docs --loglevel error",
     "preview-storybook": "serve storybook-static",
     "storybook:deploy": "netlify deploy --dir=./storybook-static --prod --site planum-storybook",
-    "clean": "rimraf .turbo && rimraf node_modules"
+    "clean": "rimraf .turbo  node_modules"
   },
   "dependencies": {
     "@uvodohq/planum": "*",

@@ -72,6 +72,7 @@ export const CheckIcon = (props: CheckIconProps) => (
   </svg>
 )
 
+// TODO: remove user icon
 interface UserIconProps extends SVGProps<SVGSVGElement> {
   size?: number
 }

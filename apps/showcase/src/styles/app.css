@@ -1,0 +1,23 @@
+body {
+  background-color: #a2a2a2;
+  padding: 0;
+  margin: 0;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+    sans-serif;
+}
+
+table {
+  table-layout: fixed;
+  min-width: 100%;
+  text-align: left;
+
+  border-collapse: separate;
+  border-spacing: 22px 48px;
+}
+
+[id] {
+  scroll-margin-top: 200px;
+  scroll-margin-right: 200px;
+}
