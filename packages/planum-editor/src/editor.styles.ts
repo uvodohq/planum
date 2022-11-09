@@ -1,5 +1,4 @@
-import { subheaderCss } from '../text'
-import { css, customScrollbar, styled } from '../theme'
+import { css, customScrollbar, styled, subheaderCss } from '@uvodohq/planum'
 
 export const EditorContainer = styled('div', {
   borderRadius: '$sm',

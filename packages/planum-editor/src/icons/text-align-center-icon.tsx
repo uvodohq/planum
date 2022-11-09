@@ -1,10 +1,6 @@
-import type { SVGProps } from 'react'
+import type { IconProps } from './type'
 
-interface TextAlignCenterIconProps extends SVGProps<SVGSVGElement> {
-  size?: number
-}
-
-export function TextAlignCenterIcon(props: TextAlignCenterIconProps) {
+export function TextAlignCenterIcon(props: IconProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

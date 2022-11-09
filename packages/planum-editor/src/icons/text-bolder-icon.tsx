@@ -1,10 +1,6 @@
-import type { SVGProps } from 'react'
+import type { IconProps } from './type'
 
-interface TextBolderIconProps extends SVGProps<SVGSVGElement> {
-  size?: number
-}
-
-export function TextBolderIcon(props: TextBolderIconProps) {
+export function TextBolderIcon(props: IconProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

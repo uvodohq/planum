@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@uvodohq/planum": "*",
+    "@uvodohq/planum-editor": "*",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-error-boundary": "^3.1.4",

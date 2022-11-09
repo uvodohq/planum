@@ -35,13 +35,6 @@
     "@react-stately/searchfield": "^3.3.0",
     "@react-stately/toggle": "^3.4.0",
     "@stitches/react": "^1.2.8",
-    "@tiptap/extension-color": "^2.0.0-beta.12",
-    "@tiptap/extension-link": "^2.0.0-beta.43",
-    "@tiptap/extension-placeholder": "^2.0.0-beta.53",
-    "@tiptap/extension-text-align": "^2.0.0-beta.31",
-    "@tiptap/extension-text-style": "^2.0.0-beta.26",
-    "@tiptap/react": "^2.0.0-beta.114",
-    "@tiptap/starter-kit": "^2.0.0-beta.191",
     "ahooks": "^3.7.0",
     "react-hot-toast": "^2.2.0",
     "react-merge-refs": "^2.0.1"

@@ -1,4 +1,4 @@
-import { styled } from '../../theme'
+import { styled } from '@uvodohq/planum'
 
 export const MenuBarContainer = styled('div', {
   boxShadow:

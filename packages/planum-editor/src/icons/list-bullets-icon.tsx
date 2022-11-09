@@ -1,10 +1,6 @@
-import type { SVGProps } from 'react'
+import type { IconProps } from './type'
 
-interface ListBulletsIconProps extends SVGProps<SVGSVGElement> {
-  size?: number
-}
-
-export function ListBulletsIcon(props: ListBulletsIconProps) {
+export function ListBulletsIcon(props: IconProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

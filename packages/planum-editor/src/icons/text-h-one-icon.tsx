@@ -1,10 +1,6 @@
-import type { SVGProps } from 'react'
+import type { IconProps } from './type'
 
-interface TextHOneIconProps extends SVGProps<SVGSVGElement> {
-  size?: number
-}
-
-export function TextHOneIcon(props: TextHOneIconProps) {
+export function TextHOneIcon(props: IconProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

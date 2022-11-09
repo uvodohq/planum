@@ -1,10 +1,14 @@
 import type { Editor } from '@tiptap/react'
+import {
+  Box,
+  Dialog,
+  InputUrl,
+  Modal,
+  Tooltip,
+  useModalState,
+} from '@uvodohq/planum'
 import { useState } from 'react'
 
-import InputUrl from '../../input-url'
-import { Box } from '../../layout'
-import { Dialog, Modal, useModalState } from '../../modal'
-import { Tooltip } from '../../tooltip'
 import { LinkIcon } from '../icons'
 import { ToggleButton } from '../toggle-button'
 import { DialogFooter } from './dialog-footer'
@@ -70,7 +74,7 @@ const LinkButtonWithModal = ({ editor, isSelected, isDisabled }: Props) => {
         </ToggleButton>
       </Tooltip>
 
-      <Modal state={modal}>
+      <Modal state={modal} initialFocus={1}>
         <Dialog
           title={isEditLink ? 'Edit link' : 'Add link'}
           renderFooter={() => (

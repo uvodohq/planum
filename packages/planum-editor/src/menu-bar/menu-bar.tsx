@@ -1,8 +1,7 @@
-import { VisuallyHidden } from '@react-aria/visually-hidden'
 import type { Editor } from '@tiptap/react'
+import { Tooltip, VisuallyHidden } from '@uvodohq/planum'
 import * as React from 'react'
 
-import { Tooltip } from '../../tooltip'
 import {
   ListBulletsIcon,
   PaletteIcon,

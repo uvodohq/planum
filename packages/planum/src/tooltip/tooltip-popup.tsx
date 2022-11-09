@@ -34,7 +34,12 @@ export const TooltipPopup = (props: TooltipPopupProps) => {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.98 }}
-              transition={{ type: 'spring', damping: 20, stiffness: 300 }}>
+              transition={{
+                type: 'spring',
+                damping: 20,
+                stiffness: 300,
+                delay: 0.15,
+              }}>
               {label}
             </StyledTooltipContainer>
           </div>

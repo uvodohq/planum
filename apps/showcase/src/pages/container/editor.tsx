@@ -1,4 +1,5 @@
-import { Box, Flex, Editor } from '@uvodohq/planum'
+import { Box, Flex } from '@uvodohq/planum'
+import { Editor } from '@uvodohq/planum-editor'
 
 export default function ExtraContainer() {
   return (
