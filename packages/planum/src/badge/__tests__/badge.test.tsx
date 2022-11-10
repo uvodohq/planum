@@ -1,9 +1,9 @@
 import { render, screen } from '../../test'
-import Badge from '../badge'
-import type { BadgeVariantTypes } from '../badge.styles'
+import { Badge } from '../badge'
+import type { BadgeVariant } from '../badge.type'
 
 // TODO: fix types, variants are not defined
-const badgeVariants: BadgeVariantTypes[] = [
+const badgeVariants: BadgeVariant[] = [
   'secondary',
   'warning',
   'neutral',

@@ -1,8 +1,6 @@
-import type { SVGProps } from 'react'
+import type { IconProps } from './icon.type'
 
-export function ArrowRightIcon(
-  props: SVGProps<SVGSVGElement> & { size?: number },
-) {
+export function ArrowRightIcon(props: IconProps) {
   return (
     <svg
       width={props?.size || 24}

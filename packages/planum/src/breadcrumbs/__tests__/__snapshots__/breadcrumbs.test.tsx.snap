@@ -1,0 +1,79 @@
+// Vitest Snapshot v1
+
+exports[`Breadcrumbs > should render 3 item 1`] = `
+<nav
+  aria-label="Breadcrumbs"
+>
+  <ol
+    class="c-dFneIQ"
+  >
+    <li
+      class="c-gUpUYw"
+    >
+      <span
+        class="c-iPYhUp c-kLRYwF c-ijlUVt c-ijlUVt-lazxZu-isCurrent-false"
+      >
+        Item 1
+      </span>
+      <span
+        class="c-fAlSmZ"
+      >
+        <svg
+          aria-hidden="true"
+          fill="none"
+          focusable="false"
+          height="16"
+          width="16"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            clip-rule="evenodd"
+            d="M5.47 2.47a.75.75 0 0 1 1.06 0l5 5a.75.75 0 0 1 0 1.06l-5 5a.75.75 0 0 1-1.06-1.06L9.94 8 5.47 3.53a.75.75 0 0 1 0-1.06Z"
+            fill="#C7C7C7"
+            fill-rule="evenodd"
+          />
+        </svg>
+      </span>
+    </li>
+    <li
+      class="c-gUpUYw"
+    >
+      <span
+        class="c-iPYhUp c-kLRYwF c-ijlUVt c-ijlUVt-lazxZu-isCurrent-false"
+      >
+        Item 2
+      </span>
+      <span
+        class="c-fAlSmZ"
+      >
+        <svg
+          aria-hidden="true"
+          fill="none"
+          focusable="false"
+          height="16"
+          width="16"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            clip-rule="evenodd"
+            d="M5.47 2.47a.75.75 0 0 1 1.06 0l5 5a.75.75 0 0 1 0 1.06l-5 5a.75.75 0 0 1-1.06-1.06L9.94 8 5.47 3.53a.75.75 0 0 1 0-1.06Z"
+            fill="#C7C7C7"
+            fill-rule="evenodd"
+          />
+        </svg>
+      </span>
+    </li>
+    <li
+      class="c-gUpUYw"
+    >
+      <span
+        aria-current="page"
+        aria-disabled="true"
+        class="c-iPYhUp c-kLRYwF c-ijlUVt c-ijlUVt-cLNiCz-isCurrent-true"
+      >
+        Item 3
+      </span>
+    </li>
+  </ol>
+</nav>
+`;

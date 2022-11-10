@@ -1,16 +1,16 @@
 import { useBreadcrumbItem } from '@react-aria/breadcrumbs'
-import type { BreadcrumbItemProps as AriaProps } from '@react-types/breadcrumbs'
+import type { BreadcrumbItemProps as ItemAriaProps } from '@react-types/breadcrumbs'
 import * as React from 'react'
 
 import { ArrowContainer, ItemText, ListItem } from './breadcrumbs.styles'
 import { CaretRightIcon } from './caret-right-icon'
 
 export interface BreadcrumbItemProps<C extends React.ElementType>
-  extends AriaProps {
+  extends ItemAriaProps {
   as?: C
 }
 
-const BreadcrumbItem = <C extends React.ElementType>(
+export const BreadcrumbItem = <C extends React.ElementType>(
   props: BreadcrumbItemProps<C> & React.ComponentPropsWithoutRef<C>,
 ) => {
   const ref = React.useRef<any>()
@@ -30,5 +30,3 @@ const BreadcrumbItem = <C extends React.ElementType>(
     </ListItem>
   )
 }
-
-export default BreadcrumbItem

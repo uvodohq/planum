@@ -4,33 +4,14 @@ import { useEffect, useState } from 'react'
 import { Button } from '../button'
 import { Flex } from '../layout'
 import { CloseIcon } from '../modal/dialog/close-icon'
-import type { CSS } from '../theme'
-import type { StyledAlertVariants } from './alert.styles'
 import {
   AlertContainer,
   StyledContent,
   StyledIcon,
   StyledText,
 } from './alert.styles'
+import type { AlertProps } from './alert.type'
 import { CheckCircleIcon, InfoIcon, QuestionIcon } from './icons'
-
-export interface AlertProps extends StyledAlertVariants {
-  title?: string
-  message?: React.ReactNode
-
-  /**
-   * variant of the alert
-   * @default 'info'
-   */
-  variant?: 'primary' | 'error' | 'warning' | 'success' | 'info'
-  onClose?: () => void
-  closable?: boolean
-  actions?: React.ReactNode
-  isOpen?: boolean
-  onClick?: (e: React.MouseEvent<HTMLElement>) => void
-  css?: CSS
-  children?: never
-}
 
 export const Alert = (props: AlertProps) => {
   const {

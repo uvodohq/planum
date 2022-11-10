@@ -70,7 +70,6 @@ export const StyledBadge = styled('span', paragraphCss, {
         textTransform: 'uppercase',
       },
     },
-
     roundness: {
       sm: {
         borderRadius: '$sm',
@@ -166,4 +165,3 @@ export const StyledBadge = styled('span', paragraphCss, {
 })
 
 export type StyledBadgeVariants = Stitches.VariantProps<typeof StyledBadge>
-export type BadgeVariantTypes = StyledBadgeVariants['variant']

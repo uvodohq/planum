@@ -29,7 +29,7 @@ module.exports = {
             find: '@uvodohq/planum',
             replacement: path.resolve(
               __dirname,
-              '../../../packages/planum/dist',
+              '../../../packages/planum/src',
             ),
           },
         ],

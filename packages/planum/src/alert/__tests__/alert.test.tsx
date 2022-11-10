@@ -1,10 +1,9 @@
 import { vi } from 'vitest'
 
+import { Button } from '../../button'
 import { render, screen, userEvent, waitFor } from '../../test'
-import { Button } from '../button'
-
 import type { AlertProps } from '..'
-import Alert from '..'
+import { Alert } from '..'
 
 const message = 'message'
 const title = 'title'

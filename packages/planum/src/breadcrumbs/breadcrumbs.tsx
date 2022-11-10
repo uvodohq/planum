@@ -1,14 +1,14 @@
+import type { AriaBreadcrumbsProps } from '@react-aria/breadcrumbs'
 import { useBreadcrumbs } from '@react-aria/breadcrumbs'
 import { useDOMRef } from '@react-spectrum/utils'
 import type { DOMRef, ItemProps } from '@react-types/shared'
 import type { ReactElement } from 'react'
 import * as React from 'react'
 
-import { __DEV__ } from '../utils/assertion'
-import BreadcrumbItem from './breadcrumb-item'
+import { BreadcrumbItem } from './breadcrumb-item'
 import { NavList } from './breadcrumbs.styles'
 
-export interface BreadcrumbsProps<T> {
+export interface BreadcrumbsProps<T> extends AriaBreadcrumbsProps {
   /** The breadcrumb items. */
   children: ReactElement<ItemProps<T>> | ReactElement<ItemProps<T>>[]
 }
@@ -40,10 +40,6 @@ function _Breadcrumbs<T>(props: BreadcrumbsProps<T>, forwardRef: DOMRef) {
   )
 }
 
-const Breadcrumbs = React.forwardRef(_Breadcrumbs)
+export const Breadcrumbs = React.forwardRef(_Breadcrumbs)
 
-export default Breadcrumbs
-
-if (__DEV__) {
-  Breadcrumbs.displayName = 'Breadcrumbs'
-}
+Breadcrumbs.displayName = 'Breadcrumbs'

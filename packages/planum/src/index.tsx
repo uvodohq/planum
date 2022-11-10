@@ -39,11 +39,11 @@ export { Alert } from './alert'
 
 // Avatar
 export type { AvatarProps } from './avatar'
-export { default as Avatar } from './avatar'
+export { Avatar } from './avatar'
 
 // Badge
 export type { BadgeProps } from './badge'
-export { default as Badge } from './badge'
+export { Badge } from './badge'
 
 // Breadcrumbs
 export type { BreadcrumbItemProps, BreadcrumbsProps } from './breadcrumbs'
@@ -116,7 +116,7 @@ export { default as Toggle } from './toggle'
 export type { ToggleProps } from './toggle'
 
 // img
-export { default as Img } from './img'
+export { Img } from './img'
 export type { ImgProps } from './img'
 
 // layout

@@ -35,7 +35,11 @@
     "build": "tsup",
     "dev": "tsup --watch",
     "lint": "TIMING=1 eslint \"src/**/*.ts*\"",
-    "clean": "rimraf .turbo node_modules dist"
+    "clean": "rimraf .turbo node_modules dist",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:cov": "vitest run --coverage",
+    "vitest-preview": "vitest-preview"
   },
   "dependencies": {
     "@floating-ui/react-dom-interactions": "^0.9.3",
@@ -71,6 +75,7 @@
     "eslint": "^8.15.0",
     "eslint-config-planum": "*",
     "framer-motion": "^6.5.1",
+    "jsdom": "^20.0.2",
     "planum-tsconfig": "*",
     "react": "^16.8.0 || ^17.0 || ^18.0.0",
     "react-dom": "^16.8.0 || ^17.0 || ^18.0.0",

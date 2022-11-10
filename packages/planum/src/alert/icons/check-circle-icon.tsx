@@ -1,8 +1,6 @@
-import type { SVGProps } from 'react'
+import type { IconProps } from './icon.type'
 
-export function CheckCircleIcon(
-  props: SVGProps<SVGSVGElement> & { size?: number },
-) {
+export function CheckCircleIcon(props: IconProps) {
   return (
     <svg
       width={props?.size || 24}

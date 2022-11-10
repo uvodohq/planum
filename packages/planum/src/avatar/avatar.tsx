@@ -1,30 +1,8 @@
-import type { ImgProps } from '../img'
-import Img from '../img'
-import { captionCss } from '../text'
-import { css } from '../theme'
+import { Img } from '../img'
+import { fallbackCss, imgCss } from './avatar.styles'
+import type { AvatarProps } from './avatar.type'
 
-const fallbackCss = css(captionCss, {
-  fontWeight: '$medium',
-  textTransform: 'uppercase',
-
-  '&&': {
-    backgroundColor: '$secondary',
-    color: '$textDark',
-  },
-})
-
-const imgCss = css({
-  '&&': {
-    backgroundColor: '$secondary',
-    borderRadius: '$sm',
-  },
-})
-
-export interface AvatarProps extends ImgProps {
-  initials?: string
-}
-
-const Avatar = (props: AvatarProps) => {
+export const Avatar = (props: AvatarProps) => {
   const { size = 32, initials, ...rest } = props
 
   return (
@@ -38,5 +16,3 @@ const Avatar = (props: AvatarProps) => {
     />
   )
 }
-
-export default Avatar

@@ -62,7 +62,7 @@ const Inner = (props: ImgProps) => {
   )
 }
 
-export default function Img(props: ImgProps) {
+export function Img(props: ImgProps) {
   const { size = '100%', css = {}, className, borderless, ...rest } = props
 
   return (
