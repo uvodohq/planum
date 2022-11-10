@@ -1,5 +1,5 @@
 {
   "extends": "planum-tsconfig/react-library.json",
-  "include": ["."],
+  "include": [".", "../../vitest.config.ts"],
   "exclude": ["dist", "build", "node_modules"]
 }

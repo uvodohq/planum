@@ -1,6 +1,7 @@
 import { useProgressBar } from '@react-aria/progress'
 import type { AriaProgressBarProps } from '@react-types/progress'
 import type { CSSProperties } from 'react'
+import * as React from 'react'
 
 import { Circle, CircleTrack, LoaderContainer, Svg } from './loader.styles'
 

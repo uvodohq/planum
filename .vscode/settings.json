@@ -11,6 +11,8 @@
   "editor.tabSize": 2,
   "editor.unicodeHighlight.invisibleCharacters": false,
 
+  "vitest.commandLine": "yarn workspace @uvodohq/planum test --watch",
+
   "prettier.enable": true,
   "editor.codeActionsOnSave": {
     "source.fixAll": false,
