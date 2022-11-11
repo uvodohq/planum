@@ -1,4 +1,4 @@
-export { default as Text } from './text'
+export { Text } from './text'
 export {
   Caption,
   captionCss,

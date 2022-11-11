@@ -1,11 +1,10 @@
 import { styled } from '../theme'
 
-export const Element = styled('div', {
-  // boxShadow: 'inset 0px -1px 0px #E9E9E9',
+export const StyledDiv = styled('div', {
   backgroundColor: '$surface200',
 
   variants: {
-    orientation: {
+    direction: {
       vertical: {
         width: '1px',
         minWidth: '1px',

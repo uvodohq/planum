@@ -9,7 +9,7 @@ export interface ModalStateProps {
   onOpenChange?: (isOpen: boolean) => void
 }
 
-function useModalState(props?: ModalStateProps) {
+export function useModalState(props?: ModalStateProps) {
   const {
     isOpen: value,
     defaultIsOpen: defaultValue = false,
@@ -49,5 +49,3 @@ function useModalState(props?: ModalStateProps) {
     },
   }
 }
-
-export default useModalState

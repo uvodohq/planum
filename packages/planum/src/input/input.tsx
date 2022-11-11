@@ -4,7 +4,7 @@ import type { AriaTextFieldOptions } from '@react-aria/textfield'
 import { mergeProps, useObjectRef } from '@react-aria/utils'
 import * as React from 'react'
 
-import Field from '../field'
+import { Field } from '../field'
 import type { CSS } from '../theme'
 import { __DEV__ } from '../utils/assertion'
 import type { StyledInputVariants } from './input.styles'
@@ -163,8 +163,6 @@ function _Input(
   )
 }
 
-const Input = React.forwardRef(_Input)
+export const Input = React.forwardRef(_Input)
 
 if (__DEV__) Input.displayName = 'Input'
-
-export default Input

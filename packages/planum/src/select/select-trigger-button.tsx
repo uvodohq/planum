@@ -1,6 +1,6 @@
 import type { HTMLAttributes } from 'react'
 
-import Loader from '../loader'
+import { Loader } from '../loader'
 import { subheaderCss } from '../text'
 import type { VariantProps } from '../theme'
 import { styled } from '../theme'

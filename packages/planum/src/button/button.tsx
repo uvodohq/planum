@@ -2,7 +2,7 @@ import type { ReactElement } from 'react'
 import { Children, forwardRef } from 'react'
 import * as React from 'react'
 
-import Loader from '../loader'
+import { Loader } from '../loader'
 import { __DEV__ } from '../utils/assertion'
 import {
   ButtonTextContent,

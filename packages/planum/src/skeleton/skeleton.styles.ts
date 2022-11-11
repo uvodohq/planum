@@ -7,7 +7,6 @@ const shadowAnim = keyframes({
   },
 })
 
-// TODO: needs light theme background: '$surface50'
 export const SkeletonImg = styled('div', {
   minSize: '$48',
   borderRadius: '$sm',
@@ -33,7 +32,6 @@ export const RectInner = styled(Paragraph, {
   borderRadius: '$sm',
   height: '0.875rem',
   width: '100%',
-  //  needs light theme background: '$surface50',
 })
 
 export const SkeletonCard = styled('div', {

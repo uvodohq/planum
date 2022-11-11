@@ -33,6 +33,7 @@ const Inner = (props: ImgProps) => {
   const [status, setStatus] = React.useState(defaultStatus)
 
   const isError = status === 'error'
+  const isLoading = status === 'loading'
 
   // show default fallback only on error
   const defaultFallback = isError && <FallbackImg />
@@ -50,7 +51,7 @@ const Inner = (props: ImgProps) => {
       ) : (
         <StyledFallback
           css={{
-            bg: status === 'loading' ? 'transparent' : '$white',
+            bg: isLoading ? 'transparent' : '$white',
           }}
           className={fallbackClassName}
           // delayMs={1000}

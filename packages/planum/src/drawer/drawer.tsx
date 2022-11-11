@@ -70,7 +70,7 @@ export const Drawer = (props: DrawerProps) => {
                   })}
                   data-id="DRAWER-CONTAINER">
                   <StyledDrawerContainerInner
-                    as={motion.div}
+                    as={motion.div as any}
                     data-id="DRAWER-INNER"
                     initial={{ opacity: 0, x: '-100%' }}
                     animate={{ opacity: 1, x: '0%' }}

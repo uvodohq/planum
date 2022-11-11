@@ -2,7 +2,7 @@ import * as React from 'react'
 
 import { Button } from '../button'
 import { useMergeRefs } from '../hooks'
-import Input from '../input'
+import { Input } from '../input'
 import { PlusIcon } from './icons'
 
 interface TagSelectInputProps {

@@ -1,5 +1,6 @@
 import { FloatingPortal } from '@floating-ui/react-dom-interactions'
 import { AnimatePresence, motion } from 'framer-motion'
+import * as React from 'react'
 
 import { styled } from '../theme'
 import type { UseTooltip } from './use-tooltip'

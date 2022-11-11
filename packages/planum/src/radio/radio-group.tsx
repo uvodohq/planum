@@ -35,9 +35,7 @@ function _RadioGroup(props: RadioGroupProps, ref: DOMRef<HTMLDivElement>) {
   )
 }
 
-const RadioGroup = React.forwardRef(_RadioGroup)
-
-export default RadioGroup
+export const RadioGroup = React.forwardRef(_RadioGroup)
 
 if (__DEV__) {
   RadioGroup.displayName = 'RadioGroup'

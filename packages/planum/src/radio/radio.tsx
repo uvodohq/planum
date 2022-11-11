@@ -70,9 +70,7 @@ function _Radio(props: RadioProps, ref: FocusableRef<HTMLLabelElement>) {
   )
 }
 
-const Radio = React.forwardRef(_Radio)
-
-export default Radio
+export const Radio = React.forwardRef(_Radio)
 
 if (__DEV__) {
   Radio.displayName = 'Radio'

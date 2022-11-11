@@ -22,7 +22,7 @@ export interface DialogProps {
   scrollBodyRef?: React.RefObject<HTMLDivElement>
 }
 
-const Dialog = (props: DialogProps) => {
+export const Dialog = (props: DialogProps) => {
   const {
     title,
     description,
@@ -63,5 +63,3 @@ const Dialog = (props: DialogProps) => {
     </StyledDialogContainer>
   )
 }
-
-export default Dialog

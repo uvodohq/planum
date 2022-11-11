@@ -1,5 +1,4 @@
 import { render, screen, userEvent, waitFor } from '../../test'
-
 import type { ModalProps } from '..'
 import { Dialog, Modal } from '..'
 

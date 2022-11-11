@@ -1,13 +1,4 @@
-import * as ImgBase from '@radix-ui/react-avatar'
-
-import { keyframes, styled } from '../theme'
-
-const fade = keyframes({
-  '50%': {
-    backgroundColor: '$surface50',
-    opacity: 0.8,
-  },
-})
+import { styled } from '../theme'
 
 export const Border = styled('span', {
   position: 'absolute',

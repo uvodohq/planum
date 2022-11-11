@@ -3,7 +3,7 @@ import useControllableValue from 'ahooks/es/useControllableValue'
 import type { Ref } from 'react'
 import { forwardRef } from 'react'
 
-import Field from '../field'
+import { Field } from '../field'
 import type { InputProps, Value } from './select-component'
 import { SelectComponent } from './select-component'
 import { Option } from './select-option'
@@ -42,7 +42,7 @@ export interface SelectProps<T extends object> extends InputProps {
   matchWidth?: boolean
 }
 
-const Select = forwardRef(
+export const Select = forwardRef(
   <T extends object>(props: SelectProps<T>, ref: Ref<HTMLDivElement>) => {
     const {
       items = [],
@@ -135,5 +135,3 @@ type SelectType = <T extends object>(
 ) => JSX.Element
 
 Select.displayName = 'Select'
-
-export default Select as SelectType

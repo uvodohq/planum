@@ -1,9 +1,8 @@
 import { vi } from 'vitest'
 
-import { render, screen, userEvent } from '../../test'
-
 import type { InputProps } from '../../input/input'
-import InputUrl from '../input-url'
+import { render, screen, userEvent } from '../../test'
+import { InputUrl } from '../input-url'
 
 function renderInput(props?: InputProps) {
   return render(<InputUrl placeholder="email" aria-label="label" {...props} />)

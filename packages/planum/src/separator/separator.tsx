@@ -5,7 +5,7 @@ import type {
   Orientation,
 } from '@react-types/shared'
 
-import { Element } from './separator.styles'
+import { StyledDiv } from './separator.styles'
 
 export interface SeparatorProps extends DOMProps, AriaLabelingProps {
   /**
@@ -19,11 +19,8 @@ export interface SeparatorProps extends DOMProps, AriaLabelingProps {
 
 function useSeparator(props: SeparatorProps) {
   const domProps = filterDOMProps(props, { labelable: true })
-  let ariaOrientation
-
-  if (props.orientation === 'vertical') {
-    ariaOrientation = 'vertical'
-  }
+  const ariaOrientation: Orientation =
+    props.orientation === 'vertical' ? 'vertical' : 'horizontal'
 
   if (props.elementType !== 'hr') {
     return {
@@ -34,17 +31,18 @@ function useSeparator(props: SeparatorProps) {
       },
     }
   }
+
   return { separatorProps: domProps }
 }
 
-export default function Separator(props: SeparatorProps) {
+export function Separator(props: SeparatorProps) {
   const { separatorProps } = useSeparator(props)
 
   return (
-    <Element
-      {...separatorProps}
+    <StyledDiv
       {...props}
-      orientation={props.orientation ?? 'horizontal'}
+      {...separatorProps}
+      direction={props.orientation ?? 'horizontal'}
     />
   )
 }

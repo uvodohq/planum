@@ -2,7 +2,7 @@ import hotToast from 'react-hot-toast'
 
 import { Notification } from './notification'
 
-const toast = (message: string) =>
+export const toast = (message: string) =>
   hotToast((notification) => (
     <Notification
       message={message}
@@ -11,5 +11,3 @@ const toast = (message: string) =>
       }}
     />
   ))
-
-export default toast

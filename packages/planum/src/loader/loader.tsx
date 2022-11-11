@@ -10,7 +10,7 @@ export type LoaderProps = React.ComponentProps<typeof LoaderContainer> &
 
 // TODO: delayed loader
 
-function Loader(props: LoaderProps) {
+export function Loader(props: LoaderProps) {
   const {
     // label = 'Loading',
     // showValueLabel = !!label,
@@ -53,5 +53,3 @@ function Loader(props: LoaderProps) {
     </LoaderContainer>
   )
 }
-
-export default Loader

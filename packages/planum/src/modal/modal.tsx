@@ -10,7 +10,7 @@ import { ModalPopup } from './modal-popup'
 import type { UseModalProps } from './use-modal'
 import { useModal } from './use-modal'
 import type { ModalState } from './use-modal-state'
-import useModalState from './use-modal-state'
+import { useModalState } from './use-modal-state'
 
 export interface ModalProps extends UseModalProps {
   children: React.ReactNode
@@ -77,5 +77,3 @@ export const Modal = (props: ModalProps) => {
 
   return <ModalComponent {...props} />
 }
-
-export default Modal

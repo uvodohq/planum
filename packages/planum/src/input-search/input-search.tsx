@@ -5,9 +5,9 @@ import { useSearchFieldState } from '@react-stately/searchfield'
 import type { AriaTextFieldProps } from '@react-types/textfield'
 import * as React from 'react'
 
-import Field from '../field'
+import { Field } from '../field'
 import type { StyledInputVariants } from '../input/input.styles'
-import Loader from '../loader'
+import { Loader } from '../loader'
 import type { CSS } from '../theme'
 import { __DEV__ } from '../utils/assertion'
 import {
@@ -129,8 +129,6 @@ function _InputSearch(props: InputSearchProps, forwardedRef: any) {
   )
 }
 
-const InputSearch = React.forwardRef(_InputSearch)
-
-export default InputSearch
+export const InputSearch = React.forwardRef(_InputSearch)
 
 if (__DEV__) InputSearch.displayName = 'InputSearch'

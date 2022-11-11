@@ -19,12 +19,6 @@ export const commonCss = css({
       },
     },
   },
-
-  // TODO: reponsive font sizes
-  //   "@bp2": {
-  //     fontSize: "$lg",
-  //     lineHeight: "$sm",
-  //   },
 })
 
 export const h1Css = css(commonCss, {

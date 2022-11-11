@@ -30,6 +30,4 @@ function _Text(props: TextProps, ref: DOMRef) {
   )
 }
 
-const Text = forwardRef(_Text)
-
-export default Text
+export const Text = forwardRef(_Text)

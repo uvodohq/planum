@@ -1,4 +1,3 @@
-export { useIsFirstRender } from './use-is-first-render'
 export {
   useDesktopMedia,
   useLaptopMedia,

@@ -1,7 +1,6 @@
-// TODO: layout animation has bug in admin, all tag group shares same layout affetc each
 import { AnimatePresence, motion } from 'framer-motion'
 
-import Tag from '../tag'
+import { Tag } from '../tag'
 import { styled } from '../theme'
 import type { Item, UseTagListProps } from './use-tag-list'
 import { useTagList } from './use-tag-list'
@@ -49,7 +48,7 @@ export function TagGroup<T extends object>(props: TagGroupProps<T>) {
     const renderedTag = renderTag ? (
       renderTag({ tag, index, onRemove })
     ) : (
-      <Tag onRemove={onRemove}>{tag[labelKey as any]}</Tag>
+      <Tag onRemove={onRemove}>{tag[labelKey]}</Tag>
     )
 
     return (
@@ -60,10 +59,7 @@ export function TagGroup<T extends object>(props: TagGroupProps<T>) {
           opacity: 1,
           scale: 1,
           transition: spring,
-        }}
-        // exit={{ opacity: 0, scale: 0.8, transition: { duration: 0.1 } }}
-        // layout
-      >
+        }}>
         {renderedTag}
       </StyledListItem>
     )
@@ -72,15 +68,7 @@ export function TagGroup<T extends object>(props: TagGroupProps<T>) {
   return tags?.length > 0 ? (
     <AnimatePresence initial={false}>
       <Container>
-        <StyledList
-        // layout
-        // layoutId={id}
-        // transition={{
-        //   duration: 0.1,
-        // }}
-        >
-          {renderedList}
-        </StyledList>
+        <StyledList>{renderedList}</StyledList>
       </Container>
     </AnimatePresence>
   ) : null

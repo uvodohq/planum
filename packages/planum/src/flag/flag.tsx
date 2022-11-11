@@ -11,7 +11,7 @@ function getImgSrc(alpha: CountryCode) {
   return `https://flagcdn.com/${alpha.toLowerCase()}.svg`
 }
 
-export default function Flag(props: FlagProps) {
+export function Flag(props: FlagProps) {
   const { country, width = '$28', height = '$16' } = props
 
   const css = {

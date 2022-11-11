@@ -1,2 +1,2 @@
 export type { SeparatorProps } from './separator'
-export { default } from './separator'
+export { Separator } from './separator'

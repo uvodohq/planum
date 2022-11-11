@@ -2,7 +2,7 @@ import { useTextField } from '@react-aria/textfield'
 import type { AriaTextFieldProps } from '@react-types/textfield'
 import * as React from 'react'
 
-import Field from '../field'
+import { Field } from '../field'
 import type { CSS } from '../theme'
 import type { StyledTextareaVariants } from './textarea.styles'
 import { StyledTextarea, StyledTextareaContainer } from './textarea.styles'
@@ -22,7 +22,7 @@ export type TextareaProps = StyledTextareaVariants &
   AriaTextFieldProps &
   Props
 
-function Textarea(props: TextareaProps) {
+export function Textarea(props: TextareaProps) {
   const {
     label,
     description,
@@ -66,5 +66,3 @@ function Textarea(props: TextareaProps) {
     </Field>
   )
 }
-
-export default Textarea

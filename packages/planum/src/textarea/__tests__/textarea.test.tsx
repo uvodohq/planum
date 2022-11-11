@@ -1,8 +1,7 @@
 import { vi } from 'vitest'
 
 import { render, screen, userEvent } from '../../test'
-
-import Textarea from '../textarea'
+import { Textarea } from '../textarea'
 
 function renderTextarea(props?: any) {
   return render(<Textarea placeholder="email" aria-label="label" {...props} />)

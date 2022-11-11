@@ -61,7 +61,7 @@ export { Menu, MenuItem } from './dropdown-menu'
 
 // Flag
 export type { FlagProps } from './flag'
-export { default as Flag } from './flag'
+export { Flag } from './flag'
 
 // autocmplete
 export { AutoComplete, AutoCompleteTags } from './auto-complete'
@@ -72,47 +72,47 @@ export { Checkbox } from './checkbox'
 export type { CheckboxProps } from './checkbox'
 
 // Field
-export { default as Field } from './field'
+export { Field } from './field'
 export type { FieldProps } from './field'
 
 // Input
-export { default as Input } from './input'
+export { Input } from './input'
 export type { InputProps } from './input'
 
 // InputNumber
-export { default as InputNumber } from './input-number'
+export { InputNumber } from './input-number'
 export type { InputNumberProps } from './input-number'
 
 // InputPassword
-export { default as InputPassword } from './input-password'
+export { InputPassword } from './input-password'
 export type { InputPasswordProps } from './input-password'
 
 // InputSearch
-export { default as InputSearch } from './input-search'
+export { InputSearch } from './input-search'
 export type { InputSearchProps } from './input-search'
 
 // InputUrl
-export { default as InputUrl } from './input-url'
+export { InputUrl } from './input-url'
 export type { InputUrlProps } from './input-url'
 
 // Radio
-export { default as Radio, RadioGroup } from './radio'
+export { Radio, RadioGroup } from './radio'
 export type { RadioGroupProps, RadioProps } from './radio'
 
 // Select
-export { default as Select } from './select'
+export { Select } from './select'
 export type { SelectProps } from './select'
 
 //  tag select
-export { default as TagSelect } from './tag-select'
+export { TagSelect } from './tag-select'
 export type { TagItem, TagSelectProps } from './tag-select'
 
 // Textarea
-export { default as Textarea } from './textarea'
+export { Textarea } from './textarea'
 export type { TextareaProps } from './textarea'
 
 // Toggle
-export { default as Toggle } from './toggle'
+export { Toggle } from './toggle'
 export type { ToggleProps } from './toggle'
 
 // img
@@ -124,7 +124,7 @@ export type { SpacerProps, StackProps } from './layout'
 export { Box, Flex, Spacer, Stack } from './layout'
 
 // loader
-export { default as Loader } from './loader'
+export { Loader } from './loader'
 export type { LoaderProps } from './loader'
 
 // modal
@@ -132,11 +132,11 @@ export type { ModalProps, ModalState, ModalStateProps } from './modal'
 export { Dialog, Modal, useModalState } from './modal'
 
 // separator
-export { default as Separator } from './separator'
+export { Separator } from './separator'
 export type { SeparatorProps } from './separator'
 
 // tag
-export { default as Tag, TagGroup } from './tag'
+export { Tag, TagGroup } from './tag'
 export type { TagGroupProps, TagProps } from './tag'
 
 // text
@@ -162,12 +162,7 @@ export {
 } from './text'
 
 // toast
-export {
-  Notification,
-  default as toast,
-  Toaster,
-  useToasterStore,
-} from './toast'
+export { Notification, toast, Toaster, useToasterStore } from './toast'
 
 // skeleton
 export type { SkeletonProps } from './skeleton'
@@ -175,3 +170,4 @@ export { Skeleton } from './skeleton'
 
 // tooltip
 export { Tooltip } from './tooltip'
+export type { TooltipProps } from './tooltip'

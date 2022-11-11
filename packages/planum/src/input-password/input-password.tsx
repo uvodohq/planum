@@ -3,7 +3,7 @@ import * as React from 'react'
 
 import { Button } from '../button'
 import type { InputProps } from '../input'
-import Input from '../input'
+import { Input } from '../input'
 import { Box } from '../layout'
 import { __DEV__ } from '../utils/assertion'
 import EyeIcon from './icons/eye'
@@ -50,8 +50,6 @@ function _InputPassword(
   )
 }
 
-const InputPassword = React.forwardRef(_InputPassword)
-
-export default InputPassword
+export const InputPassword = React.forwardRef(_InputPassword)
 
 if (__DEV__) InputPassword.displayName = 'InputPassword'

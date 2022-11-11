@@ -23,7 +23,10 @@ interface Props extends StyledSwitchVariants {
 
 export type ToggleProps = Props & AriaSwitchProps
 
-function _Toggle(props: ToggleProps, ref: FocusableRef<HTMLLabelElement>) {
+export function _Toggle(
+  props: ToggleProps,
+  ref: FocusableRef<HTMLLabelElement>,
+) {
   const { isDisabled = false, labelTextOn = 'On', labelTextOff = 'Off' } = props
 
   const inputRef = React.useRef<HTMLInputElement>(null)
@@ -56,8 +59,6 @@ function _Toggle(props: ToggleProps, ref: FocusableRef<HTMLLabelElement>) {
 }
 
 export const Toggle = React.forwardRef(_Toggle)
-
-export default Toggle
 
 if (__DEV__) {
   Toggle.displayName = 'Toggle'

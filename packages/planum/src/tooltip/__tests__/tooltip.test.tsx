@@ -1,7 +1,6 @@
+import { Box } from '../../layout'
 import { render, screen, userEvent, waitFor } from '../../test'
-
 import { Tooltip } from '..'
-import { Box } from '../layout'
 import type { UseTooltipProps } from '../use-tooltip'
 
 global.ResizeObserver = require('resize-observer-polyfill')

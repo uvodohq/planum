@@ -1,3 +1,5 @@
+import * as React from 'react'
+
 import { TooltipPopup } from './tooltip-popup'
 import { TooltipTrigger } from './tooltip-trigger'
 import type { UseTooltipProps } from './use-tooltip'
@@ -19,5 +21,3 @@ export const Tooltip = (props: TooltipProps) => {
     </>
   )
 }
-
-export default Tooltip

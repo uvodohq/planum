@@ -6,7 +6,7 @@ import { useNumberFieldState } from '@react-stately/numberfield'
 import type { AriaNumberFieldProps } from '@react-types/numberfield'
 import * as React from 'react'
 
-import Field from '../field'
+import { Field } from '../field'
 import type { CSS } from '../theme'
 import { __DEV__ } from '../utils/assertion'
 import type { StyledInputVariants } from './input-number.styles'
@@ -137,8 +137,6 @@ function _InputNumber(
   )
 }
 
-const InputNumber = React.forwardRef(_InputNumber)
-
-export default InputNumber
+export const InputNumber = React.forwardRef(_InputNumber)
 
 if (__DEV__) InputNumber.displayName = 'InputNumber'

@@ -2,7 +2,7 @@ import { mergeProps } from '@react-aria/utils'
 import { useContext } from 'react'
 
 import type { InputProps } from '../input'
-import Input from '../input'
+import { Input } from '../input'
 import { SearchIcon } from '../input-search/search-icon'
 import { AutoCompleteContext } from './context'
 

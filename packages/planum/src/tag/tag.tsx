@@ -3,7 +3,6 @@ import { useHover } from '@react-aria/interactions'
 import type { Ref } from 'react'
 import { forwardRef, useRef } from 'react'
 
-import type { CSS } from '../theme'
 import { __DEV__ } from '../utils/assertion'
 import { RemoveIcon } from './remove-icon'
 import {
@@ -12,41 +11,10 @@ import {
   TagIconButton,
   TagText,
 } from './tag.styles'
-
-export interface TagProps {
-  children: React.ReactNode
-  /**
-   * Left icon to display before the text.
-   */
-  leftIcon?: React.ReactNode
-
-  /**
-   * Right icon to display after the text.
-   */
-  rightIcon?: React.ReactNode
-
-  /**
-   * Whether the tag is removable.
-   * @default true
-   */
-  removable?: boolean
-
-  /**
-   * Click handler for the remove button.
-   */
-  onRemove?: () => void
-
-  /**
-   * Align Remove Icon to the left or right.
-   * @default 'right'
-   */
-  removeButtonAlign?: 'left' | 'right'
-
-  css?: CSS
-}
+import type { TagProps } from './tag.type'
 
 // TODO: useTag react aria hook - https://adobe-reactspectrum-9vc84wlaz6l.ws-eu53.gitpod.io/
-const Tag = forwardRef((props: TagProps, ref: Ref<HTMLDivElement>) => {
+export const Tag = forwardRef((props: TagProps, ref: Ref<HTMLDivElement>) => {
   const {
     children,
     leftIcon,
@@ -111,7 +79,5 @@ const Tag = forwardRef((props: TagProps, ref: Ref<HTMLDivElement>) => {
     </TagContainer>
   )
 })
-
-export default Tag
 
 if (__DEV__) Tag.displayName = 'Tag'

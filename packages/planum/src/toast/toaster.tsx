@@ -2,7 +2,7 @@ import { mergeProps } from '@react-aria/utils'
 import type { ToasterProps } from 'react-hot-toast'
 import { Toaster as HotToaster } from 'react-hot-toast'
 
-const Toaster = (props: ToasterProps = {}) => {
+export const Toaster = (props: ToasterProps = {}) => {
   const defaultConfig: ToasterProps = {
     position: 'bottom-center',
     gutter: 8,
@@ -19,5 +19,3 @@ const Toaster = (props: ToasterProps = {}) => {
 
   return <HotToaster {...config} />
 }
-
-export default Toaster

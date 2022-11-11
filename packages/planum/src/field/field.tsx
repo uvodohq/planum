@@ -74,9 +74,7 @@ function _Field(props: FieldProps, ref: Ref<HTMLDivElement>) {
   )
 }
 
-const Field = React.forwardRef(_Field)
-
-export default Field
+export const Field = React.forwardRef(_Field)
 
 if (__DEV__) {
   Field.displayName = 'Field'
