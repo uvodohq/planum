@@ -1,12 +1,6 @@
 import { paragraphCss } from '../text'
 import type { VariantProps } from '../theme'
-import { keyframes, styled } from '../theme'
-import { CheckSvgPath } from './icons'
-
-export const drawLine = keyframes({
-  from: { strokeDashoffset: -400 },
-  to: { strokeDashoffset: 0 },
-})
+import { styled } from '../theme'
 
 // TODO: when label text of checkbox hovered, show styles for checkbox itself
 export const StyledLabel = styled('label', paragraphCss, {
@@ -50,10 +44,6 @@ export const StyledCheckbox = styled('div', {
         '&:hover': {
           backgroundColor: '$primary800',
           borderColor: '$primary800',
-        },
-
-        [`& ${CheckSvgPath}`]: {
-          animation: `${drawLine} 0.2s cubic-bezier(0.4, 0, 0.2, 1) forwards`,
         },
       },
 

@@ -1,21 +1,11 @@
 import type { SVGProps } from 'react'
 import * as React from 'react'
 
-import { styled } from '../theme'
-
-export const CheckSvgPath = styled('path', {
-  strokeDasharray: 400,
-  strokeDashoffset: 0,
-})
-
 type CheckIconProps = SVGProps<SVGSVGElement> & {
-  disableInitialAnimation: boolean
+  isSelected: boolean
 }
 
-export const CheckIcon = ({
-  disableInitialAnimation,
-  ...rest
-}: CheckIconProps) => (
+export const CheckIcon = ({ isSelected, ...rest }: CheckIconProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={14}
@@ -23,16 +13,17 @@ export const CheckIcon = ({
     viewBox="0 0 256 256"
     {...rest}>
     <path fill="none" d="M0 0h256v256H0z" />
-    <CheckSvgPath
+    <path
       fill="none"
+      d="M216 72 104 184l-56-56"
       stroke="currentColor"
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth={28}
-      d="M216 72 104 184l-56-56"
+      strokeDasharray={400}
+      strokeDashoffset={isSelected ? 0 : -400}
       style={{
-        // animationDuration: disableInitialAnimation ? '0s' : undefined,
-        transition: 'all 400ms',
+        transition: 'all .2s',
       }}
     />
   </svg>

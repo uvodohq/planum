@@ -30,10 +30,28 @@ An checkbox field includes a label and a text field users can type text into. Th
 
 <Canvas>
   <Story name="States">
-    <Checkbox label="Regular" />
+    <Checkbox aria-label="label" />
+    <Checkbox aria-label="label" label="Label" />
     <Checkbox defaultSelected>Selected</Checkbox>
-    <Checkbox isDisabled>Disabled</Checkbox>
     <Checkbox isIndeterminate>Indeterminate</Checkbox>
+    <Checkbox isDisabled>Disabled</Checkbox>
+    <Checkbox isDisabled isSelected>
+      Disabled selected
+    </Checkbox>
+    <Checkbox isDisabled isIndeterminate>
+      Disabled Indeterminate
+    </Checkbox>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Long label">
+    <Box css={{ width: 300 }}>
+      <Checkbox aria-label="label">
+        Add a title and description to see how this product might appear in a
+        search engine listing
+      </Checkbox>
+    </Box>
   </Story>
 </Canvas>
 

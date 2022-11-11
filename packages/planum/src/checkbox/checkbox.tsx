@@ -7,7 +7,6 @@ import { VisuallyHidden } from '@react-aria/visually-hidden'
 import { useToggleState } from '@react-stately/toggle'
 import * as React from 'react'
 
-import { useIsFirstRender } from '../hooks'
 import { Paragraph } from '../text'
 import { StyledCheckbox, StyledIndicator, StyledLabel } from './checkbox.styles'
 import type { CheckboxProps } from './checkbox.type'
@@ -23,27 +22,18 @@ export function Checkbox(props: CheckboxProps) {
   const { isFocusVisible, focusProps } = useFocusRing()
   const { pressProps } = usePress({})
 
-  // don't run check animation on first render
-  const isFirstRender = useIsFirstRender()
-
   const labelText = label || children
   const hasLabel = !!labelText
 
-  let markIcon
-
-  if (state.isSelected) {
-    markIcon = (
-      <StyledIndicator>
-        <CheckIcon disableInitialAnimation={isFirstRender} />
-      </StyledIndicator>
-    )
-  } else if (isIndeterminate) {
-    markIcon = (
-      <StyledIndicator>
-        <MinusIcon />
-      </StyledIndicator>
-    )
-  }
+  const markIcon = isIndeterminate ? (
+    <StyledIndicator>
+      <MinusIcon />
+    </StyledIndicator>
+  ) : (
+    <StyledIndicator>
+      <CheckIcon isSelected={state.isSelected} />
+    </StyledIndicator>
+  )
 
   return (
     <StyledLabel isDisabled={isDisabled}>

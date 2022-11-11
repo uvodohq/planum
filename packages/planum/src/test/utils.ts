@@ -12,7 +12,6 @@ const customRender = (ui: React.ReactElement, options = {}) => {
     user: userEvent.setup(),
     ...render(ui, {
       // wrap provider(s) here if needed
-
       wrapper: ({ children }) => children,
       ...options,
     }),
