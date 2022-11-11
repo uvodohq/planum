@@ -68,7 +68,7 @@ export { AutoComplete, AutoCompleteTags } from './auto-complete'
 export type { AutoCompleteProps, AutoCompleteTagsProps } from './auto-complete'
 
 // checkbox
-export { default as Checkbox } from './checkbox'
+export { Checkbox } from './checkbox'
 export type { CheckboxProps } from './checkbox'
 
 // Field

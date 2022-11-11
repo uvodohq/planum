@@ -23,24 +23,30 @@ export default function FormElementsContainer() {
         </Box>
 
         <Box>
-          <Checkbox aria-label="label" label="Regular" />
+          <Checkbox aria-label="label" label="Label" />
         </Box>
 
         <Box>
-          <Checkbox aria-label="label" defaultSelected>
-            Selected
+          <Checkbox defaultSelected>Selected</Checkbox>
+        </Box>
+
+        <Box>
+          <Checkbox isIndeterminate>Indeterminate</Checkbox>
+        </Box>
+
+        <Box>
+          <Checkbox isDisabled>Disabled</Checkbox>
+        </Box>
+
+        <Box>
+          <Checkbox isDisabled isSelected>
+            Disabled selected
           </Checkbox>
         </Box>
 
         <Box>
-          <Checkbox aria-label="label" isDisabled>
-            Disabled
-          </Checkbox>
-        </Box>
-
-        <Box>
-          <Checkbox aria-label="label" isIndeterminate>
-            Indeterminate
+          <Checkbox isDisabled isIndeterminate>
+            Disabled Indeterminate
           </Checkbox>
         </Box>
       </Box>

@@ -1,0 +1,279 @@
+// Vitest Snapshot v1
+
+exports[`Checkbox > isDisabled 1`] = `
+<div>
+  <label
+    class="c-iPYhUp c-kLRYwF c-edbEbA"
+  >
+    <div
+      style="border: 0px; clip-path: inset(50%); height: 1px; margin: 0px -1px -1px 0px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap;"
+    >
+      <input
+        aria-checked="false"
+        disabled=""
+        type="checkbox"
+      />
+    </div>
+    <div
+      class="c-hyHTE c-hyHTE-koxIsH-isSelected-false c-hyHTE-hxNqoz-isDisabled-true"
+    />
+    <p
+      class="c-iPYhUp c-kLRYwF c-iPYhUp-ikmBbln-css"
+    >
+      check me
+    </p>
+  </label>
+</div>
+`;
+
+exports[`Checkbox > isIndeterminate 1`] = `
+<div>
+  <label
+    class="c-iPYhUp c-kLRYwF c-edbEbA"
+  >
+    <div
+      style="border: 0px; clip-path: inset(50%); height: 1px; margin: 0px -1px -1px 0px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap;"
+    >
+      <input
+        aria-checked="true"
+        checked=""
+        type="checkbox"
+      />
+    </div>
+    <div
+      class="c-hyHTE c-hyHTE-bNDHQE-isSelected-true"
+    >
+      <span
+        class="c-filUNh"
+      >
+        <svg
+          height="14"
+          viewBox="0 0 256 256"
+          width="14"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0 0h256v256H0z"
+            fill="none"
+          />
+          <path
+            class="c-gzUDIh"
+            d="M216 72 104 184l-56-56"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="28"
+            style="animation-duration: 0s;"
+          />
+        </svg>
+      </span>
+    </div>
+    <p
+      class="c-iPYhUp c-kLRYwF c-iPYhUp-ikmBbln-css"
+    >
+      check me
+    </p>
+  </label>
+</div>
+`;
+
+exports[`Checkbox > isSelected 1`] = `
+<div>
+  <label
+    class="c-iPYhUp c-kLRYwF c-edbEbA"
+  >
+    <div
+      style="border: 0px; clip-path: inset(50%); height: 1px; margin: 0px -1px -1px 0px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap;"
+    >
+      <input
+        aria-checked="true"
+        checked=""
+        type="checkbox"
+      />
+    </div>
+    <div
+      class="c-hyHTE c-hyHTE-bNDHQE-isSelected-true"
+    >
+      <span
+        class="c-filUNh"
+      >
+        <svg
+          height="14"
+          viewBox="0 0 256 256"
+          width="14"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0 0h256v256H0z"
+            fill="none"
+          />
+          <path
+            class="c-gzUDIh"
+            d="M216 72 104 184l-56-56"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="28"
+            style="animation-duration: 0s;"
+          />
+        </svg>
+      </span>
+    </div>
+    <p
+      class="c-iPYhUp c-kLRYwF c-iPYhUp-ikmBbln-css"
+    >
+      check me
+    </p>
+  </label>
+</div>
+`;
+
+exports[`Checkbox > should render check mark when isSelected 1`] = `
+<div>
+  <label
+    class="c-iPYhUp c-kLRYwF c-edbEbA"
+  >
+    <div
+      style="border: 0px; clip-path: inset(50%); height: 1px; margin: 0px -1px -1px 0px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap;"
+    >
+      <input
+        aria-checked="true"
+        checked=""
+        type="checkbox"
+      />
+    </div>
+    <div
+      class="c-hyHTE c-hyHTE-bNDHQE-isSelected-true"
+    >
+      <span
+        class="c-filUNh"
+      >
+        <svg
+          height="14"
+          viewBox="0 0 256 256"
+          width="14"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0 0h256v256H0z"
+            fill="none"
+          />
+          <path
+            class="c-gzUDIh"
+            d="M216 72 104 184l-56-56"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="28"
+            style="animation-duration: 0s;"
+          />
+        </svg>
+      </span>
+    </div>
+    <p
+      class="c-iPYhUp c-kLRYwF c-iPYhUp-ikmBbln-css"
+    >
+      check me
+    </p>
+  </label>
+</div>
+`;
+
+exports[`Checkbox > should render checkbox with label 1`] = `
+<div>
+  <label
+    class="c-iPYhUp c-kLRYwF c-edbEbA"
+  >
+    <div
+      style="border: 0px; clip-path: inset(50%); height: 1px; margin: 0px -1px -1px 0px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap;"
+    >
+      <input
+        aria-checked="false"
+        type="checkbox"
+      />
+    </div>
+    <div
+      class="c-hyHTE c-hyHTE-koxIsH-isSelected-false"
+    />
+    <p
+      class="c-iPYhUp c-kLRYwF c-iPYhUp-ikmBbln-css"
+    >
+      check me
+    </p>
+  </label>
+</div>
+`;
+
+exports[`Checkbox > should render disabled 1`] = `
+<div>
+  <label
+    class="c-iPYhUp c-kLRYwF c-edbEbA"
+  >
+    <div
+      style="border: 0px; clip-path: inset(50%); height: 1px; margin: 0px -1px -1px 0px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap;"
+    >
+      <input
+        aria-checked="false"
+        disabled=""
+        type="checkbox"
+      />
+    </div>
+    <div
+      class="c-hyHTE c-hyHTE-koxIsH-isSelected-false c-hyHTE-hxNqoz-isDisabled-true"
+    />
+    <p
+      class="c-iPYhUp c-kLRYwF c-iPYhUp-ikmBbln-css"
+    >
+      check me
+    </p>
+  </label>
+</div>
+`;
+
+exports[`Checkbox > should render simple checkbox 1`] = `
+<div>
+  <label
+    class="c-iPYhUp c-kLRYwF c-edbEbA"
+  >
+    <div
+      style="border: 0px; clip-path: inset(50%); height: 1px; margin: 0px -1px -1px 0px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap;"
+    >
+      <input
+        aria-checked="false"
+        type="checkbox"
+      />
+    </div>
+    <div
+      class="c-hyHTE c-hyHTE-koxIsH-isSelected-false"
+    />
+  </label>
+</div>
+`;
+
+exports[`Checkbox > with label 1`] = `
+<div>
+  <label
+    class="c-iPYhUp c-kLRYwF c-edbEbA"
+  >
+    <div
+      style="border: 0px; clip-path: inset(50%); height: 1px; margin: 0px -1px -1px 0px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap;"
+    >
+      <input
+        aria-checked="false"
+        type="checkbox"
+      />
+    </div>
+    <div
+      class="c-hyHTE c-hyHTE-koxIsH-isSelected-false"
+    />
+    <p
+      class="c-iPYhUp c-kLRYwF c-iPYhUp-ikmBbln-css"
+    >
+      check me
+    </p>
+  </label>
+</div>
+`;

@@ -15,6 +15,14 @@ export const StyledLabel = styled('label', paragraphCss, {
   cursor: 'pointer',
   userSelect: 'none',
   position: 'relative',
+
+  variants: {
+    isDisabled: {
+      true: {
+        cursor: 'default',
+      },
+    },
+  },
 })
 
 export const StyledCheckbox = styled('div', {
@@ -26,7 +34,7 @@ export const StyledCheckbox = styled('div', {
   boxSizing: 'border-box',
   borderRadius: '$sm',
   border: '2px solid $surface400',
-  transition: 'background-color 0.24s , border-color 0.24s',
+  transition: 'background-color 0.24s, border-color 0.24s',
   cursor: 'pointer',
   position: 'relative',
   overflow: 'hidden',
@@ -88,7 +96,24 @@ export const StyledCheckbox = styled('div', {
     isIndeterminate: false,
   },
 
-  // compoundVariants: [],
+  compoundVariants: [
+    {
+      isSelected: true,
+      isDisabled: true,
+      css: {
+        backgroundColor: '$primary400',
+        borderColor: '$primary400',
+      },
+    },
+    {
+      isIndeterminate: true,
+      isDisabled: true,
+      css: {
+        backgroundColor: '$primary400',
+        borderColor: '$primary400',
+      },
+    },
+  ],
 })
 
 export const StyledIndicator = styled('span', {

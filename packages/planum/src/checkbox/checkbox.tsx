@@ -5,32 +5,19 @@ import { usePress } from '@react-aria/interactions'
 import { mergeProps } from '@react-aria/utils'
 import { VisuallyHidden } from '@react-aria/visually-hidden'
 import { useToggleState } from '@react-stately/toggle'
-import type { AriaCheckboxProps, ToggleProps } from '@react-types/checkbox'
 import * as React from 'react'
 
 import { useIsFirstRender } from '../hooks'
 import { Paragraph } from '../text'
-import type { CSS } from '../theme'
-import type { StyledCheckboxVariants } from './checkbox.styles'
 import { StyledCheckbox, StyledIndicator, StyledLabel } from './checkbox.styles'
+import type { CheckboxProps } from './checkbox.type'
 import { CheckIcon, MinusIcon } from './icons'
 
-interface Props {
-  css?: CSS
-  label?: string
-  children?: string
-}
-
-export type CheckboxProps = Props &
-  StyledCheckboxVariants &
-  ToggleProps &
-  AriaCheckboxProps
-
-function Checkbox(props: CheckboxProps) {
+export function Checkbox(props: CheckboxProps) {
   const { isDisabled, isIndeterminate, label, children } = props
 
-  const state = useToggleState(props)
   const ref = React.useRef<HTMLInputElement>(null)
+  const state = useToggleState(props)
   const { inputProps } = useCheckbox(props, state, ref)
 
   const { isFocusVisible, focusProps } = useFocusRing()
@@ -59,7 +46,7 @@ function Checkbox(props: CheckboxProps) {
   }
 
   return (
-    <StyledLabel>
+    <StyledLabel isDisabled={isDisabled}>
       <VisuallyHidden>
         <input {...mergeProps(inputProps, focusProps)} ref={ref} />
       </VisuallyHidden>
@@ -77,5 +64,3 @@ function Checkbox(props: CheckboxProps) {
     </StyledLabel>
   )
 }
-
-export default Checkbox

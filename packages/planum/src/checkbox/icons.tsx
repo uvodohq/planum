@@ -1,4 +1,5 @@
 import type { SVGProps } from 'react'
+import * as React from 'react'
 
 import { styled } from '../theme'
 
@@ -30,7 +31,8 @@ export const CheckIcon = ({
       strokeWidth={28}
       d="M216 72 104 184l-56-56"
       style={{
-        animationDuration: disableInitialAnimation ? '0s' : undefined,
+        // animationDuration: disableInitialAnimation ? '0s' : undefined,
+        transition: 'all 400ms',
       }}
     />
   </svg>
