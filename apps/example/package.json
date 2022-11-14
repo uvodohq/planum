@@ -1,0 +1,25 @@
+{
+  "name": "example",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --port 5175",
+    "build": "vite build",
+    "preview": "yarn build && vite preview",
+    "clean": "rimraf .turbo node_modules dist"
+  },
+  "dependencies": {
+    "@uvodohq/planum": "*",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.22",
+    "@types/react-dom": "^18.0.7",
+    "@vitejs/plugin-react": "^2.2.0",
+    "rollup-plugin-visualizer": "^5.7.1",
+    "typescript": "^4.6.4",
+    "vite": "^3.2.0"
+  }
+}

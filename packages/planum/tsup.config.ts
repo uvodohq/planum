@@ -13,9 +13,10 @@ export default defineConfig((options: Options) => {
   return {
     entry: ['src/index.tsx'],
     minify: isProd,
+    treeshake: isProd,
     format: formats,
     dts: isProd,
-    external: ['react'],
+    external: ['react', 'framer-motion'],
     metafile: isProd,
   }
 })
