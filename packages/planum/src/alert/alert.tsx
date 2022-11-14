@@ -27,8 +27,6 @@ export const Alert = (props: AlertProps) => {
   } = props
   const [isAlertOpen, setOpen] = useState(isOpen)
 
-  console.log('ALEEEEEEEEEEEEEERT')
-
   const variantMap = {
     primary: {
       icon: <QuestionIcon />,

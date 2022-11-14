@@ -57,7 +57,7 @@ export { Button } from './button'
 export { Drawer } from './drawer'
 
 // Menu
-export { Menu, MenuItem } from './dropdown-menu'
+export { Menu, MenuItem } from './menu'
 
 // Flag
 export type { FlagProps } from './flag'

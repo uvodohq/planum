@@ -1,8 +1,8 @@
 import type { offset, Placement } from '@floating-ui/react-dom-interactions'
 import React, { forwardRef } from 'react'
 
-import { DropdownPopup } from './dropdown-popup'
-import { DropdownTrigger } from './dropdown-trigger'
+import { DropdownPopup } from './menu-popup'
+import { DropdownTrigger } from './menu-trigger'
 import { useMenu } from './use-menu'
 import { useMenuState } from './use-menu-state'
 

@@ -1,7 +1,6 @@
 import { useRef } from 'react'
 
 import { styled } from '../theme'
-
 import { AutoCompleteContext } from './context'
 import { Option } from './option'
 import Popup from './popup'
