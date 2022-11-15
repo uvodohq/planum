@@ -1,6 +1,7 @@
 import { useFocus } from '@react-aria/interactions'
 import { useSearchField } from '@react-aria/searchfield'
 import { mergeProps } from '@react-aria/utils'
+import type { SearchFieldProps } from '@react-stately/searchfield'
 import { useSearchFieldState } from '@react-stately/searchfield'
 import type { AriaTextFieldProps } from '@react-types/textfield'
 import * as React from 'react'
@@ -42,6 +43,7 @@ interface Status {
 export type InputSearchProps = StyledInputVariants &
   Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'> &
   AriaTextFieldProps &
+  SearchFieldProps &
   Props &
   Status
 

@@ -1,3 +1,4 @@
+// TODO: fix generic types
 import { useField } from '@react-aria/label'
 import useControllableValue from 'ahooks/es/useControllableValue'
 import type { Ref } from 'react'
@@ -103,13 +104,15 @@ export const Select = forwardRef(
             }
 
             const index = triggerProps.state.selectedIndex ?? ''
-            const label = items[index]?.[labelKey as any]
+            const label = items[index]?.[labelKey as keyof Item<T>]
 
             // show fallback label if options not loaded yet
             const shownLabel =
               label || (value ? triggerProps.fallbackLabel : undefined)
 
-            return <SelectTrigger {...triggerProps} label={shownLabel} />
+            return (
+              <SelectTrigger {...triggerProps} label={shownLabel as string} />
+            )
           }}
           // renderOption={(optionProps) => {}}
           {...rest}>
@@ -117,10 +120,10 @@ export const Select = forwardRef(
             <Option
               key={item.id}
               value={item.id}
-              label={item[labelKey as any]}
+              label={item[labelKey as keyof Item<T>] as string}
               //
             >
-              {item[labelKey as any]}
+              {item[labelKey as keyof Item<T>] as string}
             </Option>
           ))}
         </SelectComponent>
