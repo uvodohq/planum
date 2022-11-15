@@ -13,7 +13,7 @@ import {
 } from './tag.styles'
 import type { TagProps } from './tag.type'
 
-// TODO: useTag react aria hook - https://adobe-reactspectrum-9vc84wlaz6l.ws-eu53.gitpod.io/
+// TODO: useTag react aria hook
 export const Tag = forwardRef((props: TagProps, ref: Ref<HTMLDivElement>) => {
   const {
     children,

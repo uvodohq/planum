@@ -7,7 +7,6 @@ import {
   useDismiss,
   useFloating,
   useFloatingNodeId,
-  useFocus,
   useInteractions,
   useListNavigation,
   useRole,
@@ -21,12 +20,18 @@ export interface UseAutoCompleteProps {
   listRef: MutableRefObject<(HTMLLIElement | null)[]>
 }
 
-export type UseAutoComplete = ReturnType<typeof useAutoComplete>
+export interface UseAutoCompleteReturn {
+  getFloatingProps: (props: any) => Record<string, unknown>
+  getReferenceProps: (props: any) => Record<string, unknown>
+  getItemProps: (props: any) => Record<string, unknown>
+  nodeId: string
+  [key: string]: any
+}
 
-export default function useAutoComplete(
+export function useAutoComplete(
   props: UseAutoCompleteProps,
   state: AutoCompleteState,
-) {
+): UseAutoCompleteReturn {
   const { listRef } = props
 
   const { isOpen, setIsOpen, activeIndex, setActiveIndex } = state
@@ -77,8 +82,6 @@ export default function useAutoComplete(
         activeIndex,
         onNavigate: setActiveIndex,
         virtual: true,
-        // loop: true,
-        // allowEscape: true,
         focusItemOnHover: false,
       }),
     ],

@@ -1,21 +1,9 @@
 import { forwardRef } from 'react'
 
 import { Box, Spacer } from '../layout'
-import type { TagGroupProps } from '../tag'
 import { TagGroup } from '../tag'
-import type { AutoCompleteProps } from '.'
 import { AutoComplete } from '.'
-
-export type TagItem = string
-
-export type AutoCompleteTagsProps<T extends object> = TagGroupProps<T> &
-  AutoCompleteProps<T> & {
-    placeholder?: string
-    isDisabled?: boolean
-    isLoading?: boolean
-    status?: 'success' | 'normal' | 'error'
-    onSelect?: (selected: T, newItems: T[]) => void
-  }
+import type { AutoCompleteTagsProps } from './types'
 
 function _AutoCompleteTags<T extends object>(
   props: AutoCompleteTagsProps<T>,
@@ -47,6 +35,7 @@ function _AutoCompleteTags<T extends object>(
       <AutoComplete
         {...rest}
         onSelect={onSubmit}
+        // @ts-expect-error TODO: fix generic
         labelKey={labelKey}
         // _ref={_ref}
       />

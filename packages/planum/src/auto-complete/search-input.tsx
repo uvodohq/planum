@@ -10,7 +10,7 @@ export interface SearchInputProps extends InputProps {}
 
 export default function SearchInput(props: SearchInputProps) {
   const context = useContext(AutoCompleteContext)
-  const { state, autoComplete, items, labelKey, onSelect } = context
+  const { state, autoComplete, items, onSelect } = context
   const { inputValue, activeIndex, setInputValue, setActiveIndex, isOpen } =
     state
 
@@ -28,8 +28,8 @@ export default function SearchInput(props: SearchInputProps) {
   const referenceProps = autoComplete.getReferenceProps({
     value: inputValue,
     'aria-autocomplete': 'list',
-    onKeyDown(event) {
-      const selected = items[activeIndex]
+    onKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
+      const selected = activeIndex != null ? items[activeIndex] : null
 
       if (event.key === 'Enter' && activeIndex != null && selected) {
         // prevent form submit when enter is pressed

@@ -33,7 +33,8 @@ function _TagSelect<T extends object>(
   function onSubmit(name: string) {
     const isDuplicate = value.some(
       (item) =>
-        String(item[labelKey as any]).toLocaleLowerCase() ===
+        // @ts-expect-error TODO: fix this
+        String(item[labelKey]).toLocaleLowerCase() ===
         String(name).toLocaleLowerCase(),
     )
     if (isDuplicate) return null

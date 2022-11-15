@@ -8,7 +8,7 @@ export interface UseAutoCompleteStateProps {
 
 export type AutoCompleteState = ReturnType<typeof useAutoCompleteState>
 
-function useAutoCompleteState(props?: UseAutoCompleteStateProps) {
+export function useAutoCompleteState(props?: UseAutoCompleteStateProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [activeIndex, setActiveIndex] = useState<number | null>(null)
   const [inputValue, setInputValue] = useState('')
@@ -26,5 +26,3 @@ function useAutoCompleteState(props?: UseAutoCompleteStateProps) {
     setActiveIndex,
   }
 }
-
-export default useAutoCompleteState

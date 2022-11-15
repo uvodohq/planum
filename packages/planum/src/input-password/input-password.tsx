@@ -21,7 +21,7 @@ function usePasswordToggle() {
   }
 }
 
-export type InputPasswordProps = InputProps
+export interface InputPasswordProps extends InputProps {}
 
 function _InputPassword(
   props: InputPasswordProps,

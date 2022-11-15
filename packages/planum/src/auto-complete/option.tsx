@@ -72,20 +72,18 @@ const StyledOption = styled('li', subheaderCss, {
 })
 
 export interface OptionProps {
-  // value: any
-  // label: string
   children: React.ReactNode
   index?: number
 }
 
-export const Option = (props) => {
+export const Option = (props: OptionProps) => {
   const { children, index = 0 } = props
-  const { state, autoComplete, listRef, items, labelKey, onSelect } =
+  const { state, autoComplete, listRef, items, onSelect } =
     useContext(AutoCompleteContext)
 
   const id = useId()
 
-  function onClick(e) {
+  function onClick(e: React.MouseEvent<HTMLLIElement>) {
     e.stopPropagation()
     e.preventDefault()
 

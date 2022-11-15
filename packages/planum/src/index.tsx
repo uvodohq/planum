@@ -1,6 +1,4 @@
 /* eslint-disable simple-import-sort/exports */
-// Hooks
-
 export {
   useDesktopMedia,
   useLaptopMedia,

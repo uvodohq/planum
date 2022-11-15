@@ -4,26 +4,22 @@ import { styled } from '../theme'
 import { AutoCompleteContext } from './context'
 import { Option } from './option'
 import Popup from './popup'
-import type { SearchInputProps } from './search-input'
 import SearchInput from './search-input'
-import useAutoComplete from './use-auto-complete'
-import useAutoCompleteState from './use-auto-complete-state'
+import type { AutoCompleteProps } from './types'
+import { useAutoComplete } from './use-auto-complete'
+import { useAutoCompleteState } from './use-auto-complete-state'
 
 const StyledEmpty = styled('span', {
   py: 16,
   dflex: 'center',
 })
 
-export type Value = string | number | null | undefined
-
-export type AutoCompleteProps<T extends object> = SearchInputProps & {
-  options: T[]
-  selectedKeys?: Value[]
-  labelKey: keyof T
-  onSelect?: (value: T) => void
-}
-
-export function AutoComplete<T extends object>(props: AutoCompleteProps<T>) {
+export function AutoComplete<
+  T extends {
+    [key: string]: any
+    id: string | number
+  },
+>(props: AutoCompleteProps<T>) {
   const {
     defaultValue = '',
     value = defaultValue,

@@ -48,6 +48,7 @@ export function TagGroup<T extends object>(props: TagGroupProps<T>) {
     const renderedTag = renderTag ? (
       renderTag({ tag, index, onRemove })
     ) : (
+      // @ts-expect-error TODO: fix generic
       <Tag onRemove={onRemove}>{tag[labelKey]}</Tag>
     )
 
