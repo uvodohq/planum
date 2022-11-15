@@ -11,7 +11,7 @@ export interface MenuProps {
   children?: React.ReactNode
   isOpen?: boolean
   defaultIsOpen?: boolean
-  onChange?: (isOpen: boolean) => void
+  onChangeOpen?: (isOpen: boolean) => void
   offsetValue?: Parameters<typeof offset>[0]
   align?: Placement
   matchWidth?: boolean
@@ -27,7 +27,7 @@ export const Menu = forwardRef<any, MenuProps>((props, ref) => {
       onClick={(e) => {
         e.stopPropagation()
       }}>
-      <DropdownTrigger state={state} menu={menu} trigger={props.trigger} />
+      <DropdownTrigger menu={menu} trigger={props.trigger} />
       <DropdownPopup state={state} menu={menu} />
     </span>
   )

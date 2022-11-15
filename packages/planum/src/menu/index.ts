@@ -1,3 +1,3 @@
-export type { MenuProps } from './dropdown-menu'
-export { Menu } from './dropdown-menu'
-export { MenuItem } from './dropdown-menu-item'
+export type { MenuProps } from './menu'
+export { Menu } from './menu'
+export { MenuItem } from './menu-item'

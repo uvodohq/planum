@@ -43,7 +43,6 @@ export interface MenuItemProps {
   onSelect?: () => void
 }
 
-// TODO: get props from usePress
 export const MenuItem = forwardRef<HTMLLIElement, MenuItemProps>(
   (props, ref) => {
     // @ts-expect-error dont expose internal closeMenu

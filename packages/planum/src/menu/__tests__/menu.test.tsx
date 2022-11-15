@@ -1,5 +1,4 @@
 import { render, screen, userEvent, waitFor } from '../../test'
-
 import type { MenuProps } from '..'
 import { Menu, MenuItem } from '..'
 

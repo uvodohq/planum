@@ -6,6 +6,8 @@ import {
 import { AnimatePresence, motion } from 'framer-motion'
 
 import { styled } from '../theme'
+import type { UseMenuReturn } from './use-menu'
+import type { UseMenuState } from './use-menu-state'
 
 const StyledDesktopPopup = styled('div', {
   outline: '0',
@@ -46,7 +48,12 @@ const underlayVariants = {
   hidden: { opacity: 0, transition: { duration: 0.2, ease: 'easeOut' } },
 }
 
-export const DropdownPopup = (props) => {
+interface PopupProps {
+  state: UseMenuState
+  menu: UseMenuReturn
+}
+
+export const DropdownPopup = (props: PopupProps) => {
   const { state, menu } = props
 
   const { x, y, floating, strategy, context, placement } = menu.floating

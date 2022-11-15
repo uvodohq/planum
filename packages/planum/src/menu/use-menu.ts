@@ -1,3 +1,4 @@
+import type { UseFloatingReturn } from '@floating-ui/react-dom-interactions'
 import {
   autoUpdate,
   flip,
@@ -16,7 +17,20 @@ import { useInteractOutside } from '@react-aria/interactions'
 import { Children, cloneElement, isValidElement, useMemo, useRef } from 'react'
 import { mergeRefs } from 'react-merge-refs'
 
-export function useMenu(state, props, ref) {
+import type { MenuProps } from './menu'
+import type { UseMenuState } from './use-menu-state'
+
+export interface UseMenuReturn {
+  floating: Partial<UseFloatingReturn<HTMLButtonElement>>
+  referenceProps: Record<string, unknown>
+  [key: string]: unknown
+}
+
+export function useMenu(
+  state: UseMenuState,
+  props: MenuProps,
+  ref: any,
+): UseMenuReturn {
   const { open, setOpen, activeIndex, setActiveIndex } = state
   const { matchWidth, align = 'bottom', children, trigger, ...rest } = props
 
@@ -63,7 +77,6 @@ export function useMenu(state, props, ref) {
       useRole(context, { role: 'menu' }),
       useDismiss(context, {
         bubbles: false,
-        // referencePointerDown: true,
       }),
       useListNavigation(context, {
         listRef: listItemsRef,
@@ -94,7 +107,7 @@ export function useMenu(state, props, ref) {
     },
   })
 
-  const getMenuItemProps = (index) => ({
+  const getMenuItemProps = (index: number) => ({
     ...getItemProps({
       role: 'menuitem',
       ref(node: HTMLButtonElement) {
