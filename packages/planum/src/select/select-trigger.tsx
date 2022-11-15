@@ -5,7 +5,7 @@ import { subheaderCss } from '../text'
 import type { VariantProps } from '../theme'
 import { styled } from '../theme'
 import { IconContainer, SelectDownIcon } from './icons'
-import type { UseSelect } from './use-select'
+import type { UseSelectReturn } from './use-select'
 import type { SelectState } from './use-select-state'
 
 const StyledButton = styled('button', subheaderCss, {
@@ -108,11 +108,11 @@ export const InnerText = styled('span', {
   color: '$surface500',
 })
 
-export type StyledMessageVariants = VariantProps<typeof SelectTriggerButton>
+export type StyledMessageVariants = VariantProps<typeof SelectTrigger>
 
-export interface SelectButtonProps extends HTMLAttributes<HTMLButtonElement> {
+export interface SelectTriggerProps extends HTMLAttributes<HTMLButtonElement> {
   state: SelectState
-  select: UseSelect
+  select: UseSelectReturn
   isDisabled?: boolean
   isLoading?: boolean
   status?: 'normal' | 'error' | 'success'
@@ -123,7 +123,7 @@ export interface SelectButtonProps extends HTMLAttributes<HTMLButtonElement> {
   labelKey?: string
 }
 
-export function SelectTriggerButton(props: SelectButtonProps) {
+export function SelectTrigger(props: SelectTriggerProps) {
   const {
     state,
     select,

@@ -3,7 +3,7 @@ import type React from 'react'
 import { createContext } from 'react'
 
 import type { Value } from './select-component'
-import type { UseSelect } from './use-select'
+import type { UseSelectReturn } from './use-select'
 import type { SelectState } from './use-select-state'
 
 export interface SelectContextValue {
@@ -13,7 +13,7 @@ export interface SelectContextValue {
   dataRef: ContextData
 
   state: SelectState
-  select: UseSelect
+  select: UseSelectReturn
   matchWidth?: boolean
 }
 

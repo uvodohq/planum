@@ -5,9 +5,9 @@ import type { CSS } from '../theme'
 import { styled } from '../theme'
 import { SelectContext } from './select-context'
 import SelectPopup from './select-popup'
-import type { SelectButtonProps } from './select-trigger-button'
-import useSelect from './use-select'
-import useSelectState from './use-select-state'
+import type { SelectTriggerProps } from './select-trigger'
+import { useSelect } from './use-select'
+import { useSelectState } from './use-select-state'
 
 const StyledEmpty = styled('span', {
   py: 16,
@@ -36,7 +36,7 @@ export interface InputProps {
 }
 
 export interface SelectComponentProps extends InputProps {
-  renderTrigger?: (props: SelectButtonProps) => React.ReactNode
+  renderTrigger?: (props: SelectTriggerProps) => React.ReactNode
   renderEmpty?: () => React.ReactNode
   children: React.ReactNode
   fieldProps?: AriaLabelingProps & DOMProps
@@ -87,7 +87,12 @@ export const SelectComponent: React.FC<SelectComponentProps> = (props) => {
   const renderOptions = () =>
     Children.map(
       children,
-      (child, index) => isValidElement(child) && cloneElement(child, { index }),
+      (child, index) =>
+        isValidElement(child) &&
+        cloneElement(child, {
+          // @ts-expect-error - custom prop
+          index,
+        }),
     ) ?? []
 
   const selectContextValue = {

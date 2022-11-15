@@ -7,8 +7,8 @@ import { Field } from '../field'
 import type { InputProps, Value } from './select-component'
 import { SelectComponent } from './select-component'
 import { Option } from './select-option'
-import type { SelectButtonProps } from './select-trigger-button'
-import { SelectTriggerButton } from './select-trigger-button'
+import type { SelectTriggerProps } from './select-trigger'
+import { SelectTrigger } from './select-trigger'
 
 type Item<T extends object> = {
   id: Value
@@ -30,7 +30,7 @@ export interface SelectProps<T extends object> extends InputProps {
 
   //  get only keys which values is string from Item<T>
   labelKey: KeysWithValsOfType<Item<T>, Value>
-  renderTrigger?: (props: SelectButtonProps) => React.ReactNode
+  renderTrigger?: (props: SelectTriggerProps) => React.ReactNode
 
   // field props
   // TODO: use shared field props in all inputs
@@ -109,7 +109,7 @@ export const Select = forwardRef(
             const shownLabel =
               label || (value ? triggerProps.fallbackLabel : undefined)
 
-            return <SelectTriggerButton {...triggerProps} label={shownLabel} />
+            return <SelectTrigger {...triggerProps} label={shownLabel} />
           }}
           // renderOption={(optionProps) => {}}
           {...rest}>

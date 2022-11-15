@@ -25,9 +25,23 @@ export interface UseSelectProps {
   position?: Placement
 }
 
-export type UseSelect = ReturnType<typeof useSelect>
+export interface UseSelectReturn {
+  getFloatingProps: () => Record<string, unknown>
+  referenceProps: Record<string, unknown>
+  getItemProps: () => Record<string, unknown>
+  direction: any
+  context: any
+  refs: any
+  nodeId: string
+  strategy: string
+  x: number | null
+  y: number | null
+}
 
-export default function useSelect(props: UseSelectProps, state: SelectState) {
+export function useSelect(
+  props: UseSelectProps,
+  state: SelectState,
+): UseSelectReturn {
   const {
     listItemsRef,
     listContentRef,
@@ -148,6 +162,7 @@ export default function useSelect(props: UseSelectProps, state: SelectState) {
   // return focus to reference when the popup is closed, fix for selects in modal
   useUpdateEffect(() => {
     if (!isOpen) {
+      // @ts-expect-error - fix focus
       refs.reference.current?.focus()
     }
   }, [isOpen, refs])
@@ -158,7 +173,7 @@ export default function useSelect(props: UseSelectProps, state: SelectState) {
     ref: reference,
   })
 
-  const floatingProps = (config) =>
+  const floatingProps = (config?: React.HTMLProps<HTMLElement>) =>
     isOpen
       ? getFloatingProps({
           ref: floating,

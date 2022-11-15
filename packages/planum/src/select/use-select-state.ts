@@ -10,7 +10,7 @@ export interface UseSelectStateProps {
 
 export type SelectState = ReturnType<typeof useSelectState>
 
-export default function useSelectState(props: UseSelectStateProps) {
+export function useSelectState(props: UseSelectStateProps) {
   const { value, items } = props || {}
 
   // selected item index, which may or may not be active. shown in the trigger button.
