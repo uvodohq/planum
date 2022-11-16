@@ -1,7 +1,0 @@
-{
-  "extends": "planum-tsconfig/vite.json",
-  "include": ["src"],
-  "compilerOptions": {
-    "jsx": "react-jsx"
-  }
-}

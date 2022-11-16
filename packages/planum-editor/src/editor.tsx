@@ -1,4 +1,4 @@
-import type { Editor as TipTapEditor, EditorOptions } from '@tiptap/core'
+import type { Editor as TipTapEditor } from '@tiptap/core'
 import { Color } from '@tiptap/extension-color'
 import Link from '@tiptap/extension-link'
 import Placeholder from '@tiptap/extension-placeholder'
@@ -7,35 +7,17 @@ import TextStyle from '@tiptap/extension-text-style'
 import { EditorContent } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 //
-import type { LabelAriaProps } from '@uvodohq/planum'
 import { Field, mergeProps, useField, usePress } from '@uvodohq/planum'
 //
 import type { RefObject } from 'react'
 import { forwardRef, useEffect, useImperativeHandle } from 'react'
 
 import { editorClass, EditorContainer, placeholderClass } from './editor.styles'
+import type { EditorProps } from './editor.type'
 import type { MenuBarProps } from './menu-bar/menu-bar'
 import { MenuBar } from './menu-bar/menu-bar'
 import { useEditor } from './use-editor'
 
-export type EditorProps = {
-  placeholder?: string
-  onChange?: (value?: string) => void
-  onBlur?: () => void
-  value?: string
-  autoFocus?: boolean
-
-  // TODO: use shared
-  label?: string
-  description?: React.ReactNode
-  errorMessage?: string
-  successMessage?: string
-  status?: 'success' | 'normal' | 'error'
-  isDisabled?: boolean
-} & LabelAriaProps &
-  Partial<EditorOptions>
-
-// TODO: load editor lazy load. with sidecar UI
 // TODO: fix hover on label
 // resolve peer deps error by removing starterkit
 export const Editor = forwardRef<RefObject<TipTapEditor | null>, EditorProps>(
@@ -190,4 +172,4 @@ export const Editor = forwardRef<RefObject<TipTapEditor | null>, EditorProps>(
   },
 )
 
-Editor.displayName = 'TextEditor'
+Editor.displayName = 'Editor'

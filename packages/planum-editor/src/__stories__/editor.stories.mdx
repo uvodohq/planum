@@ -1,6 +1,5 @@
-import Editor from '../editor'
+import { Editor } from '..'
 import { ArgsTable, Story, Canvas, Meta } from '@storybook/addon-docs'
-import FlexCol from './flex.tsx'
 
 <Meta title="Components/Editor" component={Editor} />
 
@@ -24,12 +23,7 @@ Editor component is used to change text fonts.
 
 <Canvas>
   <Story name="Variants">
-    <FlexCol>
-      <Editor
-        label="Description"
-        placeholder="Product description (optional) "
-      />
-    </FlexCol>
+    <Editor label="Description" placeholder="Product description (optional) " />
   </Story>
 </Canvas>
 
