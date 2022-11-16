@@ -1,11 +1,25 @@
 /* eslint-disable no-alert */
+import type { SVGProps } from 'react'
 import { forwardRef } from 'react'
-import { DotsThreeIcon } from 'src/../example/demo/assets/icons'
-import { Menu, MenuItem } from 'src/ui/dropdown-menu'
 
-import { Button } from '../button'
+import { Button } from '../../button'
+import { Box, Flex } from '../../layout'
+import { Menu, MenuItem } from '..'
 import { ListIcon } from '../icons'
-import { Box, Flex } from '../layout'
+
+const DotsThreeIcon = (props: SVGProps<SVGSVGElement> & { size?: number }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={props.size ?? 24}
+    height={props.size ?? 24}
+    viewBox="0 0 256 256"
+    {...props}>
+    <path fill="none" d="M0 0h256v256H0z" />
+    <circle cx={128} cy={128} r={12} fill="currentColor" />
+    <circle cx={192} cy={128} r={12} fill="currentColor" />
+    <circle cx={64} cy={128} r={12} fill="currentColor" />
+  </svg>
+)
 
 export const menuItems = (
   <>
@@ -29,7 +43,7 @@ export const CustomButton = forwardRef<any, any>(
 
 CustomButton.displayName = 'CustomButton'
 
-export const RowBox = (props) => {
+export const RowBox = (props: any) => {
   return (
     <Flex
       css={{

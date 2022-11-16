@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import { Loader } from '../loader'
+import { Loader } from '..'
 
 export const ProgressLoader = (props: any) => {
   const [value, setValue] = useState(0)

@@ -1,5 +1,5 @@
 import type { SelectProps } from '../select'
-import Select from '../select'
+import { Select } from '../select'
 import { weightUnits } from './select-options'
 
 export default function SelectExampleSmallWidth(

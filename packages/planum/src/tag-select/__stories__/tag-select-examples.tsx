@@ -1,8 +1,7 @@
 import { useState } from 'react'
 
-import Flag from '../flag'
-import type { CountryCode } from '../flag/types'
-import Tag from '../tag'
+import { Flag, Tag } from '../../..'
+import type { CountryCode } from '../../flag/types'
 import { TagSelect } from '../tag-select'
 import data from './data.json'
 

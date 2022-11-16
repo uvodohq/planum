@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { Input } from '~/.'
+import { Input } from '../'
 
 export const InputExample = () => {
   const [value, setValue] = useState('')

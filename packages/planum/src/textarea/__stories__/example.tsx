@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import Textarea from '../textarea'
+import { Textarea } from '../textarea'
 
 export const TextareaExample = () => {
   const [value, setValue] = useState('')

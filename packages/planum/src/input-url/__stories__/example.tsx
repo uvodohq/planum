@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import InputUrl from '../input-url'
+import { InputUrl } from '..'
 
 export const InputUrlExample = () => {
   const [value, setValue] = useState('')

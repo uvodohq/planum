@@ -1,4 +1,4 @@
-import { Flex } from 'src'
+import { Flex } from '../../..'
 
 const FlexCol = (props: any) => (
   <Flex

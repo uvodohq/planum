@@ -3,9 +3,8 @@ const path = require('path')
 
 module.exports = {
   stories: [
-    '../stories/**/*.stories.mdx',
-    // '../storybook/**/*.stories.mdx',
-    // '../../../packages/planum/src/alert/**/*.stories.mdx',
+    '../src/**/*.stories.mdx',
+    '../../../packages/planum/src/**/*.stories.mdx',
   ],
   addons: [
     '@storybook/addon-docs',
@@ -29,7 +28,7 @@ module.exports = {
             find: '@uvodohq/planum',
             replacement: path.resolve(
               __dirname,
-              '../../../packages/planum/src',
+              '../../../packages/planum/src/index.tsx',
             ),
           },
         ],

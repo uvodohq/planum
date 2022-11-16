@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { InputSearch } from 'src'
+
+import { InputSearch } from '..'
 
 export const InputSearchExample = () => {
   const [value, setValue] = useState('')

@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { InputPassword } from 'src'
+
+import { InputPassword } from '..'
 
 export const InputPasswordExample = () => {
   const [value, setValue] = useState('')

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import InputNumber from '../input-number'
+import { InputNumber } from '../input-number'
 
 export const InputNumberExample = () => {
   const [value, setValue] = useState<number>()

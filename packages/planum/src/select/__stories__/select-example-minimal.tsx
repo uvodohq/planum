@@ -1,5 +1,5 @@
 import type { SelectProps } from '../select'
-import Select from '../select'
+import { Select } from '../select'
 import { statusList } from './select-options'
 
 export default function SelectExampleMinimal(

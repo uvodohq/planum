@@ -15,7 +15,7 @@ import {
   // FunctionArgument,
   // RelatedComponents,
   // LinkComponent,
-} from '../storybook/components'
+} from '../src/components'
 
 addParameters({
   actions: { argTypesRegex: '^on[A-Z].*' },

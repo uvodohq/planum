@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
-import type { AutoCompleteProps } from '../auto-complete'
-import { AutoComplete } from '../auto-complete'
+import type { AutoCompleteProps } from '..'
+import { AutoComplete } from '..'
 import type { Country } from './options'
 import { countryList } from './options'
 
@@ -158,7 +158,7 @@ export default function AutoCompleteExampleControlled(
       //   console.log('onChange', value)
       // }}
       onSelect={(value) => {
-        console.log('onSelect', value)
+        // console.log('onSelect', value)
       }}
       options={countryList}
       labelKey="name"

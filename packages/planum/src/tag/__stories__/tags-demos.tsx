@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Box, Button, Flag, Spacer, Tag, TagGroup } from 'src'
+import { Box, Button, Flag, Spacer, Tag, TagGroup } from '..'
 
 import { generateId } from '~/utils/generate-id'
 

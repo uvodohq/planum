@@ -1,8 +1,8 @@
 import { useState } from 'react'
 
-import Flag from '../../flag'
+import { Flag } from '../../flag'
 import type { CountryCode } from '../../flag/types'
-import Tag from '../../tag'
+import { Tag } from '../../tag'
 import { AutoCompleteTags } from '../auto-complete-tags'
 import { countryList } from './options'
 
