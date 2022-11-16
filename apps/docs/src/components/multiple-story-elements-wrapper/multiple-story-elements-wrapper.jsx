@@ -1,6 +1,6 @@
 import './multiple-story-elements-wrapper.scss'
+import './reset.css'
 
-// import '../../../../example/demo/styles/reset.css'
 import cx from 'classnames'
 
 export const MultipleStoryElementsWrapper = ({ className, children }) => {

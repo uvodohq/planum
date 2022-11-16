@@ -61,21 +61,21 @@ export const semanticColorSets = [
     colors: [
       {
         name: 'Primary',
-        description: 'This is Primary color  ',
+        description: 'Primary color  ',
         value: baseColors.primary,
         hex: getHex(baseColors.primary),
       },
 
       {
         name: 'Secondary',
-        description: 'This is Secondary color  ',
+        description: 'Secondary color  ',
         value: baseColors.secondary,
         hex: getHex(baseColors.secondary),
       },
 
       {
         name: 'Tertiary',
-        description: 'This is Tertiary color  ',
+        description: 'Tertiary color  ',
         value: baseColors.tertiary,
         hex: getHex(baseColors.tertiary),
       },
@@ -86,27 +86,27 @@ export const semanticColorSets = [
     colors: [
       {
         name: 'Success',
-        description: 'This is success color  ',
+        description: 'success color  ',
         value: utilityColors.success,
         hex: getHex(utilityColors.success),
       },
 
       {
         name: 'Info',
-        description: 'This is info color  ',
+        description: 'info color  ',
         value: utilityColors.info,
         hex: getHex(utilityColors.info),
       },
 
       {
         name: 'Warning',
-        description: 'This is warning color  ',
+        description: 'warning color  ',
         value: utilityColors.warning,
         hex: getHex(utilityColors.warning),
       },
       {
         name: 'Danger',
-        description: 'This is danger color   ',
+        description: 'danger color   ',
         value: utilityColors.danger,
         hex: getHex(utilityColors.danger),
       },
@@ -117,21 +117,21 @@ export const semanticColorSets = [
     colors: [
       {
         name: 'White',
-        description: 'This is white color  ',
+        description: 'white color  ',
         value: neutralColors.white,
         hex: getHex(neutralColors.white),
       },
 
       {
         name: 'Surface',
-        description: 'This is surface color  ',
+        description: 'surface color  ',
         value: neutralColors.surface,
         hex: getHex(neutralColors.surface),
       },
 
       {
         name: 'black',
-        description: 'This is black color  ',
+        description: 'black color  ',
         value: neutralColors.black,
         hex: getHex(neutralColors.black),
       },
