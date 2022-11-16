@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { Button } from '../button'
 import { Flex } from '../layout'
@@ -13,7 +13,7 @@ import {
 import type { AlertProps } from './alert.type'
 import { CheckCircleIcon, InfoIcon, QuestionIcon } from './icons'
 
-export const Alert: React.FC<AlertProps> = (props) => {
+export const Alert = (props: AlertProps) => {
   const {
     title,
     message,

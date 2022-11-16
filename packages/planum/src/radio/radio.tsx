@@ -10,7 +10,6 @@ import * as React from 'react'
 
 import { Paragraph } from '../text'
 import type { CSS } from '../theme'
-import { __DEV__ } from '../utils/assertion'
 import { useRadioProvider } from './context'
 import { StyledLabel, StyledRadioSvg } from './radio.styles'
 
@@ -72,6 +71,4 @@ function _Radio(props: RadioProps, ref: FocusableRef<HTMLLabelElement>) {
 
 export const Radio = React.forwardRef(_Radio)
 
-if (__DEV__) {
-  Radio.displayName = 'Radio'
-}
+Radio.displayName = 'Radio'

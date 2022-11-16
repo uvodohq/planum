@@ -6,7 +6,6 @@ import type { DOMRef } from '@react-types/shared'
 import type { ReactElement } from 'react'
 import * as React from 'react'
 
-import { __DEV__ } from '../utils/assertion'
 import { RadioContext } from './context'
 import type { RadioProps } from './radio'
 
@@ -37,6 +36,4 @@ function _RadioGroup(props: RadioGroupProps, ref: DOMRef<HTMLDivElement>) {
 
 export const RadioGroup = React.forwardRef(_RadioGroup)
 
-if (__DEV__) {
-  RadioGroup.displayName = 'RadioGroup'
-}
+RadioGroup.displayName = 'RadioGroup'
