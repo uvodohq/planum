@@ -1,7 +1,17 @@
 {
   "name": "@uvodohq/planum-editor",
   "version": "0.1.0",
+  "description": "Planum Editor - text editor for Planum",
+  "author": "UvodoHQ",
   "license": "MIT",
+  "homepage": "https://uvodo.design",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uvodohq/planum-ui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/uvodohq/planum-ui/issues"
+  },
   "sideEffects": false,
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
