@@ -1,6 +1,6 @@
 {
   "name": "@uvodohq/planum",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Planum - A React UI Kit for Uvodo Design System. Uvodo is self-hosted eCommerce platform for digital agencies",
   "author": "UvodoHQ",
   "license": "MIT",
@@ -36,7 +36,8 @@
     "dev": "tsup --watch",
     "lint": "TIMING=1 eslint \"src/**/*.ts*\"",
     "clean": "rimraf .turbo node_modules dist",
-    "test": "vitest",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "test:ui": "vitest --ui",
     "test:cov": "vitest run --coverage",
     "vitest-preview": "vitest-preview"
