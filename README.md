@@ -1,13 +1,42 @@
-# Turborepo Design System Starter
+<center>
+  <a href="https://uvodo.design" >
+    <img width="300" src="https://raw.githubusercontent.com/uvodohq/planum-ui/main/.storybook/logo.svg" style='background:white'>
+  </a>
 
-This guide explains how to use a React design system starter powered by:
+<img src="https://img.shields.io/npm/v/@uvodohq/planum?color=blue">
+<img src="https://img.shields.io/npm/l/@uvodohq/planum">
+<img src="https://img.shields.io/npm/dw/@uvodohq/planum">
+
+</center>
+<h1 align="center">
+  Planum - A React UI Kit for Uvodo Design System
+
+</h1>
+
+<center>
+Planum UI is a React component library with 20+ components based on TypeScript and Uvodo Design System.
+  <br>
+
+<a href="https://planum-storybook.netlify.app"><strong>Explore Planum components</strong></a>
+
+  <br>
+
+  <a href="https://twitter.com/uvodohq">
+   <img src="https://img.shields.io/twitter/follow/uvodohq?label=uvodohq&style=social" alt="Twitter Follow">
+  </a>
+</center>
+
+# Powered by
 
 - 🏎 [Turborepo](https://turbo.build/repo) — High-performance build system for Monorepos
 - 🚀 [React](https://reactjs.org/) — JavaScript library for user interfaces
 - 🛠 [Tsup](https://github.com/egoist/tsup) — TypeScript bundler powered by esbuild
 - 📖 [Storybook](https://storybook.js.org/) — UI component environment powered by Vite
 
-As well as a few others tools preconfigured:
+- Uvodo design system
+- Accessibility friendly components
+
+As well as a few others tools used:
 
 - [TypeScript](https://www.typescriptlang.org/) for static type checking
 - [ESLint](https://eslint.org/) for code linting
@@ -15,15 +44,30 @@ As well as a few others tools preconfigured:
 - [Changesets](https://github.com/changesets/changesets) for managing versioning and changelogs
 - [GitHub Actions](https://github.com/changesets/action) for fully automated package publishing
 
-## Using this example
+# Live ⚡️
 
-Clone the design system example locally or [from GitHub](https://github.com/vercel/turbo/tree/main/examples/design-system):
+- Demo Example App [![Netlify Status](https://api.netlify.com/api/v1/badges/c492e5e8-9f20-4b17-a494-a57a09ea1768/deploy-status)](https://app.netlify.com/sites/planum-demo/deploys)
+
+  https://uvodo.design
+
+- Planum Storybook [![Netlify Status](https://api.netlify.com/api/v1/badges/8a6b4d8d-d711-436c-94cd-6f16b47e6dc2/deploy-status)](https://app.netlify.com/sites/planum-storybook/deploys)
+
+  https://planum-storybook.netlify.app
+
+# Install
 
 ```bash
-npx degit vercel/turbo/examples/design-system design-system
-cd design-system
-yarn install
-git init . && git add . && git commit -m "Init"
+# npm
+npm install @uvodohq/planum
+```
+
+```bash
+# yarn
+yarn add @uvodohq/planum
+```
+
+```js
+import { Button } from '@uvodohq/planum'
 ```
 
 ### Useful Commands
@@ -42,13 +86,13 @@ Using Turborepo simplifes managing your design system monorepo, as you can have 
 
 ## Apps & Packages
 
-This Turborepo includes the following packages and applications:
-
 - `apps/docs`: Component documentation site with Storybook
+- `apps/showcase`: Example app using Planum UI components use Vite
+- `apps/example`: Empty vite app for testing tree shaking
 - `packages/@uvodohq/planum`: Core React components
-- `packages/@acme/utils`: Shared React utilities
-- `packages/planum-tsconfig`: Shared `tsconfig.json`s used throughout the Turborepo
-- `packages/eslint-config-planum`: ESLint preset
+- `packages/@uvodohq/planum-editor`: Text editor based on TipTap
+- `packages/planum-tsconfig`: Shared `tsconfig.json`s used throughout in apps and packages
+- `packages/eslint-config-planum`: Shared ESLint preset
 
 Each package and app is 100% [TypeScript](https://www.typescriptlang.org/). Yarn Workspaces enables us to "hoist" dependencies that are shared between packages to the root `package.json`. This means smaller `node_modules` folders and a better local dev experience. To install a dependency for the entire monorepo, use the `-W` workspaces flag with `yarn add`.
 
@@ -60,15 +104,9 @@ To make the core library code work across all browsers, we need to compile the r
 
 Running `yarn build` from the root of the Turborepo will run the `build` command defined in each package's `package.json` file. Turborepo runs each `build` in parallel and caches & hashes the output to speed up future builds.
 
-For `planum`, the `build` command is the following:
-
-```bash
-tsup src/index.tsx --format esm,cjs --dts --external react
-```
-
 `tsup` compiles `src/index.tsx`, which exports all of the components in the design system, into both ES Modules and CommonJS formats as well as their TypeScript types. The `package.json` for `planum` then instructs the consumer to select the correct format:
 
-```json:planum/package.json
+```json
 {
   "name": "@uvodohq/planum",
   "version": "0.0.0",
@@ -93,29 +131,32 @@ planum
 
 Each file inside of `planum/src` is a component inside our design system. For example:
 
-```tsx:planum/src/Button.tsx
-import * as React from 'react';
+```tsx
+# planum/src/button.tsx
+import * as React from 'react'
 
 export interface ButtonProps {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
 export function Button(props: ButtonProps) {
-  return <button>{props.children}</button>;
+  return <button>{props.children}</button>
 }
 
-Button.displayName = 'Button';
+Button.displayName = 'Button'
 ```
 
 When adding a new file, ensure the component is also exported from the entry `index.tsx` file:
 
-```tsx:planum/src/index.tsx
-import * as React from "react";
-export { Button, type ButtonProps } from "./Button";
+```tsx
+// planum/src/index.tsx
+import * as React from 'react'
+
+export { type ButtonProps, Button } from './Button'
 // Add new component exports here
 ```
 
-## Storybook
+## Storybook v6.5
 
 Storybook provides us with an interactive UI playground for our components. This allows us to preview our components in the browser and instantly see changes when developing locally. This example preconfigures Storybook to:
 
@@ -126,7 +167,7 @@ Storybook provides us with an interactive UI playground for our components. This
 
 For example, here's the included Story for our `Button` component:
 
-```js:apps/docs/stories/button.stories.mdx
+```js
 import { Button } from '@uvodohq/planum/src';
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
 
