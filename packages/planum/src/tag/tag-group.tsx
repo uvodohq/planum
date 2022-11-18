@@ -12,6 +12,8 @@ const Container = styled('div', {
 const StyledList = styled('ul', {
   display: 'flex',
   flexWrap: 'wrap',
+  m: 0,
+  p: 0,
   mt: -8,
   mr: -8,
 })

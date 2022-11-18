@@ -114,6 +114,8 @@ const BackHomeLink = styled('a', overlineCss, {
   boxShadow: '$sm',
   fw: '$semibold',
   zIndex: 9999,
+  color: '#000',
+  textDecoration: 'none',
 })
 
 export function HomePage() {

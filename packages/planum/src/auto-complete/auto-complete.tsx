@@ -14,6 +14,11 @@ const StyledEmpty = styled('span', {
   dflex: 'center',
 })
 
+const StyledList = styled('ul', {
+  m: 0,
+  p: 0,
+})
+
 export function AutoComplete<
   T extends {
     [key: string]: any
@@ -76,11 +81,11 @@ export function AutoComplete<
     <AutoCompleteContext.Provider value={contextValue}>
       <SearchInput {...rest} />
       <Popup>
-        <ul>
+        <StyledList>
           {state.isOpen && renderFilteredItems()}
 
           {items.length === 0 && <StyledEmpty>No results found</StyledEmpty>}
-        </ul>
+        </StyledList>
       </Popup>
     </AutoCompleteContext.Provider>
   )

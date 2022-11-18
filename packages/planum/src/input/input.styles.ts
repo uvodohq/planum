@@ -24,6 +24,7 @@ export const sharedInputCss = css({
   backgroundColor: '$white',
   transition: 'border-color 0.2s, box-shadow 0.2s',
   cursor: 'text',
+  outline: 'none',
 
   '[placeholder]': {
     textOverflow: 'ellipsis',
@@ -73,6 +74,7 @@ export const StyledInputContainer = styled('div', sharedInputCss, {
   height: '$48',
   borderRadius: '$sm',
   padding: '$8 $16',
+  boxSizing: 'border-box',
 
   variants: {
     isFocused: {
@@ -152,7 +154,7 @@ export const inputCss = css(subheaderCss, {
   width: '100%',
   maxWidth: '100%',
   transition: 'border-color 0.2s, box-shadow 0.2s',
-
+  border: 'none',
   backgroundColor: 'transparent',
   color: '$textDark',
   fontWeight: '$regular',

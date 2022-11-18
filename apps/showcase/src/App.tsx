@@ -1,5 +1,5 @@
 import './styles/app.css'
-import './styles/reset.css'
+// import './styles/reset.css'
 
 import { Flex } from '@uvodohq/planum'
 

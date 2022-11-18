@@ -7,6 +7,16 @@ const Title = styled(H2, {
   color: '$white',
 })
 
+const TableRow = styled('tr', {
+  display: 'flex',
+  justifyContent: 'space-between',
+  mb: 48,
+})
+
+const TableData = styled('td', {
+  display: 'inline-block',
+})
+
 const LoadingButton = (props: any) => {
   const [isLoading, setIsLoading] = useState(false)
 
@@ -33,20 +43,20 @@ const FlexCell = (props: any) => (
 
 const ButtonGroupTr = ({ title, ...rest }: any) => {
   return (
-    <tr>
-      <td>
+    <TableRow>
+      <TableData>
         <Text>{title}</Text>
-      </td>
-      <td>
+      </TableData>
+      <TableData>
         <FlexCell>
           <LoadingButton {...rest}>Button</LoadingButton>
           <LoadingButton {...rest} size="sm">
             Button
           </LoadingButton>
         </FlexCell>
-      </td>
+      </TableData>
 
-      <td>
+      <TableData>
         <FlexCell>
           <LoadingButton {...rest} leftIcon={<PlusIcon size={24} />}>
             Button
@@ -55,16 +65,16 @@ const ButtonGroupTr = ({ title, ...rest }: any) => {
             Button
           </LoadingButton>
         </FlexCell>
-      </td>
-      <td>
+      </TableData>
+      <TableData>
         <FlexCell>
           <LoadingButton {...rest} icon={<PlusIcon size={24} />} />
           <LoadingButton {...rest} icon={<PlusIcon size={24} />} size="sm" />
           <LoadingButton {...rest} icon={<PlusIcon size={12} />} size="xs" />
         </FlexCell>
-      </td>
+      </TableData>
 
-      <td>
+      <TableData>
         <FlexCell>
           <LoadingButton {...rest} icon={<PlusIcon size={24} />} rounded />
           <LoadingButton
@@ -80,9 +90,9 @@ const ButtonGroupTr = ({ title, ...rest }: any) => {
             size="xs"
           />
         </FlexCell>
-      </td>
+      </TableData>
 
-      <td>
+      <TableData>
         <FlexCell>
           <LoadingButton {...rest} leftIcon={<PlusIcon size={24} />} rounded>
             Button
@@ -95,9 +105,9 @@ const ButtonGroupTr = ({ title, ...rest }: any) => {
             Button
           </LoadingButton>
         </FlexCell>
-      </td>
+      </TableData>
 
-      <td>
+      <TableData>
         <FlexCell>
           <LoadingButton {...rest} rounded>
             Button
@@ -106,8 +116,8 @@ const ButtonGroupTr = ({ title, ...rest }: any) => {
             Button
           </LoadingButton>
         </FlexCell>
-      </td>
-    </tr>
+      </TableData>
+    </TableRow>
   )
 }
 

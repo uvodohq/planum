@@ -54,6 +54,11 @@ const Underlay = styled(motion.div, {
   pointerEvents: 'auto',
 })
 
+const StyledList = styled('ul', {
+  m: 0,
+  p: 0,
+})
+
 const underlayVariants = {
   visible: { opacity: 1, transition: { duration: 0.2, ease: 'easeOut' } },
   hidden: { opacity: 0, transition: { duration: 0.2, ease: 'easeOut' } },
@@ -142,7 +147,7 @@ export default function SelectPopup(props: SelectPopupProps) {
                   })}
                   as={motion.div}
                   {...motionConfig}>
-                  <ul>{children}</ul>
+                  <StyledList>{children}</StyledList>
                 </Popup>
               </FloatingFocusManager>
             </FloatingOverlay>

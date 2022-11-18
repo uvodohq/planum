@@ -19,6 +19,7 @@ export const StyledLabel = styled('label', paragraphCss, {
 
 export const StyledMessage = styled('p', paragraphCss, {
   fontWeight: '$regular',
+  m: 0,
 
   variants: {
     status: {

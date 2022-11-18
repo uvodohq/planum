@@ -29,6 +29,10 @@ export const TagIconButton = styled('button', {
   outline: 'none',
   display: 'inline-flex',
   alignItems: 'center',
+  border: 'none',
+  padding: 0,
+  background: 'none',
+  cursor: 'pointer',
 
   [`&:focus ${IconContainer}`]: {
     color: '$surface700',

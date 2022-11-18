@@ -198,6 +198,7 @@ export const StyledButton = styled('button', {
       },
 
       success: {
+        backgroundColor: 'transparent',
         color: '$success',
 
         '&:hover': {
@@ -207,6 +208,7 @@ export const StyledButton = styled('button', {
 
       warning: {
         color: '$warning',
+        backgroundColor: 'transparent',
 
         '&:hover': {
           color: '$warning800',
@@ -215,6 +217,7 @@ export const StyledButton = styled('button', {
 
       info: {
         color: '$info',
+        backgroundColor: 'transparent',
 
         '&:hover': {
           color: '$info800',
@@ -281,6 +284,24 @@ export const StyledButton = styled('button', {
     },
     {
       variant: 'error',
+      compact: true,
+      css: {
+        '&:hover': {
+          color: '$danger800',
+        },
+      },
+    },
+    {
+      variant: 'flat',
+      compact: true,
+      css: {
+        '&:hover': {
+          color: '$primary800',
+        },
+      },
+    },
+    {
+      variant: 'flatDanger',
       compact: true,
       css: {
         '&:hover': {

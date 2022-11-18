@@ -5,8 +5,10 @@ import {
   H1,
   H3,
   Paragraph,
+  styled,
   Tooltip,
 } from '@uvodohq/planum'
+import React from 'react'
 
 import MenuExamples from '../../components/menu-examples'
 import {
@@ -22,10 +24,31 @@ import {
   NestedModalExample,
 } from '../../components/modal-examples'
 
+const StyledDrawerButton = styled('button', {
+  background: 'green',
+  border: '1px solid transparent',
+  fontSize: '$16',
+  p: '$8',
+  br: 4,
+  color: '#fff',
+  cursor: 'pointer',
+  mt: '$8',
+
+  '&:focus': {
+    borderColor: '$green',
+    outline: '2px solid green',
+    outlineOffset: '3px',
+  },
+})
+
 function DrawerExample() {
   const Hamburger = (props) => {
     const isOpen = props['data-open']
-    return <button {...props}>{isOpen ? 'close' : 'open'} drawer</button>
+    return (
+      <StyledDrawerButton {...props}>
+        {isOpen ? 'close' : 'open'} drawer
+      </StyledDrawerButton>
+    )
   }
 
   return (
@@ -35,12 +58,13 @@ function DrawerExample() {
           title="This is a dialog"
           css={{
             width: 240,
+            p: '$24',
           }}>
           <H3 id={props.labelId}>This is a drawer</H3>
           <p id={props.descriptionId}>
             Now that we have got your attention, you can close this.
           </p>
-          <button onClick={props.close}>close</button>
+          <StyledDrawerButton onClick={props.close}>close</StyledDrawerButton>
         </Box>
       )}
     </Drawer>
@@ -97,13 +121,29 @@ export default function FormElementsContainer() {
           '& > *': { minWidth: 100 },
         }}>
         <Tooltip label="Please contact support" placement="top">
-          <Box as="button" css={{ background: '$blue400', px: 14, br: 4 }}>
+          <Box
+            as="button"
+            css={{
+              background: '$blue400',
+              p: 8,
+              br: 4,
+              border: 'none',
+              fontSize: '$16',
+            }}>
             Top - button
           </Box>
         </Tooltip>
 
         <Tooltip label="Please contact support" placement="top" defaultIsOpen>
-          <Box as="button" css={{ background: '$blue400', px: 14, br: 4 }}>
+          <Box
+            as="button"
+            css={{
+              background: '$blue400',
+              p: 8,
+              br: 4,
+              border: 'none',
+              fontSize: '$16',
+            }}>
             Default is open
           </Box>
         </Tooltip>
