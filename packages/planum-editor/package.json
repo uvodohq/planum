@@ -1,6 +1,6 @@
 {
   "name": "@uvodohq/planum-editor",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Planum Editor - text editor for Planum",
   "author": "UvodoHQ",
   "license": "MIT",
@@ -42,7 +42,7 @@
     "@types/react-dom": "^18.0.4",
     "@uvodohq/planum": "*",
     "eslint": "^8.15.0",
-    "eslint-config-planum": "*",
+    "@uvodohq/eslint-config": "*",
     "planum-tsconfig": "*",
     "react": "^18.1.0",
     "tsup": "^5.10.1",

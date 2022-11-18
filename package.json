@@ -13,9 +13,10 @@
     "lint": "turbo run lint",
     "clean": "turbo run clean && rimraf node_modules",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "changeset": "changeset",
-    "bump": "changeset version",
+    "make-changeset": "changeset",
+    "bump-version": "changeset version",
     "release": "turbo run build --filter=docs^... && changeset publish",
+    "publish-packages": "turbo run build lint test --filter=docs^... && changeset version && changeset publish",
     "status": "changeset status --verbose",
     "gen": "plop",
     "update": "yarn upgrade-interactive --latest"
@@ -23,8 +24,8 @@
   "devDependencies": {
     "@changesets/changelog-github": "^0.4.7",
     "@changesets/cli": "^2.22.0",
+    "@uvodohq/eslint-config": "*",
     "eslint": "^8.27.0",
-    "eslint-config-planum": "*",
     "plop": "^3.1.0",
     "prettier": "^2.7.1",
     "rimraf": "^3.0.2",

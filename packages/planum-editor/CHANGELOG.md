@@ -1,5 +1,11 @@
 # @uvodohq/planum-editor
 
+## 0.1.3
+
+### Patch Changes
+
+- fix logo links readme
+
 ## 0.1.2
 
 ### Patch Changes

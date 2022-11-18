@@ -43,3 +43,7 @@ coverage/
 
 # Local Netlify folder
 .netlify
+
+
+# 
+*.backup

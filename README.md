@@ -86,7 +86,7 @@ Using Turborepo simplifes managing your design system monorepo, as you can have 
 - `packages/@uvodohq/planum`: Core React components
 - `packages/@uvodohq/planum-editor`: Text editor based on TipTap
 - `packages/planum-tsconfig`: Shared `tsconfig.json`s used throughout in apps and packages
-- `packages/eslint-config-planum`: Shared ESLint preset
+- `packages/@uvodohq/eslint-config`: Shared ESLint preset
 
 Each package and app is 100% [TypeScript](https://www.typescriptlang.org/). Yarn Workspaces enables us to "hoist" dependencies that are shared between packages to the root `package.json`. This means smaller `node_modules` folders and a better local dev experience. To install a dependency for the entire monorepo, use the `-W` workspaces flag with `yarn add`.
 

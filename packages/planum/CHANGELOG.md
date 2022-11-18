@@ -1,5 +1,11 @@
 # @uvodohq/planum
 
+## 0.1.4
+
+### Patch Changes
+
+- fix logo links readme
+
 ## 0.1.3
 
 ### Patch Changes

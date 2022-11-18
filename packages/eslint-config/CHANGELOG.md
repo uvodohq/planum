@@ -1,4 +1,4 @@
-# eslint-config-planum
+# @uvodohq/eslint-config
 
 ## 0.1.1
 

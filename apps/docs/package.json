@@ -33,7 +33,7 @@
     "chromatic": "^6.7.2",
     "classnames": "^2.3.1",
     "cross-env": "^7.0.3",
-    "eslint-config-planum": "*",
+    "@uvodohq/eslint-config": "*",
     "monday-ui-style": "^0.1.102",
     "planum-tsconfig": "*",
     "sass": "^1.56.0",
