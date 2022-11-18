@@ -1,5 +1,11 @@
 # @uvodohq/planum
 
+## 0.1.2
+
+### Patch Changes
+
+- readme fix in npm
+
 ## 0.1.1
 
 ### Patch Changes

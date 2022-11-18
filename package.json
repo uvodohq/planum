@@ -14,7 +14,7 @@
     "clean": "turbo run clean && rimraf node_modules",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "changeset": "changeset",
-    "version-packages": "changeset version",
+    "bump": "changeset version",
     "release": "turbo run build --filter=docs^... && changeset publish",
     "status": "changeset status --verbose",
     "gen": "plop",
@@ -29,6 +29,5 @@
     "prettier": "^2.7.1",
     "rimraf": "^3.0.2",
     "turbo": "latest"
-  },
-  "version": "0.0.0"
+  }
 }
