@@ -21,6 +21,7 @@
     "update": "yarn upgrade-interactive --latest"
   },
   "devDependencies": {
+    "@changesets/changelog-github": "^0.4.7",
     "@changesets/cli": "^2.22.0",
     "eslint": "^8.27.0",
     "eslint-config-planum": "*",

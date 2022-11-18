@@ -24,11 +24,10 @@
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "files": [
-    "dist/**",
+    "dist",
     "package.json"
   ],
   "publishConfig": {
-    "directory": "dist",
     "access": "public"
   },
   "scripts": {

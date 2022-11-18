@@ -17,11 +17,9 @@
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "files": [
-    "dist/**",
-    "package.json"
+    "dist"
   ],
   "publishConfig": {
-    "directory": "dist",
     "access": "public"
   },
   "scripts": {
