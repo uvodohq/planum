@@ -1,5 +1,11 @@
 # @uvodohq/planum-editor
 
+## 0.1.2
+
+### Patch Changes
+
+- Readme add for planum editor
+
 ## 0.1.1
 
 ### Patch Changes

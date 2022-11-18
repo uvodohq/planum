@@ -1,7 +1,7 @@
 <div align="center" >
   <img src="https://github.com/uvodohq/planum-ui/raw/main/planum-logo.png" alt="Planum" title="Planum" width="220px" />
  
-## Planum Editor is standalone editor for Planum UI base on TipTap
+### Planum Editor is standalone editor for Planum UI base on TipTap
 
 Planum UI is a React component library with 20+ components based on TypeScript and Uvodo Design System.
 

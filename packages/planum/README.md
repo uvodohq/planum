@@ -1,9 +1,11 @@
 <div align="center" >
-  <img src="../../planum-logo.png#gh-light-mode-only" alt="Planum" title="Planum" width="220px" />
- 
-## Planum - A React UI Kit for Uvodo Design System
+   <img src="https://github.com/uvodohq/planum-ui/raw/main/planum-logo.png" alt="Planum" title="Planum" width="220px" />
+
+### Planum - A React UI Kit for Uvodo Design System
 
 Planum UI is a React component library with 20+ components based on TypeScript and Uvodo Design System.
+
+https://uvodo.design/
 
 <br>
 
