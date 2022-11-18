@@ -1,10 +1,10 @@
 {
   "name": "@uvodohq/planum",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Planum - A React UI Kit for Uvodo Design System. Uvodo is self-hosted eCommerce platform for digital agencies",
   "author": "UvodoHQ",
   "license": "MIT",
-  "homepage": "https://uvodo.design",
+  "homepage": "https://github.com/uvodohq/planum-ui#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/uvodohq/planum-ui.git"
@@ -24,8 +24,7 @@
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "files": [
-    "dist",
-    "package.json"
+    "dist"
   ],
   "publishConfig": {
     "access": "public"
