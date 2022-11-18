@@ -1,5 +1,17 @@
 # @uvodohq/planum
 
+## 0.1.3
+
+### Patch Changes
+
+- readme for npm
+
+## 0.1.2
+
+### Patch Changes
+
+- npm readme add to planum
+
 ## 0.1.2
 
 ### Patch Changes
