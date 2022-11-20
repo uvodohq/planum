@@ -1,5 +1,11 @@
 # @uvodohq/planum
 
+## 0.1.5
+
+### Patch Changes
+
+- eslint name renamed to @uvodohq/eslint-config
+
 ## 0.1.4
 
 ### Patch Changes

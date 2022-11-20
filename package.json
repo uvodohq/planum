@@ -11,6 +11,8 @@
     "test": "turbo run test",
     "test:watch": "turbo run test:watch",
     "lint": "turbo run lint",
+    "manypkg:check": "manypkg check",
+    "manypkg:depcheck": "manypkg exec depcheck --json",
     "clean": "turbo run clean && rimraf node_modules",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "make-changeset": "changeset",
@@ -24,7 +26,9 @@
   "devDependencies": {
     "@changesets/changelog-github": "^0.4.7",
     "@changesets/cli": "^2.22.0",
+    "@manypkg/cli": "^0.19.2",
     "@uvodohq/eslint-config": "*",
+    "depcheck": "^1.4.3",
     "eslint": "^8.27.0",
     "plop": "^3.1.0",
     "prettier": "^2.7.1",
