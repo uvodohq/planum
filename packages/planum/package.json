@@ -1,16 +1,16 @@
 {
   "name": "@uvodohq/planum",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "description": "Planum - A React UI Kit for Uvodo Design System. Uvodo is self-hosted eCommerce platform for digital agencies",
   "author": "UvodoHQ",
   "license": "MIT",
   "homepage": "https://uvodo.design",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/uvodohq/planum-ui.git"
+    "url": "git+https://github.com/uvodohq/planum.git"
   },
   "bugs": {
-    "url": "https://github.com/uvodohq/planum-ui/issues"
+    "url": "https://github.com/uvodohq/planum/issues"
   },
   "keywords": [
     "ecommerce",
@@ -71,10 +71,10 @@
     "@testing-library/user-event": "^14.4.2",
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.4",
+    "@uvodohq/eslint-config": "*",
     "@vitejs/plugin-react": "^2.2.0",
     "@vitest/ui": "^0.25.1",
     "eslint": "^8.15.0",
-    "@uvodohq/eslint-config": "*",
     "framer-motion": "^6.5.1",
     "jsdom": "^20.0.2",
     "planum-tsconfig": "*",

@@ -1,5 +1,5 @@
 <div align="center" >
-  <img src="https://github.com/uvodohq/planum-ui/raw/main/planum-logo.png" alt="Planum" title="Planum" width="220px" />
+  <img src="https://github.com/uvodohq/planum/raw/main/planum-logo.png" alt="Planum" title="Planum" width="220px" />
  
 ### Planum Editor is standalone editor for Planum UI base on TipTap
 

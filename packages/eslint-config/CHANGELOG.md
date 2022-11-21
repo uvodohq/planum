@@ -1,5 +1,11 @@
 # @uvodohq/eslint-config
 
+## 0.2.0
+
+### Minor Changes
+
+- git repo fix
+
 ## 0.1.2
 
 ### Patch Changes
