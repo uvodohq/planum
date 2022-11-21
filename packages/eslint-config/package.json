@@ -1,16 +1,16 @@
 {
-  "name": "eslint-config-planum",
-  "version": "0.1.0",
+  "name": "@uvodohq/eslint-config",
+  "version": "0.2.0",
   "description": "Eslint config for Planum",
   "author": "UvodoHQ",
   "license": "MIT",
   "homepage": "https://uvodo.design",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/uvodohq/planum-ui.git"
+    "url": "git+https://github.com/uvodohq/planum.git"
   },
   "bugs": {
-    "url": "https://github.com/uvodohq/planum-ui/issues"
+    "url": "https://github.com/uvodohq/planum/issues"
   },
   "main": "index.js",
   "dependencies": {

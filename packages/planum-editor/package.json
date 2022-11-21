@@ -1,27 +1,25 @@
 {
   "name": "@uvodohq/planum-editor",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Planum Editor - text editor for Planum",
   "author": "UvodoHQ",
   "license": "MIT",
   "homepage": "https://uvodo.design",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/uvodohq/planum-ui.git"
+    "url": "git+https://github.com/uvodohq/planum.git"
   },
   "bugs": {
-    "url": "https://github.com/uvodohq/planum-ui/issues"
+    "url": "https://github.com/uvodohq/planum/issues"
   },
   "sideEffects": false,
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "files": [
-    "dist/**",
-    "package.json"
+    "dist"
   ],
   "publishConfig": {
-    "directory": "dist",
     "access": "public"
   },
   "scripts": {
@@ -42,9 +40,9 @@
   "devDependencies": {
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.4",
+    "@uvodohq/eslint-config": "*",
     "@uvodohq/planum": "*",
     "eslint": "^8.15.0",
-    "eslint-config-planum": "*",
     "planum-tsconfig": "*",
     "react": "^18.1.0",
     "tsup": "^5.10.1",

@@ -1,30 +1,24 @@
-<center>
-  <a href="https://uvodo.design" >
-    <img width="300" src="https://raw.githubusercontent.com/uvodohq/planum-ui/main/.storybook/logo.svg" style='background:white'>
-  </a>
+<div align="center" >
+  <img src="planum-logo.png#gh-light-mode-only" alt="Planum" title="Planum" width="220px" />
+  <img src="planum-logo-for-dark.png#gh-dark-mode-only" alt="Planum" title="Planum" width="220px" />
+
+## Planum - A React UI Kit for Uvodo Design System
+
+Planum UI is a React component library with 20+ components based on TypeScript and Uvodo Design System.
+
+<br>
 
 <img src="https://img.shields.io/npm/v/@uvodohq/planum?color=blue">
 <img src="https://img.shields.io/npm/l/@uvodohq/planum">
 <img src="https://img.shields.io/npm/dw/@uvodohq/planum">
 
-</center>
-<h1 align="center">
-  Planum - A React UI Kit for Uvodo Design System
+<br>
+<a href="https://twitter.com/uvodohq">
+<img src="https://img.shields.io/twitter/follow/uvodohq?label=uvodohq&style=social" alt="Twitter Follow">
+</a>
 
-</h1>
-
-<center>
-Planum UI is a React component library with 20+ components based on TypeScript and Uvodo Design System.
-  <br>
-
-<a href="https://planum-storybook.netlify.app"><strong>Explore Planum components</strong></a>
-
-  <br>
-
-  <a href="https://twitter.com/uvodohq">
-   <img src="https://img.shields.io/twitter/follow/uvodohq?label=uvodohq&style=social" alt="Twitter Follow">
-  </a>
-</center>
+  <hr />
+</div>
 
 # Powered by
 
@@ -92,7 +86,7 @@ Using Turborepo simplifes managing your design system monorepo, as you can have 
 - `packages/@uvodohq/planum`: Core React components
 - `packages/@uvodohq/planum-editor`: Text editor based on TipTap
 - `packages/planum-tsconfig`: Shared `tsconfig.json`s used throughout in apps and packages
-- `packages/eslint-config-planum`: Shared ESLint preset
+- `packages/@uvodohq/eslint-config`: Shared ESLint preset
 
 Each package and app is 100% [TypeScript](https://www.typescriptlang.org/). Yarn Workspaces enables us to "hoist" dependencies that are shared between packages to the root `package.json`. This means smaller `node_modules` folders and a better local dev experience. To install a dependency for the entire monorepo, use the `-W` workspaces flag with `yarn add`.
 

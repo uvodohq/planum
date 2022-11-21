@@ -18,6 +18,7 @@ module.exports = {
   framework: '@storybook/react',
   core: {
     builder: '@storybook/builder-vite',
+    disableTelemetry: true,
   },
   typescript: {
     reactDocgen: 'react-docgen-typescript',
