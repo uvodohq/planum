@@ -1,13 +1,13 @@
 import { forwardRef } from 'react'
 
-import { IconBase, renderPathForWeight } from '../iconbase'
+import { IconBase, renderPathForWeight } from '@uvodohq/planum'
 
 import type {
   IconProps,
   IconWeight,
   PaintFunction,
   RenderFunction,
-} from '../iconbase'
+} from '@uvodohq/planum'
 
 const pathsByWeight = new Map<IconWeight, PaintFunction>()
 

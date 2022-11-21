@@ -5,8 +5,8 @@ import type {
   IconWeight,
   PaintFunction,
   RenderFunction,
-} from '../iconbase'
-import { IconBase, renderPathForWeight } from '../iconbase'
+} from '@uvodohq/planum'
+import { IconBase, renderPathForWeight } from '@uvodohq/planum'
 
 const pathsByWeight = new Map<IconWeight, PaintFunction>()
 

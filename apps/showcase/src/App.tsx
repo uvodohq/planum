@@ -21,6 +21,7 @@ import {
   TagsBadgePage,
   TextareaPage,
   TypographyPage,
+  IconsPage,
 } from './pages'
 
 export default function DemoApp() {
@@ -31,6 +32,7 @@ export default function DemoApp() {
       }}>
       <HomePage />
       <ColorPage />
+      <IconsPage />
       <TypographyPage />
       <EffectPage />
       <ButtonDarkPage />

@@ -1,9 +1,8 @@
 // https://github.com/phosphor-icons/phosphor-react/tree/master/src
 
-import type { CSS } from '@uvodohq/planum'
-import { styled } from '@uvodohq/planum'
 import type { ComponentPropsWithoutRef } from 'react'
 import React, { forwardRef } from 'react'
+import { CSS, styled } from '../theme'
 
 export type IconWeight = 'regular' | 'duotone'
 

@@ -12,6 +12,10 @@ const Cards = () => {
       path: '#colors',
     },
     {
+      label: 'Icons',
+      path: '#icons',
+    },
+    {
       label: 'Typography',
       path: '#text',
     },
