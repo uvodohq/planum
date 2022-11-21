@@ -1,27 +1,34 @@
 {
   "name": "@uvodohq/planum-icons",
-  "version": "0.1.0",
-  "description": "Planum Icons -  icons for Admin",
+  "version": "0.0.0",
+  "description": "Planum Icons -  based on phospor icons as part of uvodo design",
   "author": "UvodoHQ",
   "license": "MIT",
   "homepage": "https://uvodo.design",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/uvodohq/planum-ui.git"
+    "url": "git+https://github.com/uvodohq/planum.git"
   },
   "bugs": {
-    "url": "https://github.com/uvodohq/planum-ui/issues"
+    "url": "https://github.com/uvodohq/planum/issues"
   },
+  "keywords": [
+    "ecommerce",
+    "uvodo",
+    "planum",
+    "react",
+    "ui",
+    "icons",
+    "design"
+  ],
   "sideEffects": false,
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "files": [
-    "dist/**",
-    "package.json"
+    "dist"
   ],
   "publishConfig": {
-    "directory": "dist",
     "access": "public"
   },
   "scripts": {

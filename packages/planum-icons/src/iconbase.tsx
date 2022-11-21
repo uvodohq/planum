@@ -5,8 +5,6 @@ import { styled } from '@uvodohq/planum'
 import type { ComponentPropsWithoutRef } from 'react'
 import React, { forwardRef } from 'react'
 
-// import { error } from '@/libs/logger'
-
 export type IconWeight = 'regular' | 'duotone'
 
 export type PaintFunction = (color: string) => React.ReactNode | null
@@ -32,7 +30,7 @@ export const renderPathForWeight = (
   const path = pathsByWeight.get(weight)
   if (path) return path(color)
 
-  // error('Unsupported icon weight. Choose from "regular", "duotone".')
+  console.log('Unsupported icon weight. Choose from "regular", "duotone".')
 
   return null
 }
