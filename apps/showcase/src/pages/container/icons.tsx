@@ -1,10 +1,10 @@
 import { icons } from '@uvodohq/planum-icons'
-import { IconsGrid, IconsWrapper } from '../../components/icons'
+import { IconGrid, IconWrapper } from '../../components/icon-wrapper'
 
 export default function IconsContainer() {
-  const content = icons.map((item) => (
-    <IconsWrapper name={item.name} Icon={item.icon} />
+  const content = icons.map(({ name, Icon }) => (
+    <IconWrapper name={name} Icon={Icon} />
   ))
 
-  return <IconsGrid>{content}</IconsGrid>
+  return <IconGrid>{content}</IconGrid>
 }

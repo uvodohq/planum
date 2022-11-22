@@ -1,5 +1,5 @@
 import { Button } from '../button'
-import CloseIcon from './close-icon'
+import { CloseIcon } from '@uvodohq/planum-icons'
 import type { StyledNotificationVariants } from './notification.styles'
 import {
   StyledBody,
@@ -23,7 +23,7 @@ export const Notification = (props: NotificationProps) => {
           variant="flatWhite"
           rounded
           size="min"
-          icon={<CloseIcon />}
+          icon={<CloseIcon size={12} />}
           onClick={onCloseClick}
         />
       </StyledBody>

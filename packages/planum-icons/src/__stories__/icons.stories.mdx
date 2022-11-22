@@ -1,0 +1,58 @@
+import { ArgsTable, Story, Canvas, Meta } from '@storybook/addon-docs'
+import { TrashIcon, CheckCircleIcon } from '@uvodohq/planum-icons'
+import { IconBase, Flex } from '@uvodohq/planum'
+import { SearchIcons } from '../components'
+
+<Meta title="Components/Icons" component={IconBase} />
+
+<!--- Component template -->
+
+export const iconsTemplate = (args) => <IconBase {...args} />
+
+<!--- Component documentation -->
+
+# Icons
+
+- [Overview](#overview)
+- [Props](#props)
+- [Usage](#usage)
+
+## Overview
+
+Planum provides a set of commonly used interface <b>icons</b> you can use in your project. The icons are exported as React components and can be used in your project as such or as a part of a custom component.
+
+## Variants
+
+### Trash icon
+
+<Canvas>
+  <Story name="TrashIcon">
+    <Flex css={{ alignItems: 'center' }}>
+      <TrashIcon size={48} color="red" />
+      <TrashIcon size={32} color="red" />
+      <TrashIcon size={24} color="red" />
+    </Flex>
+  </Story>
+</Canvas>
+
+### Check circle icon
+
+<Canvas>
+  <Story name="CheckCircleIcon">
+    <Flex css={{ alignItems: 'center' }}>
+      <CheckCircleIcon size={48} color="#419b45" />
+      <CheckCircleIcon size={32} color="#419b45" />
+      <CheckCircleIcon size={24} color="#419b45" />
+    </Flex>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Variants">
+    <SearchIcons />
+  </Story>
+</Canvas>
+
+## Props
+
+<ArgsTable of={IconBase} />

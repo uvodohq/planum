@@ -1,7 +1,7 @@
 import { styled } from '@stitches/react'
 
 import { subheaderCss } from '../../text'
-import { UserIcon } from '../icons'
+import { UserIcon } from '@uvodohq/planum-icons'
 import type { SelectProps } from '../select'
 import { Select } from '../select'
 

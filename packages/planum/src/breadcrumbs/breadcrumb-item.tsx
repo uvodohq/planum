@@ -3,7 +3,7 @@ import type { BreadcrumbItemProps as ItemAriaProps } from '@react-types/breadcru
 import * as React from 'react'
 
 import { ArrowContainer, ItemText, ListItem } from './breadcrumbs.styles'
-import { CaretRightIcon } from './caret-right-icon'
+import { CaretRightIcon } from '@uvodohq/planum-icons'
 
 export interface BreadcrumbItemProps<C extends React.ElementType>
   extends ItemAriaProps {

@@ -6,8 +6,8 @@ export const LinkedinColorlessIcon = (
   <svg
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
-    width={props.size ?? 24}
-    height={props.size ?? 24}
+    width={props.size ?? 32}
+    height={props.size ?? 32}
     viewBox="0 0 48 48"
     {...props}>
     <path

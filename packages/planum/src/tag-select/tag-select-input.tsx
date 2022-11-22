@@ -3,7 +3,7 @@ import * as React from 'react'
 import { Button } from '../button'
 import { useMergeRefs } from '../hooks'
 import { Input } from '../input'
-import { PlusIcon } from './plus-icon'
+import { PlusIcon } from '@uvodohq/planum-icons'
 
 interface TagSelectInputProps {
   onSubmit: (value: string) => void

@@ -10,7 +10,7 @@ import {
   TagGroupExample,
 } from '../../components/tag/tags-demos'
 
-import { UserIcon } from '../../assets/icons'
+import { UserIcon } from '@uvodohq/planum-icons'
 
 export default function TagsBadgeContainer() {
   return (

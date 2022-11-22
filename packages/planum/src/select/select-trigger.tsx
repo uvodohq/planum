@@ -4,9 +4,24 @@ import { Loader } from '../loader'
 import { subheaderCss } from '../text'
 import type { VariantProps } from '../theme'
 import { styled } from '../theme'
-import { IconContainer, SelectDownIcon } from './icons'
+import { CaretDownIcon } from '@uvodohq/planum-icons'
 import type { UseSelectReturn } from './use-select'
 import type { SelectState } from './use-select-state'
+
+const IconContainer = styled('span', {
+  dflex: 'center',
+  display: 'inline-flex',
+  color: '$surface600',
+  transition: 'transform 0.15s cubic-bezier(0.4, 0, 0.2, 1)',
+
+  variants: {
+    isOpen: {
+      true: {
+        transform: 'rotate(180deg)',
+      },
+    },
+  },
+})
 
 const StyledButton = styled('button', subheaderCss, {
   fw: '$regular',
@@ -153,7 +168,7 @@ export function SelectTrigger(props: SelectTriggerProps) {
           <Loader size="small" />
         </IconContainer>
       ) : (
-        <SelectDownIcon isOpen={state.isOpen} />
+        <CaretDownIcon isOpen={state.isOpen} />
       )}
     </StyledButton>
   )

@@ -5,7 +5,7 @@ import { forwardRef } from 'react'
 import { Button } from '../../button'
 import { Box, Flex } from '../../layout'
 import { Menu, MenuItem } from '..'
-import { ListIcon } from '../icons'
+import { ListIcon } from '@uvodohq/planum-icons'
 
 const DotsThreeIcon = (props: SVGProps<SVGSVGElement> & { size?: number }) => (
   <svg

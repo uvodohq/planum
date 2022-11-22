@@ -1,7 +1,7 @@
 import { Box, Button, Flex, H2, Text, styled } from '@uvodohq/planum'
 import { useState } from 'react'
 
-import { PlusIcon } from '../../assets/icons'
+import { PlusIcon } from '@uvodohq/planum-icons'
 
 const Title = styled(H2, {
   color: '$white',

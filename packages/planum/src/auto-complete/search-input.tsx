@@ -3,7 +3,7 @@ import { useContext } from 'react'
 
 import type { InputProps } from '../input'
 import { Input } from '../input'
-import { SearchIcon } from '../input-search/search-icon'
+import { MagnifyingGlassIcon } from '@uvodohq/planum-icons'
 import { AutoCompleteContext } from './context'
 
 export interface SearchInputProps extends InputProps {}
@@ -52,7 +52,7 @@ export default function SearchInput(props: SearchInputProps) {
   return (
     <Input
       aria-label="search"
-      leftIcon={<SearchIcon />}
+      leftIcon={<MagnifyingGlassIcon />}
       inputContainerRef={autoComplete.reference}
       onChange={onChangeInputValue}
       {...mergeProps(props, referenceProps)}

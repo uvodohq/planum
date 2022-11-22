@@ -4,7 +4,7 @@ import type { Ref } from 'react'
 import { forwardRef, useRef } from 'react'
 
 import { __DEV__ } from '../utils/assertion'
-import { RemoveIcon } from './remove-icon'
+import { CloseIcon } from '@uvodohq/planum-icons'
 import {
   IconContainer,
   TagContainer,
@@ -47,7 +47,7 @@ export const Tag = forwardRef((props: TagProps, ref: Ref<HTMLDivElement>) => {
       {...buttonProps}
       ref={removeButtonRef}>
       <IconContainer isPressed={isPressed} isHovered={isHovered}>
-        <RemoveIcon />
+        <CloseIcon size={16} />
       </IconContainer>
     </TagIconButton>
   )

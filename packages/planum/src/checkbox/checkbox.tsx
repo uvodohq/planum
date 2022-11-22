@@ -10,7 +10,8 @@ import * as React from 'react'
 import { Paragraph } from '../text'
 import { StyledCheckbox, StyledIndicator, StyledLabel } from './checkbox.styles'
 import type { CheckboxProps } from './checkbox.type'
-import { CheckIcon, MinusIcon } from './icons'
+import { CheckIcon } from './icons'
+import { MinusIcon } from '@uvodohq/planum-icons'
 
 export function Checkbox(props: CheckboxProps) {
   const { isDisabled, isIndeterminate, label, children } = props
