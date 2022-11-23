@@ -48,50 +48,36 @@ const ButtonGroupTr = ({ title, ...rest }: any) => {
 
       <td>
         <FlexCell>
-          <LoadingButton {...rest} leftIcon={<PlusIcon size={24} />}>
+          <LoadingButton {...rest} leftIcon={<PlusIcon />}>
             Button
           </LoadingButton>
-          <LoadingButton {...rest} leftIcon={<PlusIcon size={24} />} size="sm">
+          <LoadingButton {...rest} leftIcon={<PlusIcon />} size="sm">
             Button
           </LoadingButton>
         </FlexCell>
       </td>
       <td>
         <FlexCell>
-          <LoadingButton {...rest} icon={<PlusIcon size={24} />} />
-          <LoadingButton {...rest} icon={<PlusIcon size={24} />} size="sm" />
-          <LoadingButton {...rest} icon={<PlusIcon size={12} />} size="xs" />
-        </FlexCell>
-      </td>
-
-      <td>
-        <FlexCell>
-          <LoadingButton {...rest} icon={<PlusIcon size={24} />} rounded />
-          <LoadingButton
-            {...rest}
-            icon={<PlusIcon size={24} />}
-            rounded
-            size="sm"
-          />
-          <LoadingButton
-            {...rest}
-            icon={<PlusIcon size={12} />}
-            rounded
-            size="xs"
-          />
+          <LoadingButton {...rest} icon={<PlusIcon />} />
+          <LoadingButton {...rest} icon={<PlusIcon />} size="sm" />
+          <LoadingButton {...rest} icon={<PlusIcon />} size="xs" />
         </FlexCell>
       </td>
 
       <td>
         <FlexCell>
-          <LoadingButton {...rest} leftIcon={<PlusIcon size={24} />} rounded>
+          <LoadingButton {...rest} icon={<PlusIcon />} rounded />
+          <LoadingButton {...rest} icon={<PlusIcon />} rounded size="sm" />
+          <LoadingButton {...rest} icon={<PlusIcon />} rounded size="xs" />
+        </FlexCell>
+      </td>
+
+      <td>
+        <FlexCell>
+          <LoadingButton {...rest} leftIcon={<PlusIcon />} rounded>
             Button
           </LoadingButton>
-          <LoadingButton
-            {...rest}
-            leftIcon={<PlusIcon size={24} />}
-            rounded
-            size="sm">
+          <LoadingButton {...rest} leftIcon={<PlusIcon />} rounded size="sm">
             Button
           </LoadingButton>
         </FlexCell>
@@ -139,27 +125,19 @@ const VariantOfButton = ({ title, variant, size }: any) => {
           gap: 16,
           flexDirection: 'column',
         }}>
-        <LoadingButton
-          leftIcon={<PlusIcon size={24} />}
-          full
-          variant={variant}
-          size="lg">
+        <LoadingButton leftIcon={<PlusIcon />} full variant={variant} size="lg">
           Full width button
         </LoadingButton>
 
         <LoadingButton
-          leftIcon={<PlusIcon size={24} />}
+          leftIcon={<PlusIcon />}
           full
           variant={variant}
           size={size}>
           Full width button
         </LoadingButton>
 
-        <LoadingButton
-          leftIcon={<PlusIcon size={24} />}
-          full
-          variant={variant}
-          size="sm">
+        <LoadingButton leftIcon={<PlusIcon />} full variant={variant} size="sm">
           Full width button
         </LoadingButton>
       </FlexCell>

@@ -45,7 +45,7 @@ npm install @uvodohq/planum-icons
 yarn add @uvodohq/planum-icons
 ```
 
-```js
+```jsx
 import { UserIcon } from '@uvodohq/planum-icons'
 
 <UserIcon>
