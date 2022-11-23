@@ -1,16 +1,9 @@
 import { forwardRef } from 'react'
 
-import type {
-  IconProps,
-  IconWeight,
-  PaintFunction,
-  RenderFunction,
-} from '@uvodohq/planum'
-import { IconBase, renderPathForWeight } from '@uvodohq/planum'
+import type { IconProps, IconWeightComponent } from '../icon'
+import { Icon } from '../icon'
 
-const pathsByWeight = new Map<IconWeight, PaintFunction>()
-
-pathsByWeight.set('regular', (color: string) => (
+const Regular: IconWeightComponent = ({ color }) => (
   <>
     <line
       x1="104"
@@ -59,20 +52,17 @@ pathsByWeight.set('regular', (color: string) => (
       strokeWidth="16"
     />
   </>
-))
-
-const renderPath: RenderFunction = (weight: IconWeight, color: string) =>
-  renderPathForWeight(weight, color, pathsByWeight)
-
-export const ListNumbersIcon = forwardRef<SVGSVGElement, IconProps>(
-  (props, ref) => (
-    <IconBase
-      ref={ref}
-      alt="List Numbers Icon"
-      {...props}
-      renderPath={renderPath}
-    />
-  ),
 )
 
+const weights = {
+  // duotone: Duotone,
+  regular: Regular,
+}
+
+const ListNumbersIcon = forwardRef<SVGSVGElement, IconProps>((props, ref) => (
+  <Icon ref={ref} alt="List Numbers Icon" {...props} weights={weights} />
+))
+
 ListNumbersIcon.displayName = 'ListNumbersIcon'
+
+export default ListNumbersIcon

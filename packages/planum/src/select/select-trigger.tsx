@@ -4,7 +4,7 @@ import { Loader } from '../loader'
 import { subheaderCss } from '../text'
 import type { VariantProps } from '../theme'
 import { styled } from '../theme'
-import { CaretDownIcon } from '@uvodohq/planum-icons'
+import { SelectDownIcon } from './icons'
 import type { UseSelectReturn } from './use-select'
 import type { SelectState } from './use-select-state'
 
@@ -168,7 +168,7 @@ export function SelectTrigger(props: SelectTriggerProps) {
           <Loader size="small" />
         </IconContainer>
       ) : (
-        <CaretDownIcon isOpen={state.isOpen} />
+        <SelectDownIcon isOpen={state.isOpen} />
       )}
     </StyledButton>
   )

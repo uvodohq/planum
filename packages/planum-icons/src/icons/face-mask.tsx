@@ -1,16 +1,9 @@
 import { forwardRef } from 'react'
 
-import type {
-  IconProps,
-  IconWeight,
-  PaintFunction,
-  RenderFunction,
-} from '@uvodohq/planum'
-import { IconBase, renderPathForWeight } from '@uvodohq/planum'
+import type { IconProps, IconWeightComponent } from '../icon'
+import { Icon } from '../icon'
 
-const pathsByWeight = new Map<IconWeight, PaintFunction>()
-
-pathsByWeight.set('regular', (color: string) => (
+const Regular: IconWeightComponent = ({ color }) => (
   <>
     <path
       d="M216,136c0,51.5-74.4,69.2-86.4,71.7a8.6,8.6,0,0,1-3.2,0C114.4,205.2,40,187.5,40,136V77.6a7.9,7.9,0,0,1,5.3-7.5l80-29.1a8.3,8.3,0,0,1,5.4,0l80,29.1a7.9,7.9,0,0,1,5.3,7.5Z"
@@ -59,20 +52,17 @@ pathsByWeight.set('regular', (color: string) => (
       strokeWidth="16"
     />
   </>
-))
-
-const renderPath: RenderFunction = (weight: IconWeight, color: string) =>
-  renderPathForWeight(weight, color, pathsByWeight)
-
-export const FaceMaskIcon = forwardRef<SVGSVGElement, IconProps>(
-  (props, ref) => (
-    <IconBase
-      ref={ref}
-      alt="Face Mask icon"
-      {...props}
-      renderPath={renderPath}
-    />
-  ),
 )
 
+const weights = {
+  // duotone: Duotone,
+  regular: Regular,
+}
+
+const FaceMaskIcon = forwardRef<SVGSVGElement, IconProps>((props, ref) => (
+  <Icon ref={ref} alt="Face Mask icon" {...props} weights={weights} />
+))
+
 FaceMaskIcon.displayName = 'FaceMaskIcon'
+
+export default FaceMaskIcon

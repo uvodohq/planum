@@ -32,11 +32,11 @@ export default function DemoApp() {
       }}>
       <HomePage />
       <ColorPage />
-      <IconsPage />
       <TypographyPage />
       <EffectPage />
       <ButtonDarkPage />
       <ButtonWhitePage />
+      <IconsPage />
       <InputPage />
       <TextareaPage />
       <FormElementsPage />

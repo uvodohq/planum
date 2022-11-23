@@ -1,16 +1,9 @@
 import { forwardRef } from 'react'
 
-import type {
-  IconProps,
-  IconWeight,
-  PaintFunction,
-  RenderFunction,
-} from '@uvodohq/planum'
-import { IconBase, renderPathForWeight } from '@uvodohq/planum'
+import type { IconProps, IconWeightComponent } from '../icon'
+import { Icon } from '../icon'
 
-const pathsByWeight = new Map<IconWeight, PaintFunction>()
-
-pathsByWeight.set('regular', (color: string) => (
+const Regular: IconWeightComponent = ({ color }) => (
   <>
     <path
       d="M168,224H56a8,8,0,0,1-8-8V72a8,8,0,0,1,8-8h80l40,40V216A8,8,0,0,1,168,224Z"
@@ -51,13 +44,17 @@ pathsByWeight.set('regular', (color: string) => (
       strokeWidth="16"
     />
   </>
-))
+)
 
-const renderPath: RenderFunction = (weight: IconWeight, color: string) =>
-  renderPathForWeight(weight, color, pathsByWeight)
+const weights = {
+  // duotone: Duotone,
+  regular: Regular,
+}
 
-export const FilesIcon = forwardRef<SVGSVGElement, IconProps>((props, ref) => (
-  <IconBase ref={ref} alt="Files icon" {...props} renderPath={renderPath} />
+const FilesIcon = forwardRef<SVGSVGElement, IconProps>((props, ref) => (
+  <Icon ref={ref} alt="Files icon" {...props} weights={weights} />
 ))
 
 FilesIcon.displayName = 'FilesIcon'
+
+export default FilesIcon

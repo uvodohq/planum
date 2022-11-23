@@ -1,16 +1,9 @@
 import { forwardRef } from 'react'
 
-import type {
-  IconProps,
-  IconWeight,
-  PaintFunction,
-  RenderFunction,
-} from '@uvodohq/planum'
-import { IconBase, renderPathForWeight } from '@uvodohq/planum'
+import type { IconProps, IconWeightComponent } from '../icon'
+import { Icon } from '../icon'
 
-const pathsByWeight = new Map<IconWeight, PaintFunction>()
-
-pathsByWeight.set('regular', (color: string) => (
+const Regular: IconWeightComponent = ({ color }) => (
   <>
     <circle
       cx="128"
@@ -54,13 +47,17 @@ pathsByWeight.set('regular', (color: string) => (
       strokeWidth="16"
     />
   </>
-))
+)
 
-const renderPath: RenderFunction = (weight: IconWeight, color: string) =>
-  renderPathForWeight(weight, color, pathsByWeight)
+const weights = {
+  // duotone: Duotone,
+  regular: Regular,
+}
 
-export const GlobeIcon = forwardRef<SVGSVGElement, IconProps>((props, ref) => (
-  <IconBase ref={ref} alt="Globe icon" {...props} renderPath={renderPath} />
+const GlobeIcon = forwardRef<SVGSVGElement, IconProps>((props, ref) => (
+  <Icon ref={ref} alt="Globe icon" {...props} weights={weights} />
 ))
 
 GlobeIcon.displayName = 'GlobeIcon'
+
+export default GlobeIcon

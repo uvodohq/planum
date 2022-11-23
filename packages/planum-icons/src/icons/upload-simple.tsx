@@ -1,16 +1,9 @@
 import { forwardRef } from 'react'
 
-import type {
-  IconProps,
-  IconWeight,
-  PaintFunction,
-  RenderFunction,
-} from '@uvodohq/planum'
-import { IconBase, renderPathForWeight } from '@uvodohq/planum'
+import type { IconProps, IconWeightComponent } from '../icon'
+import { Icon } from '../icon'
 
-const pathsByWeight = new Map<IconWeight, PaintFunction>()
-
-pathsByWeight.set('regular', (color: string) => (
+const Regular: IconWeightComponent = ({ color }) => (
   <>
     <polyline
       points="86 82 128 40 170 82"
@@ -40,20 +33,17 @@ pathsByWeight.set('regular', (color: string) => (
       strokeWidth="16"
     />
   </>
-))
-
-const renderPath: RenderFunction = (weight: IconWeight, color: string) =>
-  renderPathForWeight(weight, color, pathsByWeight)
-
-export const UploadSimpleIcon = forwardRef<SVGSVGElement, IconProps>(
-  (props, ref) => (
-    <IconBase
-      ref={ref}
-      alt="Upload Simple Icon"
-      {...props}
-      renderPath={renderPath}
-    />
-  ),
 )
 
+const weights = {
+  // duotone: Duotone,
+  regular: Regular,
+}
+
+const UploadSimpleIcon = forwardRef<SVGSVGElement, IconProps>((props, ref) => (
+  <Icon ref={ref} alt="Upload Simple Icon" {...props} weights={weights} />
+))
+
 UploadSimpleIcon.displayName = 'UploadSimpleIcon'
+
+export default UploadSimpleIcon

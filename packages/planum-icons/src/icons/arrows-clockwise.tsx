@@ -1,16 +1,9 @@
 import { forwardRef } from 'react'
 
-import type {
-  IconProps,
-  IconWeight,
-  PaintFunction,
-  RenderFunction,
-} from '@uvodohq/planum'
-import { IconBase, renderPathForWeight } from '@uvodohq/planum'
+import type { IconProps, IconWeightComponent } from '../icon'
+import { Icon } from '../icon'
 
-const pathsByWeight = new Map<IconWeight, PaintFunction>()
-
-pathsByWeight.set('regular', (color: string) => (
+const Regular: IconWeightComponent = ({ color }) => (
   <>
     <polyline
       points="176.2 99.7 224.2 99.7 224.2 51.7"
@@ -45,20 +38,19 @@ pathsByWeight.set('regular', (color: string) => (
       strokeWidth="16"
     />
   </>
-))
+)
 
-const renderPath: RenderFunction = (weight: IconWeight, color: string) =>
-  renderPathForWeight(weight, color, pathsByWeight)
+const weights = {
+  // duotone: Duotone,
+  regular: Regular,
+}
 
-export const ArrowsClockwiseIcon = forwardRef<SVGSVGElement, IconProps>(
+const ArrowsClockwiseIcon = forwardRef<SVGSVGElement, IconProps>(
   (props, ref) => (
-    <IconBase
-      ref={ref}
-      alt="Arrows Clockwise Icon"
-      {...props}
-      renderPath={renderPath}
-    />
+    <Icon ref={ref} alt="Arrows Clockwise Icon" {...props} weights={weights} />
   ),
 )
 
 ArrowsClockwiseIcon.displayName = 'ArrowsClockwiseIcon'
+
+export default ArrowsClockwiseIcon

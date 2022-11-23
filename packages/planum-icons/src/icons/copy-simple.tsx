@@ -1,16 +1,9 @@
 import { forwardRef } from 'react'
 
-import type {
-  IconProps,
-  IconWeight,
-  PaintFunction,
-  RenderFunction,
-} from '@uvodohq/planum'
-import { IconBase, renderPathForWeight } from '@uvodohq/planum'
+import type { IconProps, IconWeightComponent } from '../icon'
+import { Icon } from '../icon'
 
-const pathsByWeight = new Map<IconWeight, PaintFunction>()
-
-pathsByWeight.set('regular', (color: string) => (
+const Regular: IconWeightComponent = ({ color }) => (
   <>
     <polyline
       points="216 184 216 40 72 40"
@@ -32,15 +25,17 @@ pathsByWeight.set('regular', (color: string) => (
       strokeWidth="16"
     />
   </>
-))
-
-const renderPath: RenderFunction = (weight: IconWeight, color: string) =>
-  renderPathForWeight(weight, color, pathsByWeight)
-
-export const CopySimpleIcon = forwardRef<SVGSVGElement, IconProps>(
-  (props, ref) => (
-    <IconBase ref={ref} alt="Copy Icon" {...props} renderPath={renderPath} />
-  ),
 )
 
+const weights = {
+  // duotone: Duotone,
+  regular: Regular,
+}
+
+const CopySimpleIcon = forwardRef<SVGSVGElement, IconProps>((props, ref) => (
+  <Icon ref={ref} alt="Copy Icon" {...props} weights={weights} />
+))
+
 CopySimpleIcon.displayName = 'CopySimpleIcon'
+
+export default CopySimpleIcon

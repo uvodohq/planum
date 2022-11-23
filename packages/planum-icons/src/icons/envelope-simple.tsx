@@ -1,16 +1,9 @@
 import { forwardRef } from 'react'
 
-import type {
-  IconProps,
-  IconWeight,
-  PaintFunction,
-  RenderFunction,
-} from '@uvodohq/planum'
-import { IconBase, renderPathForWeight } from '@uvodohq/planum'
+import type { IconProps, IconWeightComponent } from '../icon'
+import { Icon } from '../icon'
 
-const pathsByWeight = new Map<IconWeight, PaintFunction>()
-
-pathsByWeight.set('regular', (color: string) => (
+const Regular: IconWeightComponent = ({ color }) => (
   <>
     <path
       d="M32,56H224a0,0,0,0,1,0,0V192a8,8,0,0,1-8,8H40a8,8,0,0,1-8-8V56A0,0,0,0,1,32,56Z"
@@ -29,20 +22,19 @@ pathsByWeight.set('regular', (color: string) => (
       strokeWidth="16"
     />
   </>
-))
+)
 
-const renderPath: RenderFunction = (weight: IconWeight, color: string) =>
-  renderPathForWeight(weight, color, pathsByWeight)
+const weights = {
+  // duotone: Duotone,
+  regular: Regular,
+}
 
-export const EnvelopeSimpleIcon = forwardRef<SVGSVGElement, IconProps>(
+const EnvelopeSimpleIcon = forwardRef<SVGSVGElement, IconProps>(
   (props, ref) => (
-    <IconBase
-      ref={ref}
-      alt="Envelope Simple Icon"
-      {...props}
-      renderPath={renderPath}
-    />
+    <Icon ref={ref} alt="Envelope Simple Icon" {...props} weights={weights} />
   ),
 )
 
 EnvelopeSimpleIcon.displayName = 'EnvelopeSimpleIcon'
+
+export default EnvelopeSimpleIcon

@@ -169,12 +169,3 @@ export { Skeleton } from './skeleton'
 // tooltip
 export { Tooltip } from './tooltip'
 export type { TooltipProps } from './tooltip'
-
-// icon
-export type {
-  IconProps,
-  IconWeight,
-  PaintFunction,
-  RenderFunction,
-} from './icon'
-export { IconBase, renderPathForWeight } from './icon'

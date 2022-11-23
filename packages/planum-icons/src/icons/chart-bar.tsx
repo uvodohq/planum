@@ -1,16 +1,9 @@
-import React, { forwardRef } from 'react'
+import { forwardRef } from 'react'
 
-import type {
-  IconProps,
-  IconWeight,
-  PaintFunction,
-  RenderFunction,
-} from '@uvodohq/planum'
-import { IconBase, renderPathForWeight } from '@uvodohq/planum'
+import type { IconProps, IconWeightComponent } from '../icon'
+import { Icon } from '../icon'
 
-const pathsByWeight = new Map<IconWeight, PaintFunction>()
-
-pathsByWeight.set('duotone', (color: string) => (
+const Duotone: IconWeightComponent = ({ color }) => (
   <>
     <rect x="156" y="40" width="56" height="168" opacity="0.2" />
     <line
@@ -52,9 +45,9 @@ pathsByWeight.set('duotone', (color: string) => (
       strokeWidth="16"
     />
   </>
-))
+)
 
-pathsByWeight.set('regular', (color: string) => (
+const Regular: IconWeightComponent = ({ color }) => (
   <>
     <polyline
       points="44 208 44 136 100 136"
@@ -95,20 +88,17 @@ pathsByWeight.set('regular', (color: string) => (
       strokeWidth="16"
     />
   </>
-))
-
-const renderPath: RenderFunction = (weight: IconWeight, color: string) =>
-  renderPathForWeight(weight, color, pathsByWeight)
-
-export const ChartBarIcon = forwardRef<SVGSVGElement, IconProps>(
-  (props, ref) => (
-    <IconBase
-      ref={ref}
-      alt="Chart Bar Icon"
-      {...props}
-      renderPath={renderPath}
-    />
-  ),
 )
 
+const weights = {
+  duotone: Duotone,
+  regular: Regular,
+}
+
+const ChartBarIcon = forwardRef<SVGSVGElement, IconProps>((props, ref) => (
+  <Icon ref={ref} alt="Chart Bar Icon" {...props} weights={weights} />
+))
+
 ChartBarIcon.displayName = 'ChartBarIcon'
+
+export default ChartBarIcon

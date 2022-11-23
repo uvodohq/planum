@@ -1,16 +1,9 @@
 import { forwardRef } from 'react'
 
-import type {
-  IconProps,
-  IconWeight,
-  PaintFunction,
-  RenderFunction,
-} from '@uvodohq/planum'
-import { IconBase, renderPathForWeight } from '@uvodohq/planum'
+import type { IconProps, IconWeightComponent } from '../icon'
+import { Icon } from '../icon'
 
-const pathsByWeight = new Map<IconWeight, PaintFunction>()
-
-pathsByWeight.set('duotone', (color: string) => (
+const Duotone: IconWeightComponent = ({ color }) => (
   <>
     <circle cx="76" cy="180" r="36" opacity="0.2" />
     <circle cx="76" cy="76" r="36" opacity="0.2" />
@@ -57,9 +50,9 @@ pathsByWeight.set('duotone', (color: string) => (
       strokeWidth="16"
     />
   </>
-))
+)
 
-pathsByWeight.set('regular', (color: string) => (
+const Regular: IconWeightComponent = ({ color }) => (
   <>
     <circle
       cx="76"
@@ -102,20 +95,17 @@ pathsByWeight.set('regular', (color: string) => (
       strokeWidth="16"
     />
   </>
-))
-
-const renderPath: RenderFunction = (weight: IconWeight, color: string) =>
-  renderPathForWeight(weight, color, pathsByWeight)
-
-export const CirclesFourIcon = forwardRef<SVGSVGElement, IconProps>(
-  (props, ref) => (
-    <IconBase
-      ref={ref}
-      alt="Four Circles Icon"
-      {...props}
-      renderPath={renderPath}
-    />
-  ),
 )
 
+const weights = {
+  duotone: Duotone,
+  regular: Regular,
+}
+
+const CirclesFourIcon = forwardRef<SVGSVGElement, IconProps>((props, ref) => (
+  <Icon ref={ref} alt="Four Circles Icon" {...props} weights={weights} />
+))
+
 CirclesFourIcon.displayName = 'CirclesFourIcon'
+
+export default CirclesFourIcon

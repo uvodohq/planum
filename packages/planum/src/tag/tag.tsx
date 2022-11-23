@@ -1,10 +1,10 @@
 import { useButton } from '@react-aria/button'
 import { useHover } from '@react-aria/interactions'
+import { CloseIcon } from '@uvodohq/planum-icons'
 import type { Ref } from 'react'
 import { forwardRef, useRef } from 'react'
 
 import { __DEV__ } from '../utils/assertion'
-import { CloseIcon } from '@uvodohq/planum-icons'
 import {
   IconContainer,
   TagContainer,

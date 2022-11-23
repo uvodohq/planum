@@ -1,16 +1,9 @@
 import { forwardRef } from 'react'
 
-import type {
-  IconProps,
-  IconWeight,
-  PaintFunction,
-  RenderFunction,
-} from '@uvodohq/planum'
-import { IconBase, renderPathForWeight } from '@uvodohq/planum'
+import type { IconProps, IconWeightComponent } from '../icon'
+import { Icon } from '../icon'
 
-const pathsByWeight = new Map<IconWeight, PaintFunction>()
-
-pathsByWeight.set('duotone', (color: string) => (
+const Duotone: IconWeightComponent = ({ color }) => (
   <>
     <path d="M56,224V40a8,8,0,0,1,8-8H192a8,8,0,0,1,8,8V224Z" opacity="0.2" />
     <line
@@ -34,9 +27,9 @@ pathsByWeight.set('duotone', (color: string) => (
     />
     <circle cx="156" cy="128" r="12" />
   </>
-))
+)
 
-pathsByWeight.set('regular', (color: string) => (
+const Regular: IconWeightComponent = ({ color }) => (
   <>
     <line
       x1="24"
@@ -59,13 +52,17 @@ pathsByWeight.set('regular', (color: string) => (
     />
     <circle cx="156" cy="128" r="12" />
   </>
-))
+)
 
-const renderPath: RenderFunction = (weight: IconWeight, color: string) =>
-  renderPathForWeight(weight, color, pathsByWeight)
+const weights = {
+  duotone: Duotone,
+  regular: Regular,
+}
 
-export const DoorIcon = forwardRef<SVGSVGElement, IconProps>((props, ref) => (
-  <IconBase ref={ref} alt="Door Icon" {...props} renderPath={renderPath} />
+const DoorIcon = forwardRef<SVGSVGElement, IconProps>((props, ref) => (
+  <Icon ref={ref} alt="Door Icon" {...props} weights={weights} />
 ))
 
 DoorIcon.displayName = 'DoorIcon'
+
+export default DoorIcon

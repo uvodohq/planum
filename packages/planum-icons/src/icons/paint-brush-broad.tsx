@@ -1,16 +1,9 @@
 import { forwardRef } from 'react'
 
-import type {
-  IconProps,
-  IconWeight,
-  PaintFunction,
-  RenderFunction,
-} from '@uvodohq/planum'
-import { IconBase, renderPathForWeight } from '@uvodohq/planum'
+import type { IconProps, IconWeightComponent } from '../icon'
+import { Icon } from '../icon'
 
-const pathsByWeight = new Map<IconWeight, PaintFunction>()
-
-pathsByWeight.set('duotone', (color: string) => (
+const Duotone: IconWeightComponent = ({ color }) => (
   <>
     <path
       d="M40,112H216v24a16,16,0,0,1-16,16H153.2a8,8,0,0,0-7.9,9.1L152,208a24,24,0,0,1-48,0l6.7-46.9a8,8,0,0,0-7.9-9.1H56a16,16,0,0,1-16-16Z"
@@ -47,9 +40,9 @@ pathsByWeight.set('duotone', (color: string) => (
       strokeWidth="16"
     />
   </>
-))
+)
 
-pathsByWeight.set('regular', (color: string) => (
+const Regular: IconWeightComponent = ({ color }) => (
   <>
     <line
       x1="40"
@@ -82,20 +75,19 @@ pathsByWeight.set('regular', (color: string) => (
       strokeWidth="16"
     />
   </>
-))
+)
 
-const renderPath: RenderFunction = (weight: IconWeight, color: string) =>
-  renderPathForWeight(weight, color, pathsByWeight)
+const weights = {
+  duotone: Duotone,
+  regular: Regular,
+}
 
-export const PaintBrushBroadIcon = forwardRef<SVGSVGElement, IconProps>(
+const PaintBrushBroadIcon = forwardRef<SVGSVGElement, IconProps>(
   (props, ref) => (
-    <IconBase
-      ref={ref}
-      alt="Paint Brush Broad Icon"
-      {...props}
-      renderPath={renderPath}
-    />
+    <Icon ref={ref} alt="Paint Brush Broad Icon" {...props} weights={weights} />
   ),
 )
 
 PaintBrushBroadIcon.displayName = 'PaintBrushBroadIcon'
+
+export default PaintBrushBroadIcon

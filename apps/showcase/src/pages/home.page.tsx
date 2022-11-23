@@ -11,10 +11,7 @@ const Cards = () => {
       label: 'Colors',
       path: '#colors',
     },
-    {
-      label: 'Icons',
-      path: '#icons',
-    },
+
     {
       label: 'Typography',
       path: '#text',
@@ -30,6 +27,10 @@ const Cards = () => {
     {
       label: 'Buttons',
       path: '#buttons',
+    },
+    {
+      label: 'Icons',
+      path: '#icons',
     },
     {
       label: 'Inputs',

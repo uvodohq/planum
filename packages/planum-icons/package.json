@@ -1,7 +1,7 @@
 {
   "name": "@uvodohq/planum-icons",
   "version": "0.0.0",
-  "description": "Planum Icons -  based on phospor icons as part of uvodo design",
+  "description": "Planum Icons - based on phosphor icons as part of uvodo design",
   "author": "UvodoHQ",
   "license": "MIT",
   "homepage": "https://uvodo.design",
@@ -40,9 +40,8 @@
   "devDependencies": {
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.4",
-    "@uvodohq/planum": "*",
+    "@uvodohq/eslint-config": "*",
     "eslint": "^8.15.0",
-    "eslint-config-planum": "*",
     "planum-tsconfig": "*",
     "react": "^18.1.0",
     "tsup": "^5.10.1",

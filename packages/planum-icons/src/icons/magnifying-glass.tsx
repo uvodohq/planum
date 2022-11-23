@@ -1,16 +1,9 @@
 import { forwardRef } from 'react'
 
-import type {
-  IconProps,
-  IconWeight,
-  PaintFunction,
-  RenderFunction,
-} from '@uvodohq/planum'
-import { IconBase, renderPathForWeight } from '@uvodohq/planum'
+import type { IconProps, IconWeightComponent } from '../icon'
+import { Icon } from '../icon'
 
-const pathsByWeight = new Map<IconWeight, PaintFunction>()
-
-pathsByWeight.set('regular', (color: string) => (
+const Regular: IconWeightComponent = ({ color }) => (
   <>
     <circle
       cx="116"
@@ -34,20 +27,19 @@ pathsByWeight.set('regular', (color: string) => (
       strokeWidth="16"
     />
   </>
-))
+)
 
-const renderPath: RenderFunction = (weight: IconWeight, color: string) =>
-  renderPathForWeight(weight, color, pathsByWeight)
+const weights = {
+  // duotone: Duotone,
+  regular: Regular,
+}
 
-export const MagnifyingGlassIcon = forwardRef<SVGSVGElement, IconProps>(
+const MagnifyingGlassIcon = forwardRef<SVGSVGElement, IconProps>(
   (props, ref) => (
-    <IconBase
-      ref={ref}
-      alt="Magnifying Glass Icon"
-      {...props}
-      renderPath={renderPath}
-    />
+    <Icon ref={ref} alt="Magnifying Glass Icon" {...props} weights={weights} />
   ),
 )
 
 MagnifyingGlassIcon.displayName = 'MagnifyingGlassIcon'
+
+export default MagnifyingGlassIcon
