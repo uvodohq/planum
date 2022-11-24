@@ -17,7 +17,7 @@ import {
   StyledInputContainer,
   Suffix,
 } from './input-search.styles'
-import { MagnifyingGlassIcon } from '@uvodohq/planum-icons'
+import { SearchIcon } from './search-icon'
 
 interface Props {
   label?: string
@@ -94,7 +94,7 @@ function _InputSearch(props: InputSearchProps, forwardedRef: any) {
   } else if (alignSearchIcon === 'right') {
     rightContent = (
       <Suffix>
-        <MagnifyingGlassIcon />
+        <SearchIcon />
       </Suffix>
     )
   }
@@ -115,7 +115,7 @@ function _InputSearch(props: InputSearchProps, forwardedRef: any) {
         isFocused={isFocused}>
         {alignSearchIcon === 'left' && (
           <Prefix>
-            <MagnifyingGlassIcon />
+            <SearchIcon />
           </Prefix>
         )}
 

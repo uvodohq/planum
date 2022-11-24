@@ -1,5 +1,4 @@
 import type * as Stitches from '@stitches/react'
-import { CaretDownIcon } from '@uvodohq/planum-icons'
 import type { SVGProps } from 'react'
 
 import { styled } from '../theme'
@@ -23,11 +22,26 @@ type IconProps = Stitches.VariantProps<typeof IconContainer> &
   SVGProps<SVGSVGElement>
 
 export const SelectDownIcon = (props: IconProps) => {
-  const { isOpen } = props
+  const { isOpen, ...rest } = props
 
   return (
     <IconContainer isOpen={isOpen}>
-      <CaretDownIcon size={16} />
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={16}
+        height={16}
+        viewBox="0 0 256 256"
+        {...rest}>
+        <path fill="none" d="M0 0h256v256H0z" />
+        <path
+          fill="none"
+          stroke="currentColor"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={16}
+          d="m208 96-80 80-80-80"
+        />
+      </svg>
     </IconContainer>
   )
 }
@@ -39,7 +53,6 @@ export const CheckSvgPath = styled('path', {
 
 type CheckIconProps = SVGProps<SVGSVGElement> & {}
 
-// TODO: check icon will be used in selected options as indicator. not used yet
 export const CheckIcon = (props: CheckIconProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"

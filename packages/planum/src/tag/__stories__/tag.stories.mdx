@@ -1,5 +1,5 @@
 import { ArgsTable, Story, Canvas, Meta } from '@storybook/addon-docs'
-import { UserIcon } from '@uvodohq/planum-icons'
+import { UserIcon } from './icons'
 import { Tag } from '../tag.tsx'
 import { Flag, Box } from '../../..'
 
@@ -38,10 +38,10 @@ Tags are compact elements that represent an input, attribute, or action. They ma
 <Canvas>
   <Story name="With Icon">
     <Tag removable={false}>Unremovable</Tag>
-    <Tag leftIcon={<UserIcon size={16} />} removable={false}>
+    <Tag leftIcon={<UserIcon />} removable={false}>
       Left icon
     </Tag>
-    <Tag rightIcon={<UserIcon size={16} />} removable={false}>
+    <Tag rightIcon={<UserIcon />} removable={false}>
       Right icon
     </Tag>
     <Tag>Active</Tag>
@@ -73,10 +73,10 @@ Tags are compact elements that represent an input, attribute, or action. They ma
 
 <Canvas>
   <Story name="Remove Button With Icon">
-    <Tag leftIcon={<UserIcon size={16} />} removeButtonAlign="left">
+    <Tag leftIcon={<UserIcon />} removeButtonAlign="left">
       With Right icon
     </Tag>
-    <Tag rightIcon={<UserIcon size={16} />} removeButtonAlign="right">
+    <Tag rightIcon={<UserIcon />} removeButtonAlign="right">
       With Right Icon
     </Tag>
   </Story>

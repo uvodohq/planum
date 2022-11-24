@@ -14,6 +14,7 @@ export default defineConfig((options: Options) => {
     entry: ['src/index.tsx'],
     minify: isProd,
     format: formats,
+    clean: true,
     dts: true,
     external: ['react', '@uvodohq/planum'],
     metafile: isProd,

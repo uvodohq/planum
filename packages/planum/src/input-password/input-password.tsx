@@ -6,7 +6,8 @@ import type { InputProps } from '../input'
 import { Input } from '../input'
 import { Box } from '../layout'
 import { __DEV__ } from '../utils/assertion'
-import { EyeIcon, EyeSlashIcon } from '@uvodohq/planum-icons'
+import EyeIcon from './icons/eye'
+import EyeSlashIcon from './icons/eye-slash'
 
 function usePasswordToggle() {
   const state = useToggleState({

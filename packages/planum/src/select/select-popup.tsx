@@ -81,7 +81,7 @@ export default function SelectPopup(props: SelectPopupProps) {
         right: 0,
         top: 'auto',
         minWidth: '100%',
-        zIndex: 1000,
+        zIndex: 902,
         maxHeight: '80%',
       }
     : {

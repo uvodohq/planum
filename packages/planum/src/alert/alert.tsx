@@ -3,12 +3,7 @@ import { useEffect, useState } from 'react'
 
 import { Button } from '../button'
 import { Flex } from '../layout'
-import {
-  CloseIcon,
-  CheckCircleIcon,
-  InfoIcon,
-  QuestionIcon,
-} from '@uvodohq/planum-icons'
+import { CloseIcon } from '../modal/dialog/close-icon'
 import {
   AlertContainer,
   StyledContent,
@@ -16,6 +11,7 @@ import {
   StyledText,
 } from './alert.styles'
 import type { AlertProps } from './alert.type'
+import { CheckCircleIcon, InfoIcon, QuestionIcon } from './icons'
 
 export const Alert = (props: AlertProps) => {
   const {

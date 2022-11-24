@@ -58,10 +58,10 @@ export { Drawer } from './drawer'
 export { Menu, MenuItem } from './menu'
 
 // Flag
-export type { FlagProps, CountryCode } from './flag'
+export type { FlagProps } from './flag'
 export { Flag } from './flag'
 
-// autocomplete
+// autocmplete
 export { AutoComplete, AutoCompleteTags } from './auto-complete'
 export type { AutoCompleteProps, AutoCompleteTagsProps } from './auto-complete'
 

@@ -1,10 +1,10 @@
 import { useButton } from '@react-aria/button'
 import { useHover } from '@react-aria/interactions'
-import { CloseIcon } from '@uvodohq/planum-icons'
 import type { Ref } from 'react'
 import { forwardRef, useRef } from 'react'
 
 import { __DEV__ } from '../utils/assertion'
+import { RemoveIcon } from './remove-icon'
 import {
   IconContainer,
   TagContainer,
@@ -47,7 +47,7 @@ export const Tag = forwardRef((props: TagProps, ref: Ref<HTMLDivElement>) => {
       {...buttonProps}
       ref={removeButtonRef}>
       <IconContainer isPressed={isPressed} isHovered={isHovered}>
-        <CloseIcon size={16} />
+        <RemoveIcon />
       </IconContainer>
     </TagIconButton>
   )
