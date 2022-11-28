@@ -21,3 +21,7 @@ table {
   scroll-margin-top: 200px;
   scroll-margin-right: 200px;
 }
+
+#root {
+  min-width: fit-content;
+}
