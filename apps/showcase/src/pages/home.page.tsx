@@ -3,6 +3,7 @@ import { Flex, overlineCss } from '@uvodohq/planum'
 import { styled } from '@uvodohq/planum'
 
 import { Card, CardContainer, CardList } from '../components/card/card'
+import { Debug } from '../components/debug/debug'
 import Frame from '../components/frame'
 
 const Cards = () => {
@@ -104,16 +105,23 @@ const Cards = () => {
   )
 }
 
-const BackHomeLink = styled('a', overlineCss, {
+const Floating = styled('div', {
   position: 'fixed',
   right: 12,
   bottom: 12,
+  zIndex: 9999,
+  dflex: 'center',
+  bg: '#fff !important',
+  padding: 8,
+  borderRadius: '$pill',
+  boxShadow: '$sm',
+})
+
+const BackHomeLink = styled('a', overlineCss, {
   bg: '$warning300',
   padding: '$8 $16',
   borderRadius: '$pill',
-  boxShadow: '$sm',
   fw: '$semibold',
-  zIndex: 9999,
 })
 
 export function HomePage() {
@@ -129,7 +137,10 @@ export function HomePage() {
         <Cards />
       </Flex>
 
-      <BackHomeLink href="#components"> Back to Components </BackHomeLink>
+      <Floating>
+        <BackHomeLink href="#components"> Components </BackHomeLink>
+        <Debug />
+      </Floating>
     </Frame>
   )
 }
