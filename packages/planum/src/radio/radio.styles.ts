@@ -1,6 +1,8 @@
-import { paragraphCss } from '../text'
+import { paragraphCss, subheaderCss } from '../text'
 import type { VariantProps } from '../theme'
 import { styled } from '../theme'
+
+export const StyleRadioGroup = styled('div', {})
 
 export const StyledRadioSvg = styled('svg', {
   boxSizing: 'border-box',
@@ -29,6 +31,49 @@ export const StyledRadioSvg = styled('svg', {
         '&:hover': {
           boxShadow: 'inset 0 0 0 2px $colors$surface600',
         },
+      },
+    },
+
+    isDisabled: {
+      true: {
+        borderColor: '$surface400',
+        backgroundColor: '$surface100',
+        disableActions: true,
+      },
+    },
+
+    isFocusVisible: {
+      true: { outline: '2px solid $colors$primary100' },
+    },
+  },
+})
+
+export const StyledRadioButton = styled('span', subheaderCss, {
+  backgroundColor: 'transparent',
+  display: 'inline-flex',
+  dflex: 'center',
+  transition: 'all .2s',
+  py: 8,
+  px: 12,
+  fontWeight: '$semibold',
+
+  // height: 48px;
+  // border: 1px solid #C7C7C7;
+  // border-radius: 4px 0px 0px 4px;
+
+  variants: {
+    isSelected: {
+      true: {
+        color: '$textDark',
+        bg: '$surface200',
+
+        '&:hover': {
+          color: '$surface300',
+        },
+      },
+
+      false: {
+        '&:hover': {},
       },
     },
 

@@ -1,47 +1,78 @@
 // TODO: add hover css to checkbox on label hover
-import { useFocusRing } from '@react-aria/focus'
-import { useHover } from '@react-aria/interactions'
-import { useRadio } from '@react-aria/radio'
 import { VisuallyHidden } from '@react-aria/visually-hidden'
-import { useFocusableRef } from '@react-spectrum/utils'
 import type { AriaRadioProps } from '@react-types/radio'
 import type { FocusableRef } from '@react-types/shared'
 import * as React from 'react'
 
 import { Paragraph } from '../text'
 import type { CSS } from '../theme'
-import { useRadioProvider } from './context'
-import { StyledLabel, StyledRadioSvg } from './radio.styles'
+import { StyledLabel, StyledRadioButton, StyledRadioSvg } from './radio.styles'
+import { useRadioProps } from './use-radio-props'
 
 type Variants = React.ComponentProps<typeof StyledRadioSvg> & { css?: CSS }
 
 export type RadioProps = AriaRadioProps & Variants
 
-function _Radio(props: RadioProps, ref: FocusableRef<HTMLLabelElement>) {
-  const { isDisabled, children, autoFocus, value } = props
+interface ComponentProps {
+  isSelected: boolean
+  isDisabled: any
+  isHovered: boolean
+  isFocusVisible: boolean
+  children?: any
+}
 
-  const { hoverProps, isHovered } = useHover({ isDisabled })
-  const { focusProps, isFocusVisible } = useFocusRing({
-    autoFocus,
-  })
+const Circle = (props: ComponentProps) => (
+  <>
+    <StyledRadioSvg
+      isSelected={props.isSelected}
+      isFocusVisible={props.isFocusVisible}
+      isDisabled={props.isDisabled}
+      aria-hidden="true">
+      <circle
+        cx={10}
+        cy={10}
+        r={4}
+        fill="currentColor"
+        stroke="none"
+        strokeWidth={2}
+      />
+    </StyledRadioSvg>
+    {props.children && <Paragraph css={{ ml: 10 }}>{props.children}</Paragraph>}
+  </>
+)
 
-  const inputRef = React.useRef<HTMLInputElement>(null)
-  const domRef = useFocusableRef(ref, inputRef)
-
-  const radioGroupProps = useRadioProvider()
-  const { state } = radioGroupProps
-
-  const { inputProps } = useRadio(
-    {
-      ...props,
-      ...radioGroupProps,
-      isDisabled,
-    },
-    state,
-    inputRef,
+const Button = (props: ComponentProps) => {
+  return (
+    <StyledRadioButton
+      isSelected={props.isSelected}
+      isFocusVisible={props.isFocusVisible}
+      isDisabled={props.isDisabled}>
+      {props.children}
+    </StyledRadioButton>
   )
+}
 
-  const isSelected = state.selectedValue === value
+function _Radio(props: RadioProps, ref: FocusableRef<HTMLLabelElement>) {
+  const { children } = props
+
+  const {
+    type,
+    inputProps,
+    hoverProps,
+    focusProps,
+
+    //
+    isSelected,
+    isDisabled,
+    isHovered,
+    isFocusVisible,
+
+    //
+    inputRef,
+    domRef,
+  } = useRadioProps(props, ref)
+
+  const Component = type === 'button' ? Button : Circle
 
   return (
     <StyledLabel {...hoverProps} isHovered={isHovered} ref={domRef}>
@@ -49,22 +80,9 @@ function _Radio(props: RadioProps, ref: FocusableRef<HTMLLabelElement>) {
         <input {...inputProps} {...focusProps} ref={inputRef} />
       </VisuallyHidden>
 
-      <StyledRadioSvg
-        isSelected={isSelected}
-        isFocusVisible={isFocusVisible}
-        isDisabled={isDisabled}
-        aria-hidden="true">
-        <circle
-          cx={10}
-          cy={10}
-          r={4}
-          fill="currentColor"
-          stroke="none"
-          strokeWidth={2}
-        />
-      </StyledRadioSvg>
-
-      {children && <Paragraph css={{ ml: 10 }}>{children}</Paragraph>}
+      <Component
+        {...{ isSelected, isDisabled, isHovered, isFocusVisible, children }}
+      />
     </StyledLabel>
   )
 }

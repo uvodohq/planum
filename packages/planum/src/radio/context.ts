@@ -4,6 +4,7 @@ import React, { useContext } from 'react'
 interface RadioGroupContext {
   name?: string
   state: RadioGroupState
+  type: 'button' | 'radio'
 }
 
 export const RadioContext = React.createContext<RadioGroupContext>(null as any)
