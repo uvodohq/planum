@@ -35,7 +35,7 @@ export function useRadioProps(
   const domRef = useFocusableRef(ref, inputRef)
 
   const radioGroupProps = useRadioProvider()
-  const { state, type } = radioGroupProps
+  const { state, type, full } = radioGroupProps
 
   const { inputProps } = useRadio(
     {
@@ -51,6 +51,7 @@ export function useRadioProps(
 
   return {
     type,
+    full,
 
     inputProps,
     hoverProps,

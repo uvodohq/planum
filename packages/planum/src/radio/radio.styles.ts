@@ -1,19 +1,7 @@
 import { paragraphCss, subheaderCss } from '../text'
 import { styled } from '../theme'
 
-export const StyleRadioGroupContainer = styled('div', {
-  variants: {
-    type: {
-      button: {
-        display: 'flex',
-      },
-
-      radio: {},
-    },
-  },
-})
-
-export const StyledRadioSvg = styled('svg', {
+export const StyledRadioSvgCircle = styled('svg', {
   boxSizing: 'border-box',
   backgroundColor: 'transparent',
   display: 'inline-flex',
@@ -92,10 +80,14 @@ export const StyledRadioLabel = styled('label', paragraphCss, {
     isFocusVisible: {
       true: {},
     },
+
+    full: {
+      true: {},
+    },
   },
 })
 
-export const StyledRadioButtonLabel = styled('label', subheaderCss, {
+export const StyledButtonLabel = styled('label', subheaderCss, {
   cursor: 'pointer',
   userSelect: 'none',
   transition: 'all .2s',
@@ -119,9 +111,21 @@ export const StyledRadioButtonLabel = styled('label', subheaderCss, {
     borderBottomRightRadius: '$sm',
   },
 
+  flex: 1,
+
+  '@tablet': {
+    flex: 'auto',
+  },
+
   variants: {
     isHovered: {
       true: {},
+    },
+
+    full: {
+      true: {
+        flex: 1,
+      },
     },
 
     isSelected: {
@@ -167,4 +171,29 @@ export const StyledRadioButtonLabel = styled('label', subheaderCss, {
       },
     },
   ],
+})
+
+export const StyleRadioGroupContainer = styled('div', {
+  variants: {
+    full: {
+      true: {},
+    },
+  },
+})
+
+export const StyleButtonGroupContainer = styled('div', {
+  display: 'flex',
+  width: '100%',
+
+  '@tablet': {
+    width: 'auto',
+  },
+
+  variants: {
+    full: {
+      true: {
+        width: '100%',
+      },
+    },
+  },
 })

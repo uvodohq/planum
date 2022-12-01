@@ -6,9 +6,9 @@ import * as React from 'react'
 import { Paragraph } from '../text'
 import type { CSS } from '../theme'
 import {
-  StyledRadioButtonLabel,
+  StyledButtonLabel,
   StyledRadioLabel,
-  StyledRadioSvg,
+  StyledRadioSvgCircle,
 } from './radio.styles'
 import { useRadioProps } from './use-radio-props'
 
@@ -32,7 +32,7 @@ interface ComponentProps {
 
 const Circle = (props: ComponentProps) => (
   <>
-    <StyledRadioSvg
+    <StyledRadioSvgCircle
       isSelected={props.isSelected}
       isFocusVisible={props.isFocusVisible}
       isDisabled={props.isDisabled}
@@ -46,7 +46,7 @@ const Circle = (props: ComponentProps) => (
         stroke="none"
         strokeWidth={2}
       />
-    </StyledRadioSvg>
+    </StyledRadioSvgCircle>
     {props.children && <Paragraph css={{ ml: 10 }}>{props.children}</Paragraph>}
   </>
 )
@@ -56,6 +56,7 @@ function _Radio(props: RadioProps, ref: FocusableRef<HTMLLabelElement>) {
 
   const {
     type,
+    full,
     inputProps,
     hoverProps,
     focusProps,
@@ -68,12 +69,12 @@ function _Radio(props: RadioProps, ref: FocusableRef<HTMLLabelElement>) {
   } = useRadioProps(props, ref)
 
   const Component = type === 'button' ? 'span' : Circle
-  const Label = type === 'button' ? StyledRadioButtonLabel : StyledRadioLabel
+  const Label = type === 'button' ? StyledButtonLabel : StyledRadioLabel
 
   return (
     <Label
       {...hoverProps}
-      {...{ isSelected, isDisabled, isHovered, isFocusVisible }}
+      {...{ isSelected, isDisabled, isHovered, isFocusVisible, full }}
       ref={domRef}>
       <VisuallyHidden>
         <input {...inputProps} {...focusProps} ref={inputRef} />

@@ -116,7 +116,7 @@ export default function FormElementsContainer() {
         Radio
       </H1>
 
-      <Box css={{ display: 'flex', gap: 40, mb: 128 }}>
+      <Box css={{ display: 'flex', gap: 40, mb: 80 }}>
         <RadioGroup defaultValue="Selected" aria-label="label">
           <Box css={{ display: 'flex', gap: 40, mb: 80 }}>
             <Radio value="Regular">Regular</Radio>
@@ -129,9 +129,7 @@ export default function FormElementsContainer() {
       </Box>
 
       {/* Radio Button Group */}
-      <H1 css={{ mb: 66, fontWeight: 700 }} id="radio">
-        Radio Button Group
-      </H1>
+      <H1 css={{ mb: 66, fontWeight: 700 }}>Radio Button Group</H1>
 
       <Box css={{ display: 'flex', gap: 40, mb: 64 }}>
         <RadioGroup defaultValue="Selected" aria-label="label" type="button">
@@ -144,6 +142,8 @@ export default function FormElementsContainer() {
         </RadioGroup>
       </Box>
 
+      {/* Radio Button Group */}
+      <Title>Full width</Title>
       <Box css={{ display: 'flex', gap: 40, mb: 128 }}>
         <RadioGroup
           defaultValue="Selected"
