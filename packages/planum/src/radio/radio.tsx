@@ -1,4 +1,3 @@
-// TODO: add hover css to checkbox on label hover
 import { VisuallyHidden } from '@react-aria/visually-hidden'
 import type { AriaRadioProps } from '@react-types/radio'
 import type { FocusableRef } from '@react-types/shared'
@@ -6,10 +5,20 @@ import * as React from 'react'
 
 import { Paragraph } from '../text'
 import type { CSS } from '../theme'
-import { StyledLabel, StyledRadioButton, StyledRadioSvg } from './radio.styles'
+import {
+  StyledRadioButtonLabel,
+  StyledRadioLabel,
+  StyledRadioSvg,
+} from './radio.styles'
 import { useRadioProps } from './use-radio-props'
 
-type Variants = React.ComponentProps<typeof StyledRadioSvg> & { css?: CSS }
+interface Variants {
+  css?: CSS
+  isHovered: boolean
+  isSelected: boolean
+  isDisabled: boolean
+  isFocusVisible: boolean
+}
 
 export type RadioProps = AriaRadioProps & Variants
 
@@ -27,6 +36,7 @@ const Circle = (props: ComponentProps) => (
       isSelected={props.isSelected}
       isFocusVisible={props.isFocusVisible}
       isDisabled={props.isDisabled}
+      isHovered={props.isHovered}
       aria-hidden="true">
       <circle
         cx={10}
@@ -41,17 +51,6 @@ const Circle = (props: ComponentProps) => (
   </>
 )
 
-const Button = (props: ComponentProps) => {
-  return (
-    <StyledRadioButton
-      isSelected={props.isSelected}
-      isFocusVisible={props.isFocusVisible}
-      isDisabled={props.isDisabled}>
-      {props.children}
-    </StyledRadioButton>
-  )
-}
-
 function _Radio(props: RadioProps, ref: FocusableRef<HTMLLabelElement>) {
   const { children } = props
 
@@ -60,22 +59,22 @@ function _Radio(props: RadioProps, ref: FocusableRef<HTMLLabelElement>) {
     inputProps,
     hoverProps,
     focusProps,
-
-    //
     isSelected,
     isDisabled,
     isHovered,
     isFocusVisible,
-
-    //
     inputRef,
     domRef,
   } = useRadioProps(props, ref)
 
-  const Component = type === 'button' ? Button : Circle
+  const Component = type === 'button' ? 'span' : Circle
+  const Label = type === 'button' ? StyledRadioButtonLabel : StyledRadioLabel
 
   return (
-    <StyledLabel {...hoverProps} isHovered={isHovered} ref={domRef}>
+    <Label
+      {...hoverProps}
+      {...{ isSelected, isDisabled, isHovered, isFocusVisible }}
+      ref={domRef}>
       <VisuallyHidden>
         <input {...inputProps} {...focusProps} ref={inputRef} />
       </VisuallyHidden>
@@ -83,7 +82,7 @@ function _Radio(props: RadioProps, ref: FocusableRef<HTMLLabelElement>) {
       <Component
         {...{ isSelected, isDisabled, isHovered, isFocusVisible, children }}
       />
-    </StyledLabel>
+    </Label>
   )
 }
 

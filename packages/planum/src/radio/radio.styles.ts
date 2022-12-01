@@ -1,8 +1,17 @@
 import { paragraphCss, subheaderCss } from '../text'
-import type { VariantProps } from '../theme'
 import { styled } from '../theme'
 
-export const StyleRadioGroup = styled('div', {})
+export const StyleRadioGroupContainer = styled('div', {
+  variants: {
+    type: {
+      button: {
+        display: 'flex',
+      },
+
+      radio: {},
+    },
+  },
+})
 
 export const StyledRadioSvg = styled('svg', {
   boxSizing: 'border-box',
@@ -16,21 +25,14 @@ export const StyledRadioSvg = styled('svg', {
   transition: 'all .2s',
 
   variants: {
+    isHovered: {
+      true: {},
+    },
+
     isSelected: {
       true: {
         boxShadow: 'inset 0 0 0 2px $colors$primary600',
         color: '$primary600',
-
-        '&:hover': {
-          boxShadow: 'inset 0 0 0 2px $colors$primary800',
-          color: '$primary800',
-        },
-      },
-
-      false: {
-        '&:hover': {
-          boxShadow: 'inset 0 0 0 2px $colors$surface600',
-        },
       },
     },
 
@@ -38,7 +40,7 @@ export const StyledRadioSvg = styled('svg', {
       true: {
         borderColor: '$surface400',
         backgroundColor: '$surface100',
-        disableActions: true,
+        cursor: 'not-allowed',
       },
     },
 
@@ -46,52 +48,27 @@ export const StyledRadioSvg = styled('svg', {
       true: { outline: '2px solid $colors$primary100' },
     },
   },
+
+  compoundVariants: [
+    {
+      isHovered: true,
+      isSelected: true,
+      css: {
+        boxShadow: 'inset 0 0 0 2px $colors$primary800',
+        color: '$primary800',
+      },
+    },
+    {
+      isHovered: true,
+      isSelected: false,
+      css: {
+        boxShadow: 'inset 0 0 0 2px $colors$surface600',
+      },
+    },
+  ],
 })
 
-export const StyledRadioButton = styled('span', subheaderCss, {
-  backgroundColor: 'transparent',
-  display: 'inline-flex',
-  dflex: 'center',
-  transition: 'all .2s',
-  py: 8,
-  px: 12,
-  fontWeight: '$semibold',
-
-  // height: 48px;
-  // border: 1px solid #C7C7C7;
-  // border-radius: 4px 0px 0px 4px;
-
-  variants: {
-    isSelected: {
-      true: {
-        color: '$textDark',
-        bg: '$surface200',
-
-        '&:hover': {
-          color: '$surface300',
-        },
-      },
-
-      false: {
-        '&:hover': {},
-      },
-    },
-
-    isDisabled: {
-      true: {
-        borderColor: '$surface400',
-        backgroundColor: '$surface100',
-        disableActions: true,
-      },
-    },
-
-    isFocusVisible: {
-      true: { outline: '2px solid $colors$primary100' },
-    },
-  },
-})
-
-export const StyledLabel = styled('label', paragraphCss, {
+export const StyledRadioLabel = styled('label', paragraphCss, {
   d: 'flex',
   alignItems: 'center',
   cursor: 'pointer',
@@ -101,7 +78,93 @@ export const StyledLabel = styled('label', paragraphCss, {
     isHovered: {
       true: {},
     },
+
+    isSelected: {
+      true: {},
+    },
+
+    isDisabled: {
+      true: {
+        cursor: 'not-allowed',
+      },
+    },
+
+    isFocusVisible: {
+      true: {},
+    },
   },
 })
 
-export type StyledRadioVariants = VariantProps<typeof StyledRadioSvg>
+export const StyledRadioButtonLabel = styled('label', subheaderCss, {
+  cursor: 'pointer',
+  userSelect: 'none',
+  transition: 'all .2s',
+  dflex: 'center',
+  py: 8,
+  px: 12,
+  fontWeight: '$semibold',
+
+  borderTop: '1px solid $surface400',
+  borderBottom: '1px solid $surface400',
+  borderRight: '1px solid $surface400',
+
+  '&:first-of-type': {
+    borderLeft: '1px solid $surface400',
+    borderTopLeftRadius: '$sm',
+    borderBottomLeftRadius: '$sm',
+  },
+
+  '&:last-of-type': {
+    borderTopRightRadius: '$sm',
+    borderBottomRightRadius: '$sm',
+  },
+
+  variants: {
+    isHovered: {
+      true: {},
+    },
+
+    isSelected: {
+      true: {
+        color: '$textDark',
+        bg: '$surface200',
+      },
+
+      false: {
+        color: '$textLight',
+        bg: '$white',
+      },
+    },
+
+    isDisabled: {
+      true: {
+        color: '$textDisabled',
+        cursor: 'not-allowed',
+      },
+    },
+
+    isFocusVisible: {
+      true: {
+        boxShadow: '0 0 0 2px $colors$primary',
+        zIndex: 2,
+      },
+    },
+  },
+
+  compoundVariants: [
+    {
+      isHovered: true,
+      isSelected: true,
+      css: {
+        bg: '$surface300',
+      },
+    },
+    {
+      isHovered: true,
+      isSelected: false,
+      css: {
+        bg: '$surface100',
+      },
+    },
+  ],
+})

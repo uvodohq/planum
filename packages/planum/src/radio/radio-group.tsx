@@ -8,10 +8,14 @@ import * as React from 'react'
 
 import { RadioContext } from './context'
 import type { RadioProps } from './radio'
-import { StyleRadioGroup } from './radio.styles'
+import { StyleRadioGroupContainer } from './radio.styles'
 
 export type RadioGroupProps = AriaRadioGroupProps & {
   children: ReactElement<RadioProps> | ReactElement<RadioProps>[]
+
+  /**
+   * show as Button or Circlur radio
+   */
   type: 'button' | 'radio'
 }
 
@@ -23,7 +27,7 @@ function _RadioGroup(props: RadioGroupProps, ref: DOMRef<HTMLDivElement>) {
   const { radioGroupProps } = useRadioGroup(props, state)
 
   return (
-    <StyleRadioGroup {...radioGroupProps} ref={domRef}>
+    <StyleRadioGroupContainer {...radioGroupProps} ref={domRef} type={type}>
       <RadioContext.Provider
         value={{
           state,
@@ -31,7 +35,7 @@ function _RadioGroup(props: RadioGroupProps, ref: DOMRef<HTMLDivElement>) {
         }}>
         {children}
       </RadioContext.Provider>
-    </StyleRadioGroup>
+    </StyleRadioGroupContainer>
   )
 }
 

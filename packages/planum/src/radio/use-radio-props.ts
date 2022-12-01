@@ -9,9 +9,14 @@ import * as React from 'react'
 
 import type { CSS } from '../theme'
 import { useRadioProvider } from './context'
-import type { StyledRadioSvg } from './radio.styles'
 
-type Variants = React.ComponentProps<typeof StyledRadioSvg> & { css?: CSS }
+interface Variants {
+  css?: CSS
+  isHovered: boolean
+  isSelected: boolean
+  isDisabled: boolean
+  isFocusVisible: boolean
+}
 
 export type RadioProps = AriaRadioProps & Variants
 
