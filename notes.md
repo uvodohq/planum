@@ -18,27 +18,6 @@ watch: https://www.youtube.com/watch?v=dxDcBB7Xoxs
 
 Storybook is an open source tool for building UI components and pages in isolation. It streamlines UI development, testing, and documentation.
 
-## Bundle Tool
-
-Vite is a fast new build tool that is intended for modern web projects. It uses native ES modules and provides a blazing-fast dev server and hot module replacement.
-
-Vite will be used for SPA(Admin) and as component library bundler which uses Rollup under the hood.
-
-### articles:
-
-- https://jivancic.com/posts/build-a-component-library.html
-- https://dev.to/lexswed/making-your-react-component-library-meaningful-in-2021-2gfj
-
-## Testing
-
-Vitest - a test runner
-
-Playwright - for End to End testing
-
-MSW - api mocking
-
-Stroybook - for visiual testing -
-
 ## Code Quality and Code Style Guide
 
 ESLint and Prettier are used to enforce code quality and style guide. and additonal rule plugins are used.
@@ -159,3 +138,8 @@ yarn deploy:storybook
 ```sh
 yarn deploy:example
 ```
+
+TODO:
+
+- Clean package json before publish - https://github.com/atlassian/copy-pkg - see https://github.dev/uidu-org/guidu/tree/main/website
+- add exports map packagejson - see https://github.dev/uidu-org/guidu/tree/main/website

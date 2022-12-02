@@ -1,71 +1,85 @@
-// TODO: add hover css to checkbox on label hover
-import { useFocusRing } from '@react-aria/focus'
-import { useHover } from '@react-aria/interactions'
-import { useRadio } from '@react-aria/radio'
 import { VisuallyHidden } from '@react-aria/visually-hidden'
-import { useFocusableRef } from '@react-spectrum/utils'
 import type { AriaRadioProps } from '@react-types/radio'
 import type { FocusableRef } from '@react-types/shared'
 import * as React from 'react'
 
 import { Paragraph } from '../text'
 import type { CSS } from '../theme'
-import { useRadioProvider } from './context'
-import { StyledLabel, StyledRadioSvg } from './radio.styles'
+import {
+  StyledButtonLabel,
+  StyledRadioLabel,
+  StyledRadioSvgCircle,
+} from './radio.styles'
+import { useRadioProps } from './use-radio-props'
 
-type Variants = React.ComponentProps<typeof StyledRadioSvg> & { css?: CSS }
+interface Variants {
+  css?: CSS
+}
 
 export type RadioProps = AriaRadioProps & Variants
 
+interface ComponentProps {
+  isSelected: boolean
+  isDisabled: any
+  isHovered: boolean
+  isFocusVisible: boolean
+  children?: any
+}
+
+const Circle = (props: ComponentProps) => (
+  <>
+    <StyledRadioSvgCircle
+      isSelected={props.isSelected}
+      isFocusVisible={props.isFocusVisible}
+      isDisabled={props.isDisabled}
+      isHovered={props.isHovered}
+      aria-hidden="true">
+      <circle
+        cx={10}
+        cy={10}
+        r={4}
+        fill="currentColor"
+        stroke="none"
+        strokeWidth={2}
+      />
+    </StyledRadioSvgCircle>
+    {props.children && <Paragraph css={{ ml: 10 }}>{props.children}</Paragraph>}
+  </>
+)
+
 function _Radio(props: RadioProps, ref: FocusableRef<HTMLLabelElement>) {
-  const { isDisabled, children, autoFocus, value } = props
+  const { children } = props
 
-  const { hoverProps, isHovered } = useHover({ isDisabled })
-  const { focusProps, isFocusVisible } = useFocusRing({
-    autoFocus,
-  })
-
-  const inputRef = React.useRef<HTMLInputElement>(null)
-  const domRef = useFocusableRef(ref, inputRef)
-
-  const radioGroupProps = useRadioProvider()
-  const { state } = radioGroupProps
-
-  const { inputProps } = useRadio(
-    {
-      ...props,
-      ...radioGroupProps,
-      isDisabled,
-    },
-    state,
+  const {
+    type,
+    full,
+    inputProps,
+    hoverProps,
+    focusProps,
+    isSelected,
+    isDisabled,
+    isHovered,
+    isFocusVisible,
     inputRef,
-  )
+    domRef,
+  } = useRadioProps(props, ref)
 
-  const isSelected = state.selectedValue === value
+  const Component = type === 'button' ? 'span' : Circle
+  const Label = type === 'button' ? StyledButtonLabel : StyledRadioLabel
 
   return (
-    <StyledLabel {...hoverProps} isHovered={isHovered} ref={domRef}>
+    <Label
+      {...hoverProps}
+      {...{ isSelected, isDisabled, isHovered, isFocusVisible, full }}
+      ref={domRef}>
       <VisuallyHidden>
         <input {...inputProps} {...focusProps} ref={inputRef} />
       </VisuallyHidden>
 
-      <StyledRadioSvg
-        isSelected={isSelected}
-        isFocusVisible={isFocusVisible}
-        isDisabled={isDisabled}
-        aria-hidden="true">
-        <circle
-          cx={10}
-          cy={10}
-          r={4}
-          fill="currentColor"
-          stroke="none"
-          strokeWidth={2}
-        />
-      </StyledRadioSvg>
-
-      {children && <Paragraph css={{ ml: 10 }}>{children}</Paragraph>}
-    </StyledLabel>
+      <Component
+        {...{ isSelected, isDisabled, isHovered, isFocusVisible, children }}
+      />
+    </Label>
   )
 }
 

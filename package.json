@@ -15,7 +15,7 @@
     "manypkg:depcheck": "manypkg exec depcheck --json",
     "clean": "turbo run clean && rimraf node_modules",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "make-changeset": "changeset",
+    "changeset": "changeset",
     "bump-version": "changeset version",
     "release": "turbo run build --filter=docs^... && changeset publish",
     "publish-packages": "turbo run build lint test --filter=docs^... && changeset version && changeset publish",
