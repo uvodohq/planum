@@ -6,11 +6,9 @@
 
 Planum UI is a React component library with 20+ components based on TypeScript and Uvodo Design System.
 
-## https://planum.uvodo.dev
-
 <br>
 
-[![npm](https://img.shields.io/npm/v/@uvodohq/planum?color=blue)](https://www.npmjs.com/package/@uvodohq/planum)
+[![npmimg](https://img.shields.io/npm/v/@uvodohq/planum)](https://www.npmjs.com/package/@uvodohq/planum)
 [![licence](https://img.shields.io/npm/l/@uvodohq/planum)]()
 [![downloads](https://img.shields.io/npm/dw/@uvodohq/planum)]()
 [![storybook](https://shields.io/badge/storybook-white?logo=storybook&style=flat)](https://planum-storybook.netlify.app)
@@ -22,13 +20,9 @@ Planum UI is a React component library with 20+ components based on TypeScript a
 
 # Live ⚡️
 
-- Demo Showcase Example App [![Netlify Status](https://api.netlify.com/api/v1/badges/c492e5e8-9f20-4b17-a494-a57a09ea1768/deploy-status)](https://app.netlify.com/sites/planum-demo/deploys)
+### https://planum.uvodo.dev - Demo Showcase Example App [![Netlify Status](https://api.netlify.com/api/v1/badges/c492e5e8-9f20-4b17-a494-a57a09ea1768/deploy-status)](https://app.netlify.com/sites/planum-demo/deploys)
 
-  https://planum.uvodo.dev
-
-- Planum Storybook [![Netlify Status](https://api.netlify.com/api/v1/badges/8a6b4d8d-d711-436c-94cd-6f16b47e6dc2/deploy-status)](https://app.netlify.com/sites/planum-storybook/deploys)
-
-  https://planum-storybook.netlify.app
+### https://planum-storybook.netlify.app - Planum Storybook [![Netlify Status](https://api.netlify.com/api/v1/badges/8a6b4d8d-d711-436c-94cd-6f16b47e6dc2/deploy-status)](https://app.netlify.com/sites/planum-storybook/deploys)
 
 # Powered by
 
