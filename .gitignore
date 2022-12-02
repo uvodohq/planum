@@ -48,5 +48,5 @@ coverage/
 # 
 *.backup
 
-apps/showcase/stats.html
-apps/example/stats.html
+/apps/showcase/stats.html
+/apps/example/stats.html
