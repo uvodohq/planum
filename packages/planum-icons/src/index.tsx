@@ -1,6 +1,6 @@
 export { default as ArrowClockwiseIcon } from './icons/arrow-clockwise'
 export { default as ArrowLeftIcon } from './icons/arrow-left'
-export * from './icons/arrow-right'
+export { default as ArrowRightIcon } from './icons/arrow-right'
 export { default as ArrowSquareOutIcon } from './icons/arrow-square-out'
 export { default as ArrowsClockwiseIcon } from './icons/arrows-clockwise'
 export { default as ArrowsDownUpIcon } from './icons/arrows-down-up'

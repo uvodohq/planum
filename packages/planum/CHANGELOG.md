@@ -1,5 +1,11 @@
 # @uvodohq/planum
 
+## 1.1.0
+
+### Minor Changes
+
+- planum theme color changes
+
 ## 1.0.0
 
 ### Major Changes

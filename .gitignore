@@ -47,3 +47,5 @@ coverage/
 
 # 
 *.backup
+
+/apps/showcase/stats.html
