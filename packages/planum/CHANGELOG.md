@@ -1,5 +1,11 @@
 # @uvodohq/planum
 
+## 0.3.0
+
+### Minor Changes
+
+- [#1](https://github.com/uvodohq/planum/pull/1) [`486759d`](https://github.com/uvodohq/planum/commit/486759d4ac46b1546409b8d863bf926258c65a8d) Thanks [@EminQasimov](https://github.com/EminQasimov)! - Radio type props add , radios shows as button group
+
 ## 0.2.0
 
 ### Minor Changes

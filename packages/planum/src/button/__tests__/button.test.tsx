@@ -1,4 +1,3 @@
-import * as React from 'react'
 import { vi } from 'vitest'
 
 import { render, screen, userEvent } from '../../test'
