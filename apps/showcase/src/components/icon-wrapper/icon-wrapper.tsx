@@ -1,12 +1,10 @@
 import { Box, toast } from '@uvodohq/planum'
-import { Icon } from '@uvodohq/planum-icons'
 import { Container } from './icons-wrapper.styles'
 
-export const IconWrapper = (props: Icon) => {
+export const IconWrapper = (props: any) => {
   const { name, Icon } = props
 
   function copyToClipboard() {
-    //NOTE: create copy-to-clipboard hook as admin
     navigator.clipboard.writeText(name)
     toast(`'${name}' copied to clipboard`)
   }

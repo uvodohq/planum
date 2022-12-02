@@ -4,6 +4,7 @@ export const IconGrid = styled('div', {
   display: 'grid',
   gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))',
   gap: '$32',
+  my: 32,
 })
 
 export const Container = styled('div', {
