@@ -1,25 +1,22 @@
 [![storybook](cover.jpg)](https://www.npmjs.com/package/@uvodohq/planum)
 
-<div align="center" >
+<div align="center">
 
-## Planum - A React UI Kit for Uvodo Design System
+# Planum - A React UI Kit for Uvodo Design System
 
 Planum UI is a React component library with 20+ components based on TypeScript and Uvodo Design System.
 
 <br>
 
-[![storybook](https://img.shields.io/npm/v/@uvodohq/planum?color=blue)](https://www.npmjs.com/package/@uvodohq/planum)
-[![storybook](https://img.shields.io/npm/l/@uvodohq/planum)]()
-[![storybook](https://img.shields.io/npm/dw/@uvodohq/planum)]()
+[![npm](https://img.shields.io/npm/v/@uvodohq/planum?color=blue)](https://www.npmjs.com/package/@uvodohq/planum)
+[![licence](https://img.shields.io/npm/l/@uvodohq/planum)]()
+[![downloads](https://img.shields.io/npm/dw/@uvodohq/planum)]()
 [![storybook](https://shields.io/badge/storybook-white?logo=storybook&style=flat)](https://planum-storybook.netlify.app)
+[![twitter](https://img.shields.io/twitter/follow/uvodohq?label=uvodohq&style=social)](https://twitter.com/uvodohq)
 
-<br>
-<a href="https://twitter.com/uvodohq">
-<img src="https://img.shields.io/twitter/follow/uvodohq?label=uvodohq&style=social" alt="Twitter Follow">
-</a>
-
-  <hr />
 </div>
+
+---
 
 # Powered by
 
@@ -27,9 +24,8 @@ Planum UI is a React component library with 20+ components based on TypeScript a
 - 🚀 [React](https://reactjs.org/) — JavaScript library for user interfaces
 - 🛠 [Tsup](https://github.com/egoist/tsup) — TypeScript bundler powered by esbuild
 - 📖 [Storybook](https://storybook.js.org/) — UI component environment powered by Vite
-
-- Uvodo design system
-- Accessibility friendly components
+- 🟣 Uvodo design system
+- 👀 Accessibility friendly components
 
 As well as a few others tools used:
 
