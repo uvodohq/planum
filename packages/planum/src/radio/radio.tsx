@@ -14,10 +14,6 @@ import { useRadioProps } from './use-radio-props'
 
 interface Variants {
   css?: CSS
-  isHovered: boolean
-  isSelected: boolean
-  isDisabled: boolean
-  isFocusVisible: boolean
 }
 
 export type RadioProps = AriaRadioProps & Variants

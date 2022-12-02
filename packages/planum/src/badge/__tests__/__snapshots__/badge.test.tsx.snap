@@ -1,0 +1,61 @@
+// Vitest Snapshot v1
+
+exports[`<Badge /> > should renders danger variant badge with right text 1`] = `
+<div>
+  <span
+    class="c-iPYhUp c-kLRYwF c-dtudLY c-dtudLY-eNlZJL-variant-danger c-dtudLY-gTzoIO-roundness-pill"
+  >
+    danger
+  </span>
+</div>
+`;
+
+exports[`<Badge /> > should renders neutral variant badge with right text 1`] = `
+<div>
+  <span
+    class="c-iPYhUp c-kLRYwF c-dtudLY c-dtudLY-eQBtDl-variant-neutral c-dtudLY-gTzoIO-roundness-pill"
+  >
+    neutral
+  </span>
+</div>
+`;
+
+exports[`<Badge /> > should renders outlinePrimary variant badge with right text 1`] = `
+<div>
+  <span
+    class="c-iPYhUp c-kLRYwF c-dtudLY c-dtudLY-jJsbnp-variant-outlinePrimary c-dtudLY-gTzoIO-roundness-pill"
+  >
+    outlinePrimary
+  </span>
+</div>
+`;
+
+exports[`<Badge /> > should renders secondary variant badge with right text 1`] = `
+<div>
+  <span
+    class="c-iPYhUp c-kLRYwF c-dtudLY c-dtudLY-ebPlNg-variant-secondary c-dtudLY-gTzoIO-roundness-pill"
+  >
+    secondary
+  </span>
+</div>
+`;
+
+exports[`<Badge /> > should renders success variant badge with right text 1`] = `
+<div>
+  <span
+    class="c-iPYhUp c-kLRYwF c-dtudLY c-dtudLY-jhsIH-variant-success c-dtudLY-gTzoIO-roundness-pill"
+  >
+    success
+  </span>
+</div>
+`;
+
+exports[`<Badge /> > should renders warning variant badge with right text 1`] = `
+<div>
+  <span
+    class="c-iPYhUp c-kLRYwF c-dtudLY c-dtudLY-gHSaia-variant-warning c-dtudLY-gTzoIO-roundness-pill"
+  >
+    warning
+  </span>
+</div>
+`;
