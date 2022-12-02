@@ -1,4 +1,4 @@
-import { vi } from 'vitest'
+// import { vi } from 'vitest'
 
 import { render } from '../../test'
 import { Radio, RadioGroup } from '..'

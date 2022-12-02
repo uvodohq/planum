@@ -1,6 +1,6 @@
 {
   "name": "@uvodohq/planum-icons",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Planum Icons - based on phosphor icons as part of uvodo design",
   "author": "UvodoHQ",
   "license": "MIT",
@@ -34,7 +34,7 @@
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
-    "lint": "TIMING=1 eslint \"src/**/*.ts*\"",
+    "lint": "cross-env TIMING=1 eslint \"src/**/*.ts*\"",
     "clean": "rimraf .turbo node_modules dist"
   },
   "devDependencies": {

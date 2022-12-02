@@ -17,8 +17,7 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "changeset": "changeset",
     "bump-version": "changeset version",
-    "release": "turbo run build --filter=docs^... && changeset publish",
-    "publish-packages": "turbo run build lint test --filter=docs^... && changeset version && changeset publish",
+    "publish-packages": "turbo run build test --filter=@uvodohq/* && changeset version && changeset publish",
     "status": "changeset status --verbose",
     "gen": "plop",
     "update": "yarn upgrade-interactive --latest"
@@ -28,6 +27,7 @@
     "@changesets/cli": "^2.22.0",
     "@manypkg/cli": "^0.19.2",
     "@uvodohq/eslint-config": "*",
+    "cross-env": "^7.0.3",
     "depcheck": "^1.4.3",
     "eslint": "^8.27.0",
     "plop": "^3.1.0",

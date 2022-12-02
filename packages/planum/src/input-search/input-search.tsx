@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useFocus } from '@react-aria/interactions'
 import { useSearchField } from '@react-aria/searchfield'
 import { mergeProps } from '@react-aria/utils'

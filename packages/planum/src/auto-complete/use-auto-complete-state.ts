@@ -8,6 +8,7 @@ export interface UseAutoCompleteStateProps {
 
 export type AutoCompleteState = ReturnType<typeof useAutoCompleteState>
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function useAutoCompleteState(props?: UseAutoCompleteStateProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [activeIndex, setActiveIndex] = useState<number | null>(null)

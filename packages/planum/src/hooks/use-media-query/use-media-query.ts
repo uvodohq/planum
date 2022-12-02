@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react'
 
+const getMatches = (query: string): boolean => {
+  // Prevents SSR issues
+  if (typeof window !== 'undefined') {
+    return window.matchMedia(query).matches
+  }
+  return false
+}
+
 // TODO: cache the result of the matchMedia query
 export function useMediaQuery(query: string): boolean {
-  const getMatches = (query: string): boolean => {
-    // Prevents SSR issues
-    if (typeof window !== 'undefined') {
-      return window.matchMedia(query).matches
-    }
-    return false
-  }
-
   const [matches, setMatches] = useState<boolean>(getMatches(query))
 
   function handleChange() {

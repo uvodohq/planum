@@ -1,5 +1,11 @@
 # @uvodohq/planum-editor
 
+## 0.2.1
+
+### Patch Changes
+
+- [#2](https://github.com/uvodohq/planum/pull/2) [`54c5a67`](https://github.com/uvodohq/planum/commit/54c5a678d8fe070930e8e998ddf16347dcc54f06) Thanks [@EminQasimov](https://github.com/EminQasimov)! - Planum icon package created
+
 ## 0.2.0
 
 ### Minor Changes

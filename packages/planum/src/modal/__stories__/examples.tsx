@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import { styled } from '@stitches/react'
 import * as React from 'react'
 
@@ -153,7 +154,7 @@ export function ModalExampleControlled() {
 
   return (
     <Flex css={{ bg: '$success100', gap: 22, p: 22 }}>
-      <Modal onClose={() => alert('closed')} state={state}>
+      <Modal onClose={() => window.alert('closed')} state={state}>
         <Dialog
           title="Controlled Modal"
           description="This modal state controled by useModalState hook, and  

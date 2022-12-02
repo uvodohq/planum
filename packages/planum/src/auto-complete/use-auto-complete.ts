@@ -65,6 +65,7 @@ export function useAutoComplete(
         listRef.current[activeIndex]?.scrollIntoView({ block: 'nearest' })
       }
     })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeIndex])
 
   const { context } = floating

@@ -119,13 +119,13 @@ export default function MenuExamples() {
       </Menu>
 
       <div
-        onClick={(e) => {
+        onClick={() => {
           alert('i should not be triggered, parent wrapper')
         }}>
         <Menu
           trigger={
             <button
-              onClick={(e) => {
+              onClick={() => {
                 alert('i am button onClick')
               }}>
               Click propagation simple
@@ -145,7 +145,7 @@ export default function MenuExamples() {
             <Button
               leftIcon={<DotsThreeIcon />}
               variant="secondaryDark"
-              onClick={(e) => {
+              onClick={() => {
                 alert('i am button onClick')
               }}>
               Click propagation
