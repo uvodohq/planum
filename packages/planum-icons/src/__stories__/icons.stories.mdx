@@ -1,7 +1,12 @@
 import { ArgsTable, Story, Canvas, Meta } from '@storybook/addon-docs'
 import { TrashIcon, UserIcon } from '..'
 import { Icon } from '../icon.tsx'
-import { SearchIcons } from './icon-list-search/icon-list-search'
+import {
+  SearchIcons,
+  DuotoneIcons,
+  allIconsCount,
+  duotoneIconsCount,
+} from './icon-list-search/icon-list-search'
 
 <Meta title="Components/Icons" component={Icon} />
 
@@ -13,15 +18,20 @@ import { SearchIcons } from './icon-list-search/icon-list-search'
 
 ## Overview
 
-Planum provides a set of commonly used interface <b>icons</b> you can use in your project. The icons are exported as React components and can be used in your project as such or as a part of a custom component.
+Planum provides a set of commonly used interface <b>icons</b> you can use in your project.
+The icons are exported as React components and can be used in your project as such or as a part of a custom component.
 
-<br />
+you need install @uvodohq/planum-icons as seperate package before use.
 
-#### you need install @uvodohq/planum-icons as seperate package before use.
+```bash
+npm install @uvodohq/planum-icons
+```
 
-`npm install @uvodohq/planum-icons`
+```jsx
+import { UserIcon } from '@uvodohq/planum-icons'
 
-`import { UserIcon } from '@uvodohq/planum-icons'`
+export () => <UserIcon />
+```
 
 ## Variants
 
@@ -39,7 +49,7 @@ Planum provides a set of commonly used interface <b>icons</b> you can use in you
   <Story name="Sizes">
     <TrashIcon size={24} />
     <TrashIcon size={32} />
-    <TrashIcon size={64} />
+    <TrashIcon size={48} />
   </Story>
 </Canvas>
 
@@ -53,7 +63,7 @@ Planum provides a set of commonly used interface <b>icons</b> you can use in you
   </Story>
 </Canvas>
 
-### Duotone icons
+## Duotone icons
 
 Note: not all icons have duotone weight.
 
@@ -66,7 +76,15 @@ Note: not all icons have duotone weight.
 </Canvas>
 
 <Canvas>
-  <Story name="Variants">
+  <Story name="Duotone Icons">
+    <DuotoneIcons />
+  </Story>
+</Canvas>
+
+## Icon list
+
+<Canvas>
+  <Story name="Icon list">
     <SearchIcons />
   </Story>
 </Canvas>
