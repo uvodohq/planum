@@ -118,10 +118,10 @@ export const inputCss = css(subheaderCss, {
   width: '100%',
   maxWidth: '100%',
   transition: 'border-color 0.2s, box-shadow 0.2s',
-
   backgroundColor: 'transparent',
   color: '$textDark',
   fontWeight: '$regular',
+  border: 'none',
   outline: 'none',
 
   '&:-webkit-autofill': {

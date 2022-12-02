@@ -14,6 +14,14 @@ const NativeButton = styled('button', {
   p: 8,
   whiteSpace: 'nowrap',
   br: 8,
+  border: '1px solid transparent',
+  cursor: 'pointer',
+
+  '&:focus': {
+    borderColor: '$primary600',
+    outline: '2px solid $colors$primary100',
+    outlineOffset: '3px',
+  },
 })
 
 export function ModalExampleSimple() {

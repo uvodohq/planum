@@ -19,6 +19,19 @@ const NativeButton = styled('button', {
   p: 8,
   whiteSpace: 'nowrap',
   br: 8,
+  fontSize: 16,
+  border: '1px solid transparent',
+  cursor: 'pointer',
+
+  '&:focus': {
+    borderColor: '$primary600',
+    outline: '2px solid $colors$primary100',
+    outlineOffset: '3px',
+  },
+})
+
+const StyledText = styled('p', {
+  m: 0,
 })
 
 export function ModalExampleSimple() {
@@ -76,12 +89,12 @@ export function ModalExampleCustomFooter() {
         title="Custom footer action buttons"
         renderFooter={(props) => (
           <Box css={{ px: 32, pt: 32 }}>
-            <Button variant="secondaryDanger">Remove</Button>
+            <Button variant="secondaryDanger" css={{ mr: '$16' }}>
+              Remove
+            </Button>
             <Button onClick={props.closeModal}>Custom close</Button>
           </Box>
-        )}>
-        {/* <p id={props.descriptionId}>Modal description</p> */}
-      </Dialog>
+        )}></Dialog>
     </Modal>
   )
 }
@@ -92,12 +105,10 @@ export function ModalExampleUnClosable() {
       closable={false}
       trigger={<NativeButton>unclosable modal</NativeButton>}>
       <Dialog title="This is an unclosable dialog">
-        <p
-        // id={props.descriptionId}
-        >
+        <StyledText>
           You cant close me, when click outside me. or press ESC key. usefull
           for unsaved forms in modals
-        </p>
+        </StyledText>
       </Dialog>
     </Modal>
   )
@@ -111,7 +122,9 @@ export function ModalExampleOverflow() {
         description="Long content should be wrapped in a scrolled content."
         renderFooter={(props) => (
           <Box css={{ px: 32, pt: 32 }}>
-            <Button variant="secondaryDanger">Save</Button>
+            <Button variant="secondaryDanger" css={{ mr: '$16' }}>
+              Save
+            </Button>
             <Button onClick={props.closeModal}>Custom close</Button>
           </Box>
         )}>
@@ -127,20 +140,18 @@ export function NestedModalExample() {
     <Modal trigger={<NativeButton>nested modal</NativeButton>}>
       <Dialog title="This is a dialog 1">
         <Stack y="$24">
-          <p
-          // id={props.descriptionId}
-          >
+          <StyledText>
             Try to open second modal, to test nested modals.
-          </p>
+          </StyledText>
 
           <Modal trigger={<NativeButton>open 2nd modal</NativeButton>}>
             <Dialog title="This is a dialog 2">
               <Stack y="$24">
-                <p
+                <StyledText
                 // id={props.descriptionId}
                 >
                   you are in 2nd modal, test ESC key to close it.
-                </p>
+                </StyledText>
                 {/* <NativeButton onClick={props.close}>close 2nd</NativeButton> */}
               </Stack>
             </Dialog>
@@ -184,17 +195,19 @@ export function ModalExampleOverflowSelect() {
         description="Long content should be wrapped in a scrolled content."
         renderFooter={(props) => (
           <Box css={{ px: 32, pt: 32 }}>
-            <Button variant="secondaryDanger">Save</Button>
+            <Button variant="secondaryDanger" css={{ mr: '$16' }}>
+              Save
+            </Button>
             <Button onClick={props.closeModal}>Custom close</Button>
           </Box>
         )}>
-        <Box css={{ h: 400, p: 32 }}>
+        <Box css={{ h: 400, py: 32 }}>
           <SelectComponent defaultValue={14} />
         </Box>
         <Input ref={ref} />
         tab to focus select. try open select, scroll to see popup. press ESC key
         to close select. then modal.
-        <Box css={{ h: 400, p: 32 }}>
+        <Box css={{ h: 400, py: 32 }}>
           <SelectComponent defaultValue={14} />
         </Box>
         end of content

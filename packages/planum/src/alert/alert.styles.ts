@@ -57,6 +57,7 @@ export const StyledContent = styled('div', {
   alignItems: 'flex-start',
   color: '$textDark',
   pr: '$8',
+  m: 0,
 })
 
 export const StyledIcon = styled('span', {
@@ -65,6 +66,7 @@ export const StyledIcon = styled('span', {
 
 export const StyledText = styled(Paragraph, {
   userSelect: 'text',
+  m: 0,
 })
 
 export type StyledAlertVariants = Stitches.VariantProps<typeof AlertContainer>

@@ -1,7 +1,7 @@
 /* eslint-disable no-alert */
 import { forwardRef } from 'react'
 import { DotsThreeIcon, ListIcon } from '../assets/icons'
-import { Menu, MenuItem, Button, Box, Flex } from '@uvodohq/planum'
+import { Menu, MenuItem, Button, Box, Flex, styled } from '@uvodohq/planum'
 
 export const menuItems = (
   <>
@@ -43,10 +43,24 @@ export const RowBox = (props) => {
   )
 }
 
+const NativeButton = styled('button', {
+  background: 'none',
+  fontSize: '$16',
+  textAlign: 'left',
+  border: '1px solid transparent',
+  cursor: 'pointer',
+
+  '&:focus': {
+    borderColor: '$primary600',
+    outline: '2px solid $colors$primary100',
+    outlineOffset: '3px',
+  },
+})
+
 export default function MenuExamples() {
   return (
     <>
-      <Menu trigger={<button> Edit menu</button>}>
+      <Menu trigger={<NativeButton> Edit menu</NativeButton>}>
         <MenuItem label="Undo" onSelect={alert} />
         <MenuItem label="Redo" />
         <MenuItem label="Cut" disabled />
@@ -63,7 +77,9 @@ export default function MenuExamples() {
         <MenuItem label="Instagram" />
       </Menu>
 
-      <Menu trigger={<button> another button</button>} defaultIsOpen={false}>
+      <Menu
+        trigger={<NativeButton> another button</NativeButton>}
+        defaultIsOpen={false}>
         <MenuItem label="Undo" onSelect={alert} />
         <MenuItem label="Redo" />
         <MenuItem label="Cut" disabled />
@@ -106,12 +122,12 @@ export default function MenuExamples() {
         }}>
         <Menu
           trigger={
-            <button
+            <NativeButton
               onClick={(e) => {
                 alert('i am button onClick')
               }}>
               Click propagation simple
-            </button>
+            </NativeButton>
           }>
           <MenuItem label="Undo" onSelect={alert} />
           <MenuItem label="Redo" />

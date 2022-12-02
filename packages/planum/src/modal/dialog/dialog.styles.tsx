@@ -38,11 +38,13 @@ export const StyledDialogTitle = styled(H3, {
   fw: '$bold',
   pt: '$16',
   wordBreak: 'break-word',
+  m: 0,
 })
 
 export const StyledDialogDesc = styled(Paragraph, {
   color: '$textLight',
   wordBreak: 'break-word',
+  m: 0,
 })
 
 export const StyledCloseButton = styled('button', {
@@ -55,6 +57,9 @@ export const StyledCloseButton = styled('button', {
   transition: 'background-color 0.2s ease-in-out, color 0.2s ease-in-out',
   outline: 'none',
   br: 99,
+  border: 'none',
+  backgroundColor: 'transparent',
+  cursor: 'pointer',
 
   '&:hover': {
     color: '$surface600',

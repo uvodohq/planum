@@ -50,7 +50,7 @@ export function Checkbox(props: CheckboxProps) {
         {markIcon}
       </StyledCheckbox>
 
-      {hasLabel && <Paragraph css={{ ml: 10 }}>{labelText}</Paragraph>}
+      {hasLabel && <Paragraph css={{ m: 0, ml: 10 }}>{labelText}</Paragraph>}
     </StyledLabel>
   )
 }

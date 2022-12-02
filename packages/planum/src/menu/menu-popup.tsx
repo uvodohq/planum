@@ -48,6 +48,11 @@ const underlayVariants = {
   hidden: { opacity: 0, transition: { duration: 0.2, ease: 'easeOut' } },
 }
 
+const StyledList = styled('ul', {
+  p: 0,
+  m: 0,
+})
+
 interface PopupProps {
   state: UseMenuState
   menu: UseMenuReturn
@@ -126,7 +131,7 @@ export const DropdownPopup = (props: PopupProps) => {
                 })}
                 as={motion.div}
                 {...motionConfig}>
-                <ul>{menus}</ul>
+                <StyledList>{menus}</StyledList>
               </Popup>
             </FloatingFocusManager>
           </FloatingOverlay>

@@ -59,12 +59,12 @@ export const StyledInput = styled('input', subheaderCss, {
   width: '100%',
   maxWidth: '100%',
   transition: 'border-color 0.2s, box-shadow 0.2s',
-
   backgroundColor: 'transparent',
   color: '$textDark',
   fontWeight: '$regular',
   outline: 'none',
   appearance: 'none',
+  border: 'none',
 
   '&::placeholder': {
     font: 'inherit',

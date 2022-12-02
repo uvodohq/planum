@@ -12,7 +12,9 @@ export const CardList = styled('ul', {
   gap: '$24',
 })
 
-export const CardGrid = styled('li', {})
+export const CardGrid = styled('li', {
+  listStyle: 'none',
+})
 
 export const CardLink = styled('a', {
   fontWeight: '$semibold',
@@ -31,6 +33,8 @@ export const CardLink = styled('a', {
   display: 'flex',
   alignItems: 'center',
   gap: '$16',
+  boxSizing: 'border-box',
+  textDecoration: 'none',
 
   '&:hover': {
     boxShadow: '$md',

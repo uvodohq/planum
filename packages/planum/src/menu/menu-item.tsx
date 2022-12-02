@@ -65,7 +65,7 @@ export const MenuItem = forwardRef<HTMLLIElement, MenuItemProps>(
         data-disabled={disabled}>
         <Flex css={{ gap: 4, alignItems: 'center' }}>
           <StyledIcon css={iconCss}>{icon}</StyledIcon>
-          <Paragraph>{label}</Paragraph>
+          <Paragraph css={{ m: 0 }}>{label}</Paragraph>
         </Flex>
       </StyledMenuItem>
     )

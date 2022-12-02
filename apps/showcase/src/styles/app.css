@@ -1,12 +1,23 @@
+* {
+  /* box-sizing: border-box; */
+  /* list-style: none; */
+}
+
+a {
+  /* text-decoration: none; */
+}
+
 body {
-  background-color: #a2a2a2;
   padding: 0;
   margin: 0;
+  background-color: #a2a2a2;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
     sans-serif;
+
 }
+
 
 table {
   table-layout: fixed;
