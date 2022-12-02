@@ -1,6 +1,6 @@
+[![storybook](cover.jpg)](https://www.npmjs.com/package/@uvodohq/planum)
+
 <div align="center" >
-  <img src="planum-logo.png#gh-light-mode-only" alt="Planum" title="Planum" width="220px" />
-  <img src="planum-logo-for-dark.png#gh-dark-mode-only" alt="Planum" title="Planum" width="220px" />
 
 ## Planum - A React UI Kit for Uvodo Design System
 
@@ -8,9 +8,10 @@ Planum UI is a React component library with 20+ components based on TypeScript a
 
 <br>
 
-<img src="https://img.shields.io/npm/v/@uvodohq/planum?color=blue">
-<img src="https://img.shields.io/npm/l/@uvodohq/planum">
-<img src="https://img.shields.io/npm/dw/@uvodohq/planum">
+[![storybook](https://img.shields.io/npm/v/@uvodohq/planum?color=blue)](https://www.npmjs.com/package/@uvodohq/planum)
+[![storybook](https://img.shields.io/npm/l/@uvodohq/planum)]()
+[![storybook](https://img.shields.io/npm/dw/@uvodohq/planum)]()
+[![storybook](https://shields.io/badge/storybook-white?logo=storybook&style=flat)](https://planum-storybook.netlify.app)
 
 <br>
 <a href="https://twitter.com/uvodohq">
