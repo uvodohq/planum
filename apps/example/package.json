@@ -10,7 +10,13 @@
     "clean": "rimraf .turbo node_modules dist"
   },
   "dependencies": {
+    "@chakra-ui/icon": "^3.0.12",
+    "@chakra-ui/icons": "^2.0.12",
+    "@chakra-ui/system": "^2.3.3",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
     "@uvodohq/planum": "*",
+    "@uvodohq/planum-icons": "*",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

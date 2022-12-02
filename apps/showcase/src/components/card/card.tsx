@@ -1,4 +1,4 @@
-import { PuzzleIcon } from '../../assets/icons'
+import { PuzzlePieceIcon } from '@uvodohq/planum-icons'
 import { CardGrid, CardIcon, CardLink, CardTitle } from './card.styles'
 
 interface CardItemProps {
@@ -12,7 +12,7 @@ export const Card = (props: CardItemProps) => {
     <CardGrid>
       <CardLink href={path}>
         <CardIcon>
-          <PuzzleIcon />
+          <PuzzlePieceIcon />
         </CardIcon>
         <CardTitle>{label}</CardTitle>
       </CardLink>

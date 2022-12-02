@@ -9,7 +9,7 @@ import {
   Input,
 } from '@uvodohq/planum'
 
-import { CopyIcon, UserIcon } from '../../assets/icons'
+import { CopySimpleIcon, UserIcon } from '@uvodohq/planum-icons'
 
 const RowBox = (props: any) => (
   <Box
@@ -103,7 +103,7 @@ export default function InputContainer() {
           aria-label="label"
           placeholder="Input Placeholder"
           leftIcon={<UserIcon />}
-          rightIcon={<CopyIcon />}
+          rightIcon={<CopySimpleIcon />}
         />
       </RowBox>
 
@@ -133,7 +133,7 @@ export default function InputContainer() {
           aria-label="label"
           placeholder="Input Placeholder"
           leftIcon={<UserIcon />}
-          rightIcon={<CopyIcon />}
+          rightIcon={<CopySimpleIcon />}
           defaultValue="Input Text"
         />
       </RowBox>
@@ -166,7 +166,7 @@ export default function InputContainer() {
           aria-label="label"
           placeholder="Input Placeholder"
           leftIcon={<UserIcon />}
-          rightIcon={<CopyIcon />}
+          rightIcon={<CopySimpleIcon />}
           isDisabled
         />
       </RowBox>
@@ -200,7 +200,7 @@ export default function InputContainer() {
           aria-label="label"
           placeholder="Input Placeholder"
           leftIcon={<UserIcon />}
-          rightIcon={<CopyIcon />}
+          rightIcon={<CopySimpleIcon />}
           defaultValue="Input Text"
           status="error"
         />
@@ -235,7 +235,7 @@ export default function InputContainer() {
           aria-label="label"
           placeholder="Input Placeholder"
           leftIcon={<UserIcon />}
-          rightIcon={<CopyIcon />}
+          rightIcon={<CopySimpleIcon />}
           defaultValue="Input Text"
           status="success"
         />
@@ -265,7 +265,7 @@ export default function InputContainer() {
         <Input
           aria-label="label"
           leftIcon={<UserIcon />}
-          rightIcon={<CopyIcon />}
+          rightIcon={<CopySimpleIcon />}
           label="Label"
           description="This is a textarea real example"
           successMessage="Success message, You did it!"
@@ -308,7 +308,7 @@ export default function InputContainer() {
           errorMessage="Error message"
           placeholder="Input Placeholder"
           leftIcon={<UserIcon />}
-          rightIcon={<CopyIcon />}
+          rightIcon={<CopySimpleIcon />}
           status="error"
         />
       </RowBox>
@@ -347,7 +347,7 @@ export default function InputContainer() {
           successMessage="Success message"
           placeholder="Input Placeholder"
           leftIcon={<UserIcon />}
-          rightIcon={<CopyIcon />}
+          rightIcon={<CopySimpleIcon />}
           status="success"
         />
       </RowBox>
@@ -468,7 +468,7 @@ export default function InputContainer() {
           label="Label"
           leftIcon={<UserIcon />}
           description="Description goes here"
-          rightIcon={<CopyIcon />}
+          rightIcon={<CopySimpleIcon />}
         />
 
         <InputUrl

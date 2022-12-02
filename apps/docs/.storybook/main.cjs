@@ -6,6 +6,7 @@ module.exports = {
     '../src/**/*.stories.mdx',
     '../../../packages/planum/src/**/*.stories.mdx',
     '../../../packages/planum-editor/src/**/*.stories.mdx',
+    '../../../packages/planum-icons/src/**/*.stories.mdx',
   ],
   addons: [
     '@storybook/addon-docs',
@@ -48,6 +49,13 @@ module.exports = {
             replacement: path.resolve(
               __dirname,
               '../../../packages/planum-editor/src/index.tsx',
+            ),
+          },
+          {
+            find: '@uvodohq/planum-icons',
+            replacement: path.resolve(
+              __dirname,
+              '../../../packages/planum-icons/src/index.tsx',
             ),
           },
         ],

@@ -1,6 +1,6 @@
 /* eslint-disable no-alert */
 import { forwardRef } from 'react'
-import { DotsThreeIcon, ListIcon } from '../assets/icons'
+import { DotsThreeIcon, ListIcon } from '@uvodohq/planum-icons'
 import { Menu, MenuItem, Button, Box, Flex } from '@uvodohq/planum'
 
 export const menuItems = (

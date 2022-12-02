@@ -1,4 +1,5 @@
 import { Input } from '@uvodohq/planum'
+import { PlusIcon, ArrowLeftIcon } from '@uvodohq/planum-icons'
 
 export default function DemoApp() {
   return (
@@ -6,6 +7,9 @@ export default function DemoApp() {
       {/* <Button>BUTTON ME</Button> */}
       {/* <Tooltip label="Hello world!">Hover me!</Tooltip> */}
       <Input />
+      <PlusIcon />
+      <ArrowLeftIcon />
+      {/* <ArrowRightIcon /> */}
       {/* <Alert message="Hello" /> */}
     </div>
   )
