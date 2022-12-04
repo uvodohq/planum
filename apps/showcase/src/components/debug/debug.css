@@ -2,47 +2,47 @@
   z-index: 11111;
 }
 
-body.debug *:not(:where(.ignore-debugging-css *)) {
+body.debug *:not(.ignore-debugging-css *) {
   background-color: rgba(255, 0, 0, 0.2)
 }
 
 
-body.debug * *:not(:where(.ignore-debugging-css *)) {
+body.debug * *:not(.ignore-debugging-css *) {
   background-color: rgba(0, 255, 0, 0.2);
 }
 
-body.debug * * *:not(:where(.ignore-debugging-css *)) {
+body.debug * * *:not(.ignore-debugging-css *) {
   background-color: rgba(0, 0, 255, 0.2);
 }
 
-body.debug * * * *:not(:where(.ignore-debugging-css *)) {
+body.debug * * * *:not(.ignore-debugging-css *) {
   background-color: rgba(255, 0, 255, 0.2);
 }
 
-body.debug * * * * *:not(:where(.ignore-debugging-css *)) {
+body.debug * * * * *:not(.ignore-debugging-css *) {
   background-color: rgba(0, 255, 255, 0.2);
 }
 
-body.debug * * * * * *:not(:where(.ignore-debugging-css *)) {
+body.debug * * * * * *:not(.ignore-debugging-css *) {
   background-color: rgba(255, 255, 0, 0.2);
 }
 
-body.debug * * * * * * *:not(:where(.ignore-debugging-css *)) {
+body.debug * * * * * * *:not(.ignore-debugging-css *) {
   background-color: rgba(255, 0, 0, 0.2);
 }
 
-body.debug * * * * * * * *:not(:where(.ignore-debugging-css *)) {
+body.debug * * * * * * * *:not(.ignore-debugging-css *) {
   background-color: rgba(0, 255, 0, 0.2);
 }
 
-body.debug * * * * * * * * *:not(:where(.ignore-debugging-css *)) {
+body.debug * * * * * * * * *:not(.ignore-debugging-css *) {
   background-color: rgba(0, 0, 255, 0.2);
 }
 
-body.debug * * * * * * * * * *:not(:where(.ignore-debugging-css *)) {
+body.debug * * * * * * * * * *:not(.ignore-debugging-css *) {
   background-color: rgba(0, 0, 255, 0.2);
 }
 
-body.debug * * * * * * * * * * *:not(:where(.ignore-debugging-css *)) {
+body.debug * * * * * * * * * * *:not(.ignore-debugging-css *) {
   background-color: rgba(0, 0, 255, 0.2);
 }
