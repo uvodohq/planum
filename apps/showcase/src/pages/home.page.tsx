@@ -142,7 +142,7 @@ export function HomePage() {
         <Cards />
       </Flex>
 
-      <Floating>
+      <Floating className="ignore-debugging-css">
         <BackHomeLink href="#components"> Components </BackHomeLink>
         <Debug />
       </Floating>
