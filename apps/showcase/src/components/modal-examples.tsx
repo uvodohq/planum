@@ -6,7 +6,7 @@ import {
   Box,
   Flex,
   Stack,
-  Dialog,
+  ModalContent as Dialog,
   Modal,
   useModalState,
   styled,

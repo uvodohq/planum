@@ -17,6 +17,7 @@ module.exports = {
     'unicorn/prevent-abbreviations': 'off',
     'unicorn/no-array-reduce': 'off',
     'unicorn/no-null': 'off',
+    'unicorn/no-useless-undefined': 'off',
 
     'simple-import-sort/imports': 'warn',
     'simple-import-sort/exports': 'warn',

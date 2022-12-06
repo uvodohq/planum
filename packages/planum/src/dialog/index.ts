@@ -1,0 +1,7 @@
+export type { DialogProps } from './dialog'
+export { Dialog } from './dialog'
+export { DialogClose } from './dialog-close'
+export { DialogDescription } from './dialog-description'
+export { DialogHeading } from './dialog-heading'
+export { DialogPopup } from './dialog-popup'
+export { DialogTrigger } from './dialog-trigger'
