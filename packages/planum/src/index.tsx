@@ -6,6 +6,7 @@ export {
   useMediaQuery,
   useMobileMedia,
   useTabletMedia,
+  usePrevious,
 } from './hooks'
 export * from './theme'
 export { useButton, useToggleButton } from '@react-aria/button'

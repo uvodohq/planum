@@ -11,6 +11,7 @@ import {
   Breadcrumbs,
   Skeleton,
 } from '@uvodohq/planum'
+import { Phone } from '@uvodohq/planum-phone'
 
 const ProgressLoader = (props: any) => {
   const [value, setValue] = useState(0)
@@ -36,6 +37,13 @@ export default function ExtraContainer() {
   return (
     <>
       <Box css={{ py: 60 }} id="loader">
+        <H1 css={{ my: 32, fw: 'bold' }}>Phone</H1>
+        <Box css={{ pb: 64, maxWidth: 600 }}>
+          <Box css={{ my: 24 }}>
+            <Phone label="asdasdlabel" placeholder="asdasd" />
+          </Box>
+        </Box>
+
         <H1 fw="bold">Loader</H1>
         <Flex css={{ gap: 32, pb: 64 }}>
           <table
