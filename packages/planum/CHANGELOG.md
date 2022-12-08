@@ -1,5 +1,13 @@
 # @uvodohq/planum
 
+## 2.0.0
+
+### Major Changes
+
+- - Floating v0.11 updated
+  - New Dialog component added
+  - Dialog in Modal renamed to ModalContent
+
 ## 1.1.0
 
 ### Minor Changes
