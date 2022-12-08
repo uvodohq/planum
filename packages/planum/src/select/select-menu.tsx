@@ -31,6 +31,7 @@ export interface SelectMenuProps<T extends object> extends InputProps {
   labelKey: KeysWithValsOfType<Item<T>, Value>
 
   renderTrigger(): JSX.Element
+  css?: any
 }
 
 const SelectMenu = forwardRef(

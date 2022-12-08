@@ -1,6 +1,6 @@
 {
   "name": "@uvodohq/planum",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "description": "Planum - A React UI Kit for Uvodo Design System. Uvodo is self-hosted eCommerce platform for digital agencies",
   "author": "UvodoHQ",
   "license": "MIT",
@@ -41,7 +41,7 @@
     "vitest-preview": "vitest-preview"
   },
   "dependencies": {
-    "@floating-ui/react-dom-interactions": "^0.9.3",
+    "@floating-ui/react-dom-interactions": "^0.13.1",
     "@radix-ui/react-avatar": "^1.0.0",
     "@react-aria/breadcrumbs": "^3.3.0",
     "@react-aria/button": "^3.6.0",

@@ -8,6 +8,7 @@ import {
   useClick,
   useDismiss,
   useFloating,
+  useFloatingNodeId,
   useInteractions,
   useListNavigation,
   useRole,
@@ -41,6 +42,9 @@ export function useMenu(
     ) as Array<string | null>,
   )
 
+  // subscribe portalled popup to the tree context. for selects inside modal
+  const nodeId = useFloatingNodeId()
+
   const { x, y, reference, floating, strategy, refs, context, placement } =
     useFloating<HTMLButtonElement>({
       open,
@@ -48,6 +52,7 @@ export function useMenu(
       placement: align,
       whileElementsMounted: autoUpdate,
       strategy: 'fixed',
+      nodeId,
       middleware: [
         offset(4),
         flip(),
@@ -143,5 +148,6 @@ export function useMenu(
     referenceProps,
     getMenuItemProps,
     renderMenuItems,
+    nodeId,
   }
 }

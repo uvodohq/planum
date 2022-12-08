@@ -1,9 +1,9 @@
 import type { Editor } from '@tiptap/react'
 import {
   Box,
-  Dialog,
   InputUrl,
   Modal,
+  ModalContent,
   Tooltip,
   useModalState,
 } from '@uvodohq/planum'
@@ -75,7 +75,7 @@ const LinkButtonWithModal = ({ editor, isSelected, isDisabled }: Props) => {
       </Tooltip>
 
       <Modal state={modal} initialFocus={1}>
-        <Dialog
+        <ModalContent
           title={isEditLink ? 'Edit link' : 'Add link'}
           renderFooter={() => (
             <DialogFooter
@@ -96,7 +96,7 @@ const LinkButtonWithModal = ({ editor, isSelected, isDisabled }: Props) => {
               onChange={(value) => setUrl(value)}
             />
           </Box>
-        </Dialog>
+        </ModalContent>
       </Modal>
     </>
   )

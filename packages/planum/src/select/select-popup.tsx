@@ -134,7 +134,10 @@ export default function SelectPopup(props: SelectPopupProps) {
                   exit="hidden"
                 />
               )}
-              <FloatingFocusManager context={select.context} preventTabbing>
+              <FloatingFocusManager
+                context={select.context}
+                initialFocus={-1}
+                modal={false}>
                 <Popup
                   css={popupCss}
                   {...select.getFloatingProps({
