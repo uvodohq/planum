@@ -60,7 +60,9 @@ export function useDialog(props: UseDialogProps = {}): UseDialogReturn {
     outsidePressEvent: 'mousedown',
     bubbles: false,
   })
-  const role = useRole(context)
+  const role = useRole(context, {
+    role: 'dialog',
+  })
 
   const interactions = useInteractions([click, dismiss, role])
 

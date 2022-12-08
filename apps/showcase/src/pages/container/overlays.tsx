@@ -62,6 +62,7 @@ function UncontrolledDialog() {
             <DialogDescription>My dialog description</DialogDescription>
             <DialogClose>Close</DialogClose>
             <NestedModalExample />
+            <MenuExamples />
           </StyledMobileBottomSheet>
         </DialogPopup>
       </Dialog>

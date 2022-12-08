@@ -65,7 +65,10 @@ export default function Popup(props: PopupProps) {
       <FloatingPortal id="planum-autocomplete-portal">
         <AnimatePresence>
           {state.isOpen && (
-            <FloatingFocusManager context={context} preventTabbing>
+            <FloatingFocusManager
+              context={context}
+              initialFocus={-1}
+              modal={false}>
               <StyledPopup
                 {...floatingProps}
                 as={motion.div}

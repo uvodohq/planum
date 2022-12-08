@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 
 import { Button } from '../button'
 import { Flex } from '../layout'
-import { CloseIcon } from '../modal/dialog/close-icon'
+import { CloseIcon } from '../modal/modal-content/close-icon'
 import {
   AlertContainer,
   StyledContent,

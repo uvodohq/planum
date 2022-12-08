@@ -2,7 +2,7 @@
 
 <div align="center">
 
-# Planum - A React UI Kit for Uvodo Design System
+# Planum (beta) - A React UI Kit for Uvodo Design System
 
 Planum UI is a React component library with 20+ components based on TypeScript and Uvodo Design System.
 
