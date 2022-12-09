@@ -1,5 +1,11 @@
 # @uvodohq/planum
 
+## 2.0.1
+
+### Patch Changes
+
+- Dialog overlay props can be passed
+
 ## 2.0.0
 
 ### Major Changes
