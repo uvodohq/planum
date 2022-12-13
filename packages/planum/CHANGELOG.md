@@ -1,5 +1,11 @@
 # @uvodohq/planum
 
+## 2.1.0
+
+### Minor Changes
+
+- Checkbox group add
+
 ## 2.0.1
 
 ### Patch Changes
