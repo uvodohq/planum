@@ -1,6 +1,8 @@
 import {
   Box,
   Checkbox,
+  CheckboxGroup,
+  CheckboxGroupItem,
   H1,
   H3,
   Radio,
@@ -8,6 +10,51 @@ import {
   Title,
   Toggle,
 } from '@uvodohq/planum'
+import { useState } from 'react'
+
+const list = [
+  {
+    label: 'Dog',
+    value: 'dog',
+  },
+  {
+    label: 'Panda',
+    value: 'panda',
+  },
+  {
+    label: 'Cat',
+    value: 'cat',
+    isDisabled: true,
+  },
+  {
+    label: 'Snake',
+    value: 'snake',
+    isDisabled: true,
+  },
+]
+
+const CheckGroup = () => {
+  const [value, setValue] = useState<string[]>(['snake'])
+
+  return (
+    <div>
+      <CheckboxGroup
+        value={value}
+        onChange={setValue}
+        css={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 16,
+        }}>
+        {list.map((item) => (
+          <CheckboxGroupItem key={item.label} {...item} />
+        ))}
+      </CheckboxGroup>
+
+      <div>{JSON.stringify(value, null, 2)}</div>
+    </div>
+  )
+}
 
 export default function FormElementsContainer() {
   return (
@@ -52,7 +99,7 @@ export default function FormElementsContainer() {
       </Box>
 
       <Title css={{ mb: 12, fw: '$medium' }}>With long labels</Title>
-      <Box css={{ display: 'flex', gap: 40, mb: 128 }}>
+      <Box css={{ display: 'flex', gap: 40, mb: 22 }}>
         <Box>
           <Checkbox aria-label="label">
             Add a title and description to see how this product might appear in
@@ -80,6 +127,13 @@ export default function FormElementsContainer() {
             might appear in a search engine listing
           </Checkbox>
         </Box>
+      </Box>
+
+      {/* Checkbox group*/}
+      <Title css={{ mb: 12, fw: '$medium' }}>Checkbox group</Title>
+
+      <Box css={{ display: 'flex', alignItems: 'center', gap: 40, mb: 28 }}>
+        <CheckGroup />
       </Box>
 
       {/* Switch/Toggles */}
