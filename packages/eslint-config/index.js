@@ -44,7 +44,7 @@ module.exports = {
     'pnpm-lock.yaml',
     'yarn.lock',
     'storybook-static/',
-    '.husk/y',
+    '.husky',
     '.git/',
   ],
   overrides: [],
