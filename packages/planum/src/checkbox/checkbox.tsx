@@ -5,8 +5,8 @@ import { usePress } from '@react-aria/interactions'
 import { useToggleState } from '@react-stately/toggle'
 import * as React from 'react'
 
-import type { CheckboxProps } from './type'
 import { CheckboxBase } from './checkbox-base'
+import type { CheckboxProps } from './type'
 
 export function Checkbox(props: CheckboxProps) {
   const { isDisabled, isIndeterminate, label, children } = props

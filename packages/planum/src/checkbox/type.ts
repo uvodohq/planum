@@ -36,6 +36,7 @@ export interface CheckboxBaseProps {
 }
 
 export type CheckboxGroupProps = AriaCheckboxGroupProps & {
-  children: ReactElement<CheckboxProps>[]
+  children: ReactElement<CheckboxGroupItemProps> &
+    ReactElement<CheckboxGroupItemProps>[]
   css?: CSS
 }
