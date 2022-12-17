@@ -1,4 +1,4 @@
-export { Dialog } from './dialog/dialog'
+export { ModalContent as Dialog } from './modal-content/modal-content'
 //
 export type { ModalProps } from './modal'
 export { Modal } from './modal'

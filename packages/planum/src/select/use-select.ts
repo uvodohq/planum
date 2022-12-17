@@ -26,7 +26,7 @@ export interface UseSelectProps {
 }
 
 export interface UseSelectReturn {
-  getFloatingProps: () => Record<string, unknown>
+  getFloatingProps: (props?: any) => Record<string, unknown>
   referenceProps: Record<string, unknown>
   getItemProps: () => Record<string, unknown>
   direction: any

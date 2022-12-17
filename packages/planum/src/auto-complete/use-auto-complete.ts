@@ -75,9 +75,7 @@ export function useAutoComplete(
       useDismiss(context, {
         bubbles: false,
       }),
-      useClick(context, {
-        pointerDown: true,
-      }),
+      useClick(context),
       useListNavigation(context, {
         listRef,
         activeIndex,

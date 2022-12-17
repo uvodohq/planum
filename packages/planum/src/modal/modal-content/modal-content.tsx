@@ -11,9 +11,9 @@ import {
   StyledDialogDesc,
   StyledDialogHeader,
   StyledDialogTitle,
-} from './dialog.styles'
+} from './modal-content.styles'
 
-export interface DialogProps {
+export interface ModalContentProps {
   titleCss?: CSS
   title?: React.ReactNode
   description?: React.ReactNode
@@ -22,7 +22,7 @@ export interface DialogProps {
   scrollBodyRef?: React.RefObject<HTMLDivElement>
 }
 
-export const Dialog = (props: DialogProps) => {
+export const ModalContent = (props: ModalContentProps) => {
   const {
     title,
     description,

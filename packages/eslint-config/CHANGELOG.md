@@ -1,5 +1,13 @@
 # @uvodohq/eslint-config
 
+## 0.2.1
+
+### Patch Changes
+
+- - Floating v0.11 updated
+  - New Dialog component added
+  - Dialog in Modal renamed to ModalContent
+
 ## 0.2.0
 
 ### Minor Changes

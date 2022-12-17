@@ -1,12 +1,21 @@
 import {
   Box,
   Button,
+  Dialog,
+  DialogTrigger,
+  DialogPopup,
+  DialogHeading,
+  DialogDescription,
+  DialogClose,
   Drawer,
   H1,
   H3,
   Paragraph,
   Tooltip,
+  styled,
 } from '@uvodohq/planum'
+import { useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
 
 import MenuExamples from '../../components/menu-examples'
 import {
@@ -21,6 +30,70 @@ import {
   ModalExampleUnClosable,
   NestedModalExample,
 } from '../../components/modal-examples'
+
+const mobileBottomSheetMotion = {
+  initial: { opacity: 0, y: 200 },
+  animate: { opacity: 1, y: 0 },
+  exit: { opacity: 0, y: 200 },
+  transition: {
+    duration: 0.15,
+  },
+}
+
+export const StyledMobileBottomSheet = styled(motion.div, {
+  height: '100%',
+  width: '100%',
+  background: '#fff',
+  position: 'absolute',
+  overflowY: 'auto',
+  '-webkit-overflow-scrolling': 'touch',
+  overscrollBehavior: 'contain',
+})
+
+function UncontrolledDialog() {
+  return (
+    <div className="App">
+      <h1>Dialog</h1>
+      <Dialog>
+        <DialogTrigger>My trigger</DialogTrigger>
+        <DialogPopup style={{ height: 'calc(100% - 64px)', top: 64 }}>
+          <StyledMobileBottomSheet {...mobileBottomSheetMotion}>
+            <DialogHeading>My dialog heading</DialogHeading>
+            <DialogDescription>My dialog description</DialogDescription>
+            <DialogClose>Close</DialogClose>
+            <NestedModalExample />
+            <MenuExamples />
+          </StyledMobileBottomSheet>
+        </DialogPopup>
+      </Dialog>
+    </div>
+  )
+}
+
+function ControlledDialog() {
+  const [open, setOpen] = useState(false)
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setOpen(true)
+    }, 4000)
+    return () => clearTimeout(timeout)
+  }, [])
+
+  return (
+    <div className="App">
+      <h1>Dialog</h1>
+      <p>The dialog will open in 3 seconds...</p>
+      <Dialog open={open} onOpenChange={setOpen}>
+        <DialogPopup className="Dialog">
+          <DialogHeading>I opened automatically</DialogHeading>
+          <DialogDescription>After 4 seconds</DialogDescription>
+          <DialogClose>Close</DialogClose>
+        </DialogPopup>
+      </Dialog>
+    </div>
+  )
+}
 
 function DrawerExample() {
   const Hamburger = (props) => {
@@ -83,6 +156,8 @@ export default function FormElementsContainer() {
       <H1 css={{ mb: 66, fw: 700 }}>Drawer</H1>
       <Box css={{ d: 'flex', gap: 40, mb: 128 }}>
         <DrawerExample />
+        {/* <ControlledDialog /> */}
+        <UncontrolledDialog />
       </Box>
 
       {/* Tooltip */}

@@ -1,29 +1,32 @@
 // TODO: add hover state and fx types, forward ref, group
-import { useCheckbox } from '@react-aria/checkbox'
+import { useCheckboxGroupItem } from '@react-aria/checkbox'
 import { useFocusRing } from '@react-aria/focus'
 import { usePress } from '@react-aria/interactions'
-import { useToggleState } from '@react-stately/toggle'
 import * as React from 'react'
 
 import { CheckboxBase } from './checkbox-base'
-import type { CheckboxProps } from './type'
+import { useCheckboxGroupProvider } from './context'
+import type { CheckboxGroupItemProps } from './type'
 
-export function Checkbox(props: CheckboxProps) {
-  const { isDisabled, isIndeterminate, label, children } = props
+export function CheckboxGroupItem(props: CheckboxGroupItemProps) {
+  const { isIndeterminate, label, value, children } = props
 
   const ref = React.useRef<HTMLInputElement>(null)
-  const state = useToggleState(props)
-  const { inputProps } = useCheckbox(props, state, ref)
+  const state = useCheckboxGroupProvider()
+  const { inputProps } = useCheckboxGroupItem(props, state, ref)
 
   const { isFocusVisible, focusProps } = useFocusRing()
   const { pressProps } = usePress({})
+
+  const isDisabled = state.isDisabled || props.isDisabled
+  const isSelected = state.isSelected(value)
 
   return (
     <CheckboxBase
       {...{
         isDisabled,
         isIndeterminate,
-        isSelected: state.isSelected,
+        isSelected,
         isFocusVisible,
         label,
         pressProps,
