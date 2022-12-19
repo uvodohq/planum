@@ -289,6 +289,24 @@ export const StyledButton = styled('button', {
       },
     },
     {
+      variant: 'flatDanger',
+      compact: true,
+      css: {
+        '&:hover': {
+          color: '$danger800',
+        },
+      },
+    },
+    {
+      variant: 'flat',
+      compact: true,
+      css: {
+        '&:hover': {
+          color: '$primary800',
+        },
+      },
+    },
+    {
       variant: 'primary',
       isDisabled: true,
       css: {
