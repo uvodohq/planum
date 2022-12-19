@@ -172,7 +172,7 @@ export const StyledButton = styled('button', {
 
       error: {
         backgroundColor: 'transparent',
-        color: '$danger600',
+        color: '$textDanger',
 
         '&:hover': {
           backgroundColor: '$danger100',
@@ -214,7 +214,7 @@ export const StyledButton = styled('button', {
       },
 
       info: {
-        color: '$info',
+        color: '$textInfo',
 
         '&:hover': {
           color: '$info800',
@@ -272,7 +272,7 @@ export const StyledButton = styled('button', {
       compact: true,
       css: {
         background: 'transparent',
-        color: '$primary',
+        color: '$textBrand',
 
         '&:hover': {
           color: '$primary800',
