@@ -1,5 +1,11 @@
 # @uvodohq/planum-icons
 
+## 1.2.0
+
+### Minor Changes
+
+- [#6](https://github.com/uvodohq/planum/pull/6) [`d5d05cc`](https://github.com/uvodohq/planum/commit/d5d05cca029906e77ff3f90429dd525d7ab7a4a7) Thanks [@EminQasimov](https://github.com/EminQasimov)! - new 3 icons add, alert color change, skelton fix
+
 ## 1.1.0
 
 ### Minor Changes

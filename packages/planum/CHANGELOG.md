@@ -1,5 +1,13 @@
 # @uvodohq/planum
 
+## 2.2.0
+
+### Minor Changes
+
+- [#6](https://github.com/uvodohq/planum/pull/6) [`d5d05cc`](https://github.com/uvodohq/planum/commit/d5d05cca029906e77ff3f90429dd525d7ab7a4a7) Thanks [@EminQasimov](https://github.com/EminQasimov)! - new 3 icons add, alert color change, skelton fix
+
+- [#7](https://github.com/uvodohq/planum/pull/7) [`4114979`](https://github.com/uvodohq/planum/commit/4114979adbf69a36a7d38481083214b09621c3ad) Thanks [@EminQasimov](https://github.com/EminQasimov)! - popover component add
+
 ## 2.1.2
 
 ### Patch Changes
