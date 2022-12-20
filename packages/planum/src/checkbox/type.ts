@@ -4,7 +4,7 @@ import type {
   AriaCheckboxProps,
   ToggleProps,
 } from '@react-types/checkbox'
-import type { ReactElement, ReactNode } from 'react'
+import type { ReactNode } from 'react'
 
 import type { CSS } from '../theme'
 import type { StyledCheckboxVariants } from './checkbox.styles'
