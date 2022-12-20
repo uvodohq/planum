@@ -33,6 +33,7 @@ coverage/
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
+!.vscode/settings.copy
 .idea
 .DS_Store
 *.suo

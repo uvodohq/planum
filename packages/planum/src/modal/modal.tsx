@@ -65,6 +65,7 @@ export const Modal = (props: ModalProps) => {
   if (isFirstRootModal) {
     return (
       // TODO: stoping propagation for when modal close, click event dispatchs automatically, and causes other links click. redundant span tag need to be removed
+      // if trigger prop not provided, modal focuses other underlay elements when closes.
       <span
         onClick={(e) => e.stopPropagation()}
         style={{ display: props.trigger ? '' : 'none' }}>
