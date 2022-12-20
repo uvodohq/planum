@@ -1,12 +1,11 @@
-import { useState } from 'react'
 import { Box, Button, Flex, H2, Text } from '@uvodohq/planum'
+import { useState } from 'react'
 
 import { styled } from '@uvodohq/planum'
 
-import { PlusIcon, WhatsappLogoIcon } from '@uvodohq/planum-icons'
+import { PlusIcon } from '@uvodohq/planum-icons'
 
-//NOTE: whatsappIcon
-function WhatsappIcon(props: Props) {
+function WhatsappIcon(props) {
   const { size = 24 } = props
   return (
     <svg

@@ -30,23 +30,23 @@ export const Alert = (props: AlertProps) => {
   const variantMap = {
     primary: {
       icon: <QuestionIcon />,
-      color: '$primary200',
+      color: '$primary300',
     },
     success: {
       icon: <CheckCircleIcon />,
-      color: '$success200',
+      color: '$success300',
     },
     info: {
       icon: <InfoIcon />,
-      color: '$info200',
+      color: '$info300',
     },
     warning: {
       icon: <InfoIcon />,
-      color: '$warning200',
+      color: '$warning300',
     },
     error: {
       icon: <InfoIcon />,
-      color: '$error200',
+      color: '$danger300',
     },
   }
 
