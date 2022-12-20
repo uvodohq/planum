@@ -4,7 +4,7 @@ import type {
   AriaCheckboxProps,
   ToggleProps,
 } from '@react-types/checkbox'
-import type { ReactElement } from 'react'
+import type { ReactElement, ReactNode } from 'react'
 
 import type { CSS } from '../theme'
 import type { StyledCheckboxVariants } from './checkbox.styles'
@@ -36,7 +36,6 @@ export interface CheckboxBaseProps {
 }
 
 export type CheckboxGroupProps = AriaCheckboxGroupProps & {
-  children: ReactElement<CheckboxGroupItemProps> &
-    ReactElement<CheckboxGroupItemProps>[]
+  children: ReactNode
   css?: CSS
 }
