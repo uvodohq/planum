@@ -29,6 +29,7 @@ export type UsePopoverReturn = {
   open: boolean
   setOpen(open: boolean): void
   labelId?: string
+  modal?: boolean
   nodeId: string
   descriptionId?: string
   setLabelId: React.Dispatch<React.SetStateAction<string | undefined>>
@@ -82,13 +83,14 @@ export function usePopover(props: UsePopoverProps = {}): UsePopoverReturn {
       setOpen,
       ...interactions,
       ...data,
+      modal,
       labelId,
       descriptionId,
       setLabelId,
       setDescriptionId,
       nodeId,
     }),
-    [open, setOpen, interactions, data, labelId, descriptionId, nodeId],
+    [open, setOpen, modal, interactions, data, labelId, descriptionId, nodeId],
   )
 
   return popover

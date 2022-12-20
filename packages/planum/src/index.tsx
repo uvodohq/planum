@@ -144,6 +144,17 @@ export {
 } from './dialog'
 export type { DialogProps } from './dialog'
 
+// popover
+export {
+  Popover,
+  PopoverClose,
+  PopoverPopup,
+  PopoverDescription,
+  PopoverHeading,
+  PopoverTrigger,
+} from './popover'
+export type { PopoverProps } from './popover'
+
 // separator
 export { Separator } from './separator'
 export type { SeparatorProps } from './separator'

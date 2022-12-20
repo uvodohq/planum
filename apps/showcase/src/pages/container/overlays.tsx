@@ -13,6 +13,13 @@ import {
   Paragraph,
   Tooltip,
   styled,
+  ModalContent,
+  Popover,
+  PopoverClose,
+  PopoverDescription,
+  PopoverHeading,
+  PopoverPopup,
+  PopoverTrigger,
 } from '@uvodohq/planum'
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
@@ -30,6 +37,7 @@ import {
   ModalExampleUnClosable,
   NestedModalExample,
 } from '../../components/modal-examples'
+import { CloseIcon, DotsThreeIcon } from '@uvodohq/planum-icons'
 
 const mobileBottomSheetMotion = {
   initial: { opacity: 0, y: 200 },
@@ -52,21 +60,41 @@ export const StyledMobileBottomSheet = styled(motion.div, {
 
 function UncontrolledDialog() {
   return (
-    <div className="App">
-      <h1>Dialog</h1>
-      <Dialog>
-        <DialogTrigger>My trigger</DialogTrigger>
-        <DialogPopup style={{ height: 'calc(100% - 64px)', top: 64 }}>
-          <StyledMobileBottomSheet {...mobileBottomSheetMotion}>
-            <DialogHeading>My dialog heading</DialogHeading>
-            <DialogDescription>My dialog description</DialogDescription>
-            <DialogClose>Close</DialogClose>
-            <NestedModalExample />
-            <MenuExamples />
-          </StyledMobileBottomSheet>
-        </DialogPopup>
-      </Dialog>
-    </div>
+    <Dialog>
+      <DialogTrigger>My trigger</DialogTrigger>
+      <DialogPopup style={{ height: 'calc(100% - 64px)', top: 64 }}>
+        <StyledMobileBottomSheet {...mobileBottomSheetMotion}>
+          <DialogHeading>My dialog heading</DialogHeading>
+          <DialogDescription>My dialog description</DialogDescription>
+          <DialogClose>Close</DialogClose>
+          <NestedModalExample />
+          <MenuExamples />
+        </StyledMobileBottomSheet>
+      </DialogPopup>
+    </Dialog>
+  )
+}
+
+function UncontrolledPopover() {
+  return (
+    <Popover placement="right-end">
+      <PopoverTrigger>
+        <DotsThreeIcon />
+      </PopoverTrigger>
+      <PopoverPopup>
+        <Box css={{ boxShadow: '$lg', bg: '#fff', p: 24 }}>
+          <PopoverHeading>My dialog heading</PopoverHeading>
+          <PopoverDescription>My dialog description</PopoverDescription>
+
+          <NestedModalExample />
+          <MenuExamples />
+
+          <PopoverClose>
+            <CloseIcon />
+          </PopoverClose>
+        </Box>
+      </PopoverPopup>
+    </Popover>
   )
 }
 
@@ -81,14 +109,15 @@ function ControlledDialog() {
   }, [])
 
   return (
-    <div className="App">
-      <h1>Dialog</h1>
-      <p>The dialog will open in 3 seconds...</p>
+    <div>
+      <p>The dialog will open in 4 seconds...</p>
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogPopup className="Dialog">
-          <DialogHeading>I opened automatically</DialogHeading>
-          <DialogDescription>After 4 seconds</DialogDescription>
-          <DialogClose>Close</DialogClose>
+        <DialogPopup>
+          <Box css={{ bg: '#fff', w: 200, h: 200 }}>
+            <DialogHeading>I opened automatically</DialogHeading>
+            <DialogDescription>After 4 seconds</DialogDescription>
+            <DialogClose>Close</DialogClose>
+          </Box>
         </DialogPopup>
       </Dialog>
     </div>
@@ -96,7 +125,7 @@ function ControlledDialog() {
 }
 
 function DrawerExample() {
-  const Hamburger = (props) => {
+  const Hamburger = (props: any) => {
     const isOpen = props['data-open']
     return <button {...props}>{isOpen ? 'close' : 'open'} drawer</button>
   }
@@ -152,12 +181,18 @@ export default function FormElementsContainer() {
         <ModalExampleAsBottomSheet />
       </Box>
 
-      {/* Modal */}
-      <H1 css={{ mb: 66, fw: 700 }}>Drawer</H1>
+      {/* Dialog */}
+      <H1 css={{ mb: 66, fw: 700 }}>Dialog</H1>
       <Box css={{ d: 'flex', gap: 40, mb: 128 }}>
         <DrawerExample />
-        {/* <ControlledDialog /> */}
+        <ControlledDialog />
         <UncontrolledDialog />
+      </Box>
+
+      {/* Popover */}
+      <H1 css={{ mb: 66, fw: 700 }}>Popover</H1>
+      <Box css={{ d: 'flex', gap: 40, mb: 128 }}>
+        <UncontrolledPopover />
       </Box>
 
       {/* Tooltip */}

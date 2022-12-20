@@ -7,7 +7,7 @@ import { AnimatePresence } from 'framer-motion'
 import * as React from 'react'
 import { mergeRefs } from 'react-merge-refs'
 
-import { Overlay } from './popover.styles'
+import { StyledOverlay } from './popover.styles'
 import { usePopoverState } from './use-popover-state'
 
 export const underlayVariants = {
@@ -21,7 +21,7 @@ type PopoverPopupProps = React.HTMLProps<HTMLDivElement> & {
 
 export const PopoverPopup = React.forwardRef<HTMLDivElement, PopoverPopupProps>(
   (props, propRef) => {
-    const { children, overlayProps, ...rest } = props
+    const { children, ...rest } = props
     const state = usePopoverState()
 
     const ref = React.useMemo(
@@ -33,14 +33,21 @@ export const PopoverPopup = React.forwardRef<HTMLDivElement, PopoverPopupProps>(
       <FloatingPortal>
         <AnimatePresence>
           {state.open && (
-            <FloatingFocusManager context={state.context}>
-              <Overlay
+            <FloatingFocusManager context={state.context} modal={state.modal}>
+              <StyledOverlay
                 ref={ref}
+                style={{
+                  position: state.strategy,
+                  top: state.y ?? 0,
+                  left: state.x ?? 0,
+                  width: 'max-content',
+                  ...props.style,
+                }}
                 aria-labelledby={state.labelId}
                 aria-describedby={state.descriptionId}
                 {...state.getFloatingProps(rest)}>
                 {children}
-              </Overlay>
+              </StyledOverlay>
             </FloatingFocusManager>
           )}
         </AnimatePresence>
