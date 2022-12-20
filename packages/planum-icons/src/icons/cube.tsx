@@ -44,6 +44,6 @@ const CubeIcon = forwardRef<SVGSVGElement, IconProps>((props, ref) => (
   <Icon ref={ref} alt="Cube Icon" {...props} weights={weights} />
 ))
 
-CubeIcon.displayName = 'Cube Icon'
+CubeIcon.displayName = 'CubeIcon'
 
 export default CubeIcon

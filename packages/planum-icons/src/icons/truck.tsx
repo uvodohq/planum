@@ -81,6 +81,6 @@ const TruckIcon = forwardRef<SVGSVGElement, IconProps>((props, ref) => (
   <Icon ref={ref} alt="Truck Icon" {...props} weights={weights} />
 ))
 
-TruckIcon.displayName = 'Truck Icon'
+TruckIcon.displayName = 'TruckIcon'
 
 export default TruckIcon

@@ -40,6 +40,6 @@ const CheckSquareOffsetIcon = forwardRef<SVGSVGElement, IconProps>(
   ),
 )
 
-CheckSquareOffsetIcon.displayName = 'Check Square Offset Icon'
+CheckSquareOffsetIcon.displayName = 'CheckSquareOffsetIcon'
 
 export default CheckSquareOffsetIcon
