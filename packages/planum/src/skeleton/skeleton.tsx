@@ -1,3 +1,5 @@
+import { useRef } from 'react'
+
 import {
   Rect,
   RectInner,
@@ -19,6 +21,8 @@ export const Skeleton = ({
   showText = true,
   ...rest
 }: SkeletonProps) => {
+  const randomWidth = useRef(getRandomIntBetween(30, 80))
+
   return (
     <SkeletonCard
       animated={animated}
@@ -36,7 +40,7 @@ export const Skeleton = ({
       )}
       {showText && (
         <SkeletonDescription>
-          <Rect style={{ width: `${getRandomIntBetween(30, 80)}%` }}>
+          <Rect style={{ width: `${randomWidth.current}%` }}>
             <RectInner css={{ backgroundColor: `${color} !important` }} />
           </Rect>
           {!oneTextLine && (
