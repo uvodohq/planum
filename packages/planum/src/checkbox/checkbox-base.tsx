@@ -1,10 +1,6 @@
 // TODO: add hover state and fx types, forward ref, group
-import { useCheckbox } from '@react-aria/checkbox'
-import { useFocusRing } from '@react-aria/focus'
-import { usePress } from '@react-aria/interactions'
 import { mergeProps } from '@react-aria/utils'
 import { VisuallyHidden } from '@react-aria/visually-hidden'
-import * as React from 'react'
 
 import { Paragraph } from '../text'
 import { StyledCheckbox, StyledIndicator, StyledLabel } from './checkbox.styles'

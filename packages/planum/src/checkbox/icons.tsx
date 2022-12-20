@@ -1,5 +1,4 @@
 import type { SVGProps } from 'react'
-import * as React from 'react'
 
 type CheckIconProps = SVGProps<SVGSVGElement> & {
   isSelected: boolean
