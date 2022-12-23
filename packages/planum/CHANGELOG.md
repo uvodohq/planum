@@ -1,5 +1,11 @@
 # @uvodohq/planum
 
+## 2.2.1
+
+### Patch Changes
+
+- [`4f1e1d5`](https://github.com/uvodohq/planum/commit/4f1e1d56f307d431608438ef95539f956c59239f) - fix radio size
+
 ## 2.2.0
 
 ### Minor Changes

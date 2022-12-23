@@ -173,6 +173,25 @@ export default function FormElementsContainer() {
       <Box css={{ display: 'flex', gap: 40, mb: 80 }}>
         <RadioGroup defaultValue="Selected" aria-label="label">
           <Box css={{ display: 'flex', gap: 40, mb: 80 }}>
+            <Radio value="Regular">
+              Regular - add title and description to see how this product might
+              appear in a search engine listing
+            </Radio>
+            <Radio value="Selected">
+              Selected - add title and description to see how this product might
+              appear in a search engine listing
+            </Radio>
+            <Radio value="disabled" isDisabled>
+              Disabled - add title and description to see how this product might
+              appear in a search engine listing
+            </Radio>
+          </Box>
+        </RadioGroup>
+      </Box>
+
+      <Box css={{ display: 'flex', gap: 40, mb: 80 }}>
+        <RadioGroup defaultValue="Selected" aria-label="label">
+          <Box css={{ display: 'flex', gap: 40, mb: 80 }}>
             <Radio value="Regular">Regular</Radio>
             <Radio value="Selected">Selected</Radio>
             <Radio value="disabled" isDisabled>

@@ -6,6 +6,8 @@ export const StyledRadioSvgCircle = styled('svg', {
   backgroundColor: 'transparent',
   display: 'inline-flex',
   size: 20,
+  minWidth: 20,
+  mt: 2,
   borderRadius: '$pill',
   boxShadow: 'inset 0 0 0 2px $colors$surface400',
   dflex: 'center',
@@ -58,7 +60,7 @@ export const StyledRadioSvgCircle = styled('svg', {
 
 export const StyledRadioLabel = styled('label', paragraphCss, {
   d: 'flex',
-  alignItems: 'center',
+  alignItems: 'flex-start',
   cursor: 'pointer',
   userSelect: 'none',
 
@@ -92,7 +94,8 @@ export const StyledButtonLabel = styled('label', subheaderCss, {
   userSelect: 'none',
   transition: 'all .2s',
   dflex: 'center',
-  py: 8,
+  // overflow height size - 48
+  py: 7,
   px: 12,
   fontWeight: '$semibold',
 
