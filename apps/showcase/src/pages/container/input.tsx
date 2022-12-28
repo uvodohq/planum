@@ -502,7 +502,7 @@ export default function InputContainer() {
               value,
             })
 
-            setNumber(value)
+            setNumber(value as any)
           }}
         />
         <InputNumber
