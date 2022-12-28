@@ -23,6 +23,7 @@ import {
   TypographyPage,
   IconsPage,
 } from './pages'
+import { FormHookPage } from './pages/form-hook'
 
 export default function DemoApp() {
   return (
@@ -40,6 +41,7 @@ export default function DemoApp() {
       <InputPage />
       <TextareaPage />
       <FormElementsPage />
+      <FormHookPage />
       <SelectPage />
       <OverlaysPage />
       <TagsBadgePage />

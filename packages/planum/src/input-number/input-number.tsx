@@ -1,7 +1,7 @@
 import { useLocale } from '@react-aria/i18n'
 import { useFocus } from '@react-aria/interactions'
 import { useNumberField } from '@react-aria/numberfield'
-import { mergeProps, useObjectRef } from '@react-aria/utils'
+import { mergeProps, useObjectRef, useUpdateEffect } from '@react-aria/utils'
 import { useNumberFieldState } from '@react-stately/numberfield'
 import type { AriaNumberFieldProps } from '@react-types/numberfield'
 import * as React from 'react'
@@ -90,6 +90,10 @@ function _InputNumber(
 
   const hasPrefix = prefix || hasLeftIcon
   const hasSuffix = suffix || hasRightIcon
+
+  useUpdateEffect(() => {
+    state.commit()
+  }, [state.inputValue])
 
   return (
     <Field
