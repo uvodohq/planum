@@ -1,5 +1,11 @@
 # @uvodohq/planum-editor
 
+## 0.2.3
+
+### Patch Changes
+
+- number input deps updated, value will change immidately when user typed, no on blur
+
 ## 0.2.2
 
 ### Patch Changes
