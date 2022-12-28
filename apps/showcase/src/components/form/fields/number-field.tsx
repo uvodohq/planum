@@ -40,7 +40,7 @@ export function NumberField(props: NumberFieldProps) {
   return (
     <InputNumber
       {...mergeProps(field, rest, {
-        onChange: fieldOnChange,
+        // onChange: fieldOnChange,
       })}
       errorMessage={error?.message}
       status={error?.message ? 'error' : undefined}

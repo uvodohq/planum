@@ -59,7 +59,7 @@ export const url = () =>
 export const DEFAULT_NUMBER = 'Not a number' as unknown as number
 
 export const number = () => {
-  const num = z.number().nullish()
+  const num = z.number().max(999999).nullish()
 
   const schema = z
     .preprocess((value) => (value === DEFAULT_NUMBER ? null : value), num)

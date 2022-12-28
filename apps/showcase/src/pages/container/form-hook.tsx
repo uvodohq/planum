@@ -1,4 +1,4 @@
-import { Box, Button } from '@uvodohq/planum'
+import { Box, Button, Stack } from '@uvodohq/planum'
 import { useMemo } from 'react'
 
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -16,18 +16,6 @@ import {
 } from '../../components/form'
 import { DEFAULT_NUMBER } from '../../components/form/schemas'
 
-const RowBox = (props: any) => (
-  <Box
-    css={{
-      display: 'flex',
-      mb: 30,
-      gap: 40,
-      '& > *': { flex: 1 },
-    }}
-    {...props}
-  />
-)
-
 function useInitialValues() {
   const initialValues = useMemo(() => {
     return {
@@ -35,7 +23,8 @@ function useInitialValues() {
       password: '',
       facebook_url: '',
       whatsapp: '',
-      amount: DEFAULT_NUMBER,
+      amount: null, //DEFAULT_NUMBER,
+      price: DEFAULT_NUMBER,
     }
   }, [])
 
@@ -45,9 +34,10 @@ function useInitialValues() {
 const schema = z.object({
   title: z.string(),
   password: z.string(),
-  amount: schemas.number(),
   facebook_url: schemas.url(),
   whatsapp: schemas.phone(),
+  amount: z.number().nullable(),
+  price: schemas.number(),
 })
 
 type FormValues = z.infer<typeof schema>
@@ -62,8 +52,10 @@ export default function FormHookContainer() {
   const handlers = useFormHandlers({
     form,
     initialValues,
-    onlyDirtyValues: true,
-    onSubmit(data, apiHandlers) {},
+    onlyDirtyValues: false,
+    onSubmit(data, apiHandlers) {
+      console.warn('FORM SUBMIT', data)
+    },
     async onSuccess() {
       form.reset((prev) => prev)
     },
@@ -71,7 +63,11 @@ export default function FormHookContainer() {
 
   return (
     <Form {...handlers}>
-      <RowBox>
+      <Stack y={24} css={{ width: 444 }}>
+        <Button type="submit" isDisabled={!handlers.isDirty}>
+          Submit
+        </Button>
+
         <TextField name="title" label="Title" placeholder="Input Placeholder" />
 
         <PasswordField
@@ -79,9 +75,7 @@ export default function FormHookContainer() {
           label="New Password"
           placeholder="Enter your password"
         />
-      </RowBox>
 
-      <RowBox>
         <UrlField
           name="facebook_url"
           prefix="/products/"
@@ -90,11 +84,18 @@ export default function FormHookContainer() {
         />
 
         <NumberField name="amount" placeholder="12" label="Amount" />
-      </RowBox>
+        <NumberField name="price" placeholder="12.22" label="Price" />
 
-      <Button type="submit" isDisabled={!handlers.isDirty}>
-        Submit
-      </Button>
+        <Box css={{ mt: 222, d: 'flex', gap: 12 }}>
+          <Button variant="secondary" onClick={() => form.reset()}>
+            Reset
+          </Button>
+
+          <Button type="submit" isDisabled={!handlers.isDirty}>
+            Submit
+          </Button>
+        </Box>
+      </Stack>
     </Form>
   )
 }
