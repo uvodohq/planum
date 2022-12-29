@@ -1,2 +1,6 @@
-export type { TooltipProps } from './tooltip'
+// export type { TooltipProps } from './tooltip'
 export { Tooltip } from './tooltip'
+// export type { TooltipContentProps } from './tooltip-content'
+export { TooltipPopup } from './tooltip-popup'
+// export type { TooltipTriggerProps } from './tooltip-trigger'
+export { TooltipTrigger } from './tooltip-trigger'

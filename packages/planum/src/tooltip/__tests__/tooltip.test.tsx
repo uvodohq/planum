@@ -1,16 +1,19 @@
 import { Box } from '../../layout'
 import { render, screen, userEvent, waitFor } from '../../test'
-import { Tooltip } from '..'
-import type { UseTooltipProps } from '../use-tooltip'
+import { Tooltip, TooltipPopup, TooltipTrigger } from '..'
+// import type { UseTooltipProps } from '../use-tooltip'
 
 global.ResizeObserver = require('resize-observer-polyfill')
 
-function renderTooltip(props: Omit<UseTooltipProps, 'children'>) {
+function renderTooltip(props: Omit<any, 'children'>) {
   return render(
     <Tooltip {...props}>
-      <Box css={{ bg: 'red' }} data-testid="trigger">
-        trigger
-      </Box>
+      <TooltipTrigger>
+        <Box css={{ bg: 'red' }} data-testid="trigger">
+          trigger
+        </Box>
+      </TooltipTrigger>
+      <TooltipPopup>text</TooltipPopup>
     </Tooltip>,
   )
 }

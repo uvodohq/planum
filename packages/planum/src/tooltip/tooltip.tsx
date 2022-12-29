@@ -1,23 +1,20 @@
-import * as React from 'react'
+import { createContext } from 'react'
 
-import { TooltipPopup } from './tooltip-popup'
-import { TooltipTrigger } from './tooltip-trigger'
-import type { UseTooltipProps } from './use-tooltip'
-import useTooltip from './use-tooltip'
-import useTooltipState from './use-tooltip-state'
+import type { TooltipOptions } from './use-tooltip'
+import { useTooltip } from './use-tooltip'
 
-export interface TooltipProps extends UseTooltipProps {}
+type ContextType = ReturnType<typeof useTooltip> | null
 
-export const Tooltip = (props: TooltipProps) => {
-  const { children, label } = props
+export const TooltipContext = createContext<ContextType>(null)
 
-  const state = useTooltipState(props)
-  const tooltip = useTooltip(props, state)
-
+export function Tooltip({
+  children,
+  ...options
+}: { children: React.ReactNode } & TooltipOptions) {
+  const tooltip = useTooltip(options)
   return (
-    <>
-      <TooltipTrigger trigger={children} tooltip={tooltip} />
-      <TooltipPopup state={state} tooltip={tooltip} label={label} />
-    </>
+    <TooltipContext.Provider value={tooltip}>
+      {children}
+    </TooltipContext.Provider>
   )
 }
