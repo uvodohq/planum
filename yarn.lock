@@ -1749,12 +1749,21 @@
     aria-hidden "^1.1.3"
     tabbable "^6.0.1"
 
-"@floating-ui/react-dom@^1.0.1":
+"@floating-ui/react-dom@^1.0.1", "@floating-ui/react-dom@^1.1.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@floating-ui/react-dom/-/react-dom-1.1.0.tgz#cd212b9e98303ba76e59806e425217f40e33926d"
   integrity sha512-xyP9dMqZouuQ7h10DvbEbxZItuUleKHXe7XQFvbpttjXZrfyQMaZVTnWsE/t3hrHakZy18HxEBZRzGNXQHd0GA==
   dependencies:
     "@floating-ui/dom" "^1.1.0"
+
+"@floating-ui/react@^0.15.0":
+  version "0.15.0"
+  resolved "https://registry.yarnpkg.com/@floating-ui/react/-/react-0.15.0.tgz#fd83fa4c759921b6d8463a6d81924d52563d4155"
+  integrity sha512-zndl3fDlNWNaRgFKCwg3NmlI/b5U3kUA5Ub9GfR0WMdSQ0zUQjU8Y2Wj+eSMlC4+w7Tu/IJ1Nsol4Byyzf4PBQ==
+  dependencies:
+    "@floating-ui/react-dom" "^1.1.0"
+    aria-hidden "^1.1.3"
+    tabbable "^6.0.1"
 
 "@formatjs/ecma402-abstract@1.14.3":
   version "1.14.3"

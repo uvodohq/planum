@@ -2,6 +2,8 @@ import { ArgsTable, Story, Canvas, Meta } from '@storybook/addon-docs'
 import { Flex, Box } from '../../layout'
 import { Button } from '../../button'
 import { Tooltip } from '../tooltip.tsx'
+import { TooltipPopup } from '../tooltip-popup.tsx'
+import { TooltipTrigger } from '../tooltip-trigger.tsx'
 
 <Meta
   title="Components/Tooltip"
@@ -35,10 +37,13 @@ In the simple variant of tooltip, you can add a label and children elements.
 
 <Canvas>
   <Story name="Simple">
-    <Tooltip label="text">
-      <Button css={{ width: 80 }} variant="secondary" size="sm">
-        Simple
-      </Button>
+    <Tooltip>
+      <TooltipTrigger>
+        <Button css={{ width: 80 }} variant="secondary" size="sm">
+          Simple
+        </Button>
+      </TooltipTrigger>
+      <TooltipPopup>text</TooltipPopup>
     </Tooltip>
   </Story>
 </Canvas>
@@ -49,10 +54,13 @@ The tooltip will be shown always when you set the <b>isOpen</b> prop to <b>true<
 
 <Canvas>
   <Story name="Shown always">
-    <Tooltip label="text" placement="top" isOpen={true}>
-      <Button css={{ width: 80 }} variant="secondary" size="sm">
-        Simple
-      </Button>
+    <Tooltip placement="top" open>
+      <TooltipTrigger>
+        <Button css={{ width: 80 }} variant="secondary" size="sm">
+          Simple
+        </Button>
+      </TooltipTrigger>
+      <TooltipPopup>text</TooltipPopup>
     </Tooltip>
   </Story>
 </Canvas>
@@ -72,20 +80,29 @@ The tooltips can be placed on the top, bottom, left, right of elements.
           justifyContent: 'space-between',
           gap: 20,
         }}>
-        <Tooltip label="text" placement="top-start">
-          <Button css={{ width: 80 }} variant="secondary" size="sm">
-            TS
-          </Button>
+        <Tooltip placement="top-start">
+          <TooltipTrigger>
+            <Button css={{ width: 80 }} variant="secondary" size="sm">
+              TS
+            </Button>
+          </TooltipTrigger>
+          <TooltipPopup>text</TooltipPopup>
         </Tooltip>
-        <Tooltip label="text" placement="top">
-          <Button css={{ width: 80 }} variant="secondary" size="sm">
-            TOP
-          </Button>
+        <Tooltip placement="top">
+          <TooltipTrigger>
+            <Button css={{ width: 80 }} variant="secondary" size="sm">
+              TOP
+            </Button>
+          </TooltipTrigger>
+          <TooltipPopup>text</TooltipPopup>
         </Tooltip>
-        <Tooltip label="text" placement="top-end">
-          <Button css={{ width: 80 }} variant="secondary" size="sm">
-            TE
-          </Button>
+        <Tooltip placement="top-end">
+          <TooltipTrigger>
+            <Button css={{ width: 80 }} variant="secondary" size="sm">
+              TE
+            </Button>
+          </TooltipTrigger>
+          <TooltipPopup>text</TooltipPopup>
         </Tooltip>
       </Flex>
       <Flex css={{ justifyContent: 'space-between' }}>
@@ -96,20 +113,29 @@ The tooltips can be placed on the top, bottom, left, right of elements.
             justifyContent: 'space-between',
             gap: 20,
           }}>
-          <Tooltip label="text" placement="left-start">
-            <Button css={{ width: 80 }} variant="secondary" size="sm">
-              LS
-            </Button>
+          <Tooltip placement="left-start">
+            <TooltipTrigger>
+              <Button css={{ width: 80 }} variant="secondary" size="sm">
+                LS
+              </Button>
+            </TooltipTrigger>
+            <TooltipPopup>text</TooltipPopup>
           </Tooltip>
-          <Tooltip label="text" placement="left">
-            <Button css={{ width: 80 }} variant="secondary" size="sm">
-              LEFT
-            </Button>
+          <Tooltip placement="left">
+            <TooltipTrigger>
+              <Button css={{ width: 80 }} variant="secondary" size="sm">
+                LEFT
+              </Button>
+            </TooltipTrigger>
+            <TooltipPopup>text</TooltipPopup>
           </Tooltip>
-          <Tooltip label="text" placement="left-end">
-            <Button css={{ width: 80 }} variant="secondary" size="sm">
-              LE
-            </Button>
+          <Tooltip placement="left-end">
+            <TooltipTrigger>
+              <Button css={{ width: 80 }} variant="secondary" size="sm">
+                LE
+              </Button>
+            </TooltipTrigger>
+            <TooltipPopup>text</TooltipPopup>
           </Tooltip>
         </Flex>
         <Flex
@@ -120,20 +146,29 @@ The tooltips can be placed on the top, bottom, left, right of elements.
             justifyContent: 'space-between',
             gap: 20,
           }}>
-          <Tooltip label="text" placement="right-start">
-            <Button css={{ width: 80 }} variant="secondary" size="sm">
-              RS
-            </Button>
+          <Tooltip placement="right-start">
+            <TooltipTrigger>
+              <Button css={{ width: 80 }} variant="secondary" size="sm">
+                RS
+              </Button>
+            </TooltipTrigger>
+            <TooltipPopup>text</TooltipPopup>
           </Tooltip>
-          <Tooltip label="text" placement="right">
-            <Button css={{ width: 80 }} variant="secondary" size="sm">
-              RIGHT
-            </Button>
+          <Tooltip placement="right">
+            <TooltipTrigger>
+              <Button css={{ width: 80 }} variant="secondary" size="sm">
+                RIGHT
+              </Button>
+            </TooltipTrigger>
+            <TooltipPopup>text</TooltipPopup>
           </Tooltip>
-          <Tooltip label="text" placement="right-end">
-            <Button css={{ width: 80 }} variant="secondary" size="sm">
-              RE
-            </Button>
+          <Tooltip placement="right-end">
+            <TooltipTrigger>
+              <Button css={{ width: 80 }} variant="secondary" size="sm">
+                RE
+              </Button>
+            </TooltipTrigger>
+            <TooltipPopup>text</TooltipPopup>
           </Tooltip>
         </Flex>
       </Flex>
@@ -145,20 +180,29 @@ The tooltips can be placed on the top, bottom, left, right of elements.
           justifyContent: 'space-between',
           gap: 20,
         }}>
-        <Tooltip label="text" placement="bottom-start">
-          <Button css={{ width: 80 }} variant="secondary" size="sm">
-            BS
-          </Button>
+        <Tooltip placement="bottom-start">
+          <TooltipTrigger>
+            <Button css={{ width: 80 }} variant="secondary" size="sm">
+              BS
+            </Button>
+          </TooltipTrigger>
+          <TooltipPopup>text</TooltipPopup>
         </Tooltip>
-        <Tooltip label="text" placement="bottom">
-          <Button css={{ width: 80 }} variant="secondary" size="sm">
-            BOTTOM
-          </Button>
+        <Tooltip placement="bottom">
+          <TooltipTrigger>
+            <Button css={{ width: 80 }} variant="secondary" size="sm">
+              BUTTON
+            </Button>
+          </TooltipTrigger>
+          <TooltipPopup>text</TooltipPopup>
         </Tooltip>
-        <Tooltip label="text" placement="bottom-end">
-          <Button css={{ width: 80 }} variant="secondary" size="sm">
-            BE
-          </Button>
+        <Tooltip placement="bottom-end">
+          <TooltipTrigger>
+            <Button css={{ width: 80 }} variant="secondary" size="sm">
+              BE
+            </Button>
+          </TooltipTrigger>
+          <TooltipPopup>text</TooltipPopup>
         </Tooltip>
       </Flex>
     </Box>

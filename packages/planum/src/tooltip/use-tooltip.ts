@@ -1,4 +1,4 @@
-import type { Placement } from '@floating-ui/react-dom-interactions'
+import type { Placement } from '@floating-ui/react'
 import {
   autoUpdate,
   flip,
@@ -9,64 +9,62 @@ import {
   useHover,
   useInteractions,
   useRole,
-} from '@floating-ui/react-dom-interactions'
-
-import type { UseTooltipState } from './use-tooltip-state'
+} from '@floating-ui/react'
+import { useMemo, useState } from 'react'
 
 export interface UseTooltipProps {
-  label: string
   placement?: Placement
-  children: JSX.Element
-  isOpen?: boolean
-  defaultIsOpen?: boolean
-  onChange?: (isOpen: boolean) => void
+  open?: boolean
+  onChange?: (open: boolean) => void
   offsetValue?: Parameters<typeof offset>[0]
+  defaultIsOpen?: boolean
   strategy?: 'absolute' | 'fixed'
 }
 
-export type UseTooltip = ReturnType<typeof useTooltip>
+export function useTooltip({
+  placement = 'top',
+  open: controlledOpen,
+  onChange: setControlledOpen,
+  offsetValue = 5,
+  defaultIsOpen = false,
+  strategy = 'absolute',
+}: UseTooltipProps = {}) {
+  const [uncontrolledOpen, setUncontrolledOpen] = useState(defaultIsOpen)
 
-export default function useTooltip(
-  props: UseTooltipProps,
-  state: UseTooltipState,
-) {
-  const { placement, offsetValue = 5 } = props
+  const open = controlledOpen ?? uncontrolledOpen
+  const setOpen = setControlledOpen ?? setUncontrolledOpen
 
-  const { x, y, reference, floating, strategy, context } = useFloating({
+  // NOTE: check tooltip onChange
+  const data = useFloating({
     placement,
-    open: state.isOpen,
-    onOpenChange: state.setOpen,
-    middleware: [offset(offsetValue), flip()],
-    whileElementsMounted: autoUpdate,
-    strategy: props.strategy,
-  })
-
-  const { getReferenceProps, getFloatingProps } = useInteractions([
-    useHover(context),
-    useFocus(context),
-    useRole(context, { role: 'tooltip' }),
-    useDismiss(context),
-  ])
-
-  const floatingProps = getFloatingProps({
-    ref: floating,
-    style: {
-      position: strategy,
-      top: y ?? 0,
-      left: x ?? 0,
-      zIndex: 9,
-    },
-  })
-
-  return {
-    getReferenceProps,
-    getFloatingProps,
-    reference,
-    floating,
-    isOpen: open,
-    x,
-    y,
+    open,
     strategy,
-    floatingProps,
-  }
+    onOpenChange: setOpen,
+    whileElementsMounted: autoUpdate,
+    middleware: [offset(offsetValue), flip()],
+  })
+
+  const context = data.context
+
+  const hover = useHover(context, {
+    move: false,
+    enabled: controlledOpen == null,
+  })
+  const focus = useFocus(context, {
+    enabled: controlledOpen == null,
+  })
+  const dismiss = useDismiss(context)
+  const role = useRole(context, { role: 'tooltip' })
+
+  const interactions = useInteractions([hover, focus, dismiss, role])
+
+  return useMemo(
+    () => ({
+      open,
+      setOpen,
+      ...interactions,
+      ...data,
+    }),
+    [open, setOpen, interactions, data],
+  )
 }

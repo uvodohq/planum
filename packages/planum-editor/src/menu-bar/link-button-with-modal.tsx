@@ -5,6 +5,8 @@ import {
   Modal,
   ModalContent,
   Tooltip,
+  TooltipPopup,
+  TooltipTrigger,
   useModalState,
 } from '@uvodohq/planum'
 import { useState } from 'react'
@@ -64,16 +66,18 @@ const LinkButtonWithModal = ({ editor, isSelected, isDisabled }: Props) => {
 
   return (
     <>
-      <Tooltip label="Link" placement="top">
-        <ToggleButton
-          isDisabled={isDisabled}
-          onChange={openModal}
-          isSelected={isSelected}
-          aria-label="Set Link">
-          <LinkIcon />
-        </ToggleButton>
+      <Tooltip placement="top">
+        <TooltipTrigger>
+          <ToggleButton
+            isDisabled={isDisabled}
+            onChange={openModal}
+            isSelected={isSelected}
+            aria-label="Set Link">
+            <LinkIcon />
+          </ToggleButton>
+        </TooltipTrigger>
+        <TooltipPopup>Link</TooltipPopup>
       </Tooltip>
-
       <Modal state={modal} initialFocus={1}>
         <ModalContent
           title={isEditLink ? 'Edit link' : 'Add link'}
