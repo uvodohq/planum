@@ -12,7 +12,7 @@ import {
 } from '@floating-ui/react'
 import { useMemo, useState } from 'react'
 
-export interface TooltipOptions {
+export interface UseTooltipProps {
   placement?: Placement
   open?: boolean
   onChange?: (open: boolean) => void
@@ -28,7 +28,7 @@ export function useTooltip({
   offsetValue = 5,
   defaultIsOpen = false,
   strategy = 'absolute',
-}: TooltipOptions = {}) {
+}: UseTooltipProps = {}) {
   const [uncontrolledOpen, setUncontrolledOpen] = useState(defaultIsOpen)
 
   const open = controlledOpen ?? uncontrolledOpen

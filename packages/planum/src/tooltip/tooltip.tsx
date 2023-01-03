@@ -1,16 +1,13 @@
-import { createContext } from 'react'
-
-import type { TooltipOptions } from './use-tooltip'
+import { TooltipContext } from './tooltip-context'
+import type { UseTooltipProps } from './use-tooltip'
 import { useTooltip } from './use-tooltip'
 
-type ContextType = ReturnType<typeof useTooltip> | null
-
-export const TooltipContext = createContext<ContextType>(null)
+export type TooltipProps = React.PropsWithChildren<UseTooltipProps>
 
 export function Tooltip({
   children,
   ...options
-}: { children: React.ReactNode } & TooltipOptions) {
+}: { children: React.ReactNode } & UseTooltipProps) {
   const tooltip = useTooltip(options)
   return (
     <TooltipContext.Provider value={tooltip}>

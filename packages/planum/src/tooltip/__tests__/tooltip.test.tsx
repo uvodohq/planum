@@ -5,9 +5,9 @@ import { Tooltip, TooltipPopup, TooltipTrigger } from '..'
 
 global.ResizeObserver = require('resize-observer-polyfill')
 
-function renderTooltip(props: Omit<any, 'children'>) {
+function renderTooltip() {
   return render(
-    <Tooltip {...props}>
+    <Tooltip>
       <TooltipTrigger>
         <Box css={{ bg: 'red' }} data-testid="trigger">
           trigger
@@ -18,11 +18,9 @@ function renderTooltip(props: Omit<any, 'children'>) {
   )
 }
 
-const label = 'tooltip'
-
 describe('<Tooltip />', async () => {
   it('should render the tooltip trigger without popup content', async () => {
-    renderTooltip({ label })
+    renderTooltip()
 
     const tooltipTrigger = screen.getByTestId('trigger')
 
@@ -32,7 +30,7 @@ describe('<Tooltip />', async () => {
   })
 
   it('should show tooltip when hover over trigger', async () => {
-    renderTooltip({ label })
+    renderTooltip()
 
     const tooltipTrigger = screen.getByTestId('trigger')
 
