@@ -42,7 +42,10 @@ export const PopoverPopup = React.forwardRef<HTMLDivElement, PopoverPopupProps>(
                 }}
                 aria-labelledby={state.labelId}
                 aria-describedby={state.descriptionId}
-                {...state.getFloatingProps(rest)}>
+                {...state.getFloatingProps({
+                  onClick: (e: any) => e.stopPropagation(),
+                  ...rest,
+                })}>
                 {children}
               </StyledOverlay>
             </FloatingFocusManager>

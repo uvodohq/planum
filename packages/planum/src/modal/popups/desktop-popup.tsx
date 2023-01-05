@@ -54,7 +54,10 @@ export const DesktopPopup = (props: Props) => {
   const { getFloatingProps, floatingContext } = modal
 
   return (
-    <FloatingOverlay lockScroll className={floatingOverlayCss()}>
+    <FloatingOverlay
+      lockScroll
+      className={floatingOverlayCss()}
+      onClick={(e: any) => e.stopPropagation()}>
       <Underlay
         variants={underlayVariants}
         initial="hidden"

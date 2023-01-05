@@ -55,7 +55,10 @@ export const Drawer = (props: ModalProps) => {
   const { getFloatingProps, floatingContext, strategy } = modal
 
   return (
-    <FloatingOverlay lockScroll className={floatingOverlayCss()}>
+    <FloatingOverlay
+      lockScroll
+      className={floatingOverlayCss()}
+      onClick={(e: any) => e.stopPropagation()}>
       <FloatingFocusManager
         context={floatingContext}
         // focusing closing button on open, brokes animation. so disable close button focusing

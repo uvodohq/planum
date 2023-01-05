@@ -15,7 +15,6 @@ import {
   useRole,
   useTypeahead,
 } from '@floating-ui/react'
-import { useInteractOutside } from '@react-aria/interactions'
 import { Children, cloneElement, isValidElement, useRef } from 'react'
 
 import type { MenuProps } from './menu'
@@ -129,17 +128,6 @@ export function useMenu(
         isValidElement(child) && cloneElement(child, getMenuItemProps(index)),
     )
   }
-
-  function onInteractOutside(e: any) {
-    e.stopPropagation()
-    e.preventDefault()
-    state.setOpen(false)
-  }
-
-  useInteractOutside({
-    ref: refs.floating,
-    onInteractOutside,
-  })
 
   return {
     floating: { x, y, reference, floating, strategy, refs, context, placement },

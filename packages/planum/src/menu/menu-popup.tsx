@@ -106,7 +106,8 @@ export const DropdownPopup = (props: PopupProps) => {
               zIndex: 999,
               display: 'flex',
               justifyContent: 'center',
-            }}>
+            }}
+            onClick={(e: any) => e.stopPropagation()}>
             {isMobile && (
               <Underlay
                 variants={underlayVariants}
