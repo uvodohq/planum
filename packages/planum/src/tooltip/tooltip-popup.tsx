@@ -16,7 +16,6 @@ const StyledTooltipContainer = styled(motion.div, {
   width: 'max-content',
 })
 
-// eslint-disable-next-line react/display-name
 export const TooltipPopup = React.forwardRef<
   HTMLDivElement,
   React.HTMLProps<HTMLDivElement>
@@ -52,3 +51,5 @@ export const TooltipPopup = React.forwardRef<
     </FloatingPortal>
   )
 })
+
+TooltipPopup.displayName = 'TooltipPopup'

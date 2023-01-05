@@ -91,7 +91,10 @@ function _InputNumber(
   const hasPrefix = prefix || hasLeftIcon
   const hasSuffix = suffix || hasRightIcon
 
+  // workaround, to send latest values to parent state.
   useUpdateEffect(() => {
+    if (state.inputValue?.endsWith('.')) return
+
     state.commit()
   }, [state.inputValue])
 

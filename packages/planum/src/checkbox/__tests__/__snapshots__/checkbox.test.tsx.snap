@@ -3,22 +3,21 @@
 exports[`Checkbox > isDisabled 1`] = `
 <div>
   <label
-    class="c-iPYhUp c-kLRYwF c-edbEbA c-edbEbA-ietuGy-isDisabled-true"
+    class="Planum-c-iPYhUp Planum-c-kLRYwF Planum-c-edbEbA Planum-c-edbEbA-ietuGy-isDisabled-true"
   >
     <div
       style="border: 0px; clip-path: inset(50%); height: 1px; margin: 0px -1px -1px 0px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap;"
     >
       <input
-        aria-checked="false"
         disabled=""
         type="checkbox"
       />
     </div>
     <div
-      class="c-hyHTE c-hyHTE-koxIsH-isSelected-false c-hyHTE-hxNqoz-isDisabled-true"
+      class="Planum-c-hyHTE Planum-c-hyHTE-koxIsH-isSelected-false Planum-c-hyHTE-hxNqoz-isDisabled-true"
     >
       <span
-        class="c-filUNh"
+        class="Planum-c-filUNh"
       >
         <svg
           height="14"
@@ -45,7 +44,7 @@ exports[`Checkbox > isDisabled 1`] = `
       </span>
     </div>
     <p
-      class="c-iPYhUp c-kLRYwF c-iPYhUp-ikmBbln-css"
+      class="Planum-c-iPYhUp Planum-c-kLRYwF Planum-c-iPYhUp-ikmBbln-css"
     >
       check me
     </p>
@@ -56,22 +55,21 @@ exports[`Checkbox > isDisabled 1`] = `
 exports[`Checkbox > isIndeterminate 1`] = `
 <div>
   <label
-    class="c-iPYhUp c-kLRYwF c-edbEbA"
+    class="Planum-c-iPYhUp Planum-c-kLRYwF Planum-c-edbEbA"
   >
     <div
       style="border: 0px; clip-path: inset(50%); height: 1px; margin: 0px -1px -1px 0px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap;"
     >
       <input
-        aria-checked="true"
         checked=""
         type="checkbox"
       />
     </div>
     <div
-      class="c-hyHTE c-hyHTE-hkrvYr-isSelected-true"
+      class="Planum-c-hyHTE Planum-c-hyHTE-hkrvYr-isSelected-true"
     >
       <span
-        class="c-filUNh"
+        class="Planum-c-filUNh"
       >
         <svg
           height="14"
@@ -98,7 +96,7 @@ exports[`Checkbox > isIndeterminate 1`] = `
       </span>
     </div>
     <p
-      class="c-iPYhUp c-kLRYwF c-iPYhUp-ikmBbln-css"
+      class="Planum-c-iPYhUp Planum-c-kLRYwF Planum-c-iPYhUp-ikmBbln-css"
     >
       check me
     </p>
@@ -109,22 +107,21 @@ exports[`Checkbox > isIndeterminate 1`] = `
 exports[`Checkbox > isSelected 1`] = `
 <div>
   <label
-    class="c-iPYhUp c-kLRYwF c-edbEbA"
+    class="Planum-c-iPYhUp Planum-c-kLRYwF Planum-c-edbEbA"
   >
     <div
       style="border: 0px; clip-path: inset(50%); height: 1px; margin: 0px -1px -1px 0px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap;"
     >
       <input
-        aria-checked="true"
         checked=""
         type="checkbox"
       />
     </div>
     <div
-      class="c-hyHTE c-hyHTE-hkrvYr-isSelected-true"
+      class="Planum-c-hyHTE Planum-c-hyHTE-hkrvYr-isSelected-true"
     >
       <span
-        class="c-filUNh"
+        class="Planum-c-filUNh"
       >
         <svg
           height="14"
@@ -151,7 +148,7 @@ exports[`Checkbox > isSelected 1`] = `
       </span>
     </div>
     <p
-      class="c-iPYhUp c-kLRYwF c-iPYhUp-ikmBbln-css"
+      class="Planum-c-iPYhUp Planum-c-kLRYwF Planum-c-iPYhUp-ikmBbln-css"
     >
       check me
     </p>
@@ -162,21 +159,20 @@ exports[`Checkbox > isSelected 1`] = `
 exports[`Checkbox > should render simple checkbox 1`] = `
 <div>
   <label
-    class="c-iPYhUp c-kLRYwF c-edbEbA"
+    class="Planum-c-iPYhUp Planum-c-kLRYwF Planum-c-edbEbA"
   >
     <div
       style="border: 0px; clip-path: inset(50%); height: 1px; margin: 0px -1px -1px 0px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap;"
     >
       <input
-        aria-checked="false"
         type="checkbox"
       />
     </div>
     <div
-      class="c-hyHTE c-hyHTE-koxIsH-isSelected-false"
+      class="Planum-c-hyHTE Planum-c-hyHTE-koxIsH-isSelected-false"
     >
       <span
-        class="c-filUNh"
+        class="Planum-c-filUNh"
       >
         <svg
           height="14"
@@ -209,21 +205,20 @@ exports[`Checkbox > should render simple checkbox 1`] = `
 exports[`Checkbox > with label 1`] = `
 <div>
   <label
-    class="c-iPYhUp c-kLRYwF c-edbEbA"
+    class="Planum-c-iPYhUp Planum-c-kLRYwF Planum-c-edbEbA"
   >
     <div
       style="border: 0px; clip-path: inset(50%); height: 1px; margin: 0px -1px -1px 0px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap;"
     >
       <input
-        aria-checked="false"
         type="checkbox"
       />
     </div>
     <div
-      class="c-hyHTE c-hyHTE-koxIsH-isSelected-false"
+      class="Planum-c-hyHTE Planum-c-hyHTE-koxIsH-isSelected-false"
     >
       <span
-        class="c-filUNh"
+        class="Planum-c-filUNh"
       >
         <svg
           height="14"
@@ -250,7 +245,7 @@ exports[`Checkbox > with label 1`] = `
       </span>
     </div>
     <p
-      class="c-iPYhUp c-kLRYwF c-iPYhUp-ikmBbln-css"
+      class="Planum-c-iPYhUp Planum-c-kLRYwF Planum-c-iPYhUp-ikmBbln-css"
     >
       check me
     </p>
