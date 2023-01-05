@@ -4,11 +4,9 @@ import { useTooltip } from './use-tooltip'
 
 export type TooltipProps = React.PropsWithChildren<UseTooltipProps>
 
-export function Tooltip({
-  children,
-  ...options
-}: { children: React.ReactNode } & UseTooltipProps) {
+export function Tooltip({ children, ...options }: TooltipProps) {
   const tooltip = useTooltip(options)
+
   return (
     <TooltipContext.Provider value={tooltip}>
       {children}

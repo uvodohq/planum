@@ -21,6 +21,7 @@ import {
   PopoverTrigger,
   TooltipTrigger,
   TooltipPopup,
+  css,
 } from '@uvodohq/planum'
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
@@ -208,19 +209,17 @@ export default function FormElementsContainer() {
           '& > *': { minWidth: 100 },
         }}>
         <Tooltip placement="top">
-          <TooltipTrigger>
-            <Box as="button" css={{ background: '$blue400', px: 14, br: 4 }}>
-              Top - button
-            </Box>
+          <TooltipTrigger
+            className={css({ background: '$blue400', px: 14, br: 4 })()}>
+            Top - button
           </TooltipTrigger>
           <TooltipPopup>Please contact support</TooltipPopup>
         </Tooltip>
 
         <Tooltip placement="top" defaultIsOpen>
-          <TooltipTrigger>
-            <Box as="button" css={{ background: '$blue400', px: 14, br: 4 }}>
-              Default is open
-            </Box>
+          <TooltipTrigger
+            className={css({ background: '$blue400', px: 14, br: 4 })()}>
+            Default is open
           </TooltipTrigger>
           <TooltipPopup>Please contact support</TooltipPopup>
         </Tooltip>

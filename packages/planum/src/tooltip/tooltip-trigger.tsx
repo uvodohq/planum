@@ -3,7 +3,6 @@ import React from 'react'
 
 import { useTooltipState } from './use-tooltip-state'
 
-// eslint-disable-next-line react/display-name
 export const TooltipTrigger = React.forwardRef<
   HTMLElement,
   React.HTMLProps<HTMLElement> & { asChild?: boolean }
@@ -35,3 +34,5 @@ export const TooltipTrigger = React.forwardRef<
     </button>
   )
 })
+
+TooltipTrigger.displayName = 'TooltipTrigger'
