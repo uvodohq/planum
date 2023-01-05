@@ -1,5 +1,5 @@
-import { Box, Button, Stack } from '@uvodohq/planum'
-import { useMemo } from 'react'
+import { Box, Button, Flex, Stack } from '@uvodohq/planum'
+import { useEffect, useMemo, useState } from 'react'
 
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
@@ -17,16 +17,26 @@ import {
 import { DEFAULT_NUMBER } from '../../components/form/schemas'
 
 function useInitialValues() {
+  const [inc, setState] = useState(0)
+
+  useEffect(() => {
+    setInterval(() => {
+      setState((prev) => prev + 1)
+    }, 5000)
+  }, [])
+
   const initialValues = useMemo(() => {
     return {
       title: '',
       password: '',
       facebook_url: '',
       whatsapp: '',
-      amount: null, //DEFAULT_NUMBER,
+      amountNumber: 123, //DEFAULT_NUMBER,
+      amountNull: '', //DEFAULT_NUMBER,
       price: DEFAULT_NUMBER,
+      inc,
     }
-  }, [])
+  }, [inc])
 
   return initialValues
 }
@@ -43,9 +53,13 @@ const schema = z.object({
 type FormValues = z.infer<typeof schema>
 
 export default function FormHookContainer() {
+  return <Container />
+}
+
+function Container() {
   const initialValues = useInitialValues()
   const form = useForm<FormValues>({
-    resolver: zodResolver(schema),
+    // resolver: zodResolver(schema),
     defaultValues: initialValues,
   })
 
@@ -65,7 +79,7 @@ export default function FormHookContainer() {
     <Form {...handlers}>
       <Stack y={24} css={{ width: 444 }}>
         <Button type="submit" isDisabled={!handlers.isDirty}>
-          Submit
+          Submit {initialValues.inc}
         </Button>
 
         <TextField name="title" label="Title" placeholder="Input Placeholder" />
@@ -83,9 +97,23 @@ export default function FormHookContainer() {
           label="URL"
         />
 
-        <NumberField name="amount" placeholder="12" label="Amount" />
-        <NumberField name="price" placeholder="12.22" label="Price" />
+        <Flex css={{ gap: 12 }}>
+          <NumberField
+            name="amountNumber"
+            placeholder="amountNumber"
+            label="amountNumber"
+            formatOptions={{
+              maximumFractionDigits: 0,
+            }}
+          />
+          <NumberField
+            name="amountNull"
+            placeholder="amountNull"
+            label="amountNull"
+          />
 
+          <NumberField name="price" placeholder="12.22" label="Price" />
+        </Flex>
         <Box css={{ mt: 222, d: 'flex', gap: 12 }}>
           <Button variant="secondary" onClick={() => form.reset()}>
             Reset

@@ -34,8 +34,6 @@ export interface MenuBarProps {
   isLink: boolean
 }
 
-// TODO: add tooltips for buttons
-
 // Don't rerender on editor content change when typing
 export const MenuBar = React.memo((props: MenuBarProps) => {
   const {

@@ -36,6 +36,7 @@ export const useFormHandlers = <T extends FieldValues, C>(
     console.info('FORM: dirty fields.', dirtyFields)
     console.info('FORM: form props.', props)
     console.info('FORM: form values.', form.watch()) // rerender all form on each change
+    console.log('_____________________________________________________________')
   }
 
   // TODO: show prompts when, user leaves while form isLoading. bug onSuccess navigate runs first

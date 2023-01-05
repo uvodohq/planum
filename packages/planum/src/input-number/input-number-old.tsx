@@ -1,9 +1,10 @@
-// @ts-nocheck
+import { useLocale } from '@react-aria/i18n'
 import { useFocus } from '@react-aria/interactions'
-import { mergeProps, useObjectRef } from '@react-aria/utils'
+import { useNumberField } from '@react-aria/numberfield'
+import { mergeProps, useObjectRef, useUpdateEffect } from '@react-aria/utils'
+import { useNumberFieldState } from '@react-stately/numberfield'
 import type { AriaNumberFieldProps } from '@react-types/numberfield'
 import * as React from 'react'
-import { NumberFormatBase, NumericFormat } from 'react-number-format'
 
 import { Field } from '../field'
 import type { CSS } from '../theme'
@@ -47,19 +48,6 @@ interface Props {
   status?: 'success' | 'normal' | 'error'
 }
 
-const format = (numStr) => {
-  if (numStr === '') return ''
-  const value = new Intl.NumberFormat('en-US', {
-    // style: 'currency',
-    // currency: 'USD',
-    maximumFractionDigits: 2,
-    minimumFractionDigits: 2,
-  }).format(numStr)
-
-  console.log({ value, numStr })
-  return value
-}
-
 export type InputNumberProps = Omit<StyledInputVariants, 'isFocused'> &
   AriaNumberFieldProps &
   Props
@@ -75,17 +63,26 @@ function _InputNumber(
     successMessage,
     status,
     isDisabled,
-    onChange,
 
     leftIcon,
     rightIcon,
     suffix,
     prefix,
-
-    ...rest
   } = props
 
   const inputRef = useObjectRef(forwardedRef)
+
+  const { locale } = useLocale()
+  const state = useNumberFieldState({ ...props, locale })
+
+  const {
+    labelProps,
+    inputProps,
+    descriptionProps,
+    errorMessageProps,
+    groupProps,
+  } = useNumberField(props, state, inputRef)
+
   const { isFocused, focusProps } = useFocused()
 
   const hasLeftIcon = !!leftIcon
@@ -94,7 +91,12 @@ function _InputNumber(
   const hasPrefix = prefix || hasLeftIcon
   const hasSuffix = suffix || hasRightIcon
 
-  // console.log('numberInput props', props)
+  // workaround, to send latest values to parent state.
+  useUpdateEffect(() => {
+    if (state.inputValue?.endsWith('.')) return
+
+    state.commit()
+  }, [state.inputValue])
 
   return (
     <Field
@@ -105,9 +107,9 @@ function _InputNumber(
         successMessage,
         status,
 
-        // labelProps,
-        // descriptionProps,
-        // errorMessageProps,
+        labelProps,
+        descriptionProps,
+        errorMessageProps,
       }}>
       <StyledInputContainer
         onClick={() =>
@@ -117,7 +119,8 @@ function _InputNumber(
         }
         status={status}
         isFocused={isFocused}
-        isDisabled={isDisabled}>
+        isDisabled={isDisabled}
+        {...groupProps}>
         {hasPrefix && (
           <Prefix
             css={{
@@ -127,24 +130,8 @@ function _InputNumber(
             {prefix}
           </Prefix>
         )}
-        <NumericFormat
-          {...mergeProps(rest, focusProps)}
-          // isNumericString
-          // valueIsNumericString
-          // decimalSeparator={'.'}
-          thousandSeparator=","
-          decimalScale={3}
-          // fixedDecimalScale
-          // format={format}
-          onValueChange={(values) => {
-            console.log('values -', props.name, values)
 
-            const value = values.floatValue ?? null
-
-            onChange(value)
-          }}
-          getInputRef={inputRef}
-        />
+        <StyledInput {...mergeProps(inputProps, focusProps)} ref={inputRef} />
 
         {hasSuffix && (
           <Suffix>

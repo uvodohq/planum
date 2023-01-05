@@ -62,7 +62,8 @@
     "@stitches/react": "^1.2.8",
     "ahooks": "^3.7.0",
     "react-hot-toast": "^2.2.0",
-    "react-merge-refs": "^2.0.1"
+    "react-merge-refs": "^2.0.1",
+    "react-number-format": "^5.1.2"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.5",
