@@ -1,4 +1,5 @@
 import { FloatingPortal, useMergeRefs } from '@floating-ui/react'
+import { mergeProps } from '@react-aria/utils'
 import { AnimatePresence, motion } from 'framer-motion'
 import React from 'react'
 
@@ -38,13 +39,17 @@ export const TooltipPopup = React.forwardRef<
               stiffness: 300,
               delay: 0.15,
             }}
-            style={{
-              position: state.strategy,
-              top: state.y ?? 0,
-              left: state.x ?? 0,
-              visibility: state.x == null ? 'hidden' : 'visible',
-            }}
             {...state.getFloatingProps(props)}
+            style={mergeProps(
+              {
+                position: state.strategy,
+                top: state.y ?? 0,
+                left: state.x ?? 0,
+                visibility: state.x == null ? 'hidden' : 'visible',
+                zIndex: 1,
+              },
+              props.style ?? {},
+            )}
           />
         )}
       </AnimatePresence>
