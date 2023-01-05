@@ -25,7 +25,7 @@ export const Menu = forwardRef<any, MenuProps>((props, ref) => {
   return (
     <span
       onClick={(e) => {
-        e.stopPropagation()
+        // e.stopPropagation()
       }}>
       <DropdownTrigger menu={menu} trigger={props.trigger} />
       <DropdownPopup state={state} menu={menu} />

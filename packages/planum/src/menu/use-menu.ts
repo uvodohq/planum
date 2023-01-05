@@ -16,7 +16,7 @@ import {
   useTypeahead,
 } from '@floating-ui/react'
 import { useInteractOutside } from '@react-aria/interactions'
-import { Children, cloneElement, isValidElement, useMemo, useRef } from 'react'
+import { Children, cloneElement, isValidElement, useRef } from 'react'
 
 import type { MenuProps } from './menu'
 import type { UseMenuState } from './use-menu-state'
@@ -130,7 +130,9 @@ export function useMenu(
     )
   }
 
-  function onInteractOutside() {
+  function onInteractOutside(e: any) {
+    e.stopPropagation()
+    e.preventDefault()
     state.setOpen(false)
   }
 
