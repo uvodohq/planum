@@ -6,18 +6,18 @@ exports[`<Skeleton /> > should render default skeleton as 1 line paragraph 1`] =
   aria-valuemax="100"
   aria-valuemin="0"
   aria-valuetext="loading"
-  class="c-lfOXhj c-lfOXhj-hGdOCN-animated-true"
+  class="Planum-c-lfOXhj Planum-c-lfOXhj-gfMShL-animated-true"
   role="progressbar"
 >
   <div
-    class="c-cRMbGV"
+    class="Planum-c-cRMbGV"
   >
     <div
-      class="c-fCqUlT"
+      class="Planum-c-fCqUlT"
       style="width: 45%;"
     >
       <p
-        class="c-iPYhUp c-kLRYwF c-hAVAWC c-iPYhUp-iiODFRR-css"
+        class="Planum-c-iPYhUp Planum-c-kLRYwF Planum-c-hAVAWC Planum-c-iPYhUp-iiODFRR-css"
       />
     </div>
   </div>
@@ -30,26 +30,26 @@ exports[`<Skeleton /> > should render default skeleton as 2 line texts 1`] = `
   aria-valuemax="100"
   aria-valuemin="0"
   aria-valuetext="loading"
-  class="c-lfOXhj c-lfOXhj-hGdOCN-animated-true"
+  class="Planum-c-lfOXhj Planum-c-lfOXhj-gfMShL-animated-true"
   role="progressbar"
 >
   <div
-    class="c-cRMbGV"
+    class="Planum-c-cRMbGV"
   >
     <div
-      class="c-fCqUlT"
+      class="Planum-c-fCqUlT"
       style="width: 45%;"
     >
       <p
-        class="c-iPYhUp c-kLRYwF c-hAVAWC c-iPYhUp-iiODFRR-css"
+        class="Planum-c-iPYhUp Planum-c-kLRYwF Planum-c-hAVAWC Planum-c-iPYhUp-iiODFRR-css"
       />
     </div>
     <div
-      class="c-fCqUlT"
+      class="Planum-c-fCqUlT"
       style="width: 20%;"
     >
       <p
-        class="c-iPYhUp c-kLRYwF c-hAVAWC c-iPYhUp-iiODFRR-css"
+        class="Planum-c-iPYhUp Planum-c-kLRYwF Planum-c-hAVAWC Planum-c-iPYhUp-iiODFRR-css"
       />
     </div>
   </div>
@@ -62,11 +62,11 @@ exports[`<Skeleton /> > should render default skeleton as Single image 1`] = `
   aria-valuemax="100"
   aria-valuemin="0"
   aria-valuetext="loading"
-  class="c-lfOXhj c-lfOXhj-hGdOCN-animated-true"
+  class="Planum-c-lfOXhj Planum-c-lfOXhj-gfMShL-animated-true"
   role="progressbar"
 >
   <div
-    class="c-dbbEBI c-dbbEBI-iiODFRR-css"
+    class="Planum-c-dbbEBI Planum-c-dbbEBI-iiODFRR-css"
     data-testid="skeleton-img"
   />
 </div>
@@ -78,30 +78,30 @@ exports[`<Skeleton /> > should render default skeleton as item card with image 1
   aria-valuemax="100"
   aria-valuemin="0"
   aria-valuetext="loading"
-  class="c-lfOXhj c-lfOXhj-hGdOCN-animated-true"
+  class="Planum-c-lfOXhj Planum-c-lfOXhj-gfMShL-animated-true"
   role="progressbar"
 >
   <div
-    class="c-dbbEBI c-dbbEBI-iiODFRR-css"
+    class="Planum-c-dbbEBI Planum-c-dbbEBI-iiODFRR-css"
     data-testid="skeleton-img"
   />
   <div
-    class="c-cRMbGV"
+    class="Planum-c-cRMbGV"
   >
     <div
-      class="c-fCqUlT"
+      class="Planum-c-fCqUlT"
       style="width: 45%;"
     >
       <p
-        class="c-iPYhUp c-kLRYwF c-hAVAWC c-iPYhUp-iiODFRR-css"
+        class="Planum-c-iPYhUp Planum-c-kLRYwF Planum-c-hAVAWC Planum-c-iPYhUp-iiODFRR-css"
       />
     </div>
     <div
-      class="c-fCqUlT"
+      class="Planum-c-fCqUlT"
       style="width: 20%;"
     >
       <p
-        class="c-iPYhUp c-kLRYwF c-hAVAWC c-iPYhUp-iiODFRR-css"
+        class="Planum-c-iPYhUp Planum-c-kLRYwF Planum-c-hAVAWC Planum-c-iPYhUp-iiODFRR-css"
       />
     </div>
   </div>

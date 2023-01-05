@@ -13,13 +13,15 @@ import {
   Paragraph,
   Tooltip,
   styled,
-  ModalContent,
   Popover,
   PopoverClose,
   PopoverDescription,
   PopoverHeading,
   PopoverPopup,
   PopoverTrigger,
+  TooltipTrigger,
+  TooltipPopup,
+  css,
 } from '@uvodohq/planum'
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
@@ -206,65 +208,89 @@ export default function FormElementsContainer() {
           flexWrap: 'wrap',
           '& > *': { minWidth: 100 },
         }}>
-        <Tooltip label="Please contact support" placement="top">
-          <Box as="button" css={{ background: '$blue400', px: 14, br: 4 }}>
+        <Tooltip placement="top">
+          <TooltipTrigger
+            className={css({ background: '$blue400', px: 14, br: 4 })()}>
             Top - button
-          </Box>
+          </TooltipTrigger>
+          <TooltipPopup>Please contact support</TooltipPopup>
         </Tooltip>
 
-        <Tooltip label="Please contact support" placement="top" defaultIsOpen>
-          <Box as="button" css={{ background: '$blue400', px: 14, br: 4 }}>
+        <Tooltip placement="top" defaultIsOpen>
+          <TooltipTrigger
+            className={css({ background: '$blue400', px: 14, br: 4 })()}>
             Default is open
-          </Box>
+          </TooltipTrigger>
+          <TooltipPopup>Please contact support</TooltipPopup>
         </Tooltip>
 
-        <Tooltip label="Please contact support" placement="top">
-          <Paragraph>Planum text</Paragraph>
+        <Tooltip placement="top">
+          <TooltipTrigger>
+            <Paragraph>Planum text</Paragraph>
+          </TooltipTrigger>
+          <TooltipPopup>Please contact support</TooltipPopup>
         </Tooltip>
 
-        <Tooltip label="Please contact support" placement="bottom">
-          <Box
-            css={{
-              background: '$surface300',
-              dflex: 'center',
-              padding: 8,
-            }}>
-            Bottom - div
-          </Box>
+        <Tooltip placement="bottom">
+          <TooltipTrigger>
+            <Box
+              css={{
+                background: '$surface300',
+                dflex: 'center',
+                padding: 8,
+              }}>
+              Bottom - div
+            </Box>
+          </TooltipTrigger>
+          <TooltipPopup>Please contact support</TooltipPopup>
         </Tooltip>
 
-        <Tooltip
-          label="Everybody should have come across a scenario where you should restrict the long text for the desired width"
-          placement="top">
-          <Box
-            css={{
-              background: '$surface300',
-              dflex: 'center',
-              padding: 8,
-            }}>
-            Long text - top
-          </Box>
+        <Tooltip placement="top">
+          <TooltipTrigger>
+            <Box
+              css={{
+                background: '$surface300',
+                dflex: 'center',
+                padding: 8,
+              }}>
+              Long text - top
+            </Box>
+          </TooltipTrigger>
+          <TooltipPopup>
+            Everybody should have come across a scenario where you should
+            restrict the long text for the desired width
+          </TooltipPopup>
         </Tooltip>
 
-        <Tooltip
-          label="Everybody should have come across a scenario where you should restrict the long text for the desired width"
-          placement="bottom">
-          <Box
-            css={{
-              background: '$surface300',
-              dflex: 'center',
-              padding: 8,
-            }}>
-            Long text - bottom
-          </Box>
+        <Tooltip placement="bottom">
+          <TooltipTrigger>
+            <Box
+              css={{
+                background: '$surface300',
+                dflex: 'center',
+                padding: 8,
+              }}>
+              Long text - bottom
+            </Box>
+          </TooltipTrigger>
+          <TooltipPopup>
+            Everybody should have come across a scenario where you should
+            restrict the long text for the desired width
+          </TooltipPopup>
         </Tooltip>
 
-        <Tooltip label="Please contact support">
-          <Button>Planum Button</Button>
+        <Tooltip>
+          <TooltipTrigger>
+            <Button>Planum Button</Button>
+          </TooltipTrigger>
+          <TooltipPopup>Please contact support</TooltipPopup>
         </Tooltip>
 
-        <Tooltip label="This tooltip can't hide" isOpen>
-          <Button>Show always</Button>
+        <Tooltip open>
+          <TooltipTrigger>
+            <Button>Show always</Button>
+          </TooltipTrigger>
+          <TooltipPopup>This tooltip can't hide</TooltipPopup>
         </Tooltip>
       </Box>
     </>

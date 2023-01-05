@@ -4,33 +4,33 @@ exports[`<Button /> > should show loading and not accept onClick 1`] = `
 <button
   aria-busy="true"
   aria-label="Loading"
-  class="c-eDYXqN c-eDYXqN-KUnxm-size-md c-eDYXqN-eEPmHB-variant-primary c-eDYXqN-jUrwBA-isLoading-true"
+  class="Planum-c-eDYXqN Planum-c-eDYXqN-KUnxm-size-md Planum-c-eDYXqN-eEPmHB-variant-primary Planum-c-eDYXqN-jUrwBA-isLoading-true"
   disabled=""
   type="button"
 >
   <span
-    class="c-kxAGWb c-kxAGWb-icKbjjX-css"
+    class="Planum-c-kxAGWb Planum-c-kxAGWb-icKbjjX-css"
   >
     <span
-      class="c-dbzzBd"
+      class="Planum-c-dbzzBd"
     >
       Button
     </span>
   </span>
   <span
-    class="c-dwigtZ"
+    class="Planum-c-gXYcWj"
   >
     <span
-      class="c-ihyEMT c-ihyEMT-hSOPyJ-speed-fast c-ihyEMT-hRvkRI-size-default c-ihyEMT-bVexMK-theme-dark"
+      class="Planum-c-ihyEMT Planum-c-ihyEMT-fEcTqV-speed-fast Planum-c-ihyEMT-hRvkRI-size-default Planum-c-ihyEMT-eGYJCk-theme-dark"
       role="progressbar"
       style="--planum-loader-percentage: 100;"
     >
       <svg
-        class="c-gIjBTH"
+        class="Planum-c-dIfLHp"
         viewBox="0 0 50 50"
       >
         <circle
-          class="c-cfQGJc"
+          class="Planum-c-jlBdpC"
           cx="25"
           cy="25"
           fill="none"
@@ -38,7 +38,7 @@ exports[`<Button /> > should show loading and not accept onClick 1`] = `
           stroke-width="4"
         />
         <circle
-          class="c-PJLV"
+          class="Planum-c-PJLV"
           cx="25"
           cy="25"
           fill="none"
