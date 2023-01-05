@@ -194,4 +194,4 @@ export { Skeleton } from './skeleton'
 
 // tooltip
 export { Tooltip, TooltipPopup, TooltipTrigger } from './tooltip'
-// export type { TooltipProps } from './tooltip'
+export type { TooltipProps } from './tooltip'

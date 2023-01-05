@@ -1,11 +1,12 @@
 import { Box, Button, Stack } from '@uvodohq/planum'
-import { useMemo } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import * as z from 'zod'
 
 import {
+  EditorField,
   Form,
   NumberField,
   PasswordField,
@@ -17,16 +18,27 @@ import {
 import { DEFAULT_NUMBER } from '../../components/form/schemas'
 
 function useInitialValues() {
+  const [inc, setState] = useState(0)
+
+  useEffect(() => {
+    setInterval(() => {
+      setState((prev) => prev + 1)
+    }, 5000)
+  }, [])
+
   const initialValues = useMemo(() => {
     return {
       title: '',
       password: '',
       facebook_url: '',
       whatsapp: '',
-      amount: null, //DEFAULT_NUMBER,
+      amountNumber: 123, //DEFAULT_NUMBER,
+      amountNull: '', //DEFAULT_NUMBER,
       price: DEFAULT_NUMBER,
+      policy: '',
+      inc,
     }
-  }, [])
+  }, [inc])
 
   return initialValues
 }
@@ -36,8 +48,9 @@ const schema = z.object({
   password: z.string(),
   facebook_url: schemas.url(),
   whatsapp: schemas.phone(),
-  amount: z.number().nullable(),
+  amountNumber: z.number().nullable(),
   price: schemas.number(),
+  policy: z.string().min(20, { message: 'This field required aaaa' }),
 })
 
 type FormValues = z.infer<typeof schema>
@@ -64,9 +77,9 @@ export default function FormHookContainer() {
   return (
     <Form {...handlers}>
       <Stack y={24} css={{ width: 444 }}>
-        <Button type="submit" isDisabled={!handlers.isDirty}>
+        {/* <Button type="submit" isDisabled={!handlers.isDirty}>
           Submit
-        </Button>
+        </Button> */}
 
         <TextField name="title" label="Title" placeholder="Input Placeholder" />
 
@@ -83,8 +96,10 @@ export default function FormHookContainer() {
           label="URL"
         />
 
-        <NumberField name="amount" placeholder="12" label="Amount" />
+        <NumberField name="amountNumber" placeholder="12" label="Amount" />
         <NumberField name="price" placeholder="12.22" label="Price" />
+
+        <EditorField name="policy" aria-label="Editor" label="Policy" />
 
         <Box css={{ mt: 222, d: 'flex', gap: 12 }}>
           <Button variant="secondary" onClick={() => form.reset()}>
