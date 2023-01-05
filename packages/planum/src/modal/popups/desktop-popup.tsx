@@ -1,7 +1,4 @@
-import {
-  FloatingFocusManager,
-  FloatingOverlay,
-} from '@floating-ui/react-dom-interactions'
+import { FloatingFocusManager, FloatingOverlay } from '@floating-ui/react'
 
 import type { useModal, UseModalProps } from '../use-modal'
 import type { ModalState } from '../use-modal-state'

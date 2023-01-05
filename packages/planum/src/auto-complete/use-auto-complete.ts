@@ -10,7 +10,7 @@ import {
   useInteractions,
   useListNavigation,
   useRole,
-} from '@floating-ui/react-dom-interactions'
+} from '@floating-ui/react'
 import type { MutableRefObject } from 'react'
 import { useLayoutEffect } from 'react'
 

@@ -1,8 +1,5 @@
-import type { FloatingOverlay } from '@floating-ui/react-dom-interactions'
-import {
-  FloatingFocusManager,
-  FloatingPortal,
-} from '@floating-ui/react-dom-interactions'
+import type { FloatingOverlay } from '@floating-ui/react'
+import { FloatingFocusManager, FloatingPortal } from '@floating-ui/react'
 import { AnimatePresence } from 'framer-motion'
 import * as React from 'react'
 import { mergeRefs } from 'react-merge-refs'

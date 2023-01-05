@@ -1,4 +1,4 @@
-import type { UseFloatingReturn } from '@floating-ui/react-dom-interactions'
+import type { UseFloatingReturn } from '@floating-ui/react'
 import {
   autoUpdate,
   flip,
@@ -13,7 +13,7 @@ import {
   useListNavigation,
   useRole,
   useTypeahead,
-} from '@floating-ui/react-dom-interactions'
+} from '@floating-ui/react'
 import { useInteractOutside } from '@react-aria/interactions'
 import { Children, cloneElement, isValidElement, useMemo, useRef } from 'react'
 import { mergeRefs } from 'react-merge-refs'

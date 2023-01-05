@@ -1,4 +1,4 @@
-import type { Placement } from '@floating-ui/react-dom-interactions'
+import type { Placement } from '@floating-ui/react'
 import {
   autoUpdate,
   offset,
@@ -11,7 +11,7 @@ import {
   useListNavigation,
   useRole,
   useTypeahead,
-} from '@floating-ui/react-dom-interactions'
+} from '@floating-ui/react'
 import { useUpdateEffect } from '@react-aria/utils'
 import type { MutableRefObject } from 'react'
 import { useLayoutEffect, useState } from 'react'

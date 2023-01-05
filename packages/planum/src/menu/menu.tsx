@@ -1,4 +1,4 @@
-import type { offset, Placement } from '@floating-ui/react-dom-interactions'
+import type { offset, Placement } from '@floating-ui/react'
 import React, { forwardRef } from 'react'
 
 import { DropdownPopup } from './menu-popup'

@@ -2,7 +2,7 @@ import {
   FloatingNode,
   FloatingTree,
   useFloatingParentNodeId,
-} from '@floating-ui/react-dom-interactions'
+} from '@floating-ui/react'
 import { cloneElement } from 'react'
 
 import { ModalContext } from './modal-context'

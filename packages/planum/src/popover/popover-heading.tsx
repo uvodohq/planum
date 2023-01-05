@@ -1,4 +1,4 @@
-import { useId } from '@floating-ui/react-dom-interactions'
+import { useId } from '@floating-ui/react'
 import * as React from 'react'
 
 import { usePopoverState } from './use-popover-state'

@@ -2,7 +2,7 @@ import {
   FloatingFocusManager,
   FloatingOverlay,
   FloatingPortal,
-} from '@floating-ui/react-dom-interactions'
+} from '@floating-ui/react'
 import { AnimatePresence } from 'framer-motion'
 import * as React from 'react'
 import { mergeRefs } from 'react-merge-refs'

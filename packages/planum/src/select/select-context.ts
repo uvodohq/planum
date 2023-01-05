@@ -1,4 +1,4 @@
-import type { ContextData } from '@floating-ui/react-dom-interactions'
+import type { ContextData } from '@floating-ui/react'
 import type React from 'react'
 import { createContext } from 'react'
 

@@ -2,7 +2,7 @@ import {
   FloatingNode,
   FloatingTree,
   useFloatingParentNodeId,
-} from '@floating-ui/react-dom-interactions'
+} from '@floating-ui/react'
 import * as React from 'react'
 
 import { PopoverContext } from './popover-context'
