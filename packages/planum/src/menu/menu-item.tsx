@@ -55,6 +55,12 @@ export const MenuItem = forwardRef<HTMLLIElement, MenuItemProps>(
       onSelect?.()
     }
 
+    function handleKeyDown(event: React.KeyboardEvent) {
+      if (event.key === 'Enter' || event.key === ' ') {
+        onChoose(event)
+      }
+    }
+
     return (
       <StyledMenuItem
         {...rest}
@@ -62,7 +68,8 @@ export const MenuItem = forwardRef<HTMLLIElement, MenuItemProps>(
         tabIndex={0}
         ref={ref}
         role="menuitem"
-        data-disabled={disabled}>
+        data-disabled={disabled}
+        onKeyDown={handleKeyDown}>
         <Flex css={{ gap: 4, alignItems: 'center' }}>
           <StyledIcon css={iconCss}>{icon}</StyledIcon>
           <Paragraph>{label}</Paragraph>

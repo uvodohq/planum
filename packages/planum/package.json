@@ -42,7 +42,6 @@
   },
   "dependencies": {
     "@floating-ui/react": "^0.15.0",
-    "@floating-ui/react": "^0.13.1",
     "@radix-ui/react-avatar": "^1.0.0",
     "@react-aria/breadcrumbs": "^3.3.0",
     "@react-aria/button": "^3.6.0",

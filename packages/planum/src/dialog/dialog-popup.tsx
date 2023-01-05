@@ -2,10 +2,10 @@ import {
   FloatingFocusManager,
   FloatingOverlay,
   FloatingPortal,
+  useMergeRefs,
 } from '@floating-ui/react'
 import { AnimatePresence } from 'framer-motion'
 import * as React from 'react'
-import { mergeRefs } from 'react-merge-refs'
 
 import { Overlay, Underlay } from './dialog.styles'
 import { useDialogState } from './use-dialog-state'
@@ -24,10 +24,7 @@ export const DialogPopup = React.forwardRef<HTMLDivElement, DialogPopupProps>(
     const { children, overlayProps, ...rest } = props
     const state = useDialogState()
 
-    const ref = React.useMemo(
-      () => mergeRefs([state.floating, propRef]),
-      [state.floating, propRef],
-    )
+    const ref = useMergeRefs([state.floating, propRef])
 
     return (
       <FloatingPortal>
