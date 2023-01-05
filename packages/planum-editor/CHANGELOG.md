@@ -1,5 +1,13 @@
 # @uvodohq/planum-editor
 
+## 0.3.0
+
+### Minor Changes
+
+- [#10](https://github.com/uvodohq/planum/pull/10) [`65d3e4d`](https://github.com/uvodohq/planum/commit/65d3e4dc731737c27c960d9abf53b341cd282e03) Thanks [@NijatBakhtiyar](https://github.com/NijatBakhtiyar)! - - update tooltip with new version
+  - replace old tooltip in all components
+  - number input fix
+
 ## 0.2.3
 
 ### Patch Changes
