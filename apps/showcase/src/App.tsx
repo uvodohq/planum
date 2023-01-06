@@ -8,7 +8,6 @@ import {
   ButtonDarkPage,
   ButtonWhitePage,
   ColorPage,
-  EditorPage,
   EffectPage,
   ExtraComponentsPage,
   FormElementsPage,
@@ -22,6 +21,7 @@ import {
   TextareaPage,
   TypographyPage,
   IconsPage,
+  EditorPage,
 } from './pages'
 import { FormHookPage } from './pages/form-hook'
 

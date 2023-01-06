@@ -26,6 +26,7 @@ function _ToggleButton(props: ToggleButtonProps, forwardedRef: any) {
 
   return (
     <StyledButton
+      type="button"
       {...mergedProps}
       isPressed={isPressed}
       isSelected={state.isSelected}

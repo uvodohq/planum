@@ -10,7 +10,7 @@ export const Card = (props: CardItemProps) => {
   const { label, path } = props
   return (
     <CardGrid>
-      <CardLink href={path}>
+      <CardLink href={path} title={label}>
         <CardIcon>
           <PuzzlePieceIcon />
         </CardIcon>

@@ -67,8 +67,9 @@ const LinkButtonWithModal = ({ editor, isSelected, isDisabled }: Props) => {
   return (
     <>
       <Tooltip placement="top">
-        <TooltipTrigger>
+        <TooltipTrigger asChild>
           <ToggleButton
+            onPress={() => modal.openModal()}
             isDisabled={isDisabled}
             onChange={openModal}
             isSelected={isSelected}
