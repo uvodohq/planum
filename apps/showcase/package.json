@@ -7,7 +7,7 @@
     "dev": "vite --port=5174",
     "build": "vite build",
     "preview": "yarn build && vite preview",
-    "deploy": "yarn build && netlify deploy --dir=./dist --prod --site planum-demo",
+    "deploy": "netlify deploy --dir=./dist --prod --site planum-demo",
     "clean": "rimraf .turbo node_modules dist"
   },
   "dependencies": {

@@ -1,4 +1,4 @@
-import { useId } from '@floating-ui/react-dom-interactions'
+import { useId } from '@floating-ui/react'
 import useControllableValue from 'ahooks/es/useControllableValue'
 
 export type ModalState = ReturnType<typeof useModalState>

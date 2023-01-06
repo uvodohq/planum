@@ -1,4 +1,4 @@
-import type { UseFloatingReturn } from '@floating-ui/react-dom-interactions'
+import type { UseFloatingReturn } from '@floating-ui/react'
 import {
   autoUpdate,
   flip,
@@ -11,12 +11,11 @@ import {
   useFloatingNodeId,
   useInteractions,
   useListNavigation,
+  useMergeRefs,
   useRole,
   useTypeahead,
-} from '@floating-ui/react-dom-interactions'
-import { useInteractOutside } from '@react-aria/interactions'
-import { Children, cloneElement, isValidElement, useMemo, useRef } from 'react'
-import { mergeRefs } from 'react-merge-refs'
+} from '@floating-ui/react'
+import { Children, cloneElement, isValidElement, useRef } from 'react'
 
 import type { MenuProps } from './menu'
 import type { UseMenuState } from './use-menu-state'
@@ -97,10 +96,7 @@ export function useMenu(
     ],
   )
 
-  const mergedReferenceRef = useMemo(
-    () => mergeRefs([ref, reference]),
-    [reference, ref],
-  )
+  const mergedReferenceRef = useMergeRefs([ref, reference])
 
   const referenceProps = getReferenceProps({
     ...rest,
@@ -121,7 +117,7 @@ export function useMenu(
     }),
     closeMenu() {
       state.setOpen(false)
-      refs.reference.current?.focus()
+      refs.floating.current?.focus()
     },
   })
 
@@ -132,15 +128,6 @@ export function useMenu(
         isValidElement(child) && cloneElement(child, getMenuItemProps(index)),
     )
   }
-
-  function onInteractOutside() {
-    state.setOpen(false)
-  }
-
-  useInteractOutside({
-    ref: refs.floating,
-    onInteractOutside,
-  })
 
   return {
     floating: { x, y, reference, floating, strategy, refs, context, placement },

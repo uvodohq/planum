@@ -153,7 +153,7 @@
   },
   {
     "source": "C:/Users/EminQasimov/playground/projects/uvodo/design-system/packages/planum/dist/index.mjs",
-    "target": "C:/Users/EminQasimov/playground/projects/uvodo/design-system/node_modules/@floating-ui/react-dom-interactions/dist/floating-ui.react-dom-interactions.esm.js"
+    "target": "C:/Users/EminQasimov/playground/projects/uvodo/design-system/node_modules/@floating-ui/react/dist/floating-ui.react-dom-interactions.esm.js"
   },
   {
     "source": "C:/Users/EminQasimov/playground/projects/uvodo/design-system/packages/planum/dist/index.mjs",
@@ -296,23 +296,23 @@
     "target": "C:/Users/EminQasimov/playground/projects/uvodo/design-system/node_modules/@react-aria/i18n/dist/module.js"
   },
   {
-    "source": "C:/Users/EminQasimov/playground/projects/uvodo/design-system/node_modules/@floating-ui/react-dom-interactions/dist/floating-ui.react-dom-interactions.esm.js",
+    "source": "C:/Users/EminQasimov/playground/projects/uvodo/design-system/node_modules/@floating-ui/react/dist/floating-ui.react-dom-interactions.esm.js",
     "target": "C:/Users/EminQasimov/playground/projects/uvodo/design-system/node_modules/@floating-ui/react-dom/dist/floating-ui.react-dom.esm.js"
   },
   {
-    "source": "C:/Users/EminQasimov/playground/projects/uvodo/design-system/node_modules/@floating-ui/react-dom-interactions/dist/floating-ui.react-dom-interactions.esm.js",
+    "source": "C:/Users/EminQasimov/playground/projects/uvodo/design-system/node_modules/@floating-ui/react/dist/floating-ui.react-dom-interactions.esm.js",
     "target": "C:/Users/EminQasimov/playground/projects/uvodo/design-system/node_modules/react/index.js"
   },
   {
-    "source": "C:/Users/EminQasimov/playground/projects/uvodo/design-system/node_modules/@floating-ui/react-dom-interactions/dist/floating-ui.react-dom-interactions.esm.js",
+    "source": "C:/Users/EminQasimov/playground/projects/uvodo/design-system/node_modules/@floating-ui/react/dist/floating-ui.react-dom-interactions.esm.js",
     "target": "C:/Users/EminQasimov/playground/projects/uvodo/design-system/node_modules/react-dom/index.js"
   },
   {
-    "source": "C:/Users/EminQasimov/playground/projects/uvodo/design-system/node_modules/@floating-ui/react-dom-interactions/dist/floating-ui.react-dom-interactions.esm.js",
+    "source": "C:/Users/EminQasimov/playground/projects/uvodo/design-system/node_modules/@floating-ui/react/dist/floating-ui.react-dom-interactions.esm.js",
     "target": "C:/Users/EminQasimov/playground/projects/uvodo/design-system/node_modules/aria-hidden/dist/es2015/index.js"
   },
   {
-    "source": "C:/Users/EminQasimov/playground/projects/uvodo/design-system/node_modules/@floating-ui/react-dom-interactions/dist/floating-ui.react-dom-interactions.esm.js",
+    "source": "C:/Users/EminQasimov/playground/projects/uvodo/design-system/node_modules/@floating-ui/react/dist/floating-ui.react-dom-interactions.esm.js",
     "target": "\u0000react/jsx-runtime"
   },
   {
