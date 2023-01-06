@@ -1,5 +1,6 @@
 export { AutoCompleteTagsField } from './auto-complete-tags-field'
 export { CheckboxField } from './checkbox-field'
+export { ToggleField } from './toggle-field'
 export { CheckboxGroupField } from './checkbox-group-field'
 export { EditorField } from './editor-field'
 export { NumberField } from './number-field'

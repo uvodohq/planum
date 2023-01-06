@@ -102,7 +102,7 @@ export default function TagsBadgeContainer() {
         }}>
         <TagSelectExample
           placeholder="tshirts, black, red"
-          label="Label"
+          label="sfsdf ff"
           aria-label="label"
         />
         <TagSelectExample

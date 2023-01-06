@@ -3,7 +3,7 @@ import type { LabelAriaProps } from '@uvodohq/planum'
 
 export type EditorProps = {
   placeholder?: string
-  onChange?: (value?: string) => void
+  onChange?: (value?: string | null) => void
   onBlur?: () => void
   value?: string
   autoFocus?: boolean

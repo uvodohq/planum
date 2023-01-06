@@ -58,7 +58,7 @@ export { Drawer } from './drawer'
 export { Menu, MenuItem } from './menu'
 
 // Flag
-export type { FlagProps } from './flag'
+export type { FlagProps, CountryCode } from './flag'
 export { Flag } from './flag'
 
 // autocmplete
