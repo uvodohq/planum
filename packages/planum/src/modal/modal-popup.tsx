@@ -1,4 +1,4 @@
-import { FloatingPortal } from '@floating-ui/react-dom-interactions'
+import { FloatingPortal } from '@floating-ui/react'
 import { AnimatePresence } from 'framer-motion'
 
 import { useMediaQuery } from '../hooks'

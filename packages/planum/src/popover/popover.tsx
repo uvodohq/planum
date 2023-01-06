@@ -2,7 +2,7 @@ import {
   FloatingNode,
   FloatingTree,
   useFloatingParentNodeId,
-} from '@floating-ui/react-dom-interactions'
+} from '@floating-ui/react'
 import * as React from 'react'
 
 import { PopoverContext } from './popover-context'
@@ -29,7 +29,7 @@ export const Popover = (props: PopoverProps) => {
 
   if (isFirstRootPopover) {
     return (
-      // flaoting tree provides to close popups properly when nested modals,selects exist inside popover.
+      // floating tree provides to close popups properly when nested modals,selects exist inside popover.
       <FloatingTree>
         <PopoverComponent {...props} />
       </FloatingTree>

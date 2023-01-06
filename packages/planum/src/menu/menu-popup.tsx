@@ -2,7 +2,7 @@ import {
   FloatingFocusManager,
   FloatingOverlay,
   FloatingPortal,
-} from '@floating-ui/react-dom-interactions'
+} from '@floating-ui/react'
 import { AnimatePresence, motion } from 'framer-motion'
 
 import { styled } from '../theme'
@@ -106,7 +106,8 @@ export const DropdownPopup = (props: PopupProps) => {
               zIndex: 999,
               display: 'flex',
               justifyContent: 'center',
-            }}>
+            }}
+            onClick={(e: any) => e.stopPropagation()}>
             {isMobile && (
               <Underlay
                 variants={underlayVariants}

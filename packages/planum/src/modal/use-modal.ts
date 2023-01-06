@@ -5,7 +5,7 @@ import {
   useFloatingNodeId,
   useInteractions,
   useRole,
-} from '@floating-ui/react-dom-interactions'
+} from '@floating-ui/react'
 import { useUpdateEffect } from '@react-aria/utils'
 
 import type { ModalState } from './use-modal-state'

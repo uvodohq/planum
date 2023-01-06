@@ -1,7 +1,4 @@
-import {
-  FloatingFocusManager,
-  FloatingOverlay,
-} from '@floating-ui/react-dom-interactions'
+import { FloatingFocusManager, FloatingOverlay } from '@floating-ui/react'
 import { motion } from 'framer-motion'
 
 import { styled } from '../../theme'
@@ -54,7 +51,8 @@ export const BottomSheet = (props: Props) => {
         maxWidth: '100%',
         maxHeight: '100%',
         overflow: 'hidden',
-      }}>
+      }}
+      onClick={(e: any) => e.stopPropagation()}>
       <Underlay
         variants={underlayVariants}
         initial="hidden"

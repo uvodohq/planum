@@ -21,6 +21,10 @@
     },
     "clean": {
       "cache": false
+    },
+    "deploy": {
+      "outputs": ["dist/**", "storybook-static/**"],
+      "dependsOn": ["^build"]
     }
   }
 }

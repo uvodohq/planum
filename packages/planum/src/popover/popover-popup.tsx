@@ -1,11 +1,11 @@
-import type { FloatingOverlay } from '@floating-ui/react-dom-interactions'
+import type { FloatingOverlay } from '@floating-ui/react'
 import {
   FloatingFocusManager,
   FloatingPortal,
-} from '@floating-ui/react-dom-interactions'
+  useMergeRefs,
+} from '@floating-ui/react'
 import { AnimatePresence } from 'framer-motion'
 import * as React from 'react'
-import { mergeRefs } from 'react-merge-refs'
 
 import { StyledOverlay } from './popover.styles'
 import { usePopoverState } from './use-popover-state'
@@ -24,10 +24,7 @@ export const PopoverPopup = React.forwardRef<HTMLDivElement, PopoverPopupProps>(
     const { children, ...rest } = props
     const state = usePopoverState()
 
-    const ref = React.useMemo(
-      () => mergeRefs([state.floating, propRef]),
-      [state.floating, propRef],
-    )
+    const ref = useMergeRefs([state.floating, propRef])
 
     return (
       <FloatingPortal>
@@ -45,7 +42,10 @@ export const PopoverPopup = React.forwardRef<HTMLDivElement, PopoverPopupProps>(
                 }}
                 aria-labelledby={state.labelId}
                 aria-describedby={state.descriptionId}
-                {...state.getFloatingProps(rest)}>
+                {...state.getFloatingProps({
+                  onClick: (e: any) => e.stopPropagation(),
+                  ...rest,
+                })}>
                 {children}
               </StyledOverlay>
             </FloatingFocusManager>

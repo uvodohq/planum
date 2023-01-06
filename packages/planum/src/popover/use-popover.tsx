@@ -2,7 +2,7 @@ import type {
   Placement,
   ReferenceType,
   UseFloatingReturn,
-} from '@floating-ui/react-dom-interactions'
+} from '@floating-ui/react'
 import {
   autoUpdate,
   flip,
@@ -14,7 +14,7 @@ import {
   useFloatingNodeId,
   useInteractions,
   useRole,
-} from '@floating-ui/react-dom-interactions'
+} from '@floating-ui/react'
 import * as React from 'react'
 
 export interface UsePopoverProps {

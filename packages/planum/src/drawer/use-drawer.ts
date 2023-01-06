@@ -5,7 +5,7 @@ import {
   useId,
   useInteractions,
   useRole,
-} from '@floating-ui/react-dom-interactions'
+} from '@floating-ui/react'
 import useControllableValue from 'ahooks/es/useControllableValue'
 import type React from 'react'
 

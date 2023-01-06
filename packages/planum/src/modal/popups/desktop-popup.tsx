@@ -1,7 +1,4 @@
-import {
-  FloatingFocusManager,
-  FloatingOverlay,
-} from '@floating-ui/react-dom-interactions'
+import { FloatingFocusManager, FloatingOverlay } from '@floating-ui/react'
 
 import type { useModal, UseModalProps } from '../use-modal'
 import type { ModalState } from '../use-modal-state'
@@ -57,7 +54,10 @@ export const DesktopPopup = (props: Props) => {
   const { getFloatingProps, floatingContext } = modal
 
   return (
-    <FloatingOverlay lockScroll className={floatingOverlayCss()}>
+    <FloatingOverlay
+      lockScroll
+      className={floatingOverlayCss()}
+      onClick={(e: any) => e.stopPropagation()}>
       <Underlay
         variants={underlayVariants}
         initial="hidden"

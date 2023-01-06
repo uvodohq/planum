@@ -4,7 +4,7 @@ import {
   FloatingNode,
   FloatingOverlay,
   FloatingPortal,
-} from '@floating-ui/react-dom-interactions'
+} from '@floating-ui/react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useContext } from 'react'
 

@@ -1,4 +1,4 @@
-import type { offset, Placement } from '@floating-ui/react-dom-interactions'
+import type { offset, Placement } from '@floating-ui/react'
 import React, { forwardRef } from 'react'
 
 import { DropdownPopup } from './menu-popup'
@@ -23,13 +23,10 @@ export const Menu = forwardRef<any, MenuProps>((props, ref) => {
 
   // TODO: extra span is a workaround for stoping parent wrapper elements auto click or link navigation
   return (
-    <span
-      onClick={(e) => {
-        e.stopPropagation()
-      }}>
+    <>
       <DropdownTrigger menu={menu} trigger={props.trigger} />
       <DropdownPopup state={state} menu={menu} />
-    </span>
+    </>
   )
 })
 
