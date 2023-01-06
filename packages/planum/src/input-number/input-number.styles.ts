@@ -22,10 +22,21 @@ export const Suffix = styled('span', subheaderCss, {
 export const StyledInputContainer = styled('div', sharedInputCss, {
   position: 'relative',
   cursor: 'text',
+
   '[placeholder]': {
     textOverflow: 'ellipsis',
     overflow: 'hidden',
     whiteSpace: 'nowrap',
+  },
+
+  '& .planum-input-number-input-wrap': {
+    size: '100%',
+
+    '& input': {
+      outline: 'none',
+      size: '100%',
+      display: 'flex',
+    },
   },
 
   variants: {

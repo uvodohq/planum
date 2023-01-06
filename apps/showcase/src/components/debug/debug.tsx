@@ -1,4 +1,4 @@
-import './debug.css'
+import './debug.scss'
 
 import { Toggle } from '@uvodohq/planum'
 import { useEffect, useState } from 'react'
