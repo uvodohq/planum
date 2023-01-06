@@ -5,11 +5,9 @@ import {
   Radio,
   Stack,
   styled,
-  TagSelect,
 } from '@uvodohq/planum'
 import { useEffect, useMemo, useState } from 'react'
 
-import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import * as z from 'zod'
 
@@ -108,9 +106,13 @@ function useInitialValues() {
 }
 
 export default function FormHookContainer() {
+  return <Container />
+}
+
+function Container() {
   const initialValues = useInitialValues()
   const form = useForm<FormValues>({
-    resolver: zodResolver(schema),
+    // resolver: zodResolver(schema),
     defaultValues: initialValues,
   })
 
@@ -129,9 +131,9 @@ export default function FormHookContainer() {
   return (
     <Form {...handlers}>
       <Stack y={24} css={{ width: 444 }}>
-        {/* <Button type="submit" isDisabled={!handlers.isDirty}>
-          Submit
-        </Button> */}
+        <Button type="submit" isDisabled={!handlers.isDirty}>
+          Submit {initialValues.inc}
+        </Button>
 
         <TextField name="title" label="Title" placeholder="Input Placeholder" />
 
@@ -163,7 +165,7 @@ export default function FormHookContainer() {
 
         <CheckboxField name="check_field">Form check field</CheckboxField>
 
-        <CheckboxGroup></CheckboxGroup>
+        {/* <CheckboxGroup></CheckboxGroup> */}
 
         <RadioGroupField name="radio_field" type="button">
           <Radio value="first">Radio 1</Radio>

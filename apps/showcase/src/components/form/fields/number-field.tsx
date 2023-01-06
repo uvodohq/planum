@@ -3,12 +3,17 @@ import { InputNumber, mergeProps } from '@uvodohq/planum'
 import type { UseControllerProps } from 'react-hook-form'
 import { useController, useFormContext } from 'react-hook-form'
 
-import { DEFAULT_NUMBER } from '../schemas'
-
 interface NumberFieldProps extends InputNumberProps, UseControllerProps<any> {
   name: string
   defaultValue?: number
 }
+
+const formatter = new Intl.NumberFormat('en-US', {
+  // style: 'currency',
+  currency: 'USD',
+  maximumFractionDigits: 2,
+  minimumFractionDigits: 2,
+})
 
 export function NumberField(props: NumberFieldProps) {
   const { name, rules, defaultValue, control, ...rest } = props
@@ -25,23 +30,10 @@ export function NumberField(props: NumberFieldProps) {
     defaultValue,
   })
 
-  function fieldOnChange(value: any) {
-    /**
-     * Planum NumberInput - sets value to NaN if input is empty.
-     * Needs to use string as default value to avoid NaN. HookForm cannot handle isDirty with NaN.
-     */
-    if (Number.isNaN(value)) {
-      field.onChange(DEFAULT_NUMBER)
-    } else {
-      field.onChange(value)
-    }
-  }
-
   return (
     <InputNumber
-      {...mergeProps(field, rest, {
-        // onChange: fieldOnChange,
-      })}
+      format={formatter.format}
+      {...mergeProps(field, rest)}
       errorMessage={error?.message}
       status={error?.message ? 'error' : undefined}
     />
