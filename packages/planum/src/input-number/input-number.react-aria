@@ -93,7 +93,7 @@ function _InputNumber(
 
   // workaround, to send latest values to parent state.
   useUpdateEffect(() => {
-    if (state.inputValue?.endsWith('.')) return
+    // if (state.inputValue?.endsWith('.')) return
 
     state.commit()
   }, [state.inputValue])
@@ -131,7 +131,11 @@ function _InputNumber(
           </Prefix>
         )}
 
-        <StyledInput {...mergeProps(inputProps, focusProps)} ref={inputRef} />
+        <StyledInput
+          type="number"
+          {...mergeProps(props, focusProps)}
+          ref={inputRef}
+        />
 
         {hasSuffix && (
           <Suffix>
