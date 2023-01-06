@@ -5,18 +5,18 @@ exports[`Breadcrumbs > should render 3 item 1`] = `
   aria-label="Breadcrumbs"
 >
   <ol
-    class="c-dFneIQ"
+    class="Planum-c-dFneIQ"
   >
     <li
-      class="c-gUpUYw"
+      class="Planum-c-gUpUYw"
     >
       <span
-        class="c-iPYhUp c-kLRYwF c-ijlUVt c-ijlUVt-lazxZu-isCurrent-false"
+        class="Planum-c-iPYhUp Planum-c-kLRYwF Planum-c-ijlUVt Planum-c-ijlUVt-lazxZu-isCurrent-false"
       >
         Item 1
       </span>
       <span
-        class="c-fAlSmZ"
+        class="Planum-c-fAlSmZ"
       >
         <svg
           aria-hidden="true"
@@ -36,15 +36,15 @@ exports[`Breadcrumbs > should render 3 item 1`] = `
       </span>
     </li>
     <li
-      class="c-gUpUYw"
+      class="Planum-c-gUpUYw"
     >
       <span
-        class="c-iPYhUp c-kLRYwF c-ijlUVt c-ijlUVt-lazxZu-isCurrent-false"
+        class="Planum-c-iPYhUp Planum-c-kLRYwF Planum-c-ijlUVt Planum-c-ijlUVt-lazxZu-isCurrent-false"
       >
         Item 2
       </span>
       <span
-        class="c-fAlSmZ"
+        class="Planum-c-fAlSmZ"
       >
         <svg
           aria-hidden="true"
@@ -64,12 +64,12 @@ exports[`Breadcrumbs > should render 3 item 1`] = `
       </span>
     </li>
     <li
-      class="c-gUpUYw"
+      class="Planum-c-gUpUYw"
     >
       <span
         aria-current="page"
         aria-disabled="true"
-        class="c-iPYhUp c-kLRYwF c-ijlUVt c-ijlUVt-cLNiCz-isCurrent-true"
+        class="Planum-c-iPYhUp Planum-c-kLRYwF Planum-c-ijlUVt Planum-c-ijlUVt-cLNiCz-isCurrent-true"
       >
         Item 3
       </span>

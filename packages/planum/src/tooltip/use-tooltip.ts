@@ -15,26 +15,27 @@ import { useMemo, useState } from 'react'
 export interface UseTooltipProps {
   placement?: Placement
   open?: boolean
-  onChange?: (open: boolean) => void
+  onOpenChange?: (open: boolean) => void
   offsetValue?: Parameters<typeof offset>[0]
   defaultIsOpen?: boolean
   strategy?: 'absolute' | 'fixed'
 }
 
-export function useTooltip({
-  placement = 'top',
-  open: controlledOpen,
-  onChange: setControlledOpen,
-  offsetValue = 5,
-  defaultIsOpen = false,
-  strategy = 'absolute',
-}: UseTooltipProps = {}) {
+export function useTooltip(props: UseTooltipProps = {}) {
+  const {
+    placement = 'top',
+    open: controlledOpen,
+    onOpenChange: setControlledOpen,
+    offsetValue = 5,
+    defaultIsOpen = false,
+    strategy = 'absolute',
+  } = props
+
   const [uncontrolledOpen, setUncontrolledOpen] = useState(defaultIsOpen)
 
   const open = controlledOpen ?? uncontrolledOpen
   const setOpen = setControlledOpen ?? setUncontrolledOpen
 
-  // NOTE: check tooltip onChange
   const data = useFloating({
     placement,
     open,

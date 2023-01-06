@@ -3,7 +3,7 @@
 exports[`<Badge /> > should renders danger variant badge with right text 1`] = `
 <div>
   <span
-    class="c-iPYhUp c-kLRYwF c-dtudLY c-dtudLY-eNlZJL-variant-danger c-dtudLY-gTzoIO-roundness-pill"
+    class="Planum-c-iPYhUp Planum-c-kLRYwF Planum-c-dtudLY Planum-c-dtudLY-eNlZJL-variant-danger Planum-c-dtudLY-gTzoIO-roundness-pill"
   >
     danger
   </span>
@@ -13,7 +13,7 @@ exports[`<Badge /> > should renders danger variant badge with right text 1`] = `
 exports[`<Badge /> > should renders neutral variant badge with right text 1`] = `
 <div>
   <span
-    class="c-iPYhUp c-kLRYwF c-dtudLY c-dtudLY-eQBtDl-variant-neutral c-dtudLY-gTzoIO-roundness-pill"
+    class="Planum-c-iPYhUp Planum-c-kLRYwF Planum-c-dtudLY Planum-c-dtudLY-eQBtDl-variant-neutral Planum-c-dtudLY-gTzoIO-roundness-pill"
   >
     neutral
   </span>
@@ -23,7 +23,7 @@ exports[`<Badge /> > should renders neutral variant badge with right text 1`] = 
 exports[`<Badge /> > should renders outlinePrimary variant badge with right text 1`] = `
 <div>
   <span
-    class="c-iPYhUp c-kLRYwF c-dtudLY c-dtudLY-jJsbnp-variant-outlinePrimary c-dtudLY-gTzoIO-roundness-pill"
+    class="Planum-c-iPYhUp Planum-c-kLRYwF Planum-c-dtudLY Planum-c-dtudLY-jJsbnp-variant-outlinePrimary Planum-c-dtudLY-gTzoIO-roundness-pill"
   >
     outlinePrimary
   </span>
@@ -33,7 +33,7 @@ exports[`<Badge /> > should renders outlinePrimary variant badge with right text
 exports[`<Badge /> > should renders secondary variant badge with right text 1`] = `
 <div>
   <span
-    class="c-iPYhUp c-kLRYwF c-dtudLY c-dtudLY-ebPlNg-variant-secondary c-dtudLY-gTzoIO-roundness-pill"
+    class="Planum-c-iPYhUp Planum-c-kLRYwF Planum-c-dtudLY Planum-c-dtudLY-ebPlNg-variant-secondary Planum-c-dtudLY-gTzoIO-roundness-pill"
   >
     secondary
   </span>
@@ -43,7 +43,7 @@ exports[`<Badge /> > should renders secondary variant badge with right text 1`] 
 exports[`<Badge /> > should renders success variant badge with right text 1`] = `
 <div>
   <span
-    class="c-iPYhUp c-kLRYwF c-dtudLY c-dtudLY-jhsIH-variant-success c-dtudLY-gTzoIO-roundness-pill"
+    class="Planum-c-iPYhUp Planum-c-kLRYwF Planum-c-dtudLY Planum-c-dtudLY-jhsIH-variant-success Planum-c-dtudLY-gTzoIO-roundness-pill"
   >
     success
   </span>
@@ -53,7 +53,7 @@ exports[`<Badge /> > should renders success variant badge with right text 1`] = 
 exports[`<Badge /> > should renders warning variant badge with right text 1`] = `
 <div>
   <span
-    class="c-iPYhUp c-kLRYwF c-dtudLY c-dtudLY-gHSaia-variant-warning c-dtudLY-gTzoIO-roundness-pill"
+    class="Planum-c-iPYhUp Planum-c-kLRYwF Planum-c-dtudLY Planum-c-dtudLY-gHSaia-variant-warning Planum-c-dtudLY-gTzoIO-roundness-pill"
   >
     warning
   </span>
