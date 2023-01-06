@@ -1,5 +1,16 @@
 # @uvodohq/planum-editor
 
+## 0.3.1
+
+### Patch Changes
+
+- [#11](https://github.com/uvodohq/planum/pull/11) [`3a8d5df`](https://github.com/uvodohq/planum/commit/3a8d5dfd1f69e956b732a6795a06d5f9cb0b084d) Thanks [@EminQasimov](https://github.com/EminQasimov)! - react aria number replaced with rc-input. editor tooltip fix
+
+- [#12](https://github.com/uvodohq/planum/pull/12) [`db65d5d`](https://github.com/uvodohq/planum/commit/db65d5dca75991a8a9522937a689c58cf29fd231) Thanks [@NijatBakhtiyar](https://github.com/NijatBakhtiyar)! - fix menu/popover/modal trigger event bubbling
+
+- - fix editor reset value
+  - refactor form hook page
+
 ## 0.3.0
 
 ### Minor Changes
