@@ -58,7 +58,7 @@ export { Drawer } from './drawer'
 export { Menu, MenuItem } from './menu'
 
 // Flag
-export type { FlagProps } from './flag'
+export type { FlagProps, CountryCode } from './flag'
 export { Flag } from './flag'
 
 // autocmplete
@@ -194,4 +194,4 @@ export { Skeleton } from './skeleton'
 
 // tooltip
 export { Tooltip, TooltipPopup, TooltipTrigger } from './tooltip'
-// export type { TooltipProps } from './tooltip'
+export type { TooltipProps } from './tooltip'

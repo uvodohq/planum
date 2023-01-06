@@ -15,9 +15,10 @@ type Item<T extends object> = {
   id: Value
 } & T
 
-type KeysWithValsOfType<T, V> = keyof {
-  [P in keyof T as T[P] extends V ? P : never]: P
-}
+// TODO: fix generic types
+// type KeysWithValsOfType<T, V> = keyof {
+//   [P in keyof T as T[P] extends V ? P : never]: P
+// }
 
 export interface SelectProps<T extends object> extends InputProps {
   items?: Item<T>[]
@@ -30,7 +31,8 @@ export interface SelectProps<T extends object> extends InputProps {
    */
 
   //  get only keys which values is string from Item<T>
-  labelKey: KeysWithValsOfType<Item<T>, Value>
+  // labelKey: KeysWithValsOfType<Item<T>, Value>
+  labelKey: string
   renderTrigger?: (props: SelectTriggerProps) => React.ReactNode
 
   // field props

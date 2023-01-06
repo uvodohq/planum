@@ -78,7 +78,7 @@ export const Editor = forwardRef<RefObject<TipTapEditor | null>, EditorProps>(
         content: value,
         onUpdate: ({ editor }) => {
           // remove default empty <p> tag -https://github.com/ueberdosis/tiptap/issues/154
-          const content = !editor.isEmpty ? editor.getHTML() : ''
+          const content = !editor.isEmpty ? editor.getHTML() : null
           onChange?.(content)
         },
         ...rest,
@@ -123,6 +123,11 @@ export const Editor = forwardRef<RefObject<TipTapEditor | null>, EditorProps>(
         },
       })
     }, [status, isDisabled, editor])
+
+    useEffect(() => {
+      editor.commands.setContent(value as string)
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [value])
 
     // TODO: fix react hook form focus case on error,
     useImperativeHandle(ref, () => ({

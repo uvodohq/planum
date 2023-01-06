@@ -56,7 +56,7 @@ export const url = () =>
  * Planum NumberInput - sets value to NaN if input is empty.
  * Needs to use string as default value to avoid NaN. which is HookForm cannot handle isDirty.
  */
-export const DEFAULT_NUMBER = 'Not a number' as unknown as number
+export const DEFAULT_NUMBER = null as unknown as number
 
 export const number = () => {
   const num = z.number().max(999999).nullish()

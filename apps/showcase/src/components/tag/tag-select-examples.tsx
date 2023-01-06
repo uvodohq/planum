@@ -1,7 +1,6 @@
 import { useState } from 'react'
 
-import type { CountryCode } from '@uvodohq/planum'
-import { Flag, Tag, TagSelect } from '@uvodohq/planum'
+import { CountryCode, Flag, Tag, TagSelect } from '@uvodohq/planum'
 import data from './data.json'
 
 const items = [
