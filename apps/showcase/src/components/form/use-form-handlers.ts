@@ -82,6 +82,7 @@ export const useFormHandlers = <T extends FieldValues, C>(
     if (initialValues) {
       form.reset(initialValues, {
         keepDirtyValues: true, // if async new initial values comes from api, do not affect old edited values and form dirty state
+        keepErrors: true,
       })
     }
   }, [initialValues])

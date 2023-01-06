@@ -1,7 +1,6 @@
 import {
   Box,
   Button,
-  CheckboxGroup,
   CheckboxGroupItem,
   Paragraph,
   Radio,
@@ -10,6 +9,7 @@ import {
 } from '@uvodohq/planum'
 import { useEffect, useMemo, useState } from 'react'
 
+import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import * as z from 'zod'
 
@@ -54,32 +54,34 @@ const selectItems = [
   },
 ]
 
+const requiredSchema = z.string().min(1, { message: 'This field required' })
+
 const schema = z.object({
-  title: z.string(),
-  password: z.string(),
+  title: requiredSchema,
+  password: requiredSchema,
   facebook_url: schemas.url(),
   whatsapp: schemas.phone(),
   amountNumber: schemas.number(),
   amountNull: schemas.number(),
   price: schemas.number(),
-  policy: z.string().min(20, { message: 'This field required' }),
+  policy: requiredSchema,
   checkbox_item_field: z.boolean(),
   toggle_field: z.boolean(),
-  radio_field: z.string(),
+  radio_field: requiredSchema,
   select_field: z.number(),
   auto_complete_field: z.array(
     z.object({
       id: z.number(),
-      name: z.string(),
+      name: requiredSchema,
     }),
   ),
   tag_select_field: z.array(
     z.object({
       id: z.number(),
-      name: z.string(),
+      name: requiredSchema,
     }),
   ),
-  checkbox_group_field: z.array(z.string()),
+  checkbox_group_field: z.array(requiredSchema),
 })
 
 type FormValues = z.infer<typeof schema>
@@ -110,7 +112,7 @@ function useInitialValues() {
       select_field: 1,
       auto_complete_field: [{ id: 1, name: 'first' }],
       tag_select_field: [{ id: 1, name: 'tag 1' }],
-      checkbox_group_field: ['1'],
+      checkbox_group_field: [],
     }
   }, [inc])
 
@@ -124,7 +126,7 @@ export default function FormHookContainer() {
 function Container() {
   const initialValues = useInitialValues()
   const form = useForm<FormValues>({
-    // resolver: zodResolver(schema),
+    resolver: zodResolver(schema),
     defaultValues: initialValues,
   })
 
@@ -241,6 +243,8 @@ function Container() {
         </Box>
       </Stack>
 
+      <StyledTitle>Form errors</StyledTitle>
+      <pre>{JSON.stringify(form.formState.errors, null, 2)}</pre>
       <StyledTitle>Form dirty fields</StyledTitle>
       <pre>{JSON.stringify(form.formState.dirtyFields, null, 2)}</pre>
       <StyledTitle>Form values</StyledTitle>

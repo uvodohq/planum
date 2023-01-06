@@ -5,8 +5,6 @@ import Frame from '../components/frame'
 const FormHookContainer = lazy(() => import('./container/form-hook'))
 
 export function FormHookPage() {
-  if (import.meta.env.PROD) return null
-
   return (
     <Frame
       title="Form Hook (DEV)"
