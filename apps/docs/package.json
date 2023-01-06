@@ -6,7 +6,7 @@
     "dev": "start-storybook -p 6006 -s .storybook --no-open",
     "build": "build-storybook --docs --loglevel error",
     "preview": "serve storybook-static",
-    "deploy": "netlify deploy --dir=./storybook-static --prod --site planum-storybook",
+    "deploy": "yarn build && netlify deploy --dir=./storybook-static --prod --site planum-storybook",
     "clean": "rimraf .turbo  node_modules",
     "chromatic": "chromatic --exit-zero-on-changes",
     "chromatic:check": "cross-env npx chromatic --project-token=$CHROMATIC_PROJECT_TOKEN"
