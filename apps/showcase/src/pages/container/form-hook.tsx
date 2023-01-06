@@ -2,6 +2,8 @@ import {
   Box,
   Button,
   CheckboxGroup,
+  CheckboxGroupItem,
+  Paragraph,
   Radio,
   Stack,
   styled,
@@ -14,6 +16,7 @@ import * as z from 'zod'
 import {
   AutoCompleteTagsField,
   CheckboxField,
+  CheckboxGroupField,
   EditorField,
   Form,
   NumberField,
@@ -31,6 +34,13 @@ import { DEFAULT_NUMBER } from '../../components/form/schemas'
 
 const StyledTitle = styled('h1', {
   my: '$16',
+})
+
+const StyledChecksContainer = styled('div', {
+  display: 'inline-flex',
+  flexDirection: 'column',
+  gap: '$16',
+  mt: '$24',
 })
 
 const selectItems = [
@@ -53,7 +63,7 @@ const schema = z.object({
   amountNull: schemas.number(),
   price: schemas.number(),
   policy: z.string().min(20, { message: 'This field required' }),
-  check_field: z.boolean(),
+  checkbox_item_field: z.boolean(),
   toggle_field: z.boolean(),
   radio_field: z.string(),
   select_field: z.number(),
@@ -69,6 +79,7 @@ const schema = z.object({
       name: z.string(),
     }),
   ),
+  checkbox_group_field: z.array(z.string()),
 })
 
 type FormValues = z.infer<typeof schema>
@@ -93,12 +104,13 @@ function useInitialValues() {
       price: DEFAULT_NUMBER,
       inc,
       policy: '',
-      check_field: true,
+      checkbox_item_field: true,
       toggle_field: false,
       radio_field: 'first',
       select_field: 1,
       auto_complete_field: [{ id: 1, name: 'first' }],
       tag_select_field: [{ id: 1, name: 'tag 1' }],
+      checkbox_group_field: ['1'],
     }
   }, [inc])
 
@@ -163,9 +175,27 @@ function Container() {
 
         <NumberField name="price" placeholder="12.22" label="Price" />
 
-        <CheckboxField name="check_field">Form check field</CheckboxField>
+        <CheckboxField name="checkbox_item_field">
+          Form check field
+        </CheckboxField>
 
-        {/* <CheckboxGroup></CheckboxGroup> */}
+        <CheckboxGroupField
+          name="checkbox_group_field"
+          label="Checkbox group field">
+          <Paragraph>Checkbox group field</Paragraph>
+          <StyledChecksContainer>
+            {selectItems.map(({ id, name }) => {
+              return (
+                <CheckboxGroupItem
+                  value={String(id)}
+                  label={name}
+                  aria-label={name}
+                  key={id}
+                />
+              )
+            })}
+          </StyledChecksContainer>
+        </CheckboxGroupField>
 
         <RadioGroupField name="radio_field" type="button">
           <Radio value="first">Radio 1</Radio>
