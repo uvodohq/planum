@@ -32,7 +32,7 @@ function useInitialValues() {
       facebook_url: '',
       whatsapp: '',
       amountNumber: 123, //DEFAULT_NUMBER,
-      amountNull: '', //DEFAULT_NUMBER,
+      amountNull: null, //DEFAULT_NUMBER,
       price: DEFAULT_NUMBER,
       inc,
     }
@@ -102,9 +102,6 @@ function Container() {
             name="amountNumber"
             placeholder="amountNumber"
             label="amountNumber"
-            formatOptions={{
-              maximumFractionDigits: 0,
-            }}
           />
           <NumberField
             name="amountNull"
@@ -124,6 +121,8 @@ function Container() {
           </Button>
         </Box>
       </Stack>
+
+      <pre>{JSON.stringify(form.watch(), null, 2)}</pre>
     </Form>
   )
 }

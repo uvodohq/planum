@@ -18,17 +18,18 @@ type ToggleButtonProps = AriaToggleButtonProps<ElementType> & {
 // TODO: improve with spectrum and make separate component
 function _ToggleButton(props: ToggleButtonProps, forwardedRef: any) {
   const ref = useObjectRef<HTMLButtonElement>(forwardedRef)
-  // const state = useToggleState(props)
-  // const { buttonProps, isPressed } = useToggleButton(props, state, ref)
+  const state = useToggleState(props)
+  const { buttonProps, isPressed } = useToggleButton(props, state, ref)
   const { isFocusVisible, focusProps } = useFocusRing()
 
-  const mergedProps = mergeProps(props, focusProps)
+  const mergedProps = mergeProps(props, buttonProps, focusProps)
 
   return (
     <StyledButton
+      type="button"
       {...mergedProps}
-      // isPressed={isPressed}
-      // isSelected={state.isSelected}
+      isPressed={isPressed}
+      isSelected={state.isSelected}
       isFocusVisible={isFocusVisible}
       ref={ref}
     />

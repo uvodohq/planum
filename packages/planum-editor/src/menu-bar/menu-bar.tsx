@@ -39,6 +39,19 @@ export interface MenuBarProps {
   isLink: boolean
 }
 
+const EditorTooltip = ({
+  label,
+  children,
+}: {
+  label: string
+  children: React.ReactNode
+}) => (
+  <Tooltip>
+    <TooltipTrigger asChild>{children}</TooltipTrigger>
+    <TooltipPopup>{label}</TooltipPopup>
+  </Tooltip>
+)
+
 // Don't rerender on editor content change when typing
 export const MenuBar = React.memo((props: MenuBarProps) => {
   const {
@@ -68,142 +81,115 @@ export const MenuBar = React.memo((props: MenuBarProps) => {
     <MenuBarContainer>
       <ButtonsGroup>
         {/* Bold  */}
-        <Tooltip>
-          <TooltipTrigger>
-            <ToggleButton
-              isDisabled={isDisabled}
-              isSelected={isBold}
-              onChange={() => focusEditor().toggleBold().run()}
-              aria-label="Bold">
-              <TextBolderIcon />
-            </ToggleButton>
-          </TooltipTrigger>
-          <TooltipPopup>Bold</TooltipPopup>
-        </Tooltip>
+        <EditorTooltip label="Bold">
+          <ToggleButton
+            isDisabled={isDisabled}
+            isSelected={isBold}
+            onChange={() => focusEditor().toggleBold().run()}
+            aria-label="Bold">
+            <TextBolderIcon />
+          </ToggleButton>
+        </EditorTooltip>
 
         {/* Italic */}
-        <Tooltip>
-          <TooltipTrigger>
-            <ToggleButton
-              isDisabled={isDisabled}
-              isSelected={isItalic}
-              onChange={() => focusEditor().toggleItalic().run()}
-              aria-label="Italic">
-              <TextItalicIcon />
-            </ToggleButton>
-          </TooltipTrigger>
-          <TooltipPopup>Italic</TooltipPopup>
-        </Tooltip>
+        <EditorTooltip label="Italic">
+          <ToggleButton
+            isDisabled={isDisabled}
+            isSelected={isItalic}
+            onChange={() => focusEditor().toggleItalic().run()}
+            aria-label="Italic">
+            <TextItalicIcon />
+          </ToggleButton>
+        </EditorTooltip>
 
         {/* Strike */}
-        <Tooltip>
-          <TooltipTrigger>
-            <ToggleButton
-              isDisabled={isDisabled}
-              isSelected={isStrike}
-              onChange={() => focusEditor().toggleStrike().run()}
-              aria-label="Strike">
-              <TextStrikethroughIcon />
-            </ToggleButton>
-          </TooltipTrigger>
-          <TooltipPopup>Strike</TooltipPopup>
-        </Tooltip>
+        <EditorTooltip label="Strike">
+          <ToggleButton
+            isDisabled={isDisabled}
+            isSelected={isStrike}
+            onChange={() => focusEditor().toggleStrike().run()}
+            aria-label="Strike">
+            <TextStrikethroughIcon />
+          </ToggleButton>
+        </EditorTooltip>
 
         {/* Color Picker - // TODO: fix focus css */}
-        <Tooltip>
-          <TooltipTrigger>
-            <ToggleButton
-              as="label"
-              aria-label="Color picker"
-              isDisabled={isDisabled}>
-              <VisuallyHidden>
-                <input
-                  type="color"
-                  onChange={(event) =>
-                    focusEditor().setColor(event.target?.value).run()
-                  }
-                  value={editor.getAttributes('textStyle').color || '#060606'}
-                />
-              </VisuallyHidden>
-              <PaletteIcon />
-            </ToggleButton>
-          </TooltipTrigger>
-          <TooltipPopup>Color picker</TooltipPopup>
-        </Tooltip>
+        <EditorTooltip label="Color picker">
+          <ToggleButton
+            as="label"
+            aria-label="Color picker"
+            isDisabled={isDisabled}>
+            <VisuallyHidden>
+              <input
+                type="color"
+                onChange={(event) =>
+                  focusEditor().setColor(event.target?.value).run()
+                }
+                value={editor.getAttributes('textStyle').color || '#060606'}
+              />
+            </VisuallyHidden>
+            <PaletteIcon />
+          </ToggleButton>
+        </EditorTooltip>
       </ButtonsGroup>
 
       <ButtonsGroup>
         {/* Text Left */}
-        <Tooltip>
-          <TooltipTrigger>
-            <ToggleButton
-              isDisabled={isDisabled}
-              onChange={() => focusEditor().setTextAlign('left').run()}
-              isSelected={isTextLeft}
-              aria-label="Align left">
-              <TextAlignLeftIcon />
-            </ToggleButton>
-          </TooltipTrigger>
-          <TooltipPopup>Align left</TooltipPopup>
-        </Tooltip>
+        <EditorTooltip label="Align left">
+          <ToggleButton
+            isDisabled={isDisabled}
+            onChange={() => focusEditor().setTextAlign('left').run()}
+            isSelected={isTextLeft}
+            aria-label="Align left">
+            <TextAlignLeftIcon />
+          </ToggleButton>
+        </EditorTooltip>
 
         {/* Text Center */}
-        <Tooltip>
-          <TooltipTrigger>
-            <ToggleButton
-              isDisabled={isDisabled}
-              onChange={() => focusEditor().setTextAlign('center').run()}
-              isSelected={isTextCenter}
-              aria-label="Center">
-              <TextAlignCenterIcon />
-            </ToggleButton>
-          </TooltipTrigger>
-          <TooltipPopup>Center</TooltipPopup>
-        </Tooltip>
+        <EditorTooltip label="Center">
+          <ToggleButton
+            isDisabled={isDisabled}
+            onChange={() => focusEditor().setTextAlign('center').run()}
+            isSelected={isTextCenter}
+            aria-label="Center">
+            <TextAlignCenterIcon />
+          </ToggleButton>
+        </EditorTooltip>
 
         {/* Text Right */}
-        <Tooltip>
-          <TooltipTrigger>
-            <ToggleButton
-              isDisabled={isDisabled}
-              onChange={() => focusEditor().setTextAlign('right').run()}
-              isSelected={isTextRight}
-              aria-label="Align right">
-              <TextAlignRightIcon />
-            </ToggleButton>
-          </TooltipTrigger>
-          <TooltipPopup>Align right</TooltipPopup>
-        </Tooltip>
+        <EditorTooltip label="Align right">
+          <ToggleButton
+            isDisabled={isDisabled}
+            onChange={() => focusEditor().setTextAlign('right').run()}
+            isSelected={isTextRight}
+            aria-label="Align right">
+            <TextAlignRightIcon />
+          </ToggleButton>
+        </EditorTooltip>
       </ButtonsGroup>
 
       <ButtonsGroup>
         {/* H1 */}
-        <Tooltip>
-          <TooltipTrigger>
-            <ToggleButton
-              isDisabled={isDisabled}
-              onChange={() => focusEditor().toggleHeading({ level: 1 }).run()}
-              isSelected={isH1}
-              aria-label="Heading 1">
-              <TextHOneIcon />
-            </ToggleButton>
-          </TooltipTrigger>
-          <TooltipPopup>Heading 1</TooltipPopup>
-        </Tooltip>
+        <EditorTooltip label="Heading 1">
+          <ToggleButton
+            isDisabled={isDisabled}
+            onChange={() => focusEditor().toggleHeading({ level: 1 }).run()}
+            isSelected={isH1}
+            aria-label="Heading 1">
+            <TextHOneIcon />
+          </ToggleButton>
+        </EditorTooltip>
 
         {/* H2 */}
-        <Tooltip>
-          <TooltipTrigger>
-            <ToggleButton
-              isDisabled={isDisabled}
-              onChange={() => focusEditor().toggleHeading({ level: 2 }).run()}
-              isSelected={isH2}
-              aria-label="Heading 2">
-              <TextHTwoIcon />
-            </ToggleButton>
-          </TooltipTrigger>
-          <TooltipPopup>Heading 2</TooltipPopup>
-        </Tooltip>
+        <EditorTooltip label="Heading 2">
+          <ToggleButton
+            isDisabled={isDisabled}
+            onChange={() => focusEditor().toggleHeading({ level: 2 }).run()}
+            isSelected={isH2}
+            aria-label="Heading 2">
+            <TextHTwoIcon />
+          </ToggleButton>
+        </EditorTooltip>
       </ButtonsGroup>
 
       <ButtonsGroup>
@@ -218,34 +204,28 @@ export const MenuBar = React.memo((props: MenuBarProps) => {
 
       <ButtonsGroup>
         {/* Unodered List */}
-        <Tooltip>
-          <TooltipTrigger>
-            <ToggleButton
-              isDisabled={isDisabled}
-              onChange={() => focusEditor().toggleBulletList().run()}
-              isSelected={isBulletList}
-              aria-label="Unordered list">
-              <ListBulletsIcon />
-            </ToggleButton>
-          </TooltipTrigger>
-          <TooltipPopup>Unordered list</TooltipPopup>
-        </Tooltip>
+        <EditorTooltip label="Unordered list">
+          <ToggleButton
+            isDisabled={isDisabled}
+            onChange={() => focusEditor().toggleBulletList().run()}
+            isSelected={isBulletList}
+            aria-label="Unordered list">
+            <ListBulletsIcon />
+          </ToggleButton>
+        </EditorTooltip>
       </ButtonsGroup>
 
       <ButtonsGroup>
         {/* Clear styles */}
-        <Tooltip>
-          <TooltipTrigger>
-            <ToggleButton
-              isDisabled={isDisabled}
-              onChange={() => focusEditor().unsetAllMarks().run()}
-              isSelected={false}
-              aria-label="Clear format">
-              <TextTIcon />
-            </ToggleButton>
-          </TooltipTrigger>
-          <TooltipPopup>Clear format</TooltipPopup>
-        </Tooltip>
+        <EditorTooltip label="Clear format">
+          <ToggleButton
+            isDisabled={isDisabled}
+            onChange={() => focusEditor().unsetAllMarks().run()}
+            isSelected={false}
+            aria-label="Clear format">
+            <TextTIcon />
+          </ToggleButton>
+        </EditorTooltip>
       </ButtonsGroup>
     </MenuBarContainer>
   )
