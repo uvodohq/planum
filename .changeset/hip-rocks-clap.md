@@ -1,5 +1,4 @@
 ---
-'@uvodohq/planum-editor': patch
 '@uvodohq/planum': patch
 ---
 
