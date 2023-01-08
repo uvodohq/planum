@@ -31,6 +31,9 @@ import {
   ToggleField,
   UrlField,
   useFormHandlers,
+  PriceField,
+  QuantityField,
+  PercentField,
 } from '../../components/form'
 import { DEFAULT_NUMBER } from '../../components/form/schemas'
 import { Subheader } from '@uvodohq/planum/src'
@@ -64,14 +67,15 @@ const selectItems = [
 const requiredSchema = z.string().min(1, { message: 'This field required' })
 
 const schema = z.object({
-  title: requiredSchema,
-  password: requiredSchema,
+  text_field: requiredSchema,
+  password_field: requiredSchema,
   facebook_url: schemas.url(),
-  whatsapp: schemas.phone(),
   amountNumber: schemas.number(),
   amountNull: schemas.number(),
-  price: schemas.number(),
-  policy: requiredSchema,
+  price_field: schemas.number(),
+  quantity_field: schemas.number(),
+  percent_field: schemas.number(),
+  editor_field: requiredSchema,
   checkbox_item_field: z.boolean(),
   toggle_field: z.boolean(),
   radio_field: requiredSchema,
@@ -105,15 +109,16 @@ function useInitialValues() {
 
   const initialValues = useMemo(() => {
     return {
-      title: '',
-      password: '',
+      text_field: '',
+      password_field: '',
       facebook_url: '',
-      whatsapp: '',
       amountNumber: 123, //DEFAULT_NUMBER,
       amountNull: null, //DEFAULT_NUMBER,
-      price: DEFAULT_NUMBER,
+      price_field: DEFAULT_NUMBER,
+      quantity_field: DEFAULT_NUMBER,
+      percent_field: DEFAULT_NUMBER,
       inc,
-      policy: '',
+      editor_field: '',
       checkbox_item_field: true,
       toggle_field: false,
       radio_field: 'first',
@@ -143,7 +148,7 @@ function Container() {
     form,
     initialValues,
     onlyDirtyValues: false,
-    onSubmit(data, apiHandlers) {
+    onSubmit(data) {
       console.warn('FORM SUBMIT', data)
     },
     async onSuccess() {
@@ -160,15 +165,15 @@ function Container() {
           </Button>
 
           <TextField
-            name="title"
+            name="text_field"
             label="Title"
             placeholder="Input Placeholder"
           />
 
           <PasswordField
-            name="password"
+            name="password_field"
             label="New Password"
-            placeholder="Enter your password"
+            placeholder="Enter your password_field"
           />
 
           <UrlField
@@ -189,18 +194,39 @@ function Container() {
             label="Amount initial empty string"
           />
 
-          <NumberField name="price" placeholder="12.22" label="Price" />
+          <PriceField
+            name="price_field"
+            placeholder="12.22"
+            label="Price"
+            aria-label="Price"
+          />
+          <QuantityField
+            name="quantity_field"
+            label="Quantity"
+            aria-label="Quantity"
+          />
 
-          <CheckboxField name="checkbox_item_field" aria-label="Checkbox">
-            Form check field
-          </CheckboxField>
+          <PercentField
+            name="percent_field"
+            label="Percent"
+            aria-label="Percent"
+          />
+          <Box>
+            <Paragraph>Checkbox item</Paragraph>
+            <CheckboxField
+              name="checkbox_item_field"
+              aria-label="Checkbox"
+              css={{ mt: 0 }}>
+              add
+            </CheckboxField>
+          </Box>
 
           <CheckboxGroupField
             name="checkbox_group_field"
             label="Checkbox group field"
             aria-label="Checkbox group">
             <Paragraph>Checkbox group field</Paragraph>
-            <StyledChecksContainer>
+            <StyledChecksContainer css={{ mt: 0 }}>
               {selectItems.map(({ id, name }) => {
                 return (
                   <CheckboxGroupItem
@@ -253,9 +279,14 @@ function Container() {
             label="Tag field"
           />
 
-          <ToggleField name="toggle_field" aria-label="Toggle" />
+          <ToggleField
+            name="toggle_field"
+            aria-label="Toggle"
+            labelTextOff="activate"
+            labelTextOn="deactivate"
+          />
 
-          <EditorField name="policy" aria-label="Editor" label="Policy" />
+          <EditorField name="editor_field" aria-label="Editor" label="Policy" />
 
           <Box css={{ mt: 222, d: 'flex', gap: 12 }}>
             <Button variant="secondary" onClick={() => form.reset()}>

@@ -1,15 +1,14 @@
-import { useState } from 'react'
 import {
   Box,
   H3,
+  Input,
   InputNumber,
   InputPassword,
   InputSearch,
   InputUrl,
-  Input,
 } from '@uvodohq/planum'
-
 import { CopySimpleIcon, UserIcon } from '@uvodohq/planum-icons'
+import { useState } from 'react'
 
 const RowBox = (props: any) => (
   <Box
