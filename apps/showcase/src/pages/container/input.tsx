@@ -3,12 +3,80 @@ import {
   H3,
   Input,
   InputNumber,
+  InputNumberProps,
   InputPassword,
   InputSearch,
   InputUrl,
 } from '@uvodohq/planum'
 import { CopySimpleIcon, UserIcon } from '@uvodohq/planum-icons'
 import { useState } from 'react'
+import { useFormatCurrency } from '../../components'
+import { Currency } from '../../components/form'
+
+interface PriceProps extends InputNumberProps {
+  customCurrency?: Currency
+}
+
+function PriceInput(props: PriceProps) {
+  const { customCurrency, ...rest } = props
+  const [priceVal, setPriceVal] = useState<number | string | null>(null)
+
+  const { currency, format } = useFormatCurrency(customCurrency)
+  const precision = currency?.fraction_digits
+  const placeholder = (0).toFixed(precision)
+
+  return (
+    <InputNumber
+      placeholder={placeholder}
+      aria-label="Price"
+      label="label"
+      suffix={currency.code}
+      min={0}
+      max={999_999_999}
+      precision={precision}
+      format={format}
+      value={priceVal}
+      onChange={(value) => setPriceVal(value)}
+      {...rest}
+    />
+  )
+}
+
+function QuantityInput(props?: PriceProps) {
+  const [quantityVal, setQuantityVal] = useState<number | string | null>(null)
+
+  return (
+    <InputNumber
+      placeholder="0"
+      aria-label="Quantity"
+      label="label"
+      min={0}
+      precision={0}
+      value={quantityVal}
+      onChange={(value) => setQuantityVal(value)}
+      {...props}
+    />
+  )
+}
+
+function PercentInput(props?: PriceProps) {
+  const [percentVal, setPercentVal] = useState<number | string | null>(null)
+
+  return (
+    <InputNumber
+      placeholder="0"
+      aria-label="Percent"
+      label="label"
+      suffix="%"
+      min={0}
+      max={100}
+      precision={0}
+      value={percentVal}
+      onChange={(value) => setPercentVal(value)}
+      {...props}
+    />
+  )
+}
 
 const RowBox = (props: any) => (
   <Box
@@ -488,43 +556,6 @@ export default function InputContainer() {
         />
       </RowBox>
 
-      {/* Number */}
-      <H3 css={{ mt: 100, mb: 20 }}>Number Input</H3>
-      <RowBox>
-        <InputNumber
-          aria-label="label"
-          placeholder="23.99"
-          label="Price"
-          value={number}
-          onChange={(value) => {
-            console.log({
-              value,
-            })
-
-            setNumber(value as any)
-          }}
-        />
-        <InputNumber
-          aria-label="label"
-          placeholder="23.99"
-          label="Price"
-          leftIcon={<UserIcon />}
-        />
-        <InputNumber
-          aria-label="label"
-          placeholder="23.99"
-          label="Price"
-          suffix="USD"
-        />
-        <InputNumber
-          aria-label="label"
-          placeholder="23.99"
-          label="Price"
-          suffix="USD"
-          isDisabled
-        />
-      </RowBox>
-
       {/* Search */}
       <H3 css={{ mt: 100, mb: 20 }}>Search Input</H3>
       <RowBox>
@@ -542,6 +573,71 @@ export default function InputContainer() {
           placeholder="Search"
           isDisabled
         />
+      </RowBox>
+
+      {/* Number */}
+      <H3 css={{ mt: 100, mb: 20 }}>Number Input</H3>
+      <RowBox>
+        <InputNumber
+          aria-label="label"
+          placeholder="23.99"
+          label="label"
+          value={number}
+          onChange={(value) => {
+            console.log({
+              value,
+            })
+
+            setNumber(value as any)
+          }}
+        />
+        <InputNumber
+          aria-label="label"
+          placeholder="23.99"
+          label="label"
+          leftIcon={<UserIcon />}
+          suffix={<UserIcon />}
+        />
+        <InputNumber
+          aria-label="label"
+          placeholder="23.99"
+          label="label"
+          errorMessage="Error message"
+          status="error"
+        />
+        <InputNumber
+          aria-label="label"
+          placeholder="23.99"
+          label="label"
+          isDisabled
+        />
+      </RowBox>
+
+      {/* Price */}
+      <H3 css={{ mt: 100, mb: 20 }}>Price Input</H3>
+      <RowBox>
+        <PriceInput />
+        <PriceInput leftIcon={<UserIcon />} />
+        <PriceInput errorMessage="Error message" status="error" />
+        <PriceInput isDisabled />
+      </RowBox>
+
+      {/* Quantity */}
+      <H3 css={{ mt: 100, mb: 20 }}>Quantity Input</H3>
+      <RowBox>
+        <QuantityInput />
+        <QuantityInput leftIcon={<UserIcon />} />
+        <QuantityInput errorMessage="Error message" status="error" />
+        <QuantityInput isDisabled />
+      </RowBox>
+
+      {/* Percent */}
+      <H3 css={{ mt: 100, mb: 20 }}>Percent Input</H3>
+      <RowBox>
+        <PercentInput />
+        <PercentInput leftIcon={<UserIcon />} />
+        <PercentInput errorMessage="Error message" status="error" />
+        <PercentInput isDisabled />
       </RowBox>
     </>
   )
