@@ -2,7 +2,12 @@ import { UserIcon, CopyIcon } from './icons'
 
 import { InputNumber } from '../input-number'
 import { ArgsTable, Story, Canvas, Meta } from '@storybook/addon-docs'
-import { InputNumberExample } from './example.tsx'
+import {
+  NumberInputExample,
+  PriceInput,
+  PercentInput,
+  QuantityInput,
+} from './example.tsx'
 
 <Meta title="Components/InputNumber" component={InputNumber} />
 
@@ -24,7 +29,7 @@ export const inputTemplate = (args) => <InputNumber {...args} />
 An input field includes a label and a text field users can type text into. They typically appear in forms and dialogs.
 
 <Canvas>
-  <InputNumberExample />
+  <NumberInputExample />
 </Canvas>
 
 ## Variants
@@ -89,6 +94,39 @@ An input field includes a label and a text field users can type text into. They 
       suffix={<CopyIcon />}
       leftIcon={<UserIcon />}
     />
+  </Story>
+</Canvas>
+
+### Number price
+
+<Canvas>
+  <Story name="Number price">
+    <PriceInput label="Normal" placeholder="23.99" />
+    <PriceInput label="Disabled" placeholder="23.99" isDisabled />
+    <PriceInput label="Error" placeholder="23.99" status="error" />
+    <PriceInput label="Success" placeholder="23.99" status="success" />
+  </Story>
+</Canvas>
+
+### Number quantity
+
+<Canvas>
+  <Story name="Number quantity">
+    <QuantityInput label="Normal" placeholder="0" />
+    <QuantityInput label="Disabled" placeholder="0" isDisabled />
+    <QuantityInput label="Error" placeholder="0" status="error" />
+    <QuantityInput label="Success" placeholder="0" status="success" />
+  </Story>
+</Canvas>
+
+### Number percent
+
+<Canvas>
+  <Story name="Number percent">
+    <PercentInput label="Normal" placeholder="0" />
+    <PercentInput label="Disabled" placeholder="0" isDisabled />
+    <PercentInput label="Error" placeholder="0" status="error" />
+    <PercentInput label="Success" placeholder="0" status="success" />
   </Story>
 </Canvas>
 

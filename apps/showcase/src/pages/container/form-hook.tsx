@@ -75,7 +75,7 @@ const schema = z.object({
   price_field: schemas.number(),
   quantity_field: schemas.number(),
   percent_field: schemas.number(),
-  editor_field: requiredSchema,
+  editor_field: z.union([z.string(), z.null()]),
   checkbox_item_field: z.boolean(),
   toggle_field: z.boolean(),
   radio_field: requiredSchema,
@@ -118,7 +118,7 @@ function useInitialValues() {
       quantity_field: DEFAULT_NUMBER,
       percent_field: DEFAULT_NUMBER,
       inc,
-      editor_field: '',
+      editor_field: null,
       checkbox_item_field: true,
       toggle_field: false,
       radio_field: 'first',
@@ -149,6 +149,7 @@ function Container() {
     initialValues,
     onlyDirtyValues: false,
     onSubmit(data) {
+      form.reset()
       console.warn('FORM SUBMIT', data)
     },
     async onSuccess() {
@@ -158,8 +159,8 @@ function Container() {
 
   return (
     <Form {...handlers}>
-      <Flex css={{ gap: 20, justifyContent: 'space-between' }}>
-        <Stack y={24} css={{ width: 444 }}>
+      <Flex css={{ gap: 64, justifyContent: 'space-between' }}>
+        <Stack y={24} css={{ flex: 1 }}>
           <Button type="submit" isDisabled={!handlers.isDirty}>
             Submit {initialValues.inc}
           </Button>
@@ -211,6 +212,8 @@ function Container() {
             label="Percent"
             aria-label="Percent"
           />
+        </Stack>
+        <Stack y={32} css={{ flex: 1 }}>
           <Box>
             <Paragraph>Checkbox item</Paragraph>
             <CheckboxField
@@ -287,25 +290,31 @@ function Container() {
           />
 
           <EditorField name="editor_field" aria-label="Editor" label="Policy" />
-
-          <Box css={{ mt: 222, d: 'flex', gap: 12 }}>
-            <Button variant="secondary" onClick={() => form.reset()}>
-              Reset
-            </Button>
-
-            <Button type="submit" isDisabled={!handlers.isDirty}>
-              Submit
-            </Button>
-          </Box>
         </Stack>
+      </Flex>
 
+      <Box css={{ mt: 64, d: 'flex', gap: 12 }}>
+        <Button variant="secondary" onClick={() => form.reset()}>
+          Reset
+        </Button>
+
+        <Button type="submit" isDisabled={!handlers.isDirty}>
+          Submit
+        </Button>
+      </Box>
+
+      <Flex css={{ gap: '$24', justifyContent: 'space-between', mt: '$24' }}>
+        <Box>
+          <StyledTitle>Form values:</StyledTitle>
+          <pre>{JSON.stringify(form.watch(), null, 2)}</pre>
+        </Box>
         <Box>
           <StyledTitle>Form errors:</StyledTitle>
           <pre>{JSON.stringify(form.formState.errors, null, 2)}</pre>
+        </Box>
+        <Box>
           <StyledTitle>Form dirty fields:</StyledTitle>
           <pre>{JSON.stringify(form.formState.dirtyFields, null, 2)}</pre>
-          <StyledTitle>Form values:</StyledTitle>
-          <pre>{JSON.stringify(form.watch(), null, 2)}</pre>
         </Box>
       </Flex>
     </Form>
