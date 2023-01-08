@@ -1,9 +1,11 @@
 import { useTextField } from '@react-aria/textfield'
+import { useObjectRef } from '@react-aria/utils'
 import type { AriaTextFieldProps } from '@react-types/textfield'
 import * as React from 'react'
 
 import { Field } from '../field'
 import type { CSS } from '../theme'
+import { __DEV__ } from '../utils/assertion'
 import type { StyledTextareaVariants } from './textarea.styles'
 import { StyledTextarea, StyledTextareaContainer } from './textarea.styles'
 
@@ -22,7 +24,10 @@ export type TextareaProps = StyledTextareaVariants &
   AriaTextFieldProps &
   Props
 
-export function Textarea(props: TextareaProps) {
+function _Textarea(
+  props: TextareaProps,
+  forwardRef: React.ForwardedRef<HTMLTextAreaElement>,
+) {
   const {
     label,
     description,
@@ -36,7 +41,7 @@ export function Textarea(props: TextareaProps) {
     ...rest
   } = props
 
-  const ref = React.useRef<HTMLTextAreaElement>(null)
+  const ref = useObjectRef(forwardRef)
   const { labelProps, inputProps, descriptionProps, errorMessageProps } =
     useTextField({ ...props, onChange, inputElementType: 'textarea' }, ref)
 
@@ -66,3 +71,7 @@ export function Textarea(props: TextareaProps) {
     </Field>
   )
 }
+
+export const Textarea = React.forwardRef(_Textarea)
+
+if (__DEV__) Textarea.displayName = 'Textarea'
