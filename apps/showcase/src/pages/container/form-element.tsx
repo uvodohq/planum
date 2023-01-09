@@ -41,13 +41,18 @@ const CheckGroup = () => {
       <CheckboxGroup
         value={value}
         onChange={setValue}
+        aria-label="Checkbox group"
         css={{
           display: 'flex',
           flexDirection: 'column',
           gap: 16,
         }}>
         {list.map((item) => (
-          <CheckboxGroupItem key={item.label} {...item} />
+          <CheckboxGroupItem
+            key={item.label}
+            {...item}
+            aria-label={item.label}
+          />
         ))}
       </CheckboxGroup>
 
