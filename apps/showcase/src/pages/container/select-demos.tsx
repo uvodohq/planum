@@ -4,6 +4,7 @@ import AutoCompleteExampleControlled from '../../components/auto-complete/auto-c
 import { AutoCompleteTagsExample } from '../../components/auto-complete/auto-complete-tags-example'
 
 import SelectExample from '../../components/select/select-example'
+import SelectExampleAsync from '../../components/select/select-example-async'
 import SelectExampleControlled from '../../components/select/select-example-controlled'
 import SelectExampleCustomTrigger from '../../components/select/select-example-custom-trigger'
 import SelectExampleMinimal from '../../components/select/select-example-minimal'
@@ -42,8 +43,7 @@ const SelectDemos = () => {
       <Grid title="With many options">
         <SelectExample />
         <SelectExample defaultValue={14} />
-
-        <Box />
+        <SelectExampleAsync />
         <Box />
       </Grid>
 

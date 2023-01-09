@@ -14,6 +14,7 @@
   "dependencies": {
     "@uvodohq/planum": "*",
     "@uvodohq/planum-editor": "*",
+    "@uvodohq/planum-icons": "*",
     "react": "^18.0.0",
     "react-dom": "^18.0.0"
   },

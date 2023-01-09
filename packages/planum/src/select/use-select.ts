@@ -1,6 +1,7 @@
 import type { Placement } from '@floating-ui/react'
 import {
   autoUpdate,
+  flip,
   offset,
   size,
   useClick,
@@ -16,6 +17,7 @@ import { useUpdateEffect } from '@react-aria/utils'
 import type { MutableRefObject } from 'react'
 import { useLayoutEffect, useState } from 'react'
 
+import { useMediaQuery } from '../hooks'
 import type { SelectState } from './use-select-state'
 
 export interface UseSelectProps {
@@ -28,7 +30,7 @@ export interface UseSelectProps {
 export interface UseSelectReturn {
   getFloatingProps: (props?: any) => Record<string, unknown>
   referenceProps: Record<string, unknown>
-  getItemProps: () => Record<string, unknown>
+  getItemProps: (props?: any) => Record<string, unknown>
   direction: any
   context: any
   refs: any
@@ -61,7 +63,7 @@ export function useSelect(
 
   const [controlledScrolling, setControlledScrolling] = useState(false)
 
-  // subscribe portalled popup to the tree context. for selects inside modal
+  // subscribe portalled popup tree context. for selects inside modal/dialog/popover
   const nodeId = useFloatingNodeId()
 
   const { x, y, reference, floating, strategy, context, refs, placement } =
@@ -72,9 +74,18 @@ export function useSelect(
       placement: position,
       middleware: [
         offset(4),
+        flip({ padding: 8 }),
         size({
-          apply({ rects, elements }) {
+          apply({ rects, elements, availableHeight }) {
+            const maxAvailableHeight =
+              availableHeight < 200
+                ? 200
+                : availableHeight > 400
+                ? 400
+                : availableHeight
+
             Object.assign(elements.floating.style, {
+              maxHeight: `${maxAvailableHeight}px`,
               width: matchWidth ? `${rects.reference.width}px` : 'auto',
             })
           },
@@ -86,26 +97,26 @@ export function useSelect(
 
   const floatingRef = refs.floating
 
+  // interactions
+  const click = useClick(context, { event: 'mousedown' })
+  const dismiss = useDismiss(context)
+  const role = useRole(context, { role: 'listbox' })
+  const navigation = useListNavigation(context, {
+    listRef: listItemsRef,
+    activeIndex,
+    selectedIndex,
+    onNavigate: setActiveIndex,
+    // loop: true, // This is a large list, allow looping.
+  })
+  const typeahead = useTypeahead(context, {
+    listRef: listContentRef,
+    activeIndex,
+    selectedIndex,
+    onMatch: isOpen ? setActiveIndex : setSelectedIndex,
+  })
+
   const { getReferenceProps, getFloatingProps, getItemProps } = useInteractions(
-    [
-      useClick(context),
-      useRole(context, { role: 'listbox' }),
-      useDismiss(context, {
-        // bubbles: false,
-      }),
-      useListNavigation(context, {
-        listRef: listItemsRef,
-        activeIndex,
-        selectedIndex,
-        onNavigate: setActiveIndex,
-      }),
-      useTypeahead(context, {
-        listRef: listContentRef,
-        onMatch: isOpen ? setActiveIndex : setSelectedIndex,
-        activeIndex,
-        selectedIndex,
-      }),
-    ],
+    [click, dismiss, role, navigation, typeahead],
   )
 
   // Scroll the active or selected item into view when in `controlledScrolling`

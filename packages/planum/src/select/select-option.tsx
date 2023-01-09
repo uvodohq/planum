@@ -101,17 +101,20 @@ export const Option: React.FC<OptionProps> = (props) => {
   const { selectedIndex, activeIndex, setActiveIndex, setIsOpen, items } = state
 
   function handleSelect() {
-    setIsOpen(false)
     setActiveIndex(null)
+    setIsOpen(false)
     onChange(value)
     onSelect(value, items[index])
   }
 
   function handleKeyDown(event: React.KeyboardEvent) {
-    if (
-      event.key === 'Enter' ||
-      (event.key === ' ' && !dataRef.current.typing)
-    ) {
+    if (event.key === 'Enter') {
+      event.preventDefault()
+      handleSelect()
+    }
+
+    // Only if not using typeahead.
+    if (event.key === ' ' && !dataRef.current.typing) {
       event.preventDefault()
       handleSelect()
     }
@@ -123,15 +126,16 @@ export const Option: React.FC<OptionProps> = (props) => {
   return (
     <StyledOption
       role="option"
-      ref={(node) => (listRef.current[index] = node)}
-      tabIndex={isActive ? 0 : 1}
-      // isActive prevents VoiceOver stuttering.
+      ref={(node) => {
+        listRef.current[index] = node
+      }}
+      tabIndex={isActive ? 0 : -1}
       aria-selected={isActive && isSelected}
       isSelected={isSelected}
       matchWidth={matchWidth}
       {...select.getItemProps({
-        onClick: handleSelect,
-        onKeyDown: handleKeyDown,
+        onClick: handleSelect, // Handle pointer select.
+        onKeyDown: handleKeyDown, // Handle keyboard select.
       })}>
       {children}
     </StyledOption>

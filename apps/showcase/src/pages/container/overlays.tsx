@@ -63,7 +63,7 @@ export const StyledMobileBottomSheet = styled(motion.div, {
 function UncontrolledDialog() {
   return (
     <Dialog>
-      <DialogTrigger>My trigger</DialogTrigger>
+      <DialogTrigger>Dialog trigger</DialogTrigger>
       <DialogPopup style={{ height: 'calc(100% - 64px)', top: 64 }}>
         <StyledMobileBottomSheet {...mobileBottomSheetMotion}>
           <DialogHeading>My dialog heading</DialogHeading>
@@ -103,21 +103,18 @@ function UncontrolledPopover() {
 function ControlledDialog() {
   const [open, setOpen] = useState(false)
 
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setOpen(true)
-    }, 4000)
-    return () => clearTimeout(timeout)
-  }, [])
-
   return (
     <div>
-      <p>The dialog will open in 4 seconds...</p>
+      <p>
+        <button onClick={() => setOpen(true)}> open dialog </button>
+      </p>
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogPopup>
           <Box css={{ bg: '#fff', w: 200, h: 200 }}>
-            <DialogHeading>I opened automatically</DialogHeading>
-            <DialogDescription>After 4 seconds</DialogDescription>
+            <DialogHeading>controlled dialog</DialogHeading>
+            <DialogDescription>
+              this dialog controled by state
+            </DialogDescription>
             <DialogClose>Close</DialogClose>
           </Box>
         </DialogPopup>

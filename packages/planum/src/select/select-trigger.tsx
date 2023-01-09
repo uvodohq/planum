@@ -140,6 +140,14 @@ export function SelectTrigger(props: SelectTriggerProps) {
       isDisabled={isDisabled} // for disabled variant style
       disabled={isDisabled || isLoading} // native way to disable the button
       type="button" // prevent unwanted form submits within <form>
+      aria-label={label}
+      aria-autocomplete="none"
+      // The default role for the reference using a "listbox"
+      // is a "combobox", but Safari has a bug with VoiceOver
+      // where it cuts off letters when announcing the button's
+      // content when it has that role.
+      // This overrides the one from the props above.
+      role={undefined}
       {...rest}
       {...select.referenceProps}>
       <InnerText
