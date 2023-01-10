@@ -1,4 +1,4 @@
-import useControllableValue from 'ahooks/es/useControllableValue'
+import { useControllableValue } from '../hooks'
 
 export type ID = string | number | null | undefined
 

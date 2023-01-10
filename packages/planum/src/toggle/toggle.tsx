@@ -11,7 +11,7 @@ import * as React from 'react'
 
 import { Paragraph } from '../text'
 import type { CSS } from '../theme'
-import { __DEV__ } from '../utils/assertion'
+import { isDev } from '../utils'
 import type { StyledSwitchVariants } from './toggle.styles'
 import { StyledLabel, StyledSwitch, StyledThumb } from './toggle.styles'
 
@@ -60,6 +60,6 @@ export function _Toggle(
 
 export const Toggle = React.forwardRef(_Toggle)
 
-if (__DEV__) {
+if (isDev) {
   Toggle.displayName = 'Toggle'
 }

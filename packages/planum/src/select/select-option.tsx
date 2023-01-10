@@ -132,6 +132,7 @@ export const Option: React.FC<OptionProps> = (props) => {
       tabIndex={isActive ? 0 : -1}
       aria-selected={isActive && isSelected}
       isSelected={isSelected}
+      isFocused={isActive}
       matchWidth={matchWidth}
       {...select.getItemProps({
         onClick: handleSelect, // Handle pointer select.

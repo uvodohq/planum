@@ -3,7 +3,7 @@ import { Children, forwardRef } from 'react'
 import * as React from 'react'
 
 import { Loader } from '../loader'
-import { __DEV__ } from '../utils/assertion'
+import { isDev } from '../utils'
 import {
   ButtonTextContent,
   ContentPlace,
@@ -77,4 +77,4 @@ export const Button = forwardRef(_Button) as ButtonComponent & {
   displayName?: string
 }
 
-if (__DEV__) Button.displayName = 'Button'
+if (isDev) Button.displayName = 'Button'

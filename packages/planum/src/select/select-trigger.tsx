@@ -149,7 +149,8 @@ export function SelectTrigger(props: SelectTriggerProps) {
       // This overrides the one from the props above.
       role={undefined}
       {...rest}
-      {...select.referenceProps}>
+      {...select.getReferenceProps()}
+      ref={select.reference}>
       <InnerText
         css={{
           color: label ? '$textDark' : '',

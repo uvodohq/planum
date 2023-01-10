@@ -10,7 +10,7 @@ const StyledSelectPopupDesktop = styled('div', customScrollbar, {
   boxSizing: 'border-box',
   listStyleType: 'none',
   overflowY: 'scroll',
-  outline: '0',
+  outline: 0,
   userSelect: 'none',
   border: '1px solid $surface400',
   backgroundColor: '$white',
@@ -42,24 +42,22 @@ const desktopMotionConfig = {
 export const DesktopPopup = (props: SelectPopupProps) => {
   const { children, select, popupCss } = props
 
-  const floatinProps = select.getFloatingProps({
-    style: {
-      position: select.strategy,
-      top: select.y ?? 0,
-      left: select.x ?? 0,
-      zIndex: 1000,
-    },
-  })
-
   return (
     <FloatingFocusManager
       context={select.context}
       initialFocus={-1}
       modal={false}>
       <StyledSelectPopupDesktop
+        ref={select.floating}
         css={popupCss}
         as={motion.div}
-        {...floatinProps}
+        {...select.getFloatingProps()}
+        style={{
+          position: select.strategy,
+          top: select.y ?? 0,
+          left: select.x ?? 0,
+          zIndex: 1000,
+        }}
         {...desktopMotionConfig}>
         <ul>{children}</ul>
       </StyledSelectPopupDesktop>

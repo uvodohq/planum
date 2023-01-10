@@ -1,8 +1,6 @@
 import { useUpdateEffect } from '@react-aria/utils'
 import { useMemo, useState } from 'react'
 
-import { usePrevious } from '../hooks'
-
 export interface UseSelectStateProps {
   items: any[]
   value?: any
@@ -15,35 +13,27 @@ export function useSelectState(props: UseSelectStateProps) {
 
   // selected item index, which may or may not be active. shown in the trigger button.
   const defaultSelectedIndex = useMemo(() => {
-    return items.findIndex((item) => item.id === value)
+    const foundSelectedIndex = items.findIndex((item) => item.id === value)
+    return foundSelectedIndex > -1 ? foundSelectedIndex : null
   }, [value, items])
-
-  const [selectedIndex, setSelectedIndex] = useState(defaultSelectedIndex)
 
   const [isOpen, setIsOpen] = useState(false)
-
-  // activeIndex item that's currently highlighted (focused) but not selected.
-  const [activeIndex, setActiveIndex] = useState<number | null>(null)
-
-  const prevActiveIndex = usePrevious<number | null>(activeIndex)
+  const [activeIndex, setActiveIndex] = useState<number | null>(null) // currently focused item
+  const [selectedIndex, setSelectedIndex] = useState(defaultSelectedIndex)
 
   useUpdateEffect(() => {
-    const defaultSelectedIndex = items.findIndex((item) => item.id === value)
     setSelectedIndex(defaultSelectedIndex)
-  }, [value, items])
+  }, [defaultSelectedIndex])
 
   return {
-    //
     isOpen,
     setIsOpen,
     openSelect: () => setIsOpen(true),
     closeSelect: () => setIsOpen(false),
-    //
     activeIndex,
     setActiveIndex,
     selectedIndex,
     setSelectedIndex,
-    prevActiveIndex,
     isEmpty: items.length === 0,
     items,
   }

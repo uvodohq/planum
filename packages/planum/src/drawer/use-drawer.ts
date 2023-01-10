@@ -6,8 +6,9 @@ import {
   useInteractions,
   useRole,
 } from '@floating-ui/react'
-import useControllableValue from 'ahooks/es/useControllableValue'
 import type React from 'react'
+
+import { useControllableValue } from '../hooks'
 
 export interface DrawerProps {
   trigger: JSX.Element

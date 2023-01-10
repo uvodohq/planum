@@ -1,7 +1,7 @@
 import type * as Stitches from '@stitches/react'
 import { createStitches } from '@stitches/react'
 
-import { __DEV__ } from '../utils/assertion'
+import { isDev } from '../utils'
 import {
   colors,
   fontFamilies,
@@ -24,7 +24,7 @@ const {
   createTheme,
   config,
 } = createStitches({
-  prefix: __DEV__ ? '' : 'Planum',
+  prefix: isDev ? '' : 'Planum',
   theme: {
     colors,
     fonts: fontFamilies,

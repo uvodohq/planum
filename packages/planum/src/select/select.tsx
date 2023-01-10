@@ -1,6 +1,6 @@
 // TODO: fix generic types
 import { useField } from '@react-aria/label'
-import useControllableValue from 'ahooks/es/useControllableValue'
+import { useControllableValue } from '../hooks'
 import type { Ref } from 'react'
 import { forwardRef } from 'react'
 

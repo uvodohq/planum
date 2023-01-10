@@ -2,7 +2,7 @@ import type { HTMLAttributes, ReactNode, Ref } from 'react'
 import * as React from 'react'
 
 import { Box } from '../layout'
-import { __DEV__ } from '../utils/assertion'
+import { isDev } from '../utils'
 import type { StyledMessageVariants } from './field.styles'
 import { FieldContainer, StyledLabel, StyledMessage } from './field.styles'
 
@@ -76,6 +76,6 @@ function _Field(props: FieldProps, ref: Ref<HTMLDivElement>) {
 
 export const Field = React.forwardRef(_Field)
 
-if (__DEV__) {
+if (isDev) {
   Field.displayName = 'Field'
 }

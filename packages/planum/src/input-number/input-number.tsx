@@ -7,7 +7,7 @@ import * as React from 'react'
 
 import { Field } from '../field'
 import type { CSS } from '../theme'
-import { __DEV__ } from '../utils/assertion'
+import { isDev } from '../utils'
 import type { StyledInputVariants } from './input-number.styles'
 import {
   IconWrapper,
@@ -148,4 +148,4 @@ function _InputNumber(
 
 export const InputNumber = React.forwardRef(_InputNumber)
 
-if (__DEV__) InputNumber.displayName = 'InputNumber'
+if (isDev) InputNumber.displayName = 'InputNumber'

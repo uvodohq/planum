@@ -6,7 +6,7 @@ import { customScrollbar, styled } from '../theme'
 import type { UseSelectReturn } from './use-select'
 
 const StyledSelectPopupMobile = styled('div', customScrollbar, {
-  outline: '0',
+  outline: 0,
   backgroundColor: '$white',
   overflowY: 'auto',
   '-webkit-overflow-scrolling': 'touch',
@@ -54,18 +54,6 @@ const mobileMotionConfig = {
 export const MobilePopup = (props: SelectPopupProps) => {
   const { children, select, popupCss } = props
 
-  const floatingProps = select.getFloatingProps({
-    style: {
-      position: select.strategy,
-      bottom: 0,
-      left: 0,
-      right: 0,
-      top: 'auto',
-      minWidth: '100%',
-      zIndex: 902,
-    },
-  })
-
   return (
     <FloatingOverlay
       lockScroll
@@ -90,7 +78,17 @@ export const MobilePopup = (props: SelectPopupProps) => {
           as={motion.div}
           css={popupCss}
           {...mobileMotionConfig}
-          {...floatingProps}>
+          {...select.getFloatingProps()}
+          ref={select.floating}
+          style={{
+            position: select.strategy,
+            bottom: 0,
+            left: 0,
+            right: 0,
+            top: 'auto',
+            minWidth: '100%',
+            zIndex: 902,
+          }}>
           <ul>{children}</ul>
         </StyledSelectPopupMobile>
       </FloatingFocusManager>

@@ -1,4 +1,4 @@
-import useControllableValue from 'ahooks/es/useControllableValue'
+import { useControllableValue } from '../hooks'
 import type { Ref } from 'react'
 import { forwardRef } from 'react'
 

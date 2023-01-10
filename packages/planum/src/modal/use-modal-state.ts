@@ -1,5 +1,5 @@
 import { useId } from '@floating-ui/react'
-import useControllableValue from 'ahooks/es/useControllableValue'
+import { useControllableValue } from '../hooks'
 
 export type ModalState = ReturnType<typeof useModalState>
 

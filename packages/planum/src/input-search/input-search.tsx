@@ -11,7 +11,7 @@ import { Field } from '../field'
 import type { StyledInputVariants } from '../input/input.styles'
 import { Loader } from '../loader'
 import type { CSS } from '../theme'
-import { __DEV__ } from '../utils/assertion'
+import { isDev } from '../utils'
 import {
   Prefix,
   StyledInput,
@@ -134,4 +134,4 @@ function _InputSearch(props: InputSearchProps, forwardedRef: any) {
 
 export const InputSearch = React.forwardRef(_InputSearch)
 
-if (__DEV__) InputSearch.displayName = 'InputSearch'
+if (isDev) InputSearch.displayName = 'InputSearch'

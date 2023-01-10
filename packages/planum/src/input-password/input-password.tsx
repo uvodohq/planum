@@ -5,7 +5,7 @@ import { Button } from '../button'
 import type { InputProps } from '../input'
 import { Input } from '../input'
 import { Box } from '../layout'
-import { __DEV__ } from '../utils/assertion'
+import { isDev } from '../utils'
 import EyeIcon from './icons/eye'
 import EyeSlashIcon from './icons/eye-slash'
 
@@ -52,4 +52,4 @@ function _InputPassword(
 
 export const InputPassword = React.forwardRef(_InputPassword)
 
-if (__DEV__) InputPassword.displayName = 'InputPassword'
+if (isDev) InputPassword.displayName = 'InputPassword'

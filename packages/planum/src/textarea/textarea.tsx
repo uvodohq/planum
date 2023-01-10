@@ -5,7 +5,7 @@ import * as React from 'react'
 
 import { Field } from '../field'
 import type { CSS } from '../theme'
-import { __DEV__ } from '../utils/assertion'
+import { isDev } from '../utils'
 import type { StyledTextareaVariants } from './textarea.styles'
 import { StyledTextarea, StyledTextareaContainer } from './textarea.styles'
 
@@ -74,4 +74,4 @@ function _Textarea(
 
 export const Textarea = React.forwardRef(_Textarea)
 
-if (__DEV__) Textarea.displayName = 'Textarea'
+if (isDev) Textarea.displayName = 'Textarea'

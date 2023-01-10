@@ -13,11 +13,9 @@ import {
   useRole,
   useTypeahead,
 } from '@floating-ui/react'
-import { useUpdateEffect } from '@react-aria/utils'
 import type { MutableRefObject } from 'react'
-import { useLayoutEffect, useState } from 'react'
+import { useMemo } from 'react'
 
-import { useMediaQuery } from '../hooks'
 import type { SelectState } from './use-select-state'
 
 export interface UseSelectProps {
@@ -27,28 +25,14 @@ export interface UseSelectProps {
   position?: Placement
 }
 
-export interface UseSelectReturn {
-  getFloatingProps: (props?: any) => Record<string, unknown>
-  referenceProps: Record<string, unknown>
-  getItemProps: (props?: any) => Record<string, unknown>
-  direction: any
-  context: any
-  refs: any
-  nodeId: string
-  strategy: string
-  x: number | null
-  y: number | null
-}
+export type UseSelectReturn = ReturnType<typeof useSelect>
 
-export function useSelect(
-  props: UseSelectProps,
-  state: SelectState,
-): UseSelectReturn {
+export function useSelect(props: UseSelectProps, state: SelectState) {
   const {
     listItemsRef,
     listContentRef,
     matchWidth,
-    position = 'bottom-end',
+    position = 'bottom-start',
   } = props
 
   const {
@@ -58,44 +42,33 @@ export function useSelect(
     setActiveIndex,
     selectedIndex,
     setSelectedIndex,
-    prevActiveIndex,
   } = state
 
-  const [controlledScrolling, setControlledScrolling] = useState(false)
-
-  // subscribe portalled popup tree context. for selects inside modal/dialog/popover
+  // subscribe popup tree context inside modal/dialog. for not closing modal on ESC
   const nodeId = useFloatingNodeId()
 
-  const { x, y, reference, floating, strategy, context, refs, placement } =
-    useFloating({
-      open: isOpen,
-      onOpenChange: setIsOpen,
-      whileElementsMounted: autoUpdate,
-      placement: position,
-      middleware: [
-        offset(4),
-        flip({ padding: 8 }),
-        size({
-          apply({ rects, elements, availableHeight }) {
-            const maxAvailableHeight =
-              availableHeight < 200
-                ? 200
-                : availableHeight > 400
-                ? 400
-                : availableHeight
+  const floating = useFloating({
+    open: isOpen,
+    onOpenChange: setIsOpen,
+    whileElementsMounted: autoUpdate,
+    placement: position,
+    nodeId,
+    middleware: [
+      offset(4),
+      flip({ padding: 8 }),
+      size({
+        apply({ rects, elements }) {
+          Object.assign(elements.floating.style, {
+            maxHeight: `${200}px`,
+            width: matchWidth ? `${rects.reference.width}px` : 'auto',
+          })
+        },
+        padding: 8,
+      }),
+    ],
+  })
 
-            Object.assign(elements.floating.style, {
-              maxHeight: `${maxAvailableHeight}px`,
-              width: matchWidth ? `${rects.reference.width}px` : 'auto',
-            })
-          },
-          padding: 8,
-        }),
-      ],
-      nodeId,
-    })
-
-  const floatingRef = refs.floating
+  const context = floating.context
 
   // interactions
   const click = useClick(context, { event: 'mousedown' })
@@ -106,7 +79,7 @@ export function useSelect(
     activeIndex,
     selectedIndex,
     onNavigate: setActiveIndex,
-    // loop: true, // This is a large list, allow looping.
+    loop: true, // allow looping.
   })
   const typeahead = useTypeahead(context, {
     listRef: listContentRef,
@@ -115,102 +88,21 @@ export function useSelect(
     onMatch: isOpen ? setActiveIndex : setSelectedIndex,
   })
 
-  const { getReferenceProps, getFloatingProps, getItemProps } = useInteractions(
-    [click, dismiss, role, navigation, typeahead],
-  )
-
-  // Scroll the active or selected item into view when in `controlledScrolling`
-  // mode (i.e. arrow key nav).
-  useLayoutEffect(() => {
-    const floating = floatingRef.current
-
-    if (isOpen && controlledScrolling && floating) {
-      const item =
-        activeIndex != null
-          ? listItemsRef.current[activeIndex]
-          : selectedIndex != null
-          ? listItemsRef.current[selectedIndex]
-          : null
-
-      if (item && prevActiveIndex != null) {
-        const itemHeight =
-          listItemsRef.current[prevActiveIndex]?.offsetHeight ?? 0
-
-        const floatingHeight = floating.offsetHeight
-        const top = item.offsetTop
-        const bottom = top + itemHeight
-
-        if (top < floating.scrollTop) {
-          floating.scrollTop -= floating.scrollTop - top + 5
-        } else if (bottom > floatingHeight + floating.scrollTop) {
-          floating.scrollTop += bottom - floatingHeight - floating.scrollTop + 5
-        }
-      }
-    }
-  }, [
-    isOpen,
-    controlledScrolling,
-    prevActiveIndex,
-    activeIndex,
-    floatingRef,
-    selectedIndex,
+  const interactions = useInteractions([
+    click,
+    dismiss,
+    role,
+    navigation,
+    typeahead,
   ])
 
-  // Sync the height and the scrollTop values
-  useLayoutEffect(() => {
-    requestAnimationFrame(() => {
-      const floating = refs.floating.current
-      if (isOpen && floating && floating.clientHeight < floating.scrollHeight) {
-        const item = listItemsRef.current[selectedIndex]
-        if (item) {
-          floating.scrollTop =
-            item.offsetTop - floating.offsetHeight / 2 + item.offsetHeight / 2
-        }
-      }
-    })
-  }, [isOpen, selectedIndex, refs])
-
-  // return focus to reference when the popup is closed, fix for selects in modal
-  useUpdateEffect(() => {
-    if (!isOpen) {
-      // @ts-expect-error - fix focus
-      refs.reference.current?.focus()
+  const select = useMemo(() => {
+    return {
+      ...floating,
+      ...interactions,
+      nodeId,
     }
-  }, [isOpen, refs])
+  }, [interactions, nodeId, floating])
 
-  const direction = placement === 'bottom' ? 1 : -1
-
-  const referenceProps = getReferenceProps({
-    ref: reference,
-  })
-
-  const floatingProps = (config?: React.HTMLProps<HTMLElement>) =>
-    isOpen
-      ? getFloatingProps({
-          ref: floating,
-          onPointerEnter() {
-            setControlledScrolling(false)
-          },
-          onPointerMove() {
-            setControlledScrolling(false)
-          },
-          onKeyDown() {
-            setControlledScrolling(true)
-          },
-          ...config,
-        })
-      : {}
-
-  return {
-    getFloatingProps: floatingProps,
-    referenceProps,
-    direction,
-    context,
-    getItemProps,
-    refs,
-    nodeId,
-    strategy,
-    x,
-    y,
-  }
+  return select
 }

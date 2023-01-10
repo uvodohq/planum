@@ -1,3 +1,4 @@
+export { useControllableValue } from './use-controllable-value/use-controllable-value'
 export {
   useDesktopMedia,
   useLaptopMedia,
