@@ -3,10 +3,11 @@ import {
   FloatingFocusManager,
   FloatingPortal,
   useMergeRefs,
+  useTransitionStyles,
 } from '@floating-ui/react'
-import { AnimatePresence } from 'framer-motion'
 import * as React from 'react'
 
+import { Box } from '../layout'
 import { StyledOverlay } from './popover.styles'
 import { usePopoverState } from './use-popover-state'
 
@@ -23,13 +24,28 @@ export const PopoverPopup = React.forwardRef<HTMLDivElement, PopoverPopupProps>(
   (props, propRef) => {
     const { children, ...rest } = props
     const state = usePopoverState()
-
     const ref = useMergeRefs([state.floating, propRef])
+
+    const { isMounted, styles } = useTransitionStyles(state.context, {
+      initial: {
+        opacity: 0,
+        scale: 0.9,
+      },
+      open: {
+        opacity: 1,
+        scale: 1,
+      },
+      close: {
+        opacity: 0,
+        scale: 0.98,
+      },
+      duration: 200,
+    })
 
     return (
       <FloatingPortal>
-        <AnimatePresence>
-          {state.open && (
+        <Box>
+          {(state.open || isMounted) && (
             <FloatingFocusManager context={state.context} modal={state.modal}>
               <StyledOverlay
                 ref={ref}
@@ -38,6 +54,7 @@ export const PopoverPopup = React.forwardRef<HTMLDivElement, PopoverPopupProps>(
                   top: state.y ?? 0,
                   left: state.x ?? 0,
                   width: 'max-content',
+                  ...styles,
                   ...props.style,
                 }}
                 aria-labelledby={state.labelId}
@@ -50,7 +67,7 @@ export const PopoverPopup = React.forwardRef<HTMLDivElement, PopoverPopupProps>(
               </StyledOverlay>
             </FloatingFocusManager>
           )}
-        </AnimatePresence>
+        </Box>
       </FloatingPortal>
     )
   },

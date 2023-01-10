@@ -15,7 +15,7 @@ const modalVariants = {
     opacity: 0,
     scale: 0.75,
     transition: {
-      duration: 0.1,
+      duration: 0.8,
     },
   },
   animate: {
@@ -23,7 +23,7 @@ const modalVariants = {
     scale: 1,
     transition: {
       ease: 'easeOut',
-      duration: 0.1,
+      duration: 0.8,
     },
   },
   exit: {
@@ -31,7 +31,7 @@ const modalVariants = {
     scale: 0.96,
     transition: {
       ease: 'easeIn',
-      duration: 0.1,
+      duration: 0.8,
     },
   },
 }
@@ -47,10 +47,11 @@ interface Props extends UseModalProps {
   modal: ReturnType<typeof useModal>
   initialFocus?: number | React.MutableRefObject<HTMLElement | null>
   onCloseAnimationEnd?: () => void
+  styles: any
 }
 
 export const DesktopPopup = (props: Props) => {
-  const { modal, children, initialFocus, onCloseAnimationEnd } = props
+  const { modal, children, initialFocus, onCloseAnimationEnd, styles } = props
   const { getFloatingProps, floatingContext } = modal
 
   return (
@@ -70,15 +71,17 @@ export const DesktopPopup = (props: Props) => {
         <StyledModalDesktop {...getFloatingProps()}>
           <Spacer />
           <StyledModalInnerDesktop
-            variants={modalVariants}
-            initial="initial"
-            animate="animate"
-            exit="exit"
-            onAnimationComplete={(definition) => {
-              if (definition === 'exit') {
-                onCloseAnimationEnd?.()
-              }
-            }}>
+            // variants={modalVariants}
+            // initial="initial"
+            // animate="animate"
+            // exit="exit"
+            style={styles}
+            // onAnimationComplete={(definition) => {
+            //   if (definition === 'exit') {
+            //     onCloseAnimationEnd?.()
+            //   }
+            // }}
+          >
             {children}
           </StyledModalInnerDesktop>
           <Spacer />

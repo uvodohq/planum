@@ -27,7 +27,7 @@ export const TooltipPopup = React.forwardRef<
   const state = useTooltipState()
   const ref = useMergeRefs([state.floating, propRef])
 
-  const { isMounted, styles } = useTransitionStyles(state.context, {
+  const { styles, isMounted } = useTransitionStyles(state.context, {
     initial: {
       opacity: 0,
       scale: 0.9,

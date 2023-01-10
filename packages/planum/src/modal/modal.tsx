@@ -38,7 +38,7 @@ const ModalComponent = (props: ModalProps) => {
   } = props
 
   const modal = useModal({ closable, trigger, onClose }, state)
-  const { referenceProps, nodeId } = modal
+  const { referenceProps, nodeId, floatingContext } = modal
 
   return (
     <ModalContext.Provider value={state}>
@@ -50,7 +50,8 @@ const ModalComponent = (props: ModalProps) => {
           modal={modal}
           onCloseAnimationEnd={onCloseAnimationEnd}
           openOnMobileAs={openOnMobileAs}
-          initialFocus={initialFocus}>
+          initialFocus={initialFocus}
+          context={floatingContext}>
           {children}
         </ModalPopup>
       </FloatingNode>
