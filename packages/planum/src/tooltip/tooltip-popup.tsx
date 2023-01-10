@@ -1,12 +1,15 @@
-import { FloatingPortal, useMergeRefs } from '@floating-ui/react'
+import {
+  FloatingPortal,
+  useMergeRefs,
+  useTransitionStyles,
+} from '@floating-ui/react'
 import { mergeProps } from '@react-aria/utils'
-import { AnimatePresence, motion } from 'framer-motion'
 import React from 'react'
 
 import { styled } from '../theme'
 import { useTooltipState } from './use-tooltip-state'
 
-const StyledTooltipContainer = styled(motion.div, {
+const StyledTooltipContainer = styled('div', {
   backgroundColor: '$surface900',
   fontSize: '$xs',
   lineHeight: '$xl',
@@ -24,35 +27,41 @@ export const TooltipPopup = React.forwardRef<
   const state = useTooltipState()
   const ref = useMergeRefs([state.floating, propRef])
 
+  const { isMounted, styles } = useTransitionStyles(state.context, {
+    initial: {
+      opacity: 0,
+      scale: 0.9,
+    },
+    open: {
+      opacity: 1,
+      scale: 1,
+    },
+    close: {
+      opacity: 0,
+      scale: 0.98,
+    },
+    duration: 200,
+  })
+
   return (
     <FloatingPortal>
-      <AnimatePresence>
-        {state.open && (
-          <StyledTooltipContainer
-            ref={ref}
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.98 }}
-            transition={{
-              type: 'spring',
-              damping: 20,
-              stiffness: 300,
-              delay: 0.15,
-            }}
-            {...state.getFloatingProps(props)}
-            style={mergeProps(
-              {
-                position: state.strategy,
-                top: state.y ?? 0,
-                left: state.x ?? 0,
-                visibility: state.x == null ? 'hidden' : 'visible',
-                zIndex: 1,
-              },
-              props.style ?? {},
-            )}
-          />
-        )}
-      </AnimatePresence>
+      {(state.open || isMounted) && (
+        <StyledTooltipContainer
+          ref={ref}
+          {...state.getFloatingProps(props)}
+          style={mergeProps(
+            {
+              position: state.strategy,
+              top: state.y ?? 0,
+              left: state.x ?? 0,
+              visibility: state.x == null ? 'hidden' : 'visible',
+              zIndex: 1,
+            },
+            styles,
+            props.style ?? {},
+          )}
+        />
+      )}
     </FloatingPortal>
   )
 })
