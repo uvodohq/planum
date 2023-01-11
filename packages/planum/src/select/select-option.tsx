@@ -94,11 +94,11 @@ export interface OptionProps {
 export const Option: React.FC<OptionProps> = (props) => {
   const { children, index = 0, value } = props
 
-  const context = useContext(SelectContext)
-  const { state, select, listRef, onChange, onSelect, dataRef, matchWidth } =
-    context
+  const { select, listRef, onChange, onSelect, dataRef, matchWidth } =
+    useContext(SelectContext)
 
-  const { selectedIndex, activeIndex, setActiveIndex, setIsOpen, items } = state
+  const { selectedIndex, activeIndex, setActiveIndex, setIsOpen, items } =
+    select
 
   function handleSelect() {
     setActiveIndex(null)

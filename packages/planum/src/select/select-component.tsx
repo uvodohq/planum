@@ -1,13 +1,13 @@
 import type { AriaLabelingProps, DOMProps } from '@react-types/shared'
 import React, { Children, cloneElement, isValidElement, useRef } from 'react'
 
+import { useLatest } from '../hooks'
 import type { CSS } from '../theme'
 import { styled } from '../theme'
 import { SelectContext } from './select-context'
 import { SelectPopup } from './select-popup'
 import type { SelectTriggerProps } from './select-trigger'
 import { useSelect } from './use-select'
-import { useSelectState } from './use-select-state'
 
 const StyledEmpty = styled('span', {
   py: 16,
@@ -68,21 +68,15 @@ export const SelectComponent: React.FC<SelectComponentProps> = (props) => {
   } = props
 
   const listItemsRef = useRef<Array<HTMLLIElement | null>>([])
-  const listContentRef = useRef(items.map((item) => item[labelKey]))
+  const listContentRef = useLatest(items.map((item) => item[labelKey]))
 
-  const state = useSelectState({
+  const select = useSelect({
+    listItemsRef,
+    listContentRef,
+    matchWidth,
     items,
     value,
   })
-
-  const select = useSelect(
-    {
-      listItemsRef,
-      listContentRef,
-      matchWidth,
-    },
-    state,
-  )
 
   const renderOptions = () =>
     Children.map(
@@ -96,7 +90,6 @@ export const SelectComponent: React.FC<SelectComponentProps> = (props) => {
     ) ?? []
 
   const selectContextValue = {
-    state,
     select,
     listRef: listItemsRef,
     onChange,
@@ -107,7 +100,6 @@ export const SelectComponent: React.FC<SelectComponentProps> = (props) => {
   }
 
   const triggerProps = {
-    state,
     select,
     placeholder,
     isDisabled,
@@ -121,8 +113,8 @@ export const SelectComponent: React.FC<SelectComponentProps> = (props) => {
 
   let popupContent
 
-  if (state.isOpen) {
-    if (state.isEmpty) {
+  if (select.isOpen) {
+    if (select.isEmpty) {
       popupContent = renderEmpty ? (
         renderEmpty()
       ) : (

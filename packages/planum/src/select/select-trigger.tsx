@@ -111,7 +111,6 @@ export const InnerText = styled('span', {
 export type StyledMessageVariants = VariantProps<typeof SelectTrigger>
 
 export interface SelectTriggerProps extends HTMLAttributes<HTMLButtonElement> {
-  state: SelectState
   select: UseSelectReturn
   isDisabled?: boolean
   isLoading?: boolean
@@ -119,38 +118,26 @@ export interface SelectTriggerProps extends HTMLAttributes<HTMLButtonElement> {
   placeholder?: string
   label?: string
   fallbackLabel?: string
-  items: any[]
   labelKey?: string
 }
 
 export function SelectTrigger(props: SelectTriggerProps) {
-  const {
-    state,
-    select,
-    isDisabled,
-    isLoading,
-    label,
-    placeholder,
-    items,
-    ...rest
-  } = props
+  const { select, isDisabled, isLoading, label, placeholder, ...rest } = props
 
   return (
     <StyledButton
+      ref={select.reference}
       isDisabled={isDisabled} // for disabled variant style
       disabled={isDisabled || isLoading} // native way to disable the button
       type="button" // prevent unwanted form submits within <form>
       aria-label={label}
       aria-autocomplete="none"
-      // The default role for the reference using a "listbox"
-      // is a "combobox", but Safari has a bug with VoiceOver
-      // where it cuts off letters when announcing the button's
-      // content when it has that role.
-      // This overrides the one from the props above.
-      role={undefined}
       {...rest}
       {...select.getReferenceProps()}
-      ref={select.reference}>
+      // The default role for the reference using a "listbox"
+      // is a "combobox", but Safari has a bug with VoiceOver
+      // This overrides the one from the props above.
+      role={undefined}>
       <InnerText
         css={{
           color: label ? '$textDark' : '',
@@ -162,7 +149,7 @@ export function SelectTrigger(props: SelectTriggerProps) {
           <Loader size="small" />
         </IconContainer>
       ) : (
-        <SelectDownIcon isOpen={state.isOpen} />
+        <SelectDownIcon isOpen={select.isOpen} />
       )}
     </StyledButton>
   )

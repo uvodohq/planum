@@ -16,24 +16,33 @@ import {
 import type { MutableRefObject } from 'react'
 import { useMemo } from 'react'
 
-import type { SelectState } from './use-select-state'
+import { useSelectState } from './use-select-state'
 
 export interface UseSelectProps {
   listItemsRef: MutableRefObject<(HTMLElement | null)[]>
   listContentRef: MutableRefObject<(string | null)[]>
   matchWidth?: boolean
   position?: Placement
+  items: any[]
+  value?: any
 }
 
 export type UseSelectReturn = ReturnType<typeof useSelect>
 
-export function useSelect(props: UseSelectProps, state: SelectState) {
+export function useSelect(props: UseSelectProps) {
   const {
     listItemsRef,
     listContentRef,
     matchWidth,
     position = 'bottom-start',
+    value,
+    items,
   } = props
+
+  const state = useSelectState({
+    value,
+    items,
+  })
 
   const {
     isOpen,
@@ -98,11 +107,30 @@ export function useSelect(props: UseSelectProps, state: SelectState) {
 
   const select = useMemo(() => {
     return {
+      isOpen,
+      setIsOpen,
+      selectedIndex,
+      activeIndex,
+      setActiveIndex,
+      setSelectedIndex,
+      items,
+      isEmpty: items.length === 0,
       ...floating,
       ...interactions,
       nodeId,
     }
-  }, [interactions, nodeId, floating])
+  }, [
+    interactions,
+    nodeId,
+    floating,
+    isOpen,
+    setIsOpen,
+    selectedIndex,
+    items,
+    activeIndex,
+    setActiveIndex,
+    setSelectedIndex,
+  ])
 
   return select
 }

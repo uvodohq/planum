@@ -54,8 +54,8 @@ export default function SelectExampleCustomTrigger(
     <Select
       labelKey="name"
       renderTrigger={(triggerProps) => {
-        const { state, items, labelKey, select } = triggerProps
-        const index = state.selectedIndex ?? ''
+        const { items, labelKey, select } = triggerProps
+        const index = select.selectedIndex ?? ''
         const label = items[index]?.[labelKey]
 
         return (

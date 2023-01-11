@@ -15,7 +15,7 @@ interface SelectPopupProps {
 
 export function SelectPopup(props: SelectPopupProps) {
   const { children, popupCss } = props
-  const { state, select } = useContext(SelectContext)
+  const { select } = useContext(SelectContext)
   const isMobile = useMediaQuery('(max-width: 768px)')
   const Popup = isMobile ? MobilePopup : DesktopPopup
 
@@ -23,7 +23,7 @@ export function SelectPopup(props: SelectPopupProps) {
     <FloatingNode id={select.nodeId}>
       <FloatingPortal id="planum-portal">
         <AnimatePresence>
-          {state.isOpen && <Popup {...{ select, popupCss }}>{children}</Popup>}
+          {select.isOpen && <Popup {...{ select, popupCss }}>{children}</Popup>}
         </AnimatePresence>
       </FloatingPortal>
     </FloatingNode>

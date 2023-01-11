@@ -5,11 +5,11 @@ import type { CSS } from '../theme'
 import { customScrollbar, styled } from '../theme'
 import type { UseSelectReturn } from './use-select'
 
-const StyledSelectPopupDesktop = styled('div', customScrollbar, {
+const StyledSelectPopupDesktop = styled('div', {
   margin: '0',
   boxSizing: 'border-box',
   listStyleType: 'none',
-  overflowY: 'scroll',
+  overflow: 'hidden',
   outline: 0,
   userSelect: 'none',
   border: '1px solid $surface400',
@@ -19,6 +19,12 @@ const StyledSelectPopupDesktop = styled('div', customScrollbar, {
   py: 8,
   px: 8,
   pr: 4, // + 4px scrollbar width = 8px
+})
+
+const StyledList = styled('ul', customScrollbar, {
+  listStyleType: 'none',
+  overflowY: 'scroll',
+  maxHeight: 170,
 })
 
 interface SelectPopupProps {
@@ -59,7 +65,23 @@ export const DesktopPopup = (props: SelectPopupProps) => {
           zIndex: 1000,
         }}
         {...desktopMotionConfig}>
-        <ul>{children}</ul>
+        <input
+          type="text"
+          placeholder="Search emoji"
+          role="combobox"
+          // value={search}
+          // aria-controls={
+          //   filteredEmojis.length === 0 ? noResultsId : listboxId
+          // }
+          aria-expanded="true"
+          aria-autocomplete="list"
+          style={{ border: 'solid' }}
+          // {...getInputProps({
+          //   onChange: handleInputChange,
+          //   onKeyDown: handleKeyDown,
+          // })}
+        />
+        <StyledList>{children}</StyledList>
       </StyledSelectPopupDesktop>
     </FloatingFocusManager>
   )

@@ -1,10 +1,9 @@
-// TODO: fix generic types
 import { useField } from '@react-aria/label'
-import { useControllableValue } from '../hooks'
 import type { Ref } from 'react'
 import { forwardRef } from 'react'
 
 import { Field } from '../field'
+import { useControllableValue } from '../hooks'
 import type { InputProps, Value } from './select-component'
 import { SelectComponent } from './select-component'
 import { Option } from './select-option'
@@ -105,7 +104,7 @@ export const Select = forwardRef(
               return renderTrigger(triggerProps)
             }
 
-            const index = triggerProps.state.selectedIndex ?? ''
+            const index = triggerProps.select.selectedIndex ?? ''
             const label = items[index]?.[labelKey as keyof Item<T>]
 
             // show fallback label if options not loaded yet

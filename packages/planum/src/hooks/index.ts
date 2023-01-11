@@ -1,4 +1,5 @@
 export { useControllableValue } from './use-controllable-value/use-controllable-value'
+export { useLatest } from './use-latest'
 export {
   useDesktopMedia,
   useLaptopMedia,
