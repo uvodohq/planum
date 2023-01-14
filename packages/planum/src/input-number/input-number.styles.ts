@@ -124,28 +124,31 @@ export const IconWrapper = styled('span', {
 })
 
 export const inputCss = css(subheaderCss, {
-  fw: '$regular',
-  display: 'block',
-  width: '100%',
-  maxWidth: '100%',
-  transition: 'border-color 0.2s, box-shadow 0.2s',
-  backgroundColor: 'transparent',
-  color: '$textDark',
-  fontWeight: '$regular',
-  border: 'none',
-  outline: 'none',
+  input: {
+    fw: '$regular',
+    fontSize: 'inherit',
+    display: 'block',
+    width: '100%',
+    maxWidth: '100%',
+    transition: 'border-color 0.2s, box-shadow 0.2s',
+    backgroundColor: 'transparent',
+    color: '$textDark',
+    fontWeight: '$regular',
+    border: 'none',
+    outline: 'none',
 
-  '&:-webkit-autofill': {
-    '&, &:hover, &:focus': {
-      boxShadow: '0 0 0px 1000px white inset !important',
-      transition: 'background-color 0s',
+    '&:-webkit-autofill': {
+      '&, &:hover, &:focus': {
+        boxShadow: '0 0 0px 1000px white inset !important',
+        transition: 'background-color 0s',
+      },
     },
-  },
 
-  '&::placeholder': {
-    font: 'inherit',
-    color: '$surface500',
-    disableActions: true,
+    '&::placeholder': {
+      font: 'inherit',
+      color: '$surface500',
+      disableActions: true,
+    },
   },
 })
 

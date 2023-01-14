@@ -9,12 +9,16 @@ const Section = styled('div', {
   display: 'flex',
 })
 
+const StyledH3 = styled(H3, {
+  m: 0,
+  mb: 20,
+  fontWeight: 'inherit',
+})
+
 export default function EffectContainer() {
   return (
     <>
-      <H3 css={{ mb: 20, fontWeight: 'inherit' }} id="shadows">
-        Shadows
-      </H3>
+      <StyledH3 id="shadows">Shadows</StyledH3>
 
       <Section>
         {Object.keys(shadows).map((key) => {
@@ -40,9 +44,7 @@ export default function EffectContainer() {
         })}
       </Section>
 
-      <H3 css={{ mb: 20, fontWeight: 'inherit' }} id="gradients">
-        Gradients
-      </H3>
+      <StyledH3 id="gradients">Gradients</StyledH3>
 
       <Section css={{ gap: 72 }}>
         {Object.keys(gradients).map((key) => {

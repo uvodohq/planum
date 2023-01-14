@@ -116,6 +116,7 @@ const Floating = styled('div', {
   bottom: 12,
   zIndex: 9999,
   dflex: 'center',
+  gap: '$16',
   bg: '#fff !important',
   padding: 8,
   borderRadius: '$pill',

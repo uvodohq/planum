@@ -69,6 +69,7 @@ export const DropdownPopup = (props: PopupProps) => {
   const Popup = isMobile ? StyledMobilePopup : StyledDesktopPopup
   const style = isMobile
     ? {
+        boxSizing: 'border-box',
         position: strategy,
         bottom: 0,
         left: 0,
@@ -77,7 +78,13 @@ export const DropdownPopup = (props: PopupProps) => {
         minWidth: '100%',
         zIndex: 902,
       }
-    : { position: strategy, top: y ?? 0, left: x ?? 0, zIndex: 902 }
+    : {
+        boxSizing: 'border-box',
+        position: strategy,
+        top: y ?? 0,
+        left: x ?? 0,
+        zIndex: 902,
+      }
 
   const motionConfig = isMobile
     ? {
