@@ -58,7 +58,7 @@ export { Drawer } from './drawer'
 export { Menu, MenuItem } from './menu'
 
 // Flag
-export type { FlagProps } from './flag'
+export type { FlagProps, CountryCode } from './flag'
 export { Flag } from './flag'
 
 // autocmplete
@@ -66,8 +66,12 @@ export { AutoComplete, AutoCompleteTags } from './auto-complete'
 export type { AutoCompleteProps, AutoCompleteTagsProps } from './auto-complete'
 
 // checkbox
-export { Checkbox } from './checkbox'
-export type { CheckboxProps } from './checkbox'
+export { Checkbox, CheckboxGroup, CheckboxGroupItem } from './checkbox'
+export type {
+  CheckboxProps,
+  CheckboxGroupItemProps,
+  CheckboxGroupProps,
+} from './checkbox'
 
 // Field
 export { Field } from './field'
@@ -127,7 +131,29 @@ export type { LoaderProps } from './loader'
 
 // modal
 export type { ModalProps, ModalState, ModalStateProps } from './modal'
-export { Dialog, Modal, useModalState } from './modal'
+export { Dialog as ModalContent, Modal, useModalState } from './modal'
+
+// dialog
+export {
+  Dialog,
+  DialogClose,
+  DialogPopup,
+  DialogDescription,
+  DialogHeading,
+  DialogTrigger,
+} from './dialog'
+export type { DialogProps } from './dialog'
+
+// popover
+export {
+  Popover,
+  PopoverClose,
+  PopoverPopup,
+  PopoverDescription,
+  PopoverHeading,
+  PopoverTrigger,
+} from './popover'
+export type { PopoverProps } from './popover'
 
 // separator
 export { Separator } from './separator'
@@ -167,5 +193,5 @@ export type { SkeletonProps } from './skeleton'
 export { Skeleton } from './skeleton'
 
 // tooltip
-export { Tooltip } from './tooltip'
+export { Tooltip, TooltipPopup, TooltipTrigger } from './tooltip'
 export type { TooltipProps } from './tooltip'

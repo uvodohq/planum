@@ -13,10 +13,14 @@
   "dependencies": {
     "@uvodohq/planum": "*",
     "@uvodohq/planum-editor": "*",
+    "@uvodohq/planum-icons": "*",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-error-boundary": "^3.1.4",
-    "react-intersection-observer": "^9.4.0"
+    "react-intersection-observer": "^9.4.0",
+    "@hookform/resolvers": "^2.9.6",
+    "react-hook-form": "^7.40.0",
+    "zod": "^3.19.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.22",

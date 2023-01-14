@@ -1,30 +1,28 @@
-<center>
-  <a href="https://uvodo.design" >
-    <img width="300" src="https://raw.githubusercontent.com/uvodohq/planum-ui/main/.storybook/logo.svg" style='background:white'>
-  </a>
+[![storybook](cover.jpg)](https://www.npmjs.com/package/@uvodohq/planum)
 
-<img src="https://img.shields.io/npm/v/@uvodohq/planum?color=blue">
-<img src="https://img.shields.io/npm/l/@uvodohq/planum">
-<img src="https://img.shields.io/npm/dw/@uvodohq/planum">
+<div align="center">
 
-</center>
-<h1 align="center">
-  Planum - A React UI Kit for Uvodo Design System
+# Planum (beta) - A React UI Kit for Uvodo Design System
 
-</h1>
-
-<center>
 Planum UI is a React component library with 20+ components based on TypeScript and Uvodo Design System.
-  <br>
 
-<a href="https://planum-storybook.netlify.app"><strong>Explore Planum components</strong></a>
+<br>
 
-  <br>
+[![npmimg](https://img.shields.io/npm/v/@uvodohq/planum)](https://www.npmjs.com/package/@uvodohq/planum)
+[![licence](https://img.shields.io/npm/l/@uvodohq/planum)]()
+[![downloads](https://img.shields.io/npm/dw/@uvodohq/planum)]()
+[![storybook](https://shields.io/badge/storybook-white?logo=storybook&style=flat)](https://planum-storybook.netlify.app)
+[![twitter](https://img.shields.io/twitter/follow/uvodohq?label=uvodohq&style=social)](https://twitter.com/uvodohq)
 
-  <a href="https://twitter.com/uvodohq">
-   <img src="https://img.shields.io/twitter/follow/uvodohq?label=uvodohq&style=social" alt="Twitter Follow">
-  </a>
-</center>
+</div>
+
+---
+
+# Live ⚡️
+
+### https://planum.uvodo.dev - Demo Showcase Example App [![Netlify Status](https://api.netlify.com/api/v1/badges/c492e5e8-9f20-4b17-a494-a57a09ea1768/deploy-status)](https://app.netlify.com/sites/planum-demo/deploys)
+
+### https://planum-storybook.netlify.app - Planum Storybook [![Netlify Status](https://api.netlify.com/api/v1/badges/8a6b4d8d-d711-436c-94cd-6f16b47e6dc2/deploy-status)](https://app.netlify.com/sites/planum-storybook/deploys)
 
 # Powered by
 
@@ -32,9 +30,8 @@ Planum UI is a React component library with 20+ components based on TypeScript a
 - 🚀 [React](https://reactjs.org/) — JavaScript library for user interfaces
 - 🛠 [Tsup](https://github.com/egoist/tsup) — TypeScript bundler powered by esbuild
 - 📖 [Storybook](https://storybook.js.org/) — UI component environment powered by Vite
-
-- Uvodo design system
-- Accessibility friendly components
+- 🟣 Uvodo design system
+- 👀 Accessibility friendly components
 
 As well as a few others tools used:
 
@@ -43,16 +40,6 @@ As well as a few others tools used:
 - [Prettier](https://prettier.io) for code formatting
 - [Changesets](https://github.com/changesets/changesets) for managing versioning and changelogs
 - [GitHub Actions](https://github.com/changesets/action) for fully automated package publishing
-
-# Live ⚡️
-
-- Demo Example App [![Netlify Status](https://api.netlify.com/api/v1/badges/c492e5e8-9f20-4b17-a494-a57a09ea1768/deploy-status)](https://app.netlify.com/sites/planum-demo/deploys)
-
-  https://uvodo.design
-
-- Planum Storybook [![Netlify Status](https://api.netlify.com/api/v1/badges/8a6b4d8d-d711-436c-94cd-6f16b47e6dc2/deploy-status)](https://app.netlify.com/sites/planum-storybook/deploys)
-
-  https://planum-storybook.netlify.app
 
 # Install
 
@@ -92,7 +79,7 @@ Using Turborepo simplifes managing your design system monorepo, as you can have 
 - `packages/@uvodohq/planum`: Core React components
 - `packages/@uvodohq/planum-editor`: Text editor based on TipTap
 - `packages/planum-tsconfig`: Shared `tsconfig.json`s used throughout in apps and packages
-- `packages/eslint-config-planum`: Shared ESLint preset
+- `packages/@uvodohq/eslint-config`: Shared ESLint preset
 
 Each package and app is 100% [TypeScript](https://www.typescriptlang.org/). Yarn Workspaces enables us to "hoist" dependencies that are shared between packages to the root `package.json`. This means smaller `node_modules` folders and a better local dev experience. To install a dependency for the entire monorepo, use the `-W` workspaces flag with `yarn add`.
 
@@ -221,10 +208,10 @@ When you push your code to GitHub, the [GitHub Action](https://github.com/change
 turbo run build --filter=docs^... && changeset publish
 ```
 
-Turborepo runs the `build` script for all publishable packages (excluding docs) and publishes the packages to npm. By default, this example includes `acme` as the npm organization. To change this, do the following:
+Turborepo runs the `build` script for all publishable packages (excluding docs) and publishes the packages to npm. By default, this example includes `@uvodohq` as the npm organization. To change this, do the following:
 
-- Rename folders in `packages/*` to replace `acme` with your desired scope
-- Search and replace `acme` with your desired scope
+- Rename folders in `packages/*` to replace `@uvodohq` with your desired scope
+- Search and replace `@uvodohq` with your desired scope
 - Re-run `yarn install`
 
 To publish packages to a private npm organization scope, **remove** the following from each of the `package.json`'s

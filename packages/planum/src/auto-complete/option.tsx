@@ -1,4 +1,4 @@
-import { useId } from '@floating-ui/react-dom-interactions'
+import { useId } from '@floating-ui/react'
 import React, { useContext } from 'react'
 
 import { subheaderCss } from '../text'

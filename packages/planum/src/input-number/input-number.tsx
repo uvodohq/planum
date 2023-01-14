@@ -1,9 +1,8 @@
-import { useLocale } from '@react-aria/i18n'
 import { useFocus } from '@react-aria/interactions'
-import { useNumberField } from '@react-aria/numberfield'
+import { useField } from '@react-aria/label'
 import { mergeProps, useObjectRef } from '@react-aria/utils'
-import { useNumberFieldState } from '@react-stately/numberfield'
-import type { AriaNumberFieldProps } from '@react-types/numberfield'
+import InputNumberRc from 'rc-input-number'
+import type { InputNumberProps as RcInputNumberProps } from 'rc-input-number/lib/InputNumber'
 import * as React from 'react'
 
 import { Field } from '../field'
@@ -12,8 +11,8 @@ import { __DEV__ } from '../utils/assertion'
 import type { StyledInputVariants } from './input-number.styles'
 import {
   IconWrapper,
+  inputCss,
   Prefix,
-  StyledInput,
   StyledInputContainer,
   Suffix,
 } from './input-number.styles'
@@ -46,15 +45,16 @@ interface Props {
   size?: 'default' | any
   css?: CSS
   status?: 'success' | 'normal' | 'error'
+  format?: (value: any) => any
 }
 
 export type InputNumberProps = Omit<StyledInputVariants, 'isFocused'> &
-  AriaNumberFieldProps &
-  Props
+  Props &
+  RcInputNumberProps
 
 function _InputNumber(
   props: InputNumberProps,
-  forwardedRef: React.ForwardedRef<HTMLInputElement>,
+  forwardedRef: React.Ref<HTMLInputElement>,
 ) {
   const {
     label,
@@ -68,20 +68,14 @@ function _InputNumber(
     rightIcon,
     suffix,
     prefix,
+
+    format = (val) => val,
+    ...rest
   } = props
 
   const inputRef = useObjectRef(forwardedRef)
-
-  const { locale } = useLocale()
-  const state = useNumberFieldState({ ...props, locale })
-
-  const {
-    labelProps,
-    inputProps,
-    descriptionProps,
-    errorMessageProps,
-    groupProps,
-  } = useNumberField(props, state, inputRef)
+  const { labelProps, descriptionProps, errorMessageProps, fieldProps } =
+    useField(props)
 
   const { isFocused, focusProps } = useFocused()
 
@@ -105,15 +99,14 @@ function _InputNumber(
         errorMessageProps,
       }}>
       <StyledInputContainer
-        onClick={() =>
+        onClick={() => {
           inputRef.current?.focus({
             preventScroll: true,
           })
-        }
+        }}
         status={status}
         isFocused={isFocused}
-        isDisabled={isDisabled}
-        {...groupProps}>
+        isDisabled={isDisabled}>
         {hasPrefix && (
           <Prefix
             css={{
@@ -124,7 +117,23 @@ function _InputNumber(
           </Prefix>
         )}
 
-        <StyledInput {...mergeProps(inputProps, focusProps)} ref={inputRef} />
+        <InputNumberRc
+          className={inputCss()}
+          prefixCls="planum-input-number"
+          ref={inputRef}
+          controls={false}
+          decimalSeparator="."
+          formatter={(value, { userTyping, input }) => {
+            if (userTyping) {
+              return input
+            }
+
+            if (value === '') return ''
+
+            return format(value)
+          }}
+          {...mergeProps(rest, fieldProps, focusProps)}
+        />
 
         {hasSuffix && (
           <Suffix>

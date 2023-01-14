@@ -1,0 +1,78 @@
+// Vitest Snapshot v1
+
+exports[`Radio > should render 3 radios 1`] = `
+<div>
+  <div
+    aria-label="label"
+    aria-orientation="vertical"
+    class="c-PJLV"
+    id="react-aria224783748-1"
+    role="radiogroup"
+  >
+    <label
+      class="c-iPYhUp c-kLRYwF c-TiAfA"
+    >
+      <div
+        style="border: 0px; clip-path: inset(50%); height: 1px; margin: 0px -1px -1px 0px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap;"
+      >
+        <input
+          name="react-aria224783748-5"
+          tabindex="0"
+          type="radio"
+          value="Regular"
+        />
+      </div>
+      <svg
+        aria-hidden="true"
+        class="c-fApySl"
+      >
+        <circle
+          cx="10"
+          cy="10"
+          fill="currentColor"
+          r="4"
+          stroke="none"
+          stroke-width="2"
+        />
+      </svg>
+      <p
+        class="c-iPYhUp c-kLRYwF c-iPYhUp-ikmBbln-css"
+      >
+        Regular
+      </p>
+    </label>
+    <label
+      class="c-iPYhUp c-kLRYwF c-TiAfA"
+    >
+      <div
+        style="border: 0px; clip-path: inset(50%); height: 1px; margin: 0px -1px -1px 0px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap;"
+      >
+        <input
+          name="react-aria224783748-5"
+          tabindex="0"
+          type="radio"
+          value="Selected"
+        />
+      </div>
+      <svg
+        aria-hidden="true"
+        class="c-fApySl"
+      >
+        <circle
+          cx="10"
+          cy="10"
+          fill="currentColor"
+          r="4"
+          stroke="none"
+          stroke-width="2"
+        />
+      </svg>
+      <p
+        class="c-iPYhUp c-kLRYwF c-iPYhUp-ikmBbln-css"
+      >
+        Selected
+      </p>
+    </label>
+  </div>
+</div>
+`;

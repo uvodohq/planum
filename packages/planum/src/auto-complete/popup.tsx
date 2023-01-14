@@ -2,7 +2,7 @@ import {
   FloatingFocusManager,
   FloatingNode,
   FloatingPortal,
-} from '@floating-ui/react-dom-interactions'
+} from '@floating-ui/react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useContext } from 'react'
 
@@ -65,7 +65,10 @@ export default function Popup(props: PopupProps) {
       <FloatingPortal id="planum-autocomplete-portal">
         <AnimatePresence>
           {state.isOpen && (
-            <FloatingFocusManager context={context} preventTabbing>
+            <FloatingFocusManager
+              context={context}
+              initialFocus={-1}
+              modal={false}>
               <StyledPopup
                 {...floatingProps}
                 as={motion.div}

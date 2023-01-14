@@ -10,7 +10,7 @@ import {
   useInteractions,
   useListNavigation,
   useRole,
-} from '@floating-ui/react-dom-interactions'
+} from '@floating-ui/react'
 import type { MutableRefObject } from 'react'
 import { useLayoutEffect } from 'react'
 
@@ -65,6 +65,7 @@ export function useAutoComplete(
         listRef.current[activeIndex]?.scrollIntoView({ block: 'nearest' })
       }
     })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeIndex])
 
   const { context } = floating
@@ -74,9 +75,7 @@ export function useAutoComplete(
       useDismiss(context, {
         bubbles: false,
       }),
-      useClick(context, {
-        pointerDown: true,
-      }),
+      useClick(context),
       useListNavigation(context, {
         listRef,
         activeIndex,

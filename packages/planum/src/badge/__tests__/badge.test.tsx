@@ -18,10 +18,11 @@ describe('<Badge />', () => {
     (variant) => {
       const badgeText = variant as string
 
-      render(<Badge variant={variant}>{badgeText}</Badge>)
+      const { container } = render(<Badge variant={variant}>{badgeText}</Badge>)
       const label = screen.getByText(badgeText)
 
       expect(label).toBeInTheDocument()
+      expect(container).toMatchSnapshot()
     },
   )
 })

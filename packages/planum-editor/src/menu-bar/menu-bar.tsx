@@ -1,5 +1,10 @@
 import type { Editor } from '@tiptap/react'
-import { Tooltip, VisuallyHidden } from '@uvodohq/planum'
+import {
+  Tooltip,
+  TooltipPopup,
+  TooltipTrigger,
+  VisuallyHidden,
+} from '@uvodohq/planum'
 import * as React from 'react'
 
 import {
@@ -34,7 +39,18 @@ export interface MenuBarProps {
   isLink: boolean
 }
 
-// TODO: add tooltips for buttons
+const EditorTooltip = ({
+  label,
+  children,
+}: {
+  label: string
+  children: React.ReactNode
+}) => (
+  <Tooltip>
+    <TooltipTrigger asChild>{children}</TooltipTrigger>
+    <TooltipPopup>{label}</TooltipPopup>
+  </Tooltip>
+)
 
 // Don't rerender on editor content change when typing
 export const MenuBar = React.memo((props: MenuBarProps) => {
@@ -65,7 +81,7 @@ export const MenuBar = React.memo((props: MenuBarProps) => {
     <MenuBarContainer>
       <ButtonsGroup>
         {/* Bold  */}
-        <Tooltip label="Bold" placement="top">
+        <EditorTooltip label="Bold">
           <ToggleButton
             isDisabled={isDisabled}
             isSelected={isBold}
@@ -73,10 +89,10 @@ export const MenuBar = React.memo((props: MenuBarProps) => {
             aria-label="Bold">
             <TextBolderIcon />
           </ToggleButton>
-        </Tooltip>
+        </EditorTooltip>
 
         {/* Italic */}
-        <Tooltip label="Italic" placement="top">
+        <EditorTooltip label="Italic">
           <ToggleButton
             isDisabled={isDisabled}
             isSelected={isItalic}
@@ -84,10 +100,10 @@ export const MenuBar = React.memo((props: MenuBarProps) => {
             aria-label="Italic">
             <TextItalicIcon />
           </ToggleButton>
-        </Tooltip>
+        </EditorTooltip>
 
         {/* Strike */}
-        <Tooltip label="Strike" placement="top">
+        <EditorTooltip label="Strike">
           <ToggleButton
             isDisabled={isDisabled}
             isSelected={isStrike}
@@ -95,10 +111,10 @@ export const MenuBar = React.memo((props: MenuBarProps) => {
             aria-label="Strike">
             <TextStrikethroughIcon />
           </ToggleButton>
-        </Tooltip>
+        </EditorTooltip>
 
         {/* Color Picker - // TODO: fix focus css */}
-        <Tooltip label="Color picker" placement="top">
+        <EditorTooltip label="Color picker">
           <ToggleButton
             as="label"
             aria-label="Color picker"
@@ -114,12 +130,12 @@ export const MenuBar = React.memo((props: MenuBarProps) => {
             </VisuallyHidden>
             <PaletteIcon />
           </ToggleButton>
-        </Tooltip>
+        </EditorTooltip>
       </ButtonsGroup>
 
       <ButtonsGroup>
         {/* Text Left */}
-        <Tooltip label="Align left" placement="top">
+        <EditorTooltip label="Align left">
           <ToggleButton
             isDisabled={isDisabled}
             onChange={() => focusEditor().setTextAlign('left').run()}
@@ -127,10 +143,10 @@ export const MenuBar = React.memo((props: MenuBarProps) => {
             aria-label="Align left">
             <TextAlignLeftIcon />
           </ToggleButton>
-        </Tooltip>
+        </EditorTooltip>
 
         {/* Text Center */}
-        <Tooltip label="Center" placement="top">
+        <EditorTooltip label="Center">
           <ToggleButton
             isDisabled={isDisabled}
             onChange={() => focusEditor().setTextAlign('center').run()}
@@ -138,10 +154,10 @@ export const MenuBar = React.memo((props: MenuBarProps) => {
             aria-label="Center">
             <TextAlignCenterIcon />
           </ToggleButton>
-        </Tooltip>
+        </EditorTooltip>
 
         {/* Text Right */}
-        <Tooltip label="Align right" placement="top">
+        <EditorTooltip label="Align right">
           <ToggleButton
             isDisabled={isDisabled}
             onChange={() => focusEditor().setTextAlign('right').run()}
@@ -149,12 +165,12 @@ export const MenuBar = React.memo((props: MenuBarProps) => {
             aria-label="Align right">
             <TextAlignRightIcon />
           </ToggleButton>
-        </Tooltip>
+        </EditorTooltip>
       </ButtonsGroup>
 
       <ButtonsGroup>
         {/* H1 */}
-        <Tooltip label="Heading 1" placement="top">
+        <EditorTooltip label="Heading 1">
           <ToggleButton
             isDisabled={isDisabled}
             onChange={() => focusEditor().toggleHeading({ level: 1 }).run()}
@@ -162,10 +178,10 @@ export const MenuBar = React.memo((props: MenuBarProps) => {
             aria-label="Heading 1">
             <TextHOneIcon />
           </ToggleButton>
-        </Tooltip>
+        </EditorTooltip>
 
         {/* H2 */}
-        <Tooltip label="Heading 2" placement="top">
+        <EditorTooltip label="Heading 2">
           <ToggleButton
             isDisabled={isDisabled}
             onChange={() => focusEditor().toggleHeading({ level: 2 }).run()}
@@ -173,7 +189,7 @@ export const MenuBar = React.memo((props: MenuBarProps) => {
             aria-label="Heading 2">
             <TextHTwoIcon />
           </ToggleButton>
-        </Tooltip>
+        </EditorTooltip>
       </ButtonsGroup>
 
       <ButtonsGroup>
@@ -188,7 +204,7 @@ export const MenuBar = React.memo((props: MenuBarProps) => {
 
       <ButtonsGroup>
         {/* Unodered List */}
-        <Tooltip label="Unordered list" placement="top">
+        <EditorTooltip label="Unordered list">
           <ToggleButton
             isDisabled={isDisabled}
             onChange={() => focusEditor().toggleBulletList().run()}
@@ -196,12 +212,12 @@ export const MenuBar = React.memo((props: MenuBarProps) => {
             aria-label="Unordered list">
             <ListBulletsIcon />
           </ToggleButton>
-        </Tooltip>
+        </EditorTooltip>
       </ButtonsGroup>
 
       <ButtonsGroup>
         {/* Clear styles */}
-        <Tooltip label="Clear format" placement="top">
+        <EditorTooltip label="Clear format">
           <ToggleButton
             isDisabled={isDisabled}
             onChange={() => focusEditor().unsetAllMarks().run()}
@@ -209,7 +225,7 @@ export const MenuBar = React.memo((props: MenuBarProps) => {
             aria-label="Clear format">
             <TextTIcon />
           </ToggleButton>
-        </Tooltip>
+        </EditorTooltip>
       </ButtonsGroup>
     </MenuBarContainer>
   )

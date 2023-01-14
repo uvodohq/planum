@@ -4,7 +4,7 @@ import {
   FloatingNode,
   FloatingOverlay,
   FloatingPortal,
-} from '@floating-ui/react-dom-interactions'
+} from '@floating-ui/react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useContext } from 'react'
 
@@ -139,7 +139,10 @@ export default function SelectPopup(props: SelectPopupProps) {
                   exit="hidden"
                 />
               )}
-              <FloatingFocusManager context={select.context} preventTabbing>
+              <FloatingFocusManager
+                context={select.context}
+                initialFocus={-1}
+                modal={false}>
                 <Popup
                   css={popupCss}
                   {...select.getFloatingProps({

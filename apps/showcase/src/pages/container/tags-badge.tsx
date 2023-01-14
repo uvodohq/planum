@@ -10,7 +10,7 @@ import {
   TagGroupExample,
 } from '../../components/tag/tags-demos'
 
-import { UserIcon } from '../../assets/icons'
+import { UserIcon } from '@uvodohq/planum-icons'
 
 export default function TagsBadgeContainer() {
   return (
@@ -29,31 +29,31 @@ export default function TagsBadgeContainer() {
 
         <Box css={{ display: 'flex', gap: 32, mb: 28 }}>
           <Tag removeButtonAlign="left">Regular</Tag>
-          <Tag removeButtonAlign="left" rightIcon={<UserIcon />}>
+          <Tag removeButtonAlign="left" rightIcon={<UserIcon size={16} />}>
             Hover
           </Tag>
-          <Tag leftIcon={<UserIcon />}>Active</Tag>
+          <Tag leftIcon={<UserIcon size={16} />}>Active</Tag>
         </Box>
 
         <Box css={{ display: 'flex', gap: 32, mb: 28 }}>
-          <Tag leftIcon={<UserIcon />}>Regular</Tag>
-          <Tag leftIcon={<UserIcon />}> Hover</Tag>
-          <Tag leftIcon={<UserIcon />}>Active</Tag>
+          <Tag leftIcon={<UserIcon size={16} />}>Regular</Tag>
+          <Tag leftIcon={<UserIcon size={16} />}> Hover</Tag>
+          <Tag leftIcon={<UserIcon size={16} />}>Active</Tag>
         </Box>
 
         <Box css={{ display: 'flex', gap: 32, mb: 28 }}>
-          <Tag rightIcon={<UserIcon />} removable={false}>
+          <Tag rightIcon={<UserIcon size={16} />} removable={false}>
             Right Icon unremovable
           </Tag>
           <Tag removable={false}>no icon</Tag>
         </Box>
 
         <Box css={{ display: 'flex', gap: 32, mb: 28 }}>
-          <Tag leftIcon={<UserIcon />} removeButtonAlign="left">
+          <Tag leftIcon={<UserIcon size={16} />} removeButtonAlign="left">
             With Right icon
           </Tag>
 
-          <Tag rightIcon={<UserIcon />} removeButtonAlign="right">
+          <Tag rightIcon={<UserIcon size={16} />} removeButtonAlign="right">
             With Right Icon
           </Tag>
         </Box>
@@ -102,21 +102,21 @@ export default function TagsBadgeContainer() {
         }}>
         <TagSelectExample
           placeholder="tshirts, black, red"
-          label="Label"
+          label="sfsdf ff"
           aria-label="label"
         />
         <TagSelectExample
           placeholder="tshirts, black, red"
           label="Label"
           aria-label="label"
-          leftIcon={<UserIcon />}
+          leftIcon={<UserIcon size={16} />}
           isDisabled
         />
         <TagSelectExample
           placeholder="tshirts, black, red"
           label="Label"
           aria-label="label"
-          leftIcon={<UserIcon />}
+          leftIcon={<UserIcon size={16} />}
           description="This is a textarea real example"
           successMessage="Success message, You did it!"
           errorMessage="You can select max 3 tags"

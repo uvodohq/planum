@@ -1,14 +1,30 @@
 import {
   Box,
   Button,
+  Dialog,
+  DialogTrigger,
+  DialogPopup,
+  DialogHeading,
+  DialogDescription,
+  DialogClose,
   Drawer,
   H1,
   H3,
   Paragraph,
-  styled,
   Tooltip,
+  styled,
+  Popover,
+  PopoverClose,
+  PopoverDescription,
+  PopoverHeading,
+  PopoverPopup,
+  PopoverTrigger,
+  TooltipTrigger,
+  TooltipPopup,
+  css,
 } from '@uvodohq/planum'
-import React from 'react'
+import { useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
 
 import MenuExamples from '../../components/menu-examples'
 import {
@@ -23,6 +39,92 @@ import {
   ModalExampleUnClosable,
   NestedModalExample,
 } from '../../components/modal-examples'
+import { CloseIcon, DotsThreeIcon } from '@uvodohq/planum-icons'
+
+const mobileBottomSheetMotion = {
+  initial: { opacity: 0, y: 200 },
+  animate: { opacity: 1, y: 0 },
+  exit: { opacity: 0, y: 200 },
+  transition: {
+    duration: 0.15,
+  },
+}
+
+export const StyledMobileBottomSheet = styled(motion.div, {
+  height: '100%',
+  width: '100%',
+  background: '#fff',
+  position: 'absolute',
+  overflowY: 'auto',
+  '-webkit-overflow-scrolling': 'touch',
+  overscrollBehavior: 'contain',
+})
+
+function UncontrolledDialog() {
+  return (
+    <Dialog>
+      <DialogTrigger>My trigger</DialogTrigger>
+      <DialogPopup style={{ height: 'calc(100% - 64px)', top: 64 }}>
+        <StyledMobileBottomSheet {...mobileBottomSheetMotion}>
+          <DialogHeading>My dialog heading</DialogHeading>
+          <DialogDescription>My dialog description</DialogDescription>
+          <DialogClose>Close</DialogClose>
+          <NestedModalExample />
+          <MenuExamples />
+        </StyledMobileBottomSheet>
+      </DialogPopup>
+    </Dialog>
+  )
+}
+
+function UncontrolledPopover() {
+  return (
+    <Popover placement="right-end">
+      <PopoverTrigger>
+        <DotsThreeIcon />
+      </PopoverTrigger>
+      <PopoverPopup>
+        <Box css={{ boxShadow: '$lg', bg: '#fff', p: 24 }}>
+          <PopoverHeading>My dialog heading</PopoverHeading>
+          <PopoverDescription>My dialog description</PopoverDescription>
+
+          <NestedModalExample />
+          <MenuExamples />
+
+          <PopoverClose>
+            <CloseIcon />
+          </PopoverClose>
+        </Box>
+      </PopoverPopup>
+    </Popover>
+  )
+}
+
+function ControlledDialog() {
+  const [open, setOpen] = useState(false)
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setOpen(true)
+    }, 4000)
+    return () => clearTimeout(timeout)
+  }, [])
+
+  return (
+    <div>
+      <p>The dialog will open in 4 seconds...</p>
+      <Dialog open={open} onOpenChange={setOpen}>
+        <DialogPopup>
+          <Box css={{ bg: '#fff', w: 200, h: 200 }}>
+            <DialogHeading>I opened automatically</DialogHeading>
+            <DialogDescription>After 4 seconds</DialogDescription>
+            <DialogClose>Close</DialogClose>
+          </Box>
+        </DialogPopup>
+      </Dialog>
+    </div>
+  )
+}
 
 const StyledDrawerButton = styled('button', {
   background: 'green',
@@ -42,7 +144,7 @@ const StyledDrawerButton = styled('button', {
 })
 
 function DrawerExample() {
-  const Hamburger = (props) => {
+  const Hamburger = (props: any) => {
     const isOpen = props['data-open']
     return (
       <StyledDrawerButton {...props}>
@@ -103,10 +205,18 @@ export default function FormElementsContainer() {
         <ModalExampleAsBottomSheet />
       </Box>
 
-      {/* Modal */}
-      <H1 css={{ mb: 66, fw: 700 }}>Drawer</H1>
+      {/* Dialog */}
+      <H1 css={{ mb: 66, fw: 700 }}>Dialog</H1>
       <Box css={{ d: 'flex', gap: 40, mb: 128 }}>
         <DrawerExample />
+        <ControlledDialog />
+        <UncontrolledDialog />
+      </Box>
+
+      {/* Popover */}
+      <H1 css={{ mb: 66, fw: 700 }}>Popover</H1>
+      <Box css={{ d: 'flex', gap: 40, mb: 128 }}>
+        <UncontrolledPopover />
       </Box>
 
       {/* Tooltip */}
@@ -120,81 +230,89 @@ export default function FormElementsContainer() {
           flexWrap: 'wrap',
           '& > *': { minWidth: 100 },
         }}>
-        <Tooltip label="Please contact support" placement="top">
-          <Box
-            as="button"
-            css={{
-              background: '$blue400',
-              p: 8,
-              br: 4,
-              border: 'none',
-              fontSize: '$16',
-            }}>
+        <Tooltip placement="top">
+          <TooltipTrigger
+            className={css({ background: '$blue400', px: 14, br: 4 })()}>
             Top - button
-          </Box>
+          </TooltipTrigger>
+          <TooltipPopup>Please contact support</TooltipPopup>
         </Tooltip>
 
-        <Tooltip label="Please contact support" placement="top" defaultIsOpen>
-          <Box
-            as="button"
-            css={{
-              background: '$blue400',
-              p: 8,
-              br: 4,
-              border: 'none',
-              fontSize: '$16',
-            }}>
+        <Tooltip placement="top" defaultIsOpen>
+          <TooltipTrigger
+            className={css({ background: '$blue400', px: 14, br: 4 })()}>
             Default is open
-          </Box>
+          </TooltipTrigger>
+          <TooltipPopup>Please contact support</TooltipPopup>
         </Tooltip>
 
-        <Tooltip label="Please contact support" placement="top">
-          <Paragraph>Planum text</Paragraph>
+        <Tooltip placement="top">
+          <TooltipTrigger>
+            <Paragraph>Planum text</Paragraph>
+          </TooltipTrigger>
+          <TooltipPopup>Please contact support</TooltipPopup>
         </Tooltip>
 
-        <Tooltip label="Please contact support" placement="bottom">
-          <Box
-            css={{
-              background: '$surface300',
-              dflex: 'center',
-              padding: 8,
-            }}>
-            Bottom - div
-          </Box>
+        <Tooltip placement="bottom">
+          <TooltipTrigger>
+            <Box
+              css={{
+                background: '$surface300',
+                dflex: 'center',
+                padding: 8,
+              }}>
+              Bottom - div
+            </Box>
+          </TooltipTrigger>
+          <TooltipPopup>Please contact support</TooltipPopup>
         </Tooltip>
 
-        <Tooltip
-          label="Everybody should have come across a scenario where you should restrict the long text for the desired width"
-          placement="top">
-          <Box
-            css={{
-              background: '$surface300',
-              dflex: 'center',
-              padding: 8,
-            }}>
-            Long text - top
-          </Box>
+        <Tooltip placement="top">
+          <TooltipTrigger>
+            <Box
+              css={{
+                background: '$surface300',
+                dflex: 'center',
+                padding: 8,
+              }}>
+              Long text - top
+            </Box>
+          </TooltipTrigger>
+          <TooltipPopup>
+            Everybody should have come across a scenario where you should
+            restrict the long text for the desired width
+          </TooltipPopup>
         </Tooltip>
 
-        <Tooltip
-          label="Everybody should have come across a scenario where you should restrict the long text for the desired width"
-          placement="bottom">
-          <Box
-            css={{
-              background: '$surface300',
-              dflex: 'center',
-              padding: 8,
-            }}>
-            Long text - bottom
-          </Box>
+        <Tooltip placement="bottom">
+          <TooltipTrigger>
+            <Box
+              css={{
+                background: '$surface300',
+                dflex: 'center',
+                padding: 8,
+              }}>
+              Long text - bottom
+            </Box>
+          </TooltipTrigger>
+          <TooltipPopup>
+            Everybody should have come across a scenario where you should
+            restrict the long text for the desired width
+          </TooltipPopup>
         </Tooltip>
 
-        <Tooltip label="Please contact support">
-          <Button>Planum Button</Button>
+        <Tooltip>
+          <TooltipTrigger>
+            <Button>Planum Button</Button>
+          </TooltipTrigger>
+          <TooltipPopup>Please contact support</TooltipPopup>
         </Tooltip>
 
-        <Tooltip label="This tooltip can't hide" isOpen>
-          <Button>Show always</Button>
+        <Tooltip open>
+          <TooltipTrigger>
+            <Button>Show always</Button>
+          </TooltipTrigger>
+          <TooltipPopup>This tooltip can't hide</TooltipPopup>
         </Tooltip>
       </Box>
     </>

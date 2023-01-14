@@ -1,5 +1,5 @@
 import { Alert, Button, Flex } from '@uvodohq/planum'
-import { ArrowRightIcon } from '../../assets/icons'
+import { ArrowRightIcon } from '@uvodohq/planum-icons'
 
 type AlertList = ('primary' | 'success' | 'warning' | 'error' | 'info')[]
 

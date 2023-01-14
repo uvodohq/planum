@@ -1,21 +1,38 @@
-import { cloneElement } from 'react'
-import { mergeRefs } from 'react-merge-refs'
+import { useMergeRefs } from '@floating-ui/react'
+import React from 'react'
 
-import type { UseTooltip } from './use-tooltip'
+import { useTooltipState } from './use-tooltip-state'
 
-interface TooltipTriggerProps {
-  trigger: JSX.Element
-  tooltip: UseTooltip
-}
+export const TooltipTrigger = React.forwardRef<
+  HTMLElement,
+  React.HTMLProps<HTMLElement> & { asChild?: boolean }
+>(({ children, asChild = false, ...props }, propRef) => {
+  const state = useTooltipState()
+  const childrenRef = (children as any).ref
+  const ref = useMergeRefs([state.reference, propRef, childrenRef])
 
-export const TooltipTrigger = (props: TooltipTriggerProps) => {
-  const { tooltip, trigger } = props
+  // `asChild` allows the user to pass any element as the anchor
+  if (asChild && React.isValidElement(children)) {
+    return React.cloneElement(
+      children,
+      state.getReferenceProps({
+        ref,
+        ...props,
+        ...children.props,
+        'data-state': state.open ? 'open' : 'closed',
+      }),
+    )
+  }
 
-  // Preserve the consumer's ref
-  const ref = mergeRefs([tooltip.reference, (trigger as any).ref])
-
-  return cloneElement(
-    trigger,
-    tooltip.getReferenceProps({ ref, ...trigger.props }),
+  return (
+    <button
+      ref={ref}
+      // The user can style the trigger based on the state
+      data-state={state.open ? 'open' : 'closed'}
+      {...state.getReferenceProps(props)}>
+      {children}
+    </button>
   )
-}
+})
+
+TooltipTrigger.displayName = 'TooltipTrigger'

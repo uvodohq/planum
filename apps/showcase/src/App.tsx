@@ -8,7 +8,6 @@ import {
   ButtonDarkPage,
   ButtonWhitePage,
   ColorPage,
-  EditorPage,
   EffectPage,
   ExtraComponentsPage,
   FormElementsPage,
@@ -21,7 +20,10 @@ import {
   TagsBadgePage,
   TextareaPage,
   TypographyPage,
+  IconsPage,
+  EditorPage,
 } from './pages'
+import { FormHookPage } from './pages/form-hook'
 
 export default function DemoApp() {
   return (
@@ -35,9 +37,11 @@ export default function DemoApp() {
       <EffectPage />
       <ButtonDarkPage />
       <ButtonWhitePage />
+      <IconsPage />
       <InputPage />
       <TextareaPage />
       <FormElementsPage />
+      <FormHookPage />
       <SelectPage />
       <OverlaysPage />
       <TagsBadgePage />

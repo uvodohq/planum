@@ -1,7 +1,7 @@
 /* eslint-disable no-alert */
 import { forwardRef } from 'react'
-import { DotsThreeIcon, ListIcon } from '../assets/icons'
-import { Menu, MenuItem, Button, Box, Flex, styled } from '@uvodohq/planum'
+import { DotsThreeIcon, ListIcon } from '@uvodohq/planum-icons'
+import { Menu, MenuItem, Button, Box, Flex } from '@uvodohq/planum'
 
 export const menuItems = (
   <>
@@ -25,7 +25,7 @@ export const CustomButton = forwardRef<any, any>(
 
 CustomButton.displayName = 'CustomButton'
 
-export const RowBox = (props) => {
+export const RowBox = (props: any) => {
   return (
     <Flex
       css={{
@@ -43,24 +43,10 @@ export const RowBox = (props) => {
   )
 }
 
-const NativeButton = styled('button', {
-  background: 'none',
-  fontSize: '$16',
-  textAlign: 'left',
-  border: '1px solid transparent',
-  cursor: 'pointer',
-
-  '&:focus': {
-    borderColor: '$primary600',
-    outline: '2px solid $colors$primary100',
-    outlineOffset: '3px',
-  },
-})
-
 export default function MenuExamples() {
   return (
     <>
-      <Menu trigger={<NativeButton> Edit menu</NativeButton>}>
+      <Menu trigger={<button> Edit menu</button>}>
         <MenuItem label="Undo" onSelect={alert} />
         <MenuItem label="Redo" />
         <MenuItem label="Cut" disabled />
@@ -77,9 +63,7 @@ export default function MenuExamples() {
         <MenuItem label="Instagram" />
       </Menu>
 
-      <Menu
-        trigger={<NativeButton> another button</NativeButton>}
-        defaultIsOpen={false}>
+      <Menu trigger={<button> another button</button>} defaultIsOpen={false}>
         <MenuItem label="Undo" onSelect={alert} />
         <MenuItem label="Redo" />
         <MenuItem label="Cut" disabled />
@@ -122,12 +106,12 @@ export default function MenuExamples() {
         }}>
         <Menu
           trigger={
-            <NativeButton
+            <button
               onClick={(e) => {
                 alert('i am button onClick')
               }}>
               Click propagation simple
-            </NativeButton>
+            </button>
           }>
           <MenuItem label="Undo" onSelect={alert} />
           <MenuItem label="Redo" />

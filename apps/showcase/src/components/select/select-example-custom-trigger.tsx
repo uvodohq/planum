@@ -1,6 +1,6 @@
 import type { SelectProps } from '@uvodohq/planum'
 import { Select, styled, subheaderCss } from '@uvodohq/planum'
-import { UserIcon } from '../../assets/icons'
+import { UserIcon } from '@uvodohq/planum-icons'
 
 const StyledButton = styled('button', subheaderCss, {
   fw: '$regular',

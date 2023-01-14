@@ -91,8 +91,8 @@ export const palette = {
   black400: '#c7c7c7',
   black500: '#a2a2a2',
   black600: '#808080',
-  black700: '#595959',
-  black800: '#161616',
+  black700: '#424242',
+  black800: '#212121',
   black900: '#000000',
 }
 

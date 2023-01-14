@@ -15,7 +15,7 @@ export default defineConfig((options: Options) => {
     minify: isProd,
     treeshake: isProd,
     format: formats,
-    dts: isProd,
+    dts: true,
     external: ['react', 'framer-motion'],
     metafile: isProd,
   }

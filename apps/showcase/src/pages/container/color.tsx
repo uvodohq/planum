@@ -1,4 +1,3 @@
-import * as React from 'react'
 import { Box, Caption, H3, tokens, theme, styled } from '@uvodohq/planum'
 
 const {

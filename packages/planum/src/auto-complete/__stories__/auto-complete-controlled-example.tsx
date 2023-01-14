@@ -1,5 +1,3 @@
-import { useState } from 'react'
-
 import type { AutoCompleteProps } from '..'
 import { AutoComplete } from '..'
 import type { Country } from './options'
@@ -144,7 +142,7 @@ export const data2 = [
 export default function AutoCompleteExampleControlled(
   props?: Partial<AutoCompleteProps<Country>>,
 ) {
-  const [value, setValue] = useState('')
+  // const [value, setValue] = useState('')
 
   // function onChange(value: any) {
   //   console.log('onChange', value)
@@ -157,9 +155,9 @@ export default function AutoCompleteExampleControlled(
       // onChange={(value) => {
       //   console.log('onChange', value)
       // }}
-      onSelect={(value) => {
-        // console.log('onSelect', value)
-      }}
+      // onSelect={(value) => {
+      //   // console.log('onSelect', value)
+      // }}
       options={countryList}
       labelKey="name"
       placeholder="Search countries"

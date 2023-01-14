@@ -1,4 +1,4 @@
-import type { Placement } from '@floating-ui/react-dom-interactions'
+import type { Placement } from '@floating-ui/react'
 import {
   autoUpdate,
   offset,
@@ -11,7 +11,7 @@ import {
   useListNavigation,
   useRole,
   useTypeahead,
-} from '@floating-ui/react-dom-interactions'
+} from '@floating-ui/react'
 import { useUpdateEffect } from '@react-aria/utils'
 import type { MutableRefObject } from 'react'
 import { useLayoutEffect, useState } from 'react'
@@ -26,7 +26,7 @@ export interface UseSelectProps {
 }
 
 export interface UseSelectReturn {
-  getFloatingProps: () => Record<string, unknown>
+  getFloatingProps: (props?: any) => Record<string, unknown>
   referenceProps: Record<string, unknown>
   getItemProps: () => Record<string, unknown>
   direction: any

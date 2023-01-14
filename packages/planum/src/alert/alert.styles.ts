@@ -15,33 +15,33 @@ export const AlertContainer = styled('div', {
   variants: {
     variant: {
       primary: {
-        backgroundColor: '$primary25',
-        color: '$primary600',
-        shadowLineAll: '$colors$primary100 !important',
+        backgroundColor: '$primary50',
+        color: '$primary800',
+        shadowLineAll: '$colors$primary300 !important',
       },
 
       info: {
-        backgroundColor: '$info25',
-        color: '$info',
-        shadowLineAll: '$colors$info100 !important',
+        backgroundColor: '$info50',
+        color: '$info800',
+        shadowLineAll: '$colors$info300 !important',
       },
 
       error: {
-        backgroundColor: '$danger25',
-        color: '$danger',
-        shadowLineAll: '$colors$danger100 !important',
+        backgroundColor: '$danger50',
+        color: '$danger800',
+        shadowLineAll: '$colors$danger300 !important',
       },
 
       warning: {
-        backgroundColor: '$warning25',
-        color: '$warning',
-        shadowLineAll: '$colors$warning100 !important',
+        backgroundColor: '$warning50',
+        color: '$warning800',
+        shadowLineAll: '$colors$warning300 !important',
       },
 
       success: {
-        backgroundColor: '$success25',
-        color: '$success',
-        shadowLineAll: '$colors$success100 !important',
+        backgroundColor: '$success50',
+        color: '$success800',
+        shadowLineAll: '$colors$success300 !important',
       },
     },
   },

@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import { styled } from '@stitches/react'
 import * as React from 'react'
 
@@ -5,7 +6,7 @@ import { Button } from '../../button'
 import { Input } from '../../input'
 import { Box, Flex, Stack } from '../../layout'
 import SelectComponent from '../../select/__stories__/select-example'
-import { Dialog } from '../dialog/dialog'
+import { ModalContent } from '../modal-content/modal-content'
 import { Modal } from '../modal'
 import { useModalState } from '../use-modal-state'
 
@@ -65,9 +66,9 @@ export function ModalExampleDefault() {
     <Modal
       trigger={<NativeButton>Default modal</NativeButton>}
       openOnMobileAs="drawer">
-      <Dialog
+      <ModalContent
         title="This is a dialog"
-        description="This is a dialog description"></Dialog>
+        description="This is a dialog description"></ModalContent>
     </Modal>
   )
 }
@@ -75,7 +76,7 @@ export function ModalExampleDefault() {
 export function ModalExampleCustomFooter() {
   return (
     <Modal trigger={<NativeButton>custom footer</NativeButton>}>
-      <Dialog
+      <ModalContent
         title="Custom footer action buttons"
         renderFooter={(props) => (
           <Box css={{ px: 32, pt: 32 }}>
@@ -84,7 +85,7 @@ export function ModalExampleCustomFooter() {
           </Box>
         )}>
         {/* <p id={props.descriptionId}>Modal description</p> */}
-      </Dialog>
+      </ModalContent>
     </Modal>
   )
 }
@@ -94,14 +95,14 @@ export function ModalExampleUnClosable() {
     <Modal
       closable={false}
       trigger={<NativeButton>unclosable modal</NativeButton>}>
-      <Dialog title="This is an unclosable dialog">
+      <ModalContent title="This is an unclosable dialog">
         <p
         // id={props.descriptionId}
         >
           You cant close me, when click outside me. or press ESC key. usefull
           for unsaved forms in modals
         </p>
-      </Dialog>
+      </ModalContent>
     </Modal>
   )
 }
@@ -109,7 +110,7 @@ export function ModalExampleUnClosable() {
 export function ModalExampleOverflow() {
   return (
     <Modal trigger={<NativeButton>overflow scroll modal</NativeButton>}>
-      <Dialog
+      <ModalContent
         title="This is a dialog"
         description="Long content should be wrapped in a scrolled content."
         renderFooter={(props) => (
@@ -120,7 +121,7 @@ export function ModalExampleOverflow() {
         )}>
         <Box css={{ h: 1000, bg: '$surface200' }}></Box>
         end of content
-      </Dialog>
+      </ModalContent>
     </Modal>
   )
 }
@@ -128,7 +129,7 @@ export function ModalExampleOverflow() {
 export function NestedModalExample() {
   return (
     <Modal trigger={<NativeButton>nested modal</NativeButton>}>
-      <Dialog title="This is a dialog 1">
+      <ModalContent title="This is a dialog 1">
         <Stack y="$24">
           <p
           // id={props.descriptionId}
@@ -137,7 +138,7 @@ export function NestedModalExample() {
           </p>
 
           <Modal trigger={<NativeButton>open 2nd modal</NativeButton>}>
-            <Dialog title="This is a dialog 2">
+            <ModalContent title="This is a dialog 2">
               <Stack y="$24">
                 <p
                 // id={props.descriptionId}
@@ -146,10 +147,10 @@ export function NestedModalExample() {
                 </p>
                 {/* <NativeButton onClick={props.close}>close 2nd</NativeButton> */}
               </Stack>
-            </Dialog>
+            </ModalContent>
           </Modal>
         </Stack>
-      </Dialog>
+      </ModalContent>
     </Modal>
   )
 }
@@ -161,11 +162,11 @@ export function ModalExampleControlled() {
 
   return (
     <Flex css={{ bg: '$success100', gap: 22, p: 22 }}>
-      <Modal onClose={() => alert('closed')} state={state}>
-        <Dialog
+      <Modal onClose={() => window.alert('closed')} state={state}>
+        <ModalContent
           title="Controlled Modal"
           description="This modal state controled by useModalState hook, and  
-          defaultIsOpen: true"></Dialog>
+          defaultIsOpen: true"></ModalContent>
       </Modal>
 
       <button onClick={state.openModal}>
@@ -182,7 +183,7 @@ export function ModalExampleOverflowSelect() {
     <Modal
       initialFocus={ref}
       trigger={<NativeButton>overflow scroll with select popups</NativeButton>}>
-      <Dialog
+      <ModalContent
         title="This is a dialog"
         description="Long content should be wrapped in a scrolled content."
         renderFooter={(props) => (
@@ -201,7 +202,7 @@ export function ModalExampleOverflowSelect() {
           <SelectComponent defaultValue={14} />
         </Box>
         end of content
-      </Dialog>
+      </ModalContent>
     </Modal>
   )
 }

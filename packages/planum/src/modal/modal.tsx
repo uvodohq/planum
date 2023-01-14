@@ -2,7 +2,7 @@ import {
   FloatingNode,
   FloatingTree,
   useFloatingParentNodeId,
-} from '@floating-ui/react-dom-interactions'
+} from '@floating-ui/react'
 import { cloneElement } from 'react'
 
 import { ModalContext } from './modal-context'
@@ -64,10 +64,8 @@ export const Modal = (props: ModalProps) => {
 
   if (isFirstRootModal) {
     return (
-      // TODO: stoping propagation for when modal close, click event dispatchs automatically, and causes other links click. redundant span tag need to be removed
-      <span
-        onClick={(e) => e.stopPropagation()}
-        style={{ display: props.trigger ? '' : 'none' }}>
+      // if trigger prop not provided, modal focuses other underlay elements when closes.
+      <span style={{ display: props.trigger ? '' : 'none' }}>
         <FloatingTree>
           <ModalComponent {...props} />
         </FloatingTree>
