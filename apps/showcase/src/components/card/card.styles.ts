@@ -10,6 +10,7 @@ export const CardList = styled('ul', {
   display: 'grid',
   gridTemplateColumns: 'repeat( auto-fit, minmax(200px, auto) )',
   gap: '$24',
+  m: 0,
 })
 
 export const CardGrid = styled('li', {

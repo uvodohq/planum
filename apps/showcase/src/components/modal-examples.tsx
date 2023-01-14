@@ -10,22 +10,27 @@ import {
   Modal,
   useModalState,
   styled,
+  Paragraph,
 } from '@uvodohq/planum'
 
 import SelectComponent from './select/select-example'
 
-const NativeButton = styled('button', {
+const StyledNativeButton = styled('button', {
   bg: '$blue300',
   p: 8,
   whiteSpace: 'nowrap',
   br: 8,
+  fontSize: 16,
+  border: 'none',
+  cursor: 'pointer',
 })
 
 export function ModalExampleSimple() {
   return (
-    <Modal trigger={<NativeButton>Simple modal</NativeButton>}>
+    <Modal trigger={<StyledNativeButton>Simple modal</StyledNativeButton>}>
       <Box
         css={{
+          boxSizing: 'border-box',
           bg: '#fff',
           size: '100%',
           p: 32,
@@ -49,9 +54,10 @@ export function ModalExampleCustom() {
       }}
   `
   return (
-    <Modal trigger={<NativeButton>Custom width modal</NativeButton>}>
+    <Modal
+      trigger={<StyledNativeButton>Custom width modal</StyledNativeButton>}>
       <Box css={{ bg: '#fff', size: '100%', maxWidth: 1000, p: 32 }}>
-        <pre>{body}</pre>
+        <pre style={{ fontSize: 16 }}>{body}</pre>
       </Box>
     </Modal>
   )
@@ -60,7 +66,7 @@ export function ModalExampleCustom() {
 export function ModalExampleDefault() {
   return (
     <Modal
-      trigger={<NativeButton>Default modal</NativeButton>}
+      trigger={<StyledNativeButton>Default modal</StyledNativeButton>}
       openOnMobileAs="drawer">
       <ModalContent
         title="This is a dialog"
@@ -71,7 +77,7 @@ export function ModalExampleDefault() {
 
 export function ModalExampleCustomFooter() {
   return (
-    <Modal trigger={<NativeButton>custom footer</NativeButton>}>
+    <Modal trigger={<StyledNativeButton>custom footer</StyledNativeButton>}>
       <ModalContent
         title="Custom footer action buttons"
         renderFooter={(props) => (
@@ -79,9 +85,7 @@ export function ModalExampleCustomFooter() {
             <Button variant="secondaryDanger">Remove</Button>
             <Button onClick={props.closeModal}>Custom close</Button>
           </Box>
-        )}>
-        {/* <p id={props.descriptionId}>Modal description</p> */}
-      </ModalContent>
+        )}></ModalContent>
     </Modal>
   )
 }
@@ -90,14 +94,12 @@ export function ModalExampleUnClosable() {
   return (
     <Modal
       closable={false}
-      trigger={<NativeButton>unclosable modal</NativeButton>}>
+      trigger={<StyledNativeButton>unclosable modal</StyledNativeButton>}>
       <ModalContent title="This is an unclosable dialog">
-        <p
-        // id={props.descriptionId}
-        >
+        <Paragraph style={{ margin: 0, fontSize: 16, lineHeight: 'inherit' }}>
           You cant close me, when click outside me. or press ESC key. usefull
           for unsaved forms in modals
-        </p>
+        </Paragraph>
       </ModalContent>
     </Modal>
   )
@@ -105,7 +107,8 @@ export function ModalExampleUnClosable() {
 
 export function ModalExampleOverflow() {
   return (
-    <Modal trigger={<NativeButton>overflow scroll modal</NativeButton>}>
+    <Modal
+      trigger={<StyledNativeButton>overflow scroll modal</StyledNativeButton>}>
       <ModalContent
         title="This is a dialog"
         description="Long content should be wrapped in a scrolled content."
@@ -124,24 +127,20 @@ export function ModalExampleOverflow() {
 
 export function NestedModalExample() {
   return (
-    <Modal trigger={<NativeButton>nested modal</NativeButton>}>
+    <Modal trigger={<StyledNativeButton>nested modal</StyledNativeButton>}>
       <ModalContent title="This is a dialog 1">
         <Stack y="$24">
-          <p
-          // id={props.descriptionId}
-          >
+          <Paragraph style={{ margin: 0 }}>
             Try to open second modal, to test nested modals.
-          </p>
+          </Paragraph>
 
-          <Modal trigger={<NativeButton>open 2nd modal</NativeButton>}>
+          <Modal
+            trigger={<StyledNativeButton>open 2nd modal</StyledNativeButton>}>
             <ModalContent title="This is a dialog 2">
               <Stack y="$24">
-                <p
-                // id={props.descriptionId}
-                >
+                <Paragraph style={{ margin: 0 }}>
                   you are in 2nd modal, test ESC key to close it.
-                </p>
-                {/* <NativeButton onClick={props.close}>close 2nd</NativeButton> */}
+                </Paragraph>
               </Stack>
             </ModalContent>
           </Modal>
@@ -165,9 +164,9 @@ export function ModalExampleControlled() {
           defaultIsOpen: true"></ModalContent>
       </Modal>
 
-      <button onClick={state.openModal}>
+      <StyledNativeButton onClick={state.openModal}>
         open modal with button outside of modal
-      </button>
+      </StyledNativeButton>
     </Flex>
   )
 }
@@ -178,7 +177,11 @@ export function ModalExampleOverflowSelect() {
   return (
     <Modal
       initialFocus={ref}
-      trigger={<NativeButton>overflow scroll with select popups</NativeButton>}>
+      trigger={
+        <StyledNativeButton>
+          overflow scroll with select popups
+        </StyledNativeButton>
+      }>
       <ModalContent
         title="This is a dialog"
         description="Long content should be wrapped in a scrolled content."
@@ -206,7 +209,7 @@ export function ModalExampleOverflowSelect() {
 export function ModalExampleAsBottomSheet() {
   return (
     <Modal
-      trigger={<NativeButton>open as bottom sheet </NativeButton>}
+      trigger={<StyledNativeButton>open as bottom sheet </StyledNativeButton>}
       openOnMobileAs="bottomsheet">
       <Box
         css={{

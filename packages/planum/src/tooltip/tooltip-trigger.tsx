@@ -1,7 +1,16 @@
 import { useMergeRefs } from '@floating-ui/react'
 import React from 'react'
 
+import { styled } from '../theme'
 import { useTooltipState } from './use-tooltip-state'
+
+const StyledButton = styled('button', {
+  background: 'transparent',
+  fontSize: 16,
+  border: 'none',
+  cursor: 'pointer',
+  p: 0,
+})
 
 export const TooltipTrigger = React.forwardRef<
   HTMLElement,
@@ -25,13 +34,13 @@ export const TooltipTrigger = React.forwardRef<
   }
 
   return (
-    <button
+    <StyledButton
       ref={ref}
       // The user can style the trigger based on the state
       data-state={state.open ? 'open' : 'closed'}
       {...state.getReferenceProps(props)}>
       {children}
-    </button>
+    </StyledButton>
   )
 })
 

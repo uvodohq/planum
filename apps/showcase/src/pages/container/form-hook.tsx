@@ -33,6 +33,8 @@ import {
 import { DEFAULT_NUMBER } from '../../components/form/schemas'
 
 const StyledTitle = styled('h1', {
+  fontWeight: 'inherit',
+  fontSize: 'inherit',
   my: '$16',
 })
 

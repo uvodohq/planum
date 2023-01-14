@@ -60,7 +60,7 @@ export default function FormElementsContainer() {
   return (
     <>
       {/* Checkbox */}
-      <H1 css={{ mb: 66, fontWeight: 700 }} id="checkbox">
+      <H1 css={{ mt: 0, mb: 66, fontWeight: 700 }} id="checkbox">
         Checkbox
       </H1>
 
@@ -143,7 +143,7 @@ export default function FormElementsContainer() {
 
       <Box css={{ display: 'flex', gap: 200, mb: 128 }}>
         <Box css={{ minWidth: 100 }}>
-          <H3 css={{ mb: 20 }}>Active</H3>
+          <H3 css={{ m: 0, mb: 20, fw: 'inherit' }}>Active</H3>
           <Box css={{ mb: 32 }}>
             <Toggle aria-label="label" />
           </Box>
@@ -154,7 +154,7 @@ export default function FormElementsContainer() {
         </Box>
 
         <Box css={{}}>
-          <H3 css={{ mb: 20 }}>Disabled</H3>
+          <H3 css={{ m: 0, mb: 20, fw: 'inherit' }}>Disabled</H3>
           <Box css={{ mb: 32 }}>
             <Toggle aria-label="label" isDisabled />
           </Box>
@@ -166,7 +166,7 @@ export default function FormElementsContainer() {
       </Box>
 
       {/* Radios */}
-      <H1 css={{ mb: 66, fontWeight: 700 }} id="radio">
+      <H1 css={{ m: 0, mb: 66, fontWeight: 700 }} id="radio">
         Radio
       </H1>
 

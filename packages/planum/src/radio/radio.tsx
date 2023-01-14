@@ -43,7 +43,9 @@ const Circle = (props: ComponentProps) => (
         strokeWidth={2}
       />
     </StyledRadioSvgCircle>
-    {props.children && <Paragraph css={{ ml: 10 }}>{props.children}</Paragraph>}
+    {props.children && (
+      <Paragraph css={{ m: 0, ml: 10 }}>{props.children}</Paragraph>
+    )}
   </>
 )
 

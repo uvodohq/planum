@@ -7,9 +7,15 @@ import {
   InputSearch,
   InputUrl,
   Input,
+  styled,
 } from '@uvodohq/planum'
 
 import { CopySimpleIcon, UserIcon } from '@uvodohq/planum-icons'
+
+const StyledTitle = styled(H3, {
+  fw: 'inherit',
+  mb: 20,
+})
 
 const RowBox = (props: any) => (
   <Box
@@ -84,7 +90,7 @@ export default function InputContainer() {
 
   return (
     <>
-      <H3 css={{ mb: 20 }}>Default</H3>
+      <StyledTitle>Default</StyledTitle>
 
       {/* Empty Idle */}
       <RowBox>
@@ -242,7 +248,7 @@ export default function InputContainer() {
       </RowBox>
 
       {/* With Normal Description */}
-      <H3 css={{ mt: 100, mb: 20 }}>With Label</H3>
+      <StyledTitle css={{ mt: 100 }}>With Label</StyledTitle>
       <RowBox>
         <InputExample aria-label="label" />
 
@@ -353,7 +359,7 @@ export default function InputContainer() {
       </RowBox>
 
       {/* With Prefix Suffix */}
-      <H3 css={{ mt: 100, mb: 20 }}>With Prefix and Suffix</H3>
+      <StyledTitle css={{ mt: 100 }}>With Prefix and Suffix</StyledTitle>
 
       <RowBox>
         <Input
@@ -425,7 +431,7 @@ export default function InputContainer() {
         />
       </RowBox>
 
-      <H3 css={{ mt: 100, mb: 20 }}>Password Input</H3>
+      <StyledTitle css={{ mt: 100 }}>Password Input</StyledTitle>
 
       {/* Password Input */}
       <RowBox>
@@ -451,7 +457,7 @@ export default function InputContainer() {
       </RowBox>
 
       {/* URL Input */}
-      <H3 css={{ mt: 100, mb: 20 }}>URL input</H3>
+      <StyledTitle css={{ mt: 100 }}>URL input</StyledTitle>
       <RowBox>
         <InputUrl
           aria-label="label"
@@ -490,7 +496,7 @@ export default function InputContainer() {
       </RowBox>
 
       {/* Number */}
-      <H3 css={{ mt: 100, mb: 20 }}>Number Input</H3>
+      <StyledTitle css={{ mt: 100 }}>Number Input</StyledTitle>
       <RowBox>
         <InputNumber
           aria-label="label"
@@ -527,7 +533,7 @@ export default function InputContainer() {
       </RowBox>
 
       {/* Search */}
-      <H3 css={{ mt: 100, mb: 20 }}>Search Input</H3>
+      <StyledTitle css={{ mt: 100 }}>Search Input</StyledTitle>
       <RowBox>
         <InputSearch aria-label="label" label="&nbsp;" placeholder="Search" />
         <InputSearch

@@ -12,7 +12,7 @@ const Section = styled('div', {
 export default function EffectContainer() {
   return (
     <>
-      <H3 css={{ mb: 20 }} id="shadows">
+      <H3 css={{ mb: 20, fontWeight: 'inherit' }} id="shadows">
         Shadows
       </H3>
 
@@ -40,7 +40,7 @@ export default function EffectContainer() {
         })}
       </Section>
 
-      <H3 css={{ mb: 20 }} id="gradients">
+      <H3 css={{ mb: 20, fontWeight: 'inherit' }} id="gradients">
         Gradients
       </H3>
 

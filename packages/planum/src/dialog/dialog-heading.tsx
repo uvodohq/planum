@@ -1,7 +1,14 @@
 import { useId } from '@floating-ui/react'
 import * as React from 'react'
 
+import { styled } from '../theme'
 import { useDialogState } from './use-dialog-state'
+
+const StyledHeading = styled('h2', {
+  fw: 'inherit',
+  fontSize: 'inherit',
+  m: 0,
+})
 
 export const DialogHeading = React.forwardRef<
   HTMLHeadingElement,
@@ -18,9 +25,9 @@ export const DialogHeading = React.forwardRef<
   }, [id, setLabelId])
 
   return (
-    <h2 {...props} ref={ref} id={id}>
+    <StyledHeading {...props} ref={ref} id={id}>
       {children}
-    </h2>
+    </StyledHeading>
   )
 })
 

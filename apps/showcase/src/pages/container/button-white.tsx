@@ -5,6 +5,17 @@ import { styled } from '@uvodohq/planum'
 
 import { PlusIcon } from '@uvodohq/planum-icons'
 
+const Title = styled(H2, {
+  color: '$textDark',
+  fontWeight: 'inherit',
+  m: 0,
+})
+
+const TableData = styled('td', {
+  verticalAlign: 'top',
+  padding: 0,
+})
+
 function WhatsappIcon(props) {
   const { size = 24 } = props
   return (
@@ -22,20 +33,6 @@ function WhatsappIcon(props) {
     </svg>
   )
 }
-
-const Title = styled(H2, {
-  color: '$textDark',
-})
-
-const TableRow = styled('tr', {
-  display: 'flex',
-  justifyContent: 'space-between',
-  mb: 48,
-})
-
-const TableData = styled('td', {
-  display: 'inline-block',
-})
 
 const LoadingButton = (props: any) => {
   const [isLoading, setIsLoading] = useState(false)
@@ -63,7 +60,7 @@ const FlexCell = (props: any) => (
 
 const ButtonGroupTr = ({ title, ...rest }: any) => {
   return (
-    <TableRow>
+    <tr>
       <TableData>
         <Text>{title}</Text>
       </TableData>
@@ -128,7 +125,7 @@ const ButtonGroupTr = ({ title, ...rest }: any) => {
           </LoadingButton>
         </FlexCell>
       </TableData>
-    </TableRow>
+    </tr>
   )
 }
 

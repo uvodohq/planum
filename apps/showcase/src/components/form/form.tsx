@@ -37,6 +37,8 @@ export const Form = <T extends FieldValues, C>(props: FormProps<T, C>) => {
           disabled={isDisabled}
           style={{
             minHeight: 'inherit',
+            border: 'none',
+            padding: 0,
           }}>
           {children}
         </fieldset>

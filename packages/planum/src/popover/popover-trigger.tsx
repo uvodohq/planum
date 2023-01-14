@@ -1,7 +1,16 @@
 import { useMergeRefs } from '@floating-ui/react'
 import * as React from 'react'
 
+import { styled } from '../theme'
 import { usePopoverState } from './use-popover-state'
+
+const StyledButton = styled('button', {
+  bg: 'transparent',
+  fontSize: 16,
+  border: 'none',
+  cursor: 'pointer',
+  p: 0,
+})
 
 interface PopoverTriggerProps {
   children: React.ReactNode
@@ -41,7 +50,7 @@ export const PopoverTrigger = React.forwardRef<
   }
 
   return (
-    <button
+    <StyledButton
       ref={ref}
       data-state={dataState}
       {...state.getReferenceProps({
@@ -49,7 +58,7 @@ export const PopoverTrigger = React.forwardRef<
         onClick: mergedOnClickEvents,
       })}>
       {children}
-    </button>
+    </StyledButton>
   )
 })
 

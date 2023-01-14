@@ -30,6 +30,7 @@ export const StyledNotification = styled('div', {
 
 export const StyledMessage = styled(Paragraph, {
   maxWidth: 240,
+  m: 0,
   mr: '$16',
 })
 

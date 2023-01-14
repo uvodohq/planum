@@ -22,6 +22,7 @@ export const StyledThumb = styled('span', {
 })
 
 export const StyledSwitch = styled('div', {
+  boxSizing: 'border-box',
   display: 'inline-flex',
   alignItems: 'center',
   width: 56,
@@ -33,6 +34,7 @@ export const StyledSwitch = styled('div', {
   position: 'relative',
   WebkitTapHighlightColor: 'rgba(0, 0, 0, 0)',
   cursor: 'pointer',
+  m: 0,
 
   [`&:active ${StyledThumb}`]: {
     transform: 'scale(0.94)',

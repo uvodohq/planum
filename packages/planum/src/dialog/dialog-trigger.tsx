@@ -1,7 +1,16 @@
 import { useMergeRefs } from '@floating-ui/react'
 import * as React from 'react'
 
+import { styled } from '../theme'
 import { useDialogState } from './use-dialog-state'
+
+const StyledButton = styled('button', {
+  bg: 'transparent',
+  fontSize: 16,
+  border: 'none',
+  cursor: 'pointer',
+  p: 0,
+})
 
 interface DialogTriggerProps {
   children: React.ReactNode
@@ -34,9 +43,12 @@ export const DialogTrigger = React.forwardRef<
   }
 
   return (
-    <button ref={ref} data-state={dataState} {...state.getReferenceProps(rest)}>
+    <StyledButton
+      ref={ref}
+      data-state={dataState}
+      {...state.getReferenceProps(rest)}>
       {children}
-    </button>
+    </StyledButton>
   )
 })
 

@@ -14,7 +14,7 @@ export const IconWrapper = (props: any) => {
       <Box>
         <Icon />
       </Box>
-      <Box>{name}</Box>
+      <Box css={{ m: 0 }}>{name}</Box>
     </Container>
   )
 }

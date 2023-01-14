@@ -7,7 +7,7 @@ import TextStyle from '@tiptap/extension-text-style'
 import { EditorContent } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 //
-import { Field, mergeProps, useField, usePress } from '@uvodohq/planum'
+import { css, Field, mergeProps, useField, usePress } from '@uvodohq/planum'
 //
 import type { RefObject } from 'react'
 import { forwardRef, useEffect, useImperativeHandle } from 'react'
@@ -17,6 +17,10 @@ import type { EditorProps } from './editor.type'
 import type { MenuBarProps } from './menu-bar/menu-bar'
 import { MenuBar } from './menu-bar/menu-bar'
 import { useEditor } from './use-editor'
+
+const EditorContentStyle = {
+  '& *': { margin: 0, boxSizing: 'border-box' },
+}
 
 // TODO: fix hover on label
 // resolve peer deps error by removing starterkit
@@ -170,7 +174,10 @@ export const Editor = forwardRef<RefObject<TipTapEditor | null>, EditorProps>(
         }}>
         <EditorContainer>
           <MenuBar {...menuBarProps} />
-          <EditorContent editor={editor} />
+          <EditorContent
+            editor={editor}
+            className={css(EditorContentStyle)()}
+          />
         </EditorContainer>
       </Field>
     )

@@ -1,6 +1,7 @@
 import { styled } from '@uvodohq/planum'
 
 export const StyledButton = styled('button', {
+  boxSizing: 'border-box',
   borderRadius: '$md',
   padding: '$4',
   position: 'relative',
@@ -13,6 +14,7 @@ export const StyledButton = styled('button', {
   alignItems: 'center',
   justifyContent: 'center',
   minSize: '$32',
+  background: 'none',
 
   variants: {
     isPressed: {

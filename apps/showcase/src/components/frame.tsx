@@ -1,4 +1,4 @@
-import { Box, CSS, styled } from '@uvodohq/planum'
+import { Box, CSS, Flex, styled } from '@uvodohq/planum'
 import { Suspense } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import { useInView } from 'react-intersection-observer'
@@ -18,6 +18,7 @@ const Header = styled('header', {
   fontFamily: 'sans-serif',
   backgroundColor: '$surface200',
   padding: '0 80px',
+  m: 0,
   height: 120,
 })
 
@@ -39,10 +40,10 @@ function Frame({ title, Page, children, id = '', css = {} }: FrameProps) {
     <Box css={{ padding: 50, fontFamily: '$sans' }} id={id} ref={ref}>
       <Container>
         <Header>
-          <h1 style={{ fontSize: 32 }}>{title}</h1>
-          <div>
+          <h1 style={{ fontSize: 32, fontWeight: 'inherit' }}>{title}</h1>
+          <Flex>
             <Logo />
-          </div>
+          </Flex>
         </Header>
         <ErrorBoundary FallbackComponent={ErrorFallback}>
           <Box

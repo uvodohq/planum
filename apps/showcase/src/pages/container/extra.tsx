@@ -10,7 +10,17 @@ import {
   BreadcrumbItem,
   Breadcrumbs,
   Skeleton,
+  styled,
 } from '@uvodohq/planum'
+
+const StyledH1 = styled(H1, {
+  m: 0,
+  fw: '$bold',
+})
+
+const StyledParagraph = styled(Paragraph, {
+  m: 0,
+})
 
 const ProgressLoader = (props: any) => {
   const [value, setValue] = useState(0)
@@ -36,7 +46,7 @@ export default function ExtraContainer() {
   return (
     <>
       <Box css={{ py: 60 }} id="loader">
-        <H1 fw="bold">Loader</H1>
+        <StyledH1>Loader</StyledH1>
         <Flex css={{ gap: 32, pb: 64 }}>
           <table
             style={{
@@ -83,9 +93,7 @@ export default function ExtraContainer() {
           </table>
         </Flex>
 
-        <H1 fw="bold" css={{ mt: 32 }}>
-          Progress Loader
-        </H1>
+        <StyledH1 css={{ mt: 32 }}>Progress Loader</StyledH1>
         <Flex css={{ gap: 32, pb: 32 }}>
           <table
             style={{
@@ -140,27 +148,27 @@ export default function ExtraContainer() {
       <H1 css={{ my: 32, fw: 'bold' }}>Skeleton</H1>
       <Box css={{ pb: 64, maxWidth: 600 }}>
         <Box css={{ my: 24 }}>
-          <Paragraph>Without image</Paragraph>
+          <StyledParagraph>Without image</StyledParagraph>
           <Skeleton />
         </Box>
 
         <Box css={{ my: 24 }}>
-          <Paragraph>List item card</Paragraph>
+          <StyledParagraph>List item card</StyledParagraph>
           <Skeleton image />
         </Box>
 
         <Box css={{ my: 24 }}>
-          <Paragraph>Image</Paragraph>
+          <StyledParagraph>Image</StyledParagraph>
           <Skeleton showText={false} image />
         </Box>
 
         <Box css={{ my: 24 }}>
-          <Paragraph>One line Paragraph</Paragraph>
+          <StyledParagraph>One line Paragraph</StyledParagraph>
           <Skeleton oneTextLine />
         </Box>
 
         <Box css={{ my: 24 }}>
-          <Paragraph>No animated</Paragraph>
+          <StyledParagraph>No animated</StyledParagraph>
           <Skeleton animated={false} />
         </Box>
       </Box>

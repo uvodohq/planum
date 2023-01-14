@@ -1,6 +1,16 @@
 import * as React from 'react'
 
+import { styled } from '../theme'
 import { useDialogState } from './use-dialog-state'
+
+const StyledButton = styled('button', {
+  display: 'inline-flex',
+  bg: 'transparent',
+  fontSize: 16,
+  border: 'none',
+  cursor: 'pointer',
+  p: 0,
+})
 
 export const DialogClose = React.forwardRef<
   HTMLButtonElement,
@@ -10,9 +20,9 @@ export const DialogClose = React.forwardRef<
   const state = useDialogState()
 
   return (
-    <button {...rest} ref={ref} onClick={() => state.setOpen(false)}>
+    <StyledButton {...rest} ref={ref} onClick={() => state.setOpen(false)}>
       {children}
-    </button>
+    </StyledButton>
   )
 })
 

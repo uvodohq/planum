@@ -1,20 +1,17 @@
-import { Box, Button, Flex, H2, Text, styled } from '@uvodohq/planum'
+import { Box, Button, Flex, H2, styled, Text } from '@uvodohq/planum'
 import { useState } from 'react'
 
 import { PlusIcon } from '@uvodohq/planum-icons'
 
 const Title = styled(H2, {
   color: '$white',
-})
-
-const TableRow = styled('tr', {
-  display: 'flex',
-  justifyContent: 'space-between',
-  mb: 48,
+  m: 0,
+  fontWeight: 'inherit',
 })
 
 const TableData = styled('td', {
-  display: 'inline-block',
+  verticalAlign: 'top',
+  padding: 0,
 })
 
 const LoadingButton = (props: any) => {
@@ -43,7 +40,7 @@ const FlexCell = (props: any) => (
 
 const ButtonGroupTr = ({ title, ...rest }: any) => {
   return (
-    <TableRow>
+    <tr>
       <TableData>
         <Text>{title}</Text>
       </TableData>
@@ -103,7 +100,7 @@ const ButtonGroupTr = ({ title, ...rest }: any) => {
           </LoadingButton>
         </FlexCell>
       </TableData>
-    </TableRow>
+    </tr>
   )
 }
 

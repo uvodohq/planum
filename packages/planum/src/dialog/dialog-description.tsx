@@ -1,7 +1,14 @@
 import { useId } from '@floating-ui/react'
 import * as React from 'react'
 
+import { styled } from '../theme'
 import { useDialogState } from './use-dialog-state'
+
+const StyledParagraph = styled('p', {
+  fw: 'inherit',
+  fontSize: 'inherit',
+  m: 0,
+})
 
 export const DialogDescription = React.forwardRef<
   HTMLParagraphElement,
@@ -20,9 +27,9 @@ export const DialogDescription = React.forwardRef<
   }, [id, setDescriptionId])
 
   return (
-    <p {...rest} ref={ref} id={id}>
+    <StyledParagraph {...rest} ref={ref} id={id}>
       {children}
-    </p>
+    </StyledParagraph>
   )
 })
 

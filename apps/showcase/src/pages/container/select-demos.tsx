@@ -16,6 +16,7 @@ const Grid = (props: any) => {
       <Title css={{ my: 16 }}>{props.title}</Title>
       <Box
         css={{
+          boxSizing: 'border-box',
           display: 'flex',
           gap: '$24',
           mb: 55,

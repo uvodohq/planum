@@ -123,6 +123,7 @@ const Floating = styled('div', {
 })
 
 const BackHomeLink = styled('a', overlineCss, {
+  textDecoration: 'none',
   bg: '$warning300',
   padding: '$8 $16',
   borderRadius: '$pill',

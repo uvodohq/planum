@@ -66,7 +66,7 @@ export default function ColorContainer() {
 
         return (
           <Box css={{ p: 22, mb: 20 }} key={title}>
-            <H3>{title}</H3>
+            <H3 css={{ fontWeight: 'inherit', m: 0 }}>{title}</H3>
             <ColorSet colorSet={colorSet} />
           </Box>
         )

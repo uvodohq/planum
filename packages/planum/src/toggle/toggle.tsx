@@ -51,7 +51,7 @@ export function _Toggle(
         <StyledThumb />
       </StyledSwitch>
 
-      <Paragraph css={{ ml: 10 }}>
+      <Paragraph css={{ m: 0, ml: 10 }}>
         {state.isSelected ? labelTextOn : labelTextOff}
       </Paragraph>
     </StyledLabel>

@@ -36,6 +36,7 @@ export default function TypographyContainer() {
             <Component
               css={{
                 color: '#808080',
+                m: 0,
               }}>
               {name}
             </Component>
@@ -46,6 +47,7 @@ export default function TypographyContainer() {
                   <Component
                     css={{
                       fontWeight,
+                      m: 0,
                     }}>
                     {name}
                   </Component>

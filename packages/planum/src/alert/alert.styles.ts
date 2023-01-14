@@ -4,6 +4,7 @@ import { Paragraph } from '../text'
 import { styled } from '../theme'
 
 export const AlertContainer = styled('div', {
+  boxSizing: 'border-box',
   cursor: 'initial',
   display: 'flex',
   justifyContent: 'space-between',

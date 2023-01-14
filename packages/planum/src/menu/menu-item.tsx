@@ -6,6 +6,7 @@ import type { CSS } from '../theme'
 import { styled } from '../theme'
 
 const StyledMenuItem = styled('li', paragraphCss, {
+  boxSizing: 'border-box',
   display: 'flex',
   width: '100%',
   border: 'none',

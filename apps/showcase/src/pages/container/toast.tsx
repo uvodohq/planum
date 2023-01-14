@@ -4,7 +4,7 @@ export default function NotificationContainer() {
   return (
     <>
       <Toaster />
-      <H1 css={{ mb: 20, fontWeight: '$bold' }}>Toast</H1>
+      <H1 css={{ m: 0, mb: 20, fontWeight: '$bold' }}>Toast</H1>
 
       <Box css={{ display: 'flex', gap: 56, mb: 32 }}>
         <Box css={{ flex: 1 }}>

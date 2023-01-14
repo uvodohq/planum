@@ -1,4 +1,4 @@
-import { Badge, Box, Flag, Flex, H1, Tag } from '@uvodohq/planum'
+import { Badge, Box, Flag, Flex, H1, styled, Tag } from '@uvodohq/planum'
 
 import {
   TagSelectCountryExample,
@@ -12,13 +12,17 @@ import {
 
 import { UserIcon } from '@uvodohq/planum-icons'
 
+const StyledH1 = styled(H1, {
+  m: 0,
+  mb: 66,
+  fw: 700,
+})
+
 export default function TagsBadgeContainer() {
   return (
     <>
       {/* Tags */}
-      <H1 css={{ mb: 66, fontWeight: 700 }} id="tags">
-        Tags
-      </H1>
+      <StyledH1 id="tags">Tags</StyledH1>
 
       <Box css={{ mb: 128 }}>
         <Box css={{ display: 'flex', gap: 32, mb: 28 }}>
@@ -75,18 +79,18 @@ export default function TagsBadgeContainer() {
         </Box>
       </Box>
 
-      <H1 css={{ mb: 66, fontWeight: 700 }}>Tag Group - add/delete</H1>
+      <StyledH1>Tag Group - add/delete</StyledH1>
 
       <Box css={{ mb: 128 }}>
         <TagGroupExample />
       </Box>
 
-      <H1 css={{ mb: 66, fontWeight: 700 }}>Custom Tag render</H1>
+      <StyledH1>Custom Tag render</StyledH1>
       <Box css={{ mb: 128 }}>
         <TagGroupCustomRender />
       </Box>
 
-      <H1 css={{ mb: 66, fontWeight: 700 }}>Tag Select</H1>
+      <StyledH1>Tag Select</StyledH1>
 
       <Flex
         css={{
@@ -141,9 +145,7 @@ export default function TagsBadgeContainer() {
       </Flex>
 
       <Box css={{ mb: 128 }} id="badge">
-        <H1 css={{ mb: 66, fontWeight: 700 }} id="badge">
-          Badge
-        </H1>
+        <StyledH1 id="badge">Badge</StyledH1>
 
         {/* default */}
         <Flex css={{ gap: 32 }}>
@@ -252,9 +254,7 @@ export default function TagsBadgeContainer() {
       </Box>
 
       <Box>
-        <H1 css={{ mb: 66, fontWeight: 700 }} id="flag">
-          Flag
-        </H1>
+        <StyledH1 id="flag">Flag</StyledH1>
 
         <Box css={{ display: 'flex', gap: 32, mb: 128 }}>
           <Flag country="us" />

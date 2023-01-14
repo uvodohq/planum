@@ -12,7 +12,7 @@ export default function ExtraContainer() {
   return (
     <>
       <Box css={{ py: 60 }} id="avatar">
-        <H1 css={{ fw: '$bold' }} id="avatar">
+        <H1 css={{ m: 0, fw: '$bold' }} id="avatar">
           Avatar
         </H1>
 
@@ -33,7 +33,7 @@ export default function ExtraContainer() {
       </Box>
 
       <Box css={{ py: 60 }} id="image">
-        <H1 css={{ fw: '$bold', mb: 32 }} id="image">
+        <H1 css={{ m: 0, fw: '$bold', mb: 32 }} id="image">
           Image
         </H1>
 

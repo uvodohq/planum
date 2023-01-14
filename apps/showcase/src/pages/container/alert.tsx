@@ -15,7 +15,11 @@ export default function AlertContainer() {
   return (
     <>
       <Flex
-        css={{ flexDirection: 'column', py: 80, '&>div': { mt: 32 } }}
+        css={{
+          flexDirection: 'column',
+          py: 80,
+          '&>div': { mt: 32 },
+        }}
         id="alert">
         {alertList.map((variant) => (
           <Alert

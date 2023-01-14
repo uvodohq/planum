@@ -16,11 +16,12 @@ export const Suffix = styled('span', {
 })
 
 export const sharedInputCss = css({
+  boxSizing: 'border-box',
   width: '100%',
   color: '$textDark',
   display: 'flex',
   alignItems: 'stretch',
-  border: '1px solid',
+  border: '1px solid transparent',
   backgroundColor: '$white',
   transition: 'border-color 0.2s, box-shadow 0.2s',
   cursor: 'text',

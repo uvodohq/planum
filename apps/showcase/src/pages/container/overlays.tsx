@@ -60,6 +60,12 @@ export const StyledMobileBottomSheet = styled(motion.div, {
   overscrollBehavior: 'contain',
 })
 
+const StyledH1 = styled(H1, {
+  m: 0,
+  mb: 66,
+  fw: 700,
+})
+
 function UncontrolledDialog() {
   return (
     <Dialog>
@@ -80,7 +86,7 @@ function UncontrolledDialog() {
 function UncontrolledPopover() {
   return (
     <Popover placement="right-end">
-      <PopoverTrigger>
+      <PopoverTrigger className={css({ display: 'inline-flex' })()}>
         <DotsThreeIcon />
       </PopoverTrigger>
       <PopoverPopup>
@@ -112,7 +118,7 @@ function ControlledDialog() {
 
   return (
     <div>
-      <p>The dialog will open in 4 seconds...</p>
+      <Paragraph css={{ m: 0 }}>The dialog will open in 4 seconds...</Paragraph>
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogPopup>
           <Box css={{ bg: '#fff', w: 200, h: 200 }}>
@@ -134,7 +140,6 @@ const StyledDrawerButton = styled('button', {
   br: 4,
   color: '#fff',
   cursor: 'pointer',
-  mt: '$8',
 
   '&:focus': {
     borderColor: '$green',
@@ -177,14 +182,14 @@ export default function FormElementsContainer() {
   return (
     <>
       {/* Menu */}
-      <H1 css={{ mb: 66, fw: 700 }}>Menu</H1>
+      <StyledH1>Menu</StyledH1>
 
       <Box css={{ d: 'flex', gap: 40, mb: 128 }}>
         <MenuExamples />
       </Box>
 
       {/* Modal */}
-      <H1 css={{ mb: 66, fw: 700 }}>Modal</H1>
+      <StyledH1>Modal</StyledH1>
       <Box
         css={{
           d: 'flex',
@@ -206,25 +211,26 @@ export default function FormElementsContainer() {
       </Box>
 
       {/* Dialog */}
-      <H1 css={{ mb: 66, fw: 700 }}>Dialog</H1>
-      <Box css={{ d: 'flex', gap: 40, mb: 128 }}>
+      <StyledH1>Dialog</StyledH1>
+      <Box css={{ d: 'flex', alignItems: 'center', gap: 40, mb: 128 }}>
         <DrawerExample />
         <ControlledDialog />
         <UncontrolledDialog />
       </Box>
 
       {/* Popover */}
-      <H1 css={{ mb: 66, fw: 700 }}>Popover</H1>
+      <StyledH1>Popover</StyledH1>
       <Box css={{ d: 'flex', gap: 40, mb: 128 }}>
         <UncontrolledPopover />
       </Box>
 
       {/* Tooltip */}
-      <H1 css={{ mb: 66, fw: 700 }}>Tooltip</H1>
+      <StyledH1>Tooltip</StyledH1>
 
       <Box
         css={{
           d: 'flex',
+          boxSizing: 'border-box',
           gap: 40,
           mb: 128,
           flexWrap: 'wrap',
@@ -232,7 +238,11 @@ export default function FormElementsContainer() {
         }}>
         <Tooltip placement="top">
           <TooltipTrigger
-            className={css({ background: '$blue400', px: 14, br: 4 })()}>
+            className={css({
+              background: '$blue400 !important',
+              px: '14px !important',
+              br: 4,
+            })()}>
             Top - button
           </TooltipTrigger>
           <TooltipPopup>Please contact support</TooltipPopup>
@@ -240,7 +250,11 @@ export default function FormElementsContainer() {
 
         <Tooltip placement="top" defaultIsOpen>
           <TooltipTrigger
-            className={css({ background: '$blue400', px: 14, br: 4 })()}>
+            className={css({
+              background: '$blue400 !important',
+              px: '14px !important',
+              br: 4,
+            })()}>
             Default is open
           </TooltipTrigger>
           <TooltipPopup>Please contact support</TooltipPopup>
@@ -248,7 +262,7 @@ export default function FormElementsContainer() {
 
         <Tooltip placement="top">
           <TooltipTrigger>
-            <Paragraph>Planum text</Paragraph>
+            <Paragraph css={{ m: 0 }}>Planum text</Paragraph>
           </TooltipTrigger>
           <TooltipPopup>Please contact support</TooltipPopup>
         </Tooltip>
@@ -257,7 +271,7 @@ export default function FormElementsContainer() {
           <TooltipTrigger>
             <Box
               css={{
-                background: '$surface300',
+                background: '$surface300 !important',
                 dflex: 'center',
                 padding: 8,
               }}>
@@ -271,7 +285,7 @@ export default function FormElementsContainer() {
           <TooltipTrigger>
             <Box
               css={{
-                background: '$surface300',
+                background: '$surface300 !important',
                 dflex: 'center',
                 padding: 8,
               }}>
@@ -288,7 +302,7 @@ export default function FormElementsContainer() {
           <TooltipTrigger>
             <Box
               css={{
-                background: '$surface300',
+                background: '$surface300 !important',
                 dflex: 'center',
                 padding: 8,
               }}>
