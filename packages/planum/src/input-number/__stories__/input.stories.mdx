@@ -38,7 +38,7 @@ An input field includes a label and a text field users can type text into. They 
 
 <Canvas>
   <Story name="Default">
-    <InputNumber placeholder="23.99" />
+    <InputNumber aria-label="Input number" placeholder="23.99" />
   </Story>
 </Canvas>
 
@@ -46,10 +46,25 @@ An input field includes a label and a text field users can type text into. They 
 
 <Canvas>
   <Story name="States">
-    <InputNumber label="Normal" placeholder="23.99" />
-    <InputNumber label="Disabled" placeholder="23.99" isDisabled />
-    <InputNumber label="Error" placeholder="23.99" status="error" />
-    <InputNumber label="Success" placeholder="23.99" status="success" />
+    <InputNumber aria-label="Input number" label="Normal" placeholder="23.99" />
+    <InputNumber
+      aria-label="Input number"
+      label="Disabled"
+      placeholder="23.99"
+      isDisabled
+    />
+    <InputNumber
+      aria-label="Input number"
+      label="Error"
+      placeholder="23.99"
+      status="error"
+    />
+    <InputNumber
+      aria-label="Input number"
+      label="Success"
+      placeholder="23.99"
+      status="success"
+    />
   </Story>
 </Canvas>
 
@@ -58,23 +73,27 @@ An input field includes a label and a text field users can type text into. They 
 <Canvas>
   <Story name="States with messages">
     <InputNumber
+      aria-label="Input number"
       label="Normal"
       placeholder="23.99"
       description="This input is normal"
     />
     <InputNumber
+      aria-label="Input number"
       label="Disabled"
       placeholder="23.99"
       isDisabled
       description="This input is disabled"
     />
     <InputNumber
+      aria-label="Input number"
       label="Error"
       placeholder="23.99"
       status="error"
       errorMessage="This input is in error"
     />
     <InputNumber
+      aria-label="Input number"
       label="Success"
       placeholder="23.99"
       status="success"
@@ -87,9 +106,18 @@ An input field includes a label and a text field users can type text into. They 
 
 <Canvas>
   <Story name="With Icons">
-    <InputNumber placeholder="23.99" suffix={<CopyIcon />} />
-    <InputNumber placeholder="23.99" leftIcon={<UserIcon />} />
     <InputNumber
+      aria-label="Input number"
+      placeholder="23.99"
+      suffix={<CopyIcon />}
+    />
+    <InputNumber
+      aria-label="Input number"
+      placeholder="23.99"
+      leftIcon={<UserIcon />}
+    />
+    <InputNumber
+      aria-label="Input number"
       placeholder="23.99"
       suffix={<CopyIcon />}
       leftIcon={<UserIcon />}
@@ -97,36 +125,14 @@ An input field includes a label and a text field users can type text into. They 
   </Story>
 </Canvas>
 
-### Number price
+### Other Formats
 
 <Canvas>
-  <Story name="Number price">
-    <PriceInput label="Normal" placeholder="23.99" />
-    <PriceInput label="Disabled" placeholder="23.99" isDisabled />
-    <PriceInput label="Error" placeholder="23.99" status="error" />
-    <PriceInput label="Success" placeholder="23.99" status="success" />
-  </Story>
-</Canvas>
-
-### Number quantity
-
-<Canvas>
-  <Story name="Number quantity">
-    <QuantityInput label="Normal" placeholder="0" />
-    <QuantityInput label="Disabled" placeholder="0" isDisabled />
-    <QuantityInput label="Error" placeholder="0" status="error" />
-    <QuantityInput label="Success" placeholder="0" status="success" />
-  </Story>
-</Canvas>
-
-### Number percent
-
-<Canvas>
-  <Story name="Number percent">
-    <PercentInput label="Normal" placeholder="0" />
-    <PercentInput label="Disabled" placeholder="0" isDisabled />
-    <PercentInput label="Error" placeholder="0" status="error" />
-    <PercentInput label="Success" placeholder="0" status="success" />
+  <Story name="Other Formats">
+    <InputNumber aria-label="Input number" placeholder="23.99" label="Normal" />
+    <PriceInput />
+    <QuantityInput />
+    <PercentInput />
   </Story>
 </Canvas>
 

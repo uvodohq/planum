@@ -198,7 +198,7 @@ function Container() {
     <Form {...handlers}>
       <Flex css={{ gap: 64, justifyContent: 'space-between' }}>
         <Stack y={24} css={{ flex: 1 }}>
-          <Button type="submit" isDisabled={!isDisabled || !handlers.isDirty}>
+          <Button type="submit" isDisabled={!isDisabled && !handlers.isDirty}>
             Submit {initialValues.inc}
           </Button>
 

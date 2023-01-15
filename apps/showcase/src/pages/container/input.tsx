@@ -596,26 +596,6 @@ export default function InputContainer() {
         <PriceInput />
         <QuantityInput />
         <PercentInput />
-        {/* <InputNumber
-          aria-label="label"
-          placeholder="23.99"
-          label="label"
-          leftIcon={<UserIcon />}
-          suffix={<UserIcon />}
-        />
-        <InputNumber
-          aria-label="label"
-          placeholder="23.99"
-          label="label"
-          errorMessage="Error message"
-          status="error"
-        />
-        <InputNumber
-          aria-label="label"
-          placeholder="23.99"
-          label="label"
-          isDisabled
-        /> */}
       </RowBox>
     </>
   )

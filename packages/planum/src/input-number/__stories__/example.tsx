@@ -41,7 +41,9 @@ export function PriceInput(props: NumberProps) {
   const { customCurrency, ...rest } = props
   const [priceVal, setPriceVal] = useState<number | string | null>(null)
 
-  const { currency, format } = useFormatCurrency(customCurrency)
+  const { currency, format } = useFormatCurrency(customCurrency, {
+    style: 'decimal',
+  })
   const precision = currency?.fraction_digits
   const placeholder = (0).toFixed(precision)
 
@@ -49,6 +51,7 @@ export function PriceInput(props: NumberProps) {
     <InputNumber
       placeholder={placeholder}
       aria-label="Price"
+      label="Price"
       suffix={currency.code}
       min={0}
       max={999_999_999}
@@ -68,7 +71,7 @@ export function QuantityInput(props?: NumberProps) {
     <InputNumber
       placeholder="0"
       aria-label="Quantity"
-      label="label"
+      label="Quantity"
       min={0}
       precision={0}
       value={quantityVal}
@@ -85,7 +88,7 @@ export function PercentInput(props?: NumberProps) {
     <InputNumber
       placeholder="0"
       aria-label="Percent"
-      label="label"
+      label="Percent"
       suffix="%"
       min={0}
       max={100}

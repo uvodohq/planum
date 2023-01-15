@@ -118,7 +118,7 @@ export const editorClass = css(subheaderCss, customScrollbar, {
 export const placeholderClass = css(subheaderCss, {
   fw: '$regular',
 
-  '&:first-child::before': {
+  '&:first-of-type::before': {
     color: '$textDisabled',
     content: 'attr(data-placeholder)',
     cssFloat: 'left',
