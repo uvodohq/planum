@@ -21,7 +21,9 @@ function PriceInput(props: PriceProps) {
   const { customCurrency, ...rest } = props
   const [priceVal, setPriceVal] = useState<number | string | null>(null)
 
-  const { currency, format } = useFormatCurrency(customCurrency)
+  const { currency, format } = useFormatCurrency(customCurrency, {
+    style: 'decimal',
+  })
   const precision = currency?.fraction_digits
   const placeholder = (0).toFixed(precision)
 
@@ -29,7 +31,7 @@ function PriceInput(props: PriceProps) {
     <InputNumber
       placeholder={placeholder}
       aria-label="Price"
-      label="label"
+      label="price"
       suffix={currency.code}
       min={0}
       max={999_999_999}
@@ -49,7 +51,7 @@ function QuantityInput(props?: PriceProps) {
     <InputNumber
       placeholder="0"
       aria-label="Quantity"
-      label="label"
+      label="quantity"
       min={0}
       precision={0}
       value={quantityVal}
@@ -66,7 +68,7 @@ function PercentInput(props?: PriceProps) {
     <InputNumber
       placeholder="0"
       aria-label="Percent"
-      label="label"
+      label="percent"
       suffix="%"
       min={0}
       max={100}
@@ -591,7 +593,10 @@ export default function InputContainer() {
             setNumber(value as any)
           }}
         />
-        <InputNumber
+        <PriceInput />
+        <QuantityInput />
+        <PercentInput />
+        {/* <InputNumber
           aria-label="label"
           placeholder="23.99"
           label="label"
@@ -610,34 +615,7 @@ export default function InputContainer() {
           placeholder="23.99"
           label="label"
           isDisabled
-        />
-      </RowBox>
-
-      {/* Price */}
-      <H3 css={{ mt: 100, mb: 20 }}>Price Input</H3>
-      <RowBox>
-        <PriceInput />
-        <PriceInput leftIcon={<UserIcon />} />
-        <PriceInput errorMessage="Error message" status="error" />
-        <PriceInput isDisabled />
-      </RowBox>
-
-      {/* Quantity */}
-      <H3 css={{ mt: 100, mb: 20 }}>Quantity Input</H3>
-      <RowBox>
-        <QuantityInput />
-        <QuantityInput leftIcon={<UserIcon />} />
-        <QuantityInput errorMessage="Error message" status="error" />
-        <QuantityInput isDisabled />
-      </RowBox>
-
-      {/* Percent */}
-      <H3 css={{ mt: 100, mb: 20 }}>Percent Input</H3>
-      <RowBox>
-        <PercentInput />
-        <PercentInput leftIcon={<UserIcon />} />
-        <PercentInput errorMessage="Error message" status="error" />
-        <PercentInput isDisabled />
+        /> */}
       </RowBox>
     </>
   )

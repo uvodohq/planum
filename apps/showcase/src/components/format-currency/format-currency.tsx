@@ -6,7 +6,10 @@ export function isNumber(num?: any) {
   return typeof num === 'number' && !Number.isNaN(num)
 }
 
-export function useFormatCurrency(customCurrency?: Currency) {
+export function useFormatCurrency(
+  customCurrency?: Currency,
+  formatOptions: any = {},
+) {
   const defaultCurrency = {
     code: 'USD',
     fraction_digits: 2,
@@ -20,6 +23,7 @@ export function useFormatCurrency(customCurrency?: Currency) {
     currencyDisplay: 'symbol',
     minimumFractionDigits: usedCurrency.fraction_digits,
     maximumFractionDigits: usedCurrency.fraction_digits,
+    ...formatOptions,
   })
 
   return {

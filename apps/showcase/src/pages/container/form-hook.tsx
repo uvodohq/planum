@@ -53,7 +53,7 @@ const StyledChecksContainer = styled('div', {
   mt: '$24',
 })
 
-const selectItems = [
+const items = [
   {
     id: 1,
     name: 'first',
@@ -69,7 +69,7 @@ const requiredSchema = z.string().min(1, { message: 'This field required' })
 const schema = z.object({
   text_field: requiredSchema,
   password_field: requiredSchema,
-  facebook_url: schemas.url(),
+  url_field: schemas.url(),
   amountNumber: schemas.number(),
   amountNull: schemas.number(),
   price_field: schemas.number(),
@@ -80,8 +80,8 @@ const schema = z.object({
   toggle_field: z.boolean(),
   radio_field: requiredSchema,
   textarea_field: requiredSchema,
-  select_field: z.number(),
-  auto_complete_field: z.array(
+  select_field: z.number().nullable(),
+  auto_complete_tags_field: z.array(
     z.object({
       id: z.number(),
       name: requiredSchema,
@@ -111,7 +111,7 @@ function useInitialValues() {
     return {
       text_field: '',
       password_field: '',
-      facebook_url: '',
+      url_field: '',
       amountNumber: 123, //DEFAULT_NUMBER,
       amountNull: null, //DEFAULT_NUMBER,
       price_field: DEFAULT_NUMBER,
@@ -119,13 +119,13 @@ function useInitialValues() {
       percent_field: DEFAULT_NUMBER,
       inc,
       editor_field: null,
-      checkbox_item_field: true,
+      checkbox_item_field: false,
       toggle_field: false,
-      radio_field: 'first',
+      radio_field: '',
       textarea_field: '',
-      select_field: 1,
-      auto_complete_field: [{ id: 1, name: 'first' }],
-      tag_select_field: [{ id: 1, name: 'tag 1' }],
+      select_field: null,
+      auto_complete_tags_field: [],
+      tag_select_field: [],
       checkbox_group_field: [],
     }
   }, [inc])
@@ -143,6 +143,7 @@ function Container() {
     resolver: zodResolver(schema),
     defaultValues: initialValues,
   })
+  const [isDisabled, setIsDisabled] = useState(false)
 
   const handlers = useFormHandlers({
     form,
@@ -150,6 +151,7 @@ function Container() {
     onlyDirtyValues: false,
     onSubmit(data) {
       form.reset()
+      setIsDisabled(false)
       console.warn('FORM SUBMIT', data)
     },
     async onSuccess() {
@@ -157,11 +159,46 @@ function Container() {
     },
   })
 
+  function onFillForm() {
+    form.reset(
+      {
+        text_field: 'John',
+        password_field: '123',
+        url_field: 'https://www.google.com/',
+        amountNumber: 613,
+        amountNull: 956,
+        price_field: 39717,
+        quantity_field: 444,
+        percent_field: 25,
+        editor_field: '<b>text is bold</b>',
+        checkbox_item_field: true,
+        toggle_field: true,
+        radio_field: 'second',
+        textarea_field: 'Have fun coding!',
+        select_field: 2,
+        auto_complete_tags_field: [
+          { id: 1, name: 'first' },
+          { id: 2, name: 'second' },
+        ],
+        tag_select_field: [
+          { id: 1, name: 'tag 1' },
+          { id: 2, name: 'tag 2' },
+        ],
+        checkbox_group_field: ['1', '2'],
+      },
+      {
+        keepDefaultValues: true,
+        keepDirty: true,
+      },
+    )
+    setIsDisabled(true)
+  }
+
   return (
     <Form {...handlers}>
       <Flex css={{ gap: 64, justifyContent: 'space-between' }}>
         <Stack y={24} css={{ flex: 1 }}>
-          <Button type="submit" isDisabled={!handlers.isDirty}>
+          <Button type="submit" isDisabled={!isDisabled || !handlers.isDirty}>
             Submit {initialValues.inc}
           </Button>
 
@@ -177,22 +214,17 @@ function Container() {
             placeholder="Enter your password_field"
           />
 
-          <UrlField
-            name="facebook_url"
-            prefix="/products/"
-            placeholder="slug"
-            label="URL"
-          />
+          <UrlField name="url_field" placeholder="Enter url" label="URL" />
 
           <NumberField
             name="amountNumber"
-            placeholder="12"
+            placeholder="Enter a number"
             label="Amount initial number"
           />
           <NumberField
             name="amountNull"
-            placeholder="12"
-            label="Amount initial empty string"
+            placeholder="Enter a number"
+            label="Amount initial null"
           />
 
           <PriceField
@@ -230,7 +262,7 @@ function Container() {
             aria-label="Checkbox group">
             <Paragraph>Checkbox group field</Paragraph>
             <StyledChecksContainer css={{ mt: 0 }}>
-              {selectItems.map(({ id, name }) => {
+              {items.map(({ id, name }) => {
                 return (
                   <CheckboxGroupItem
                     value={String(id)}
@@ -264,14 +296,14 @@ function Container() {
             label="Select field"
             name="select_field"
             labelKey="name"
-            items={selectItems}
+            items={items}
           />
 
           <AutoCompleteTagsField
             label="Autocomplete field"
             labelKey="name"
-            options={selectItems}
-            name="auto_complete_field"
+            options={items}
+            name="auto_complete_tags_field"
             placeholder='Type "first" or "second"'
           />
 
@@ -293,15 +325,24 @@ function Container() {
         </Stack>
       </Flex>
 
-      <Box css={{ mt: 64, d: 'flex', gap: 12 }}>
-        <Button variant="secondary" onClick={() => form.reset()}>
+      <Flex css={{ alignItems: 'center', mt: 64, gap: 12 }}>
+        <Button
+          variant="secondary"
+          onClick={() => {
+            form.reset()
+            setIsDisabled(false)
+          }}>
           Reset
         </Button>
 
-        <Button type="submit" isDisabled={!handlers.isDirty}>
+        <Button type="submit" isDisabled={!isDisabled && !handlers.isDirty}>
           Submit
         </Button>
-      </Box>
+
+        <Button type="button" variant="flat" compact onClick={onFillForm}>
+          Fill form
+        </Button>
+      </Flex>
 
       <Flex css={{ gap: '$24', justifyContent: 'space-between', mt: '$24' }}>
         <Box>
