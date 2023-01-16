@@ -1,10 +1,11 @@
 import type { AriaLabelingProps, DOMProps } from '@react-types/shared'
-import React, { Children, cloneElement, isValidElement, useRef } from 'react'
+import React, { useRef } from 'react'
 
 import { useLatest } from '../hooks'
 import type { CSS } from '../theme'
 import { styled } from '../theme'
 import { SelectContext } from './select-context'
+import { Option } from './select-option'
 import { SelectPopup } from './select-popup'
 import type { SelectTriggerProps } from './select-trigger'
 import { useSelect } from './use-select'
@@ -54,7 +55,6 @@ export const SelectComponent: React.FC<SelectComponentProps> = (props) => {
     onSelect = () => {},
     renderTrigger,
     renderEmpty,
-    children,
     fallbackLabel,
     matchWidth = true,
 
@@ -76,18 +76,10 @@ export const SelectComponent: React.FC<SelectComponentProps> = (props) => {
     matchWidth,
     items,
     value,
+    labelKey,
+    onChange,
+    onSelect,
   })
-
-  const renderOptions = () =>
-    Children.map(
-      children,
-      (child, index) =>
-        isValidElement(child) &&
-        cloneElement(child, {
-          // @ts-expect-error - custom prop
-          index,
-        }),
-    ) ?? []
 
   const selectContextValue = {
     select,
@@ -113,15 +105,31 @@ export const SelectComponent: React.FC<SelectComponentProps> = (props) => {
 
   let popupContent
 
-  if (select.isOpen) {
-    if (select.isEmpty) {
+  const { isOpen, isEmpty, search, noResultsId, options } = select
+  if (isOpen) {
+    if (isEmpty) {
       popupContent = renderEmpty ? (
         renderEmpty()
       ) : (
-        <StyledEmpty>No options available</StyledEmpty>
+        <StyledEmpty
+          key={search}
+          id={noResultsId}
+          role="region"
+          aria-atomic="true"
+          aria-live="assertive">
+          No result found
+        </StyledEmpty>
       )
     } else {
-      popupContent = renderOptions()
+      popupContent = options.map((item, index) => (
+        <Option
+          key={item.id}
+          value={item.id}
+          label={item[labelKey]}
+          index={index}>
+          {item[labelKey]}
+        </Option>
+      ))
     }
   }
 

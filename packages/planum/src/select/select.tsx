@@ -104,36 +104,26 @@ export const Select = forwardRef(
               return renderTrigger(triggerProps)
             }
 
-            const index = triggerProps.select.selectedIndex ?? ''
-            const label = items[index]?.[labelKey as keyof Item<T>]
+            const { select, fallbackLabel } = triggerProps
+            const { selectedItem, options } = select
+            const label = selectedItem?.[labelKey as keyof Item<T>]
 
             // show fallback label if options not loaded yet
-            const shownLabel =
-              label || (value ? triggerProps.fallbackLabel : undefined)
+            const shownLabel = label || (value ? fallbackLabel : undefined)
 
             return (
               <SelectTrigger {...triggerProps} label={shownLabel as string} />
             )
           }}
           // renderOption={(optionProps) => {}}
-          {...rest}>
-          {items.map((item) => (
-            <Option
-              key={item.id}
-              value={item.id}
-              label={item[labelKey as keyof Item<T>] as string}
-              //
-            >
-              {item[labelKey as keyof Item<T>] as string}
-            </Option>
-          ))}
-        </SelectComponent>
+          {...rest}
+        />
       </Field>
     )
   },
 )
 
-// react forwarded not support generic type
+// react forward not support generic type
 type SelectType = <T extends object>(
   props: SelectProps<T> & { ref?: Ref<HTMLElement> },
 ) => JSX.Element

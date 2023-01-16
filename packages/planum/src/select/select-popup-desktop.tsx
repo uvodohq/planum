@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 
 import type { CSS } from '../theme'
 import { customScrollbar, styled } from '../theme'
+import { PopupSearchInput } from './select-popup-search-input'
 import type { UseSelectReturn } from './use-select'
 
 const StyledSelectPopupDesktop = styled('div', {
@@ -24,7 +25,8 @@ const StyledSelectPopupDesktop = styled('div', {
 const StyledList = styled('ul', customScrollbar, {
   listStyleType: 'none',
   overflowY: 'scroll',
-  maxHeight: 170,
+  maxHeight: 220,
+  overscrollBehavior: 'contain',
 })
 
 interface SelectPopupProps {
@@ -51,13 +53,14 @@ export const DesktopPopup = (props: SelectPopupProps) => {
   return (
     <FloatingFocusManager
       context={select.context}
-      initialFocus={-1}
-      modal={false}>
+      modal={false}
+      initialFocus={select.searchable ? undefined : -1}>
       <StyledSelectPopupDesktop
         ref={select.floating}
         css={popupCss}
         as={motion.div}
         {...select.getFloatingProps()}
+        aria-labelledby={select.buttonId}
         style={{
           position: select.strategy,
           top: select.y ?? 0,
@@ -65,23 +68,10 @@ export const DesktopPopup = (props: SelectPopupProps) => {
           zIndex: 1000,
         }}
         {...desktopMotionConfig}>
-        <input
-          type="text"
-          placeholder="Search emoji"
-          role="combobox"
-          // value={search}
-          // aria-controls={
-          //   filteredEmojis.length === 0 ? noResultsId : listboxId
-          // }
-          aria-expanded="true"
-          aria-autocomplete="list"
-          style={{ border: 'solid' }}
-          // {...getInputProps({
-          //   onChange: handleInputChange,
-          //   onKeyDown: handleKeyDown,
-          // })}
-        />
-        <StyledList>{children}</StyledList>
+        {select.searchable && <PopupSearchInput select={select} />}
+        <StyledList role="listbox" id={select.listboxId}>
+          {children}
+        </StyledList>
       </StyledSelectPopupDesktop>
     </FloatingFocusManager>
   )

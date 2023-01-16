@@ -8,14 +8,16 @@ import {
   useDismiss,
   useFloating,
   useFloatingNodeId,
+  useId,
   useInteractions,
   useListNavigation,
   useRole,
   useTypeahead,
 } from '@floating-ui/react'
 import type { MutableRefObject } from 'react'
-import { useMemo } from 'react'
+import { useEffect, useLayoutEffect, useMemo } from 'react'
 
+import useMemoizedFn from '../hooks/use-memoized-fn'
 import { useSelectState } from './use-select-state'
 
 export interface UseSelectProps {
@@ -24,6 +26,7 @@ export interface UseSelectProps {
   matchWidth?: boolean
   position?: Placement
   items: any[]
+  labelKey: string
   value?: any
 }
 
@@ -37,6 +40,9 @@ export function useSelect(props: UseSelectProps) {
     position = 'bottom-start',
     value,
     items,
+    labelKey,
+    onChange,
+    onSelect,
   } = props
 
   const state = useSelectState({
@@ -51,10 +57,18 @@ export function useSelect(props: UseSelectProps) {
     setActiveIndex,
     selectedIndex,
     setSelectedIndex,
+    search,
+    setSearch,
+    selectedItem,
+    setSelectedItem,
+    searchable,
   } = state
 
   // subscribe popup tree context inside modal/dialog. for not closing modal on ESC
   const nodeId = useFloatingNodeId()
+  const noResultsId = useId()
+  const buttonId = useId()
+  const listboxId = useId()
 
   const floating = useFloating({
     open: isOpen,
@@ -68,7 +82,7 @@ export function useSelect(props: UseSelectProps) {
       size({
         apply({ rects, elements }) {
           Object.assign(elements.floating.style, {
-            maxHeight: `${200}px`,
+            maxHeight: `${300}px`,
             width: matchWidth ? `${rects.reference.width}px` : 'auto',
           })
         },
@@ -80,16 +94,9 @@ export function useSelect(props: UseSelectProps) {
   const context = floating.context
 
   // interactions
-  const click = useClick(context, { event: 'mousedown' })
+  const click = useClick(context)
   const dismiss = useDismiss(context)
-  const role = useRole(context, { role: 'listbox' })
-  const navigation = useListNavigation(context, {
-    listRef: listItemsRef,
-    activeIndex,
-    selectedIndex,
-    onNavigate: setActiveIndex,
-    loop: true, // allow looping.
-  })
+  const role = useRole(context)
   const typeahead = useTypeahead(context, {
     listRef: listContentRef,
     activeIndex,
@@ -97,15 +104,111 @@ export function useSelect(props: UseSelectProps) {
     onMatch: isOpen ? setActiveIndex : setSelectedIndex,
   })
 
+  const searchableNavigationOptions = {
+    loop: true,
+    focusItemOnOpen: false,
+    virtual: true,
+    allowEscape: true,
+  }
+
+  const navigation = useListNavigation(context, {
+    listRef: listItemsRef,
+    activeIndex,
+    selectedIndex,
+    onNavigate: isOpen ? setActiveIndex : undefined,
+    ...(searchable ? searchableNavigationOptions : {}),
+  })
+
   const interactions = useInteractions([
     click,
     dismiss,
     role,
-    navigation,
-    typeahead,
+    searchable ? undefined : navigation,
+    searchable ? undefined : typeahead,
   ])
 
+  const inputInteractions = useInteractions([navigation])
+
+  const options = useMemo(
+    () =>
+      items.filter((item) =>
+        item[labelKey].toLowerCase().includes(search.toLowerCase()),
+      ),
+    [items, labelKey, search],
+  )
+
+  const handleSelect = useMemoizedFn((index: number) => {
+    setActiveIndex(null)
+    setIsOpen(false)
+
+    const foundIndex = items.findIndex((item) => item.id === options[index].id)
+    const item = options[index]
+    setSelectedIndex(foundIndex)
+    setSelectedItem(item)
+
+    onChange(item.id)
+    onSelect(item.id, item)
+  })
+
+  const handleOptionClick = useMemoizedFn((index: number) => {
+    handleSelect(index)
+  })
+
+  const handleKeyDown = useMemoizedFn((event: React.KeyboardEvent) => {
+    if (event.key === 'Enter' && activeIndex !== null) {
+      event.preventDefault()
+      handleSelect(activeIndex)
+    }
+
+    // Only if not using typeahead.
+    if (event.key === ' ' && !floating.context.dataRef.current.typing) {
+      event.preventDefault()
+      handleSelect(activeIndex)
+    }
+  })
+
+  const handleKeyDownInput = useMemoizedFn((event: React.KeyboardEvent) => {
+    if (event.key === 'Enter' && activeIndex !== null) {
+      event.preventDefault()
+      handleSelect(activeIndex)
+    }
+  })
+
+  const handleInputChange = useMemoizedFn(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      const value = event.target.value
+      setActiveIndex(null)
+      setSearch(value)
+    },
+  )
+
+  // when popup open, scroll selected into view center
+  useLayoutEffect(() => {
+    if (floating.isPositioned && searchable) {
+      const itemEl = listItemsRef.current[selectedIndex]
+
+      if (itemEl) {
+        itemEl.scrollIntoView({
+          block: 'center',
+        })
+      }
+    }
+  }, [floating.isPositioned, selectedIndex, listItemsRef, searchable])
+
+  useEffect(() => {
+    if (!isOpen) {
+      setSearch('')
+      setActiveIndex(null)
+    }
+  }, [isOpen, setActiveIndex])
+
   const select = useMemo(() => {
+    // Prevent input losing focus on Firefox VoiceOver
+    const { 'aria-activedescendant': ignoreAria, ...floatingProps } =
+      interactions.getFloatingProps(
+        searchable ? inputInteractions.getFloatingProps() : {},
+      )
+
     return {
       isOpen,
       setIsOpen,
@@ -114,14 +217,35 @@ export function useSelect(props: UseSelectProps) {
       setActiveIndex,
       setSelectedIndex,
       items,
-      isEmpty: items.length === 0,
+      options,
+      isEmpty: options.length === 0,
       ...floating,
       ...interactions,
+      getFloatingProps: () => floatingProps,
+      getItemProps: searchable
+        ? inputInteractions.getItemProps
+        : interactions.getItemProps,
       nodeId,
+      noResultsId,
+      buttonId,
+      listboxId,
+      inputInteractions,
+      handleInputChange,
+      handleOptionClick,
+      handleKeyDownInput,
+      search,
+      searchable,
+      handleSelect,
+      selectedItem,
+      handleKeyDown,
     }
   }, [
     interactions,
+    inputInteractions,
     nodeId,
+    noResultsId,
+    buttonId,
+    listboxId,
     floating,
     isOpen,
     setIsOpen,
@@ -130,7 +254,18 @@ export function useSelect(props: UseSelectProps) {
     activeIndex,
     setActiveIndex,
     setSelectedIndex,
+    searchable,
+    handleInputChange,
+    handleOptionClick,
+    handleKeyDownInput,
+    search,
+    handleSelect,
+    options,
+    selectedItem,
+    handleKeyDown,
   ])
+
+  console.log('selecy', select)
 
   return select
 }

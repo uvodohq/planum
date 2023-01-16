@@ -3,14 +3,13 @@ import { motion } from 'framer-motion'
 
 import type { CSS } from '../theme'
 import { customScrollbar, styled } from '../theme'
+import { PopupSearchInput } from './select-popup-search-input'
 import type { UseSelectReturn } from './use-select'
 
-const StyledSelectPopupMobile = styled('div', customScrollbar, {
+const StyledSelectPopupMobile = styled('div', {
   outline: 0,
   backgroundColor: '$white',
-  overflowY: 'auto',
-  '-webkit-overflow-scrolling': 'touch',
-  overscrollBehavior: 'contain',
+  height: '80%',
   maxHeight: '80% !important',
 
   '& li:not(:last-child)': {
@@ -21,6 +20,19 @@ const StyledSelectPopupMobile = styled('div', customScrollbar, {
     py: 24,
     px: 16,
   },
+})
+
+const StyledSearchWrapper = styled('div', {
+  px: 16,
+  pt: 16,
+  pb: 8,
+})
+
+const StyledList = styled('ul', customScrollbar, {
+  listStyleType: 'none',
+  overflowY: 'scroll',
+  overscrollBehavior: 'contain',
+  '-webkit-overflow-scrolling': 'touch',
 })
 
 const Underlay = styled(motion.div, {
@@ -63,6 +75,8 @@ export const MobilePopup = (props: SelectPopupProps) => {
         zIndex: 999,
         display: 'flex',
         justifyContent: 'center',
+        height: '100%',
+        overflow: 'hidden',
       }}>
       <Underlay
         variants={underlayVariants}
@@ -72,14 +86,15 @@ export const MobilePopup = (props: SelectPopupProps) => {
       />
       <FloatingFocusManager
         context={select.context}
-        initialFocus={-1}
-        modal={false}>
+        modal={false}
+        initialFocus={select.searchable ? undefined : -1}>
         <StyledSelectPopupMobile
+          ref={select.floating}
           as={motion.div}
+          aria-labelledby={select.buttonId}
           css={popupCss}
           {...mobileMotionConfig}
           {...select.getFloatingProps()}
-          ref={select.floating}
           style={{
             position: select.strategy,
             bottom: 0,
@@ -88,8 +103,23 @@ export const MobilePopup = (props: SelectPopupProps) => {
             top: 'auto',
             minWidth: '100%',
             zIndex: 902,
+            height: select.searchable ? '80%' : 'auto',
+            paddingTop: select.searchable ? 0 : undefined,
           }}>
-          <ul>{children}</ul>
+          {select.searchable && (
+            <StyledSearchWrapper>
+              <PopupSearchInput select={select} />
+            </StyledSearchWrapper>
+          )}
+          <StyledList
+            role="listbox"
+            id={select.listboxId}
+            style={{
+              maxHeight: select.searchable ? 'calc(100% - 72px)' : '100%',
+              paddingTop: select.searchable ? 0 : undefined,
+            }}>
+            {children}
+          </StyledList>
         </StyledSelectPopupMobile>
       </FloatingFocusManager>
     </FloatingOverlay>

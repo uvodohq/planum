@@ -166,14 +166,14 @@ const SelectDemos = () => {
         <AutoCompleteExampleControlled isLoading label="Loading" />
       </Grid> */}
 
-      <Grid>
+      {/* <Grid>
         <AutoCompleteExampleControlled />
         <AutoCompleteTagsExample />
         <AutoCompleteTagsExample
           errorMessage="Error message with filled value"
           status="error"
         />
-      </Grid>
+      </Grid> */}
     </Box>
   )
 }

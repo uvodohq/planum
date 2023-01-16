@@ -20,9 +20,12 @@ export function useSelectState(props: UseSelectStateProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [activeIndex, setActiveIndex] = useState<number | null>(null) // currently focused item
   const [selectedIndex, setSelectedIndex] = useState(defaultSelectedIndex)
+  const [search, setSearch] = useState('')
+  const [selectedItem, setSelectedItem] = useState(items[defaultSelectedIndex])
 
   useUpdateEffect(() => {
     setSelectedIndex(defaultSelectedIndex)
+    setSelectedIndex(items[defaultSelectedIndex])
   }, [defaultSelectedIndex])
 
   return {
@@ -34,7 +37,11 @@ export function useSelectState(props: UseSelectStateProps) {
     setActiveIndex,
     selectedIndex,
     setSelectedIndex,
-    isEmpty: items.length === 0,
+    searchable: items.length > 10, // show search if more items exist
     items,
+    search,
+    setSearch,
+    selectedItem,
+    setSelectedItem,
   }
 }

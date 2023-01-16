@@ -1,3 +1,4 @@
+import { useId } from '@floating-ui/react'
 import React, { useContext } from 'react'
 
 import { subheaderCss } from '../text'
@@ -94,37 +95,24 @@ export interface OptionProps {
 export const Option: React.FC<OptionProps> = (props) => {
   const { children, index = 0, value } = props
 
-  const { select, listRef, onChange, onSelect, dataRef, matchWidth } =
-    useContext(SelectContext)
+  const { select, listRef, matchWidth } = useContext(SelectContext)
 
-  const { selectedIndex, activeIndex, setActiveIndex, setIsOpen, items } =
-    select
+  const {
+    selectedIndex,
+    activeIndex,
+    searchable,
+    handleSelect,
+    handleKeyDown,
+  } = select
 
-  function handleSelect() {
-    setActiveIndex(null)
-    setIsOpen(false)
-    onChange(value)
-    onSelect(value, items[index])
-  }
-
-  function handleKeyDown(event: React.KeyboardEvent) {
-    if (event.key === 'Enter') {
-      event.preventDefault()
-      handleSelect()
-    }
-
-    // Only if not using typeahead.
-    if (event.key === ' ' && !dataRef.current.typing) {
-      event.preventDefault()
-      handleSelect()
-    }
-  }
+  const id = useId()
 
   const isSelected = selectedIndex === index
   const isActive = activeIndex === index
 
   return (
     <StyledOption
+      id={id}
       role="option"
       ref={(node) => {
         listRef.current[index] = node
@@ -135,8 +123,8 @@ export const Option: React.FC<OptionProps> = (props) => {
       isFocused={isActive}
       matchWidth={matchWidth}
       {...select.getItemProps({
-        onClick: handleSelect, // Handle pointer select.
-        onKeyDown: handleKeyDown, // Handle keyboard select.
+        onClick: () => handleSelect(index), // Handle pointer select.
+        onKeyDown: searchable ? undefined : handleKeyDown, // Handle keyboard select.
       })}>
       {children}
     </StyledOption>

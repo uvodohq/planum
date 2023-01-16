@@ -122,21 +122,33 @@ export interface SelectTriggerProps extends HTMLAttributes<HTMLButtonElement> {
 }
 
 export function SelectTrigger(props: SelectTriggerProps) {
-  const { select, isDisabled, isLoading, label, placeholder, ...rest } = props
+  const {
+    select,
+    isDisabled,
+    isLoading,
+    label,
+    placeholder,
+    fallbackLabel,
+    labelKey,
+    items,
+    ...rest
+  } = props
+
+  const { buttonId, reference, isOpen, getReferenceProps } = select
 
   return (
     <StyledButton
-      ref={select.reference}
+      id={buttonId}
+      ref={reference}
       isDisabled={isDisabled} // for disabled variant style
       disabled={isDisabled || isLoading} // native way to disable the button
       type="button" // prevent unwanted form submits within <form>
       aria-label={label}
       aria-autocomplete="none"
       {...rest}
-      {...select.getReferenceProps()}
+      {...getReferenceProps()}
       // The default role for the reference using a "listbox"
       // is a "combobox", but Safari has a bug with VoiceOver
-      // This overrides the one from the props above.
       role={undefined}>
       <InnerText
         css={{
@@ -149,7 +161,7 @@ export function SelectTrigger(props: SelectTriggerProps) {
           <Loader size="small" />
         </IconContainer>
       ) : (
-        <SelectDownIcon isOpen={select.isOpen} />
+        <SelectDownIcon isOpen={isOpen} />
       )}
     </StyledButton>
   )
