@@ -19,8 +19,8 @@ module.exports = {
     'unicorn/no-null': 'off',
     'unicorn/no-useless-undefined': 'off',
 
-    'simple-import-sort/imports': 'warn',
-    'simple-import-sort/exports': 'warn',
+    'simple-import-sort/imports': 'off',
+    'simple-import-sort/exports': 'off',
     'import/newline-after-import': [
       'error',
       {
@@ -31,7 +31,7 @@ module.exports = {
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
 
-    'prettier/prettier': 'warn',
+    'prettier/prettier': 'off',
     '@typescript-eslint/no-unused-vars': 'warn',
 
     'react/jsx-uses-react': 'error',

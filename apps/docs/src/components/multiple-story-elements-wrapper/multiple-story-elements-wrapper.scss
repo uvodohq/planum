@@ -1,11 +1,11 @@
 @import "../../../styles/global-css-settings.scss";
 
 .monday-storybook_multiple-story-elements-wrapper {
-  display: flex;
-  align-items: center;
-  & > * {
-    margin-right: $spacing-medium;
-  }
+  // display: flex;
+  // align-items: center;
+  // & > * {
+  //   margin-right: $spacing-medium;
+  // }
 }
 
 .monday-storybook_focus-trap {

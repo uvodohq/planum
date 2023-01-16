@@ -1,4 +1,13 @@
-import { addParameters } from '@storybook/react'
+// export const parameters = {
+//   actions: { argTypesRegex: "^on[A-Z].*" },
+//   controls: {
+//     matchers: {
+//       color: /(background|color)$/i,
+//       date: /Date$/,
+//     },
+//   },
+// }
+ 
 import { DocsPage, DocsContainer } from '@storybook/addon-docs'
 import {
   SectionName,
@@ -17,7 +26,7 @@ import {
   // LinkComponent,
 } from '../src/components'
 
-addParameters({
+export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
   controls: {
     expanded: true,
@@ -87,7 +96,7 @@ addParameters({
       ],
     },
   },
-})
+}
 
 export const decorators = [
   (Story, { className }) => {

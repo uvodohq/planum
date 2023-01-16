@@ -10,7 +10,7 @@ export const Description = ({ name, description, bg, leftBoxProps }) => (
       {...leftBoxProps}
       css={{
         minSize: 40,
-        mr: 16,
+        mr: '16px !important',
         borderRadius: 2,
         boxShadow: 'inset 0 0 0 2px rgba(0,0,0,0.02)',
         dflex: 'center',
@@ -20,7 +20,7 @@ export const Description = ({ name, description, bg, leftBoxProps }) => (
     />
     <Box>
       <Box css={{ fw: '$semibold', textTransform: 'capitalize' }}>{name}</Box>
-      {<Paragraph>{description}</Paragraph>}
+      {<Paragraph css={{m: '0 !important'}}>{description}</Paragraph>}
     </Box>
   </Flex>
 )
@@ -30,8 +30,8 @@ export function FrameBox(props) {
     <Box
       css={{
         p: 32,
-        mb: 32,
-        mt: 12,
+        mb: '32px !important',
+        mt: '12px !important',
         border: '1px solid #ccc',
         borderRadius: 8,
       }}
