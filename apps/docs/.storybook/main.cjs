@@ -5,7 +5,6 @@ const {
 const path = require('path');
 module.exports = {
   stories: ['../src/**/*.mdx', '../../../packages/planum/src/**/*.stories.mdx', '../../../packages/planum-editor/src/**/*.stories.mdx', '../../../packages/planum-icons/src/**/*.stories.mdx'],
-  // stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
   addons: ['@storybook/addon-docs', '@storybook/addon-links', '@storybook/addon-essentials', '@storybook/addon-interactions', '@storybook/addon-a11y', 'storybook-addon-themes'],
   framework: {
     name: '@storybook/react-vite',
