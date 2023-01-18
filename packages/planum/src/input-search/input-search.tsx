@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { useFocus } from '@react-aria/interactions'
 import { useSearchField } from '@react-aria/searchfield'
-import { mergeProps } from '@react-aria/utils'
+import { mergeProps, useObjectRef } from '@react-aria/utils'
 import type { SearchFieldProps } from '@react-stately/searchfield'
 import { useSearchFieldState } from '@react-stately/searchfield'
 import type { AriaTextFieldProps } from '@react-types/textfield'
@@ -9,15 +9,11 @@ import * as React from 'react'
 
 import { Field } from '../field'
 import type { StyledInputVariants } from '../input/input.styles'
+import { StyledInputContainer } from '../input/input.styles'
 import { Loader } from '../loader'
 import type { CSS } from '../theme'
 import { isDev } from '../utils'
-import {
-  Prefix,
-  StyledInput,
-  StyledInputContainer,
-  Suffix,
-} from './input-search.styles'
+import { Prefix, StyledInput, Suffix } from './input-search.styles'
 import { SearchIcon } from './search-icon'
 
 interface Props {
@@ -70,8 +66,7 @@ function _InputSearch(props: InputSearchProps, forwardedRef: any) {
     ...rest
   } = props
 
-  const internalRef = React.useRef<HTMLInputElement>(null)
-  const ref = forwardedRef || internalRef
+  const ref = useObjectRef<any>(forwardedRef)
   const state = useSearchFieldState(props)
   const { labelProps, inputProps } = useSearchField(props, state, ref)
 
@@ -108,11 +103,10 @@ function _InputSearch(props: InputSearchProps, forwardedRef: any) {
         errorMessage,
         successMessage,
         status,
-
         labelProps,
       }}>
       <StyledInputContainer
-        onClick={() => ref.current.focus()}
+        onClick={() => ref.current?.focus()}
         isFocused={isFocused}>
         {alignSearchIcon === 'left' && (
           <Prefix>

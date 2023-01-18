@@ -1,4 +1,4 @@
-import { Box, H1, Title } from '@uvodohq/planum'
+import { Box, H1, Title, PhoneInput } from '@uvodohq/planum'
 
 import AutoCompleteExampleControlled from '../../components/auto-complete/auto-complete-controlled-example'
 import { AutoCompleteTagsExample } from '../../components/auto-complete/auto-complete-tags-example'
@@ -44,6 +44,13 @@ const SelectDemos = () => {
         <SelectExample />
         <SelectExample defaultValue={14} />
         <SelectExampleAsync />
+        <Box />
+      </Grid>
+      <Grid title="Phone">
+        <PhoneInput
+        //  defaultCountry="az"
+        />
+        <Box />
         <Box />
       </Grid>
 
@@ -148,7 +155,7 @@ const SelectDemos = () => {
       {/* Autocomplete */}
       <H1 css={{ mb: 66, fw: 700 }}>Autocomplete</H1>
 
-      {/* <Grid>
+      <Grid>
         <AutoCompleteExampleControlled
           label="Country"
           errorMessage="Error message"
@@ -164,16 +171,16 @@ const SelectDemos = () => {
 
         <AutoCompleteExampleControlled isDisabled label="Disabled" />
         <AutoCompleteExampleControlled isLoading label="Loading" />
-      </Grid> */}
+      </Grid>
 
-      {/* <Grid>
+      <Grid>
         <AutoCompleteExampleControlled />
         <AutoCompleteTagsExample />
         <AutoCompleteTagsExample
           errorMessage="Error message with filled value"
           status="error"
         />
-      </Grid> */}
+      </Grid>
     </Box>
   )
 }

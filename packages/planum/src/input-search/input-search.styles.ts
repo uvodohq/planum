@@ -16,43 +16,6 @@ export const Suffix = styled('span', {
   ml: '$10',
 })
 
-export const StyledInputContainer = styled('div', sharedInputCss, {
-  position: 'relative',
-
-  '[placeholder]': {
-    textOverflow: 'ellipsis',
-    overflow: 'hidden',
-    whiteSpace: 'nowrap',
-  },
-
-  variants: {
-    size: {
-      default: {
-        height: '$48',
-        borderRadius: '$sm',
-        padding: '$8 $16',
-      },
-    },
-
-    isFocused: {
-      true: {
-        borderColor: '$surface400',
-        '&:hover': {
-          borderColor: '$surface600',
-        },
-      },
-    },
-
-    isDisabled: {
-      true: {},
-    },
-  },
-
-  defaultVariants: {
-    size: 'default',
-  },
-})
-
 export const StyledInput = styled('input', subheaderCss, {
   fw: '$regular',
   display: 'block',
