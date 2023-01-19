@@ -21,7 +21,7 @@ describe('<Input />', () => {
     expect(input).toBeTruthy()
   })
 
-  it('should console.warn about a11y when label not provied', () => {
+  it('should console.warn about a11y when label not provided', () => {
     const consoleSpy = vi.spyOn(console, 'warn')
     render(<Input placeholder="email" />)
     expect(consoleSpy).toHaveBeenCalled()
