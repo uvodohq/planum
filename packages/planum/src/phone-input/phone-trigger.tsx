@@ -115,12 +115,31 @@ export const StyledLine = styled('span', {
   height: '100%',
 })
 
-export const StyledInput = styled('input', {
+export const StyledInput = styled('input', subheaderCss, {
   width: '100%',
   flex: 1,
   height: '100%',
   padding: '$8 $16',
   outline: 'none',
+  display: 'block',
+  maxWidth: '100%',
+  transition: 'border-color 0.2s, box-shadow 0.2s',
+  backgroundColor: 'transparent',
+  color: '$textDark',
+  fontWeight: '$regular',
+
+  '&:-webkit-autofill': {
+    '&, &:hover, &:focus': {
+      boxShadow: '0 0 0px 1000px white inset !important',
+      transition: 'background-color 0s',
+    },
+  },
+
+  '&::placeholder': {
+    font: 'inherit',
+    color: '$surface500',
+    disableActions: true,
+  },
 })
 
 export type StyledMessageVariants = VariantProps<typeof SelectTrigger>
@@ -201,7 +220,6 @@ export function SelectTrigger(props: SelectTriggerProps) {
         <SelectDownIcon isOpen={isOpen} />
       </FlagButtonContainer>
       <StyledLine />
-
       <StyledInput
         tabIndex={0}
         ref={phoneInputRef}
