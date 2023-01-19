@@ -8,6 +8,8 @@ import { Box } from '../layout'
 import { __DEV__ } from '../utils/assertion'
 import EyeIcon from './icons/eye'
 import EyeSlashIcon from './icons/eye-slash'
+import { PasswordStrength } from './password-strength'
+import { passwordStrengthChecker } from './password-strength-checker'
 
 function usePasswordToggle() {
   const state = useToggleState({
@@ -28,25 +30,46 @@ function _InputPassword(
   forwardedRef: React.Ref<HTMLInputElement>,
 ) {
   const { inputType, icon, toggle } = usePasswordToggle()
+  const [strength, setStrength] = React.useState<{
+    contains: string[]
+    value: string
+  }>()
+
+  function handleChange(value: string) {
+    setStrength(passwordStrengthChecker(value))
+
+    if (props.onChange) {
+      props.onChange(value)
+    }
+  }
 
   return (
-    <Input
-      {...props}
-      type={inputType}
-      suffix={
-        <Box>
-          <Button
-            aria-label="toggle password visibility"
-            variant="flatDark"
-            icon={icon}
-            size="sm"
-            css={{ mr: '-$12' }}
-            onClick={toggle}
-          />
-        </Box>
-      }
-      ref={forwardedRef}
-    />
+    <Box>
+      <Input
+        {...props}
+        type={inputType}
+        onChange={(value) => handleChange(value)}
+        suffix={
+          <Box>
+            <Button
+              aria-label="toggle password visibility"
+              variant="flatDark"
+              icon={icon}
+              size="sm"
+              css={{ mr: '-$12' }}
+              onClick={toggle}
+            />
+          </Box>
+        }
+        ref={forwardedRef}
+      />
+
+      {strength?.contains?.length ? (
+        <PasswordStrength strength={strength} />
+      ) : (
+        ''
+      )}
+    </Box>
   )
 }
 
