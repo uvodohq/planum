@@ -174,13 +174,10 @@ export function useSelect(props: UseSelectProps) {
     }
   })
 
-  const handleInputChange = useMemoizedFn(
-    (event: React.ChangeEvent<HTMLInputElement>) => {
-      const value = event.target.value
-      setActiveIndex(null)
-      setSearch(value)
-    },
-  )
+  const handleInputChange = useMemoizedFn((value: string) => {
+    setActiveIndex(null)
+    setSearch(value)
+  })
 
   // when popup open, scroll selected into view center
   useLayoutEffect(() => {

@@ -44,7 +44,6 @@ const SelectDemos = () => {
         <SelectExample />
         <SelectExample defaultValue={14} />
         <SelectExampleAsync />
-        <Box />
       </Grid>
       <Grid title="Phone">
         <PhoneInput

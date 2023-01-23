@@ -17,9 +17,8 @@ const StyledSelectPopupDesktop = styled('div', {
   backgroundColor: '$white',
   borderRadius: '$sm',
   boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)',
-  py: 8,
-  px: 8,
-  pr: 4, // + 4px scrollbar width = 8px
+  p: 8,
+  // pr: 4, // + 4px scrollbar width = 8px
 })
 
 const StyledList = styled('ul', customScrollbar, {

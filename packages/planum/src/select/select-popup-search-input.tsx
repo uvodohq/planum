@@ -1,23 +1,7 @@
-import { sharedInputCss } from '../input'
+import { Input } from '../input'
 import { Spacer } from '../layout'
-import { styled } from '../theme'
+import { SearchIcon } from './icons'
 import type { UseSelectReturn } from './use-select'
-
-const StyledInput = styled('input', sharedInputCss, {
-  height: '$40',
-  borderRadius: '$sm',
-  padding: '$4 $8',
-  width: 'calc(100% - 4px)',
-  outline: 'none',
-
-  '&:focus': {
-    borderColor: '$primary600',
-    boxShadow: '0 0 0 3px $colors$primary100',
-    '&:hover': {
-      borderColor: '$primary600',
-    },
-  },
-})
 
 interface Props {
   select: UseSelectReturn
@@ -38,14 +22,15 @@ export const PopupSearchInput = (props: Props) => {
 
   return (
     <>
-      <StyledInput
-        type="text"
+      <Input
         placeholder="Search"
         role="combobox"
+        leftIcon={<SearchIcon />}
         value={search}
         aria-controls={isEmpty ? noResultsId : listboxId}
         aria-expanded="true"
         aria-autocomplete="list"
+        aria-label="search"
         {...inputInteractions.getReferenceProps({
           onChange: handleInputChange,
           onKeyDown: handleKeyDownInput,
