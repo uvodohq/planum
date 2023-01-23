@@ -64,6 +64,7 @@ export { default as UserListIcon } from './icons/user-list'
 export { default as WarningCircleIcon } from './icons/warning-circle'
 export { default as WhatsappIcon } from './icons/whatsapp'
 export { default as WrenchIcon } from './icons/wrench'
+export { default as XCircleIcon } from './icons/x-circle'
 
 // social
 export { default as FacebookIcon } from './icons/facebook'

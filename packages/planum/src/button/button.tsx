@@ -56,7 +56,7 @@ function _Button<T extends React.ElementType = 'button'>(
       {...rest}
       ref={ref}
       variant={variant}
-      isDisabled={isDisabled} // this is for stiches variant
+      isDisabled={isDisabled} // this is for stitches variant
       disabled={isDisabled || isLoading} // this is for native button
       isLoading={isLoading}
       aria-label={isLoading ? 'Loading' : ''}

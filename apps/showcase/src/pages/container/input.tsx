@@ -497,12 +497,12 @@ export default function InputContainer() {
       {/* Password Input */}
       <RowBox>
         <InputPassword label="New Password" placeholder="Enter your password" />
-        <InputPassword
+        {/* <InputPassword
           leftIcon={<UserIcon />}
           label="New Password"
           placeholder="Enter your password"
           description="At least 5 characters needed"
-        />
+        /> */}
         <InputPassword
           leftIcon={<UserIcon />}
           label="New Password"
