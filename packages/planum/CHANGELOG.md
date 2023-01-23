@@ -1,5 +1,12 @@
 # @uvodohq/planum
 
+## 3.2.0
+
+### Minor Changes
+
+- [#15](https://github.com/uvodohq/planum/pull/15) [`abc1646`](https://github.com/uvodohq/planum/commit/abc1646262c08bd04c567b66ebc187663b75f7cb) Thanks [@NijatBakhtiyar](https://github.com/NijatBakhtiyar)! - - refactor social buttons
+  - add social icons
+
 ## 3.1.0
 
 ### Minor Changes

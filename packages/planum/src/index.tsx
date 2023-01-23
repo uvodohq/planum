@@ -49,7 +49,7 @@ export { BreadcrumbItem, Breadcrumbs } from './breadcrumbs'
 
 // Button
 export type { ButtonProps } from './button'
-export { Button } from './button'
+export { Button, FacebookButton, GoogleButton, WhatsappButton } from './button'
 
 // Drawer
 export { Drawer } from './drawer'

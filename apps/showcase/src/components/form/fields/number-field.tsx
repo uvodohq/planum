@@ -8,12 +8,12 @@ interface NumberFieldProps extends InputNumberProps, UseControllerProps<any> {
   defaultValue?: number
 }
 
-const formatter = new Intl.NumberFormat('en-US', {
-  // style: 'currency',
-  currency: 'USD',
-  maximumFractionDigits: 2,
-  minimumFractionDigits: 2,
-})
+// const formatter = new Intl.NumberFormat('en-US', {
+//   // style: 'currency',
+//   currency: 'USD',
+//   maximumFractionDigits: 2,
+//   minimumFractionDigits: 2,
+// })
 
 export function NumberField(props: NumberFieldProps) {
   const { name, rules, defaultValue, control, ...rest } = props
@@ -32,7 +32,7 @@ export function NumberField(props: NumberFieldProps) {
 
   return (
     <InputNumber
-      format={formatter.format}
+      // format={formatter.format}
       {...mergeProps(field, rest)}
       errorMessage={error?.message}
       status={error?.message ? 'error' : undefined}

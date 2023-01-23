@@ -7,15 +7,7 @@ interface Item {
   Icon: any
 }
 
-const iconList: Item[] = Object.keys(icons).map((key) => {
-  const list = icons as any
-  const Icon = list[key]
-
-  return {
-    name: Icon.displayName,
-    Icon,
-  }
-})
+const socialList = ['FacebookIcon', 'GoogleIcon', 'WhatsappIcon']
 
 const duotoneList = [
   'ChartBarIcon',
@@ -30,8 +22,22 @@ const duotoneList = [
   'UserIcon',
 ]
 
+const iconList: Item[] = Object.keys(icons).map((key) => {
+  const list = icons as any
+  const Icon = list[key]
+
+  return {
+    name: Icon.displayName,
+    Icon,
+  }
+})
+
+const phosphorIconList = iconList.filter(
+  ({ name }) => !socialList.includes(name),
+)
+
 export default function IconsContainer() {
-  const content = iconList.map(({ name, Icon }) => (
+  const content = phosphorIconList.map(({ name, Icon }) => (
     <IconWrapper name={name} Icon={Icon} key={name} />
   ))
 
@@ -48,6 +54,12 @@ export default function IconsContainer() {
     )
   })
 
+  const socialIcons = iconList.map(({ name, Icon }) => {
+    const isSocial = socialList.includes(name)
+
+    return isSocial && <IconWrapper name={name} Icon={Icon} key={name} />
+  })
+
   return (
     <div>
       <Toaster />
@@ -60,6 +72,10 @@ export default function IconsContainer() {
         {duotoneIcons.length} icons have duotone color
       </H3>
       <IconGrid>{duotoneIcons}</IconGrid>
+      <H3 css={{ fw: '$semibold', mt: 64 }}>
+        {socialList.length} social icons
+      </H3>
+      <IconGrid>{socialIcons}</IconGrid>
     </div>
   )
 }

@@ -13,8 +13,9 @@ export function PercentField(props: PercentFieldProps) {
     <NumberField
       placeholder="0"
       suffix="%"
-      minValue={0}
-      maxValue={100}
+      min={0}
+      max={100}
+      precision={0}
       {...props}
     />
   )
