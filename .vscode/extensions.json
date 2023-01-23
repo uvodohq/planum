@@ -1,9 +1,9 @@
 {
   "recommendations": [
     "file-icons.file-icons",
-    "GitHub.copilot",
+    "github.copilot",
     "streetsidesoftware.code-spell-checker",
-    "EditorConfig.EditorConfig",
+    "editorconfig.editorconfig",
     "richie5um2.vscode-sort-json",
     "unional.vscode-sort-package-json",
     "dbaeumer.vscode-eslint",
