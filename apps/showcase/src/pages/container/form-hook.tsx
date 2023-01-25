@@ -123,7 +123,7 @@ function useInitialValues() {
       toggle_field: false,
       radio_field: 'first',
       textarea_field: '',
-      select_field: 1,
+      select_field: null,
       auto_complete_field: [{ id: 1, name: 'first' }],
       tag_select_field: [{ id: 1, name: 'tag 1' }],
       checkbox_group_field: [],

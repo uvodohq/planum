@@ -1,15 +1,12 @@
 import { useUpdateEffect } from '@react-aria/utils'
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 
-export interface UseSelectStateProps {
-  items: any[]
-  value?: any
-}
-
-export type SelectState = ReturnType<typeof useSelectState>
+import { useControllableValue } from '../hooks'
+import type { UseSelectStateProps } from './select.types'
 
 export function useSelectState(props: UseSelectStateProps) {
-  const { value, items } = props || {}
+  const { items, onSelect, ...rest } = props || {}
+  const [value, onChange] = useControllableValue(rest)
 
   // selected item index, which may or may not be active. shown in the trigger button.
   const defaultSelectedIndex = useMemo(() => {
@@ -21,12 +18,21 @@ export function useSelectState(props: UseSelectStateProps) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null) // currently focused item
   const [selectedIndex, setSelectedIndex] = useState(defaultSelectedIndex)
   const [search, setSearch] = useState('')
-  const [selectedItem, setSelectedItem] = useState(items[defaultSelectedIndex])
+  const [selectedItem, setSelectedItem] = useState(() =>
+    defaultSelectedIndex ? items[defaultSelectedIndex] : null,
+  )
 
   useUpdateEffect(() => {
     setSelectedIndex(defaultSelectedIndex)
-    setSelectedIndex(items[defaultSelectedIndex])
+    setSelectedItem(defaultSelectedIndex ? items[defaultSelectedIndex] : null)
   }, [defaultSelectedIndex])
+
+  useEffect(() => {
+    if (!isOpen) {
+      setSearch('')
+      setActiveIndex(null)
+    }
+  }, [isOpen, setActiveIndex])
 
   return {
     isOpen,
@@ -43,5 +49,8 @@ export function useSelectState(props: UseSelectStateProps) {
     setSearch,
     selectedItem,
     setSelectedItem,
+    onChange,
+    onSelect,
+    value,
   }
 }

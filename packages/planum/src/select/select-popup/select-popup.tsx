@@ -1,21 +1,15 @@
 import { FloatingNode, FloatingPortal } from '@floating-ui/react'
 import { AnimatePresence } from 'framer-motion'
-import { useContext } from 'react'
 
-import { useMediaQuery } from '../hooks'
-import type { CSS } from '../theme'
-import { SelectContext } from './select-context'
+import { useMediaQuery } from '../../hooks'
+import type { SelectPopupProps } from '../select.types'
+import { useSelectContext } from '../select-context'
 import { DesktopPopup } from './select-popup-desktop'
 import { MobilePopup } from './select-popup-mobile'
 
-interface SelectPopupProps {
-  children: React.ReactNode
-  popupCss?: CSS
-}
-
-export function SelectPopup(props: SelectPopupProps) {
+export function SelectPopup(props: React.PropsWithChildren<SelectPopupProps>) {
   const { children, popupCss } = props
-  const { select } = useContext(SelectContext)
+  const { select, state } = useSelectContext()
   const isMobile = useMediaQuery('(max-width: 768px)')
   const Popup = isMobile ? MobilePopup : DesktopPopup
 
@@ -23,7 +17,7 @@ export function SelectPopup(props: SelectPopupProps) {
     <FloatingNode id={select.nodeId}>
       <FloatingPortal id="planum-portal">
         <AnimatePresence>
-          {select.isOpen && <Popup {...{ select, popupCss }}>{children}</Popup>}
+          {state.isOpen && <Popup {...{ select, popupCss }}>{children}</Popup>}
         </AnimatePresence>
       </FloatingPortal>
     </FloatingNode>

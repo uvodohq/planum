@@ -1,4 +1,4 @@
-import { Box, H1, Title, PhoneInput } from '@uvodohq/planum'
+import { Box, H1, PhoneInput, Title } from '@uvodohq/planum'
 
 import AutoCompleteExampleControlled from '../../components/auto-complete/auto-complete-controlled-example'
 import { AutoCompleteTagsExample } from '../../components/auto-complete/auto-complete-tags-example'
@@ -153,7 +153,7 @@ const SelectDemos = () => {
 
       {/* Autocomplete */}
       <H1 css={{ mb: 66, fw: 700 }}>Autocomplete</H1>
-
+      {/* 
       <Grid>
         <AutoCompleteExampleControlled
           label="Country"
@@ -179,7 +179,7 @@ const SelectDemos = () => {
           errorMessage="Error message with filled value"
           status="error"
         />
-      </Grid>
+      </Grid> */}
     </Box>
   )
 }

@@ -54,12 +54,9 @@ export default function SelectExampleCustomTrigger(
     <Select
       labelKey="name"
       renderTrigger={(triggerProps) => {
-        const { items, labelKey, select } = triggerProps
-        const index = select.selectedIndex ?? ''
-        const label = items[index]?.[labelKey]
-
+        const { label, ...rest } = triggerProps
         return (
-          <StyledButton {...triggerProps} {...select.referenceProps}>
+          <StyledButton {...rest}>
             <LeftIconWrapper>
               <UserIcon />
             </LeftIconWrapper>

@@ -1,11 +1,10 @@
 import { useId } from '@floating-ui/react'
-import React, { useContext } from 'react'
+import React from 'react'
 
 import { subheaderCss } from '../text'
 import { styled } from '../theme'
-// import { CheckIcon, IconContainer } from './icons'
-import type { Value } from './select-component'
-import { SelectContext } from './select-context'
+import type { Value } from './select.types'
+import { useSelectContext } from './select-context'
 
 const StyledOption = styled('li', subheaderCss, {
   fw: '$regular',
@@ -92,18 +91,11 @@ export interface OptionProps {
   index?: number
 }
 
-export const Option: React.FC<OptionProps> = (props) => {
-  const { children, index = 0, value } = props
-
-  const { select, listRef, matchWidth } = useContext(SelectContext)
-
-  const {
-    selectedIndex,
-    activeIndex,
-    searchable,
-    handleSelect,
-    handleKeyDown,
-  } = select
+export const Option = (props: OptionProps) => {
+  const { children, index = 0 } = props
+  const { select, state } = useSelectContext()
+  const { handleSelect, handleKeyDown, matchWidth, listItemsRef } = select
+  const { selectedIndex, activeIndex, searchable } = state
 
   const id = useId()
 
@@ -115,7 +107,7 @@ export const Option: React.FC<OptionProps> = (props) => {
       id={id}
       role="option"
       ref={(node) => {
-        listRef.current[index] = node
+        listItemsRef.current[index] = node
       }}
       tabIndex={isActive ? 0 : -1}
       aria-selected={isActive && isSelected}

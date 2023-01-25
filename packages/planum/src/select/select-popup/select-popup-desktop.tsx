@@ -1,10 +1,10 @@
 import { FloatingFocusManager } from '@floating-ui/react'
 import { motion } from 'framer-motion'
 
-import type { CSS } from '../theme'
-import { customScrollbar, styled } from '../theme'
+import { customScrollbar, styled } from '../../theme'
+import type { SelectPopupProps } from '../select.types'
+import { useSelectContext } from '../select-context'
 import { PopupSearchInput } from './select-popup-search-input'
-import type { UseSelectReturn } from './use-select'
 
 const StyledSelectPopupDesktop = styled('div', {
   margin: '0',
@@ -28,12 +28,6 @@ const StyledList = styled('ul', customScrollbar, {
   overscrollBehavior: 'contain',
 })
 
-interface SelectPopupProps {
-  children: React.ReactNode
-  popupCss?: CSS
-  select: UseSelectReturn
-}
-
 const desktopMotionConfig = {
   initial: { opacity: 0, y: -6 },
   animate: { opacity: 1, y: 0 },
@@ -46,14 +40,18 @@ const desktopMotionConfig = {
   },
 }
 
-export const DesktopPopup = (props: SelectPopupProps) => {
-  const { children, select, popupCss } = props
+export const DesktopPopup = (
+  props: React.PropsWithChildren<SelectPopupProps>,
+) => {
+  const { children, popupCss } = props
+  const { select, state } = useSelectContext()
+  const { searchable } = state
 
   return (
     <FloatingFocusManager
       context={select.context}
       modal={false}
-      initialFocus={select.searchable ? undefined : -1}>
+      initialFocus={searchable ? undefined : -1}>
       <StyledSelectPopupDesktop
         ref={select.floating}
         css={popupCss}
@@ -67,7 +65,7 @@ export const DesktopPopup = (props: SelectPopupProps) => {
           zIndex: 1000,
         }}
         {...desktopMotionConfig}>
-        {select.searchable && <PopupSearchInput select={select} />}
+        {searchable && <PopupSearchInput select={select} />}
         <StyledList role="listbox" id={select.listboxId}>
           {children}
         </StyledList>

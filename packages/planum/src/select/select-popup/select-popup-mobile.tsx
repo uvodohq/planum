@@ -1,10 +1,10 @@
 import { FloatingFocusManager, FloatingOverlay } from '@floating-ui/react'
 import { motion } from 'framer-motion'
 
-import type { CSS } from '../theme'
-import { customScrollbar, styled } from '../theme'
+import { customScrollbar, styled } from '../../theme'
+import type { SelectPopupProps } from '../select.types'
+import { useSelectContext } from '../select-context'
 import { PopupSearchInput } from './select-popup-search-input'
-import type { UseSelectReturn } from './use-select'
 
 const StyledSelectPopupMobile = styled('div', {
   outline: 0,
@@ -48,12 +48,6 @@ const underlayVariants = {
   hidden: { opacity: 0, transition: { duration: 0.2, ease: 'easeOut' } },
 }
 
-interface SelectPopupProps {
-  children: React.ReactNode
-  popupCss?: CSS
-  select: UseSelectReturn
-}
-
 const mobileMotionConfig = {
   initial: { opacity: 0, y: 200 },
   animate: { opacity: 1, y: 0 },
@@ -63,8 +57,13 @@ const mobileMotionConfig = {
   },
 }
 
-export const MobilePopup = (props: SelectPopupProps) => {
-  const { children, select, popupCss } = props
+export const MobilePopup = (
+  props: React.PropsWithChildren<SelectPopupProps>,
+) => {
+  const { children, popupCss } = props
+  const { select, state } = useSelectContext()
+
+  const { searchable } = state
 
   return (
     <FloatingOverlay
@@ -87,7 +86,7 @@ export const MobilePopup = (props: SelectPopupProps) => {
       <FloatingFocusManager
         context={select.context}
         modal={false}
-        initialFocus={select.searchable ? undefined : -1}>
+        initialFocus={searchable ? undefined : -1}>
         <StyledSelectPopupMobile
           ref={select.floating}
           as={motion.div}
@@ -103,10 +102,10 @@ export const MobilePopup = (props: SelectPopupProps) => {
             top: 'auto',
             minWidth: '100%',
             zIndex: 902,
-            height: select.searchable ? '80%' : 'auto',
-            paddingTop: select.searchable ? 0 : undefined,
+            height: searchable ? '80%' : 'auto',
+            paddingTop: searchable ? 0 : undefined,
           }}>
-          {select.searchable && (
+          {searchable && (
             <StyledSearchWrapper>
               <PopupSearchInput select={select} />
             </StyledSearchWrapper>
@@ -115,8 +114,8 @@ export const MobilePopup = (props: SelectPopupProps) => {
             role="listbox"
             id={select.listboxId}
             style={{
-              maxHeight: select.searchable ? 'calc(100% - 72px)' : '100%',
-              paddingTop: select.searchable ? 0 : undefined,
+              maxHeight: searchable ? 'calc(100% - 72px)' : '100%',
+              paddingTop: searchable ? 0 : undefined,
             }}>
             {children}
           </StyledList>

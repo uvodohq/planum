@@ -1,4 +1,3 @@
-import type { Placement } from '@floating-ui/react'
 import {
   autoUpdate,
   flip,
@@ -14,41 +13,14 @@ import {
   useRole,
   useTypeahead,
 } from '@floating-ui/react'
-import type { MutableRefObject } from 'react'
-import { useEffect, useLayoutEffect, useMemo } from 'react'
+import { useLayoutEffect, useMemo, useRef } from 'react'
 
+import { useLatest } from '../hooks'
 import useMemoizedFn from '../hooks/use-memoized-fn'
-import { useSelectState } from './use-select-state'
-
-export interface UseSelectProps {
-  listItemsRef: MutableRefObject<(HTMLElement | null)[]>
-  listContentRef: MutableRefObject<(string | null)[]>
-  matchWidth?: boolean
-  position?: Placement
-  items: any[]
-  labelKey: string
-  value?: any
-}
-
-export type UseSelectReturn = ReturnType<typeof useSelect>
+import type { UseSelectProps } from './select.types'
 
 export function useSelect(props: UseSelectProps) {
-  const {
-    listItemsRef,
-    listContentRef,
-    matchWidth,
-    position = 'bottom-start',
-    value,
-    items,
-    labelKey,
-    onChange,
-    onSelect,
-  } = props
-
-  const state = useSelectState({
-    value,
-    items,
-  })
+  const { matchWidth, position = 'bottom-start', labelKey, state } = props
 
   const {
     isOpen,
@@ -62,7 +34,15 @@ export function useSelect(props: UseSelectProps) {
     selectedItem,
     setSelectedItem,
     searchable,
+    items,
+    onChange,
+    onSelect,
   } = state
+
+  const listItemsRef = useRef<Array<HTMLLIElement | null>>([]) // for store li elements
+  const listContentRef = useLatest<string[]>(
+    items.map((item) => item[labelKey]), // for typeahead search
+  )
 
   // subscribe popup tree context inside modal/dialog. for not closing modal on ESC
   const nodeId = useFloatingNodeId()
@@ -123,19 +103,20 @@ export function useSelect(props: UseSelectProps) {
     click,
     dismiss,
     role,
-    searchable ? undefined : navigation,
-    searchable ? undefined : typeahead,
+    ...(searchable ? [] : [navigation, typeahead]),
   ])
 
   const inputInteractions = useInteractions([navigation])
 
-  const options = useMemo(
-    () =>
-      items.filter((item) =>
+  const options = useMemo(() => {
+    if (searchable) {
+      return items.filter((item) =>
         item[labelKey].toLowerCase().includes(search.toLowerCase()),
-      ),
-    [items, labelKey, search],
-  )
+      )
+    }
+
+    return items
+  }, [items, labelKey, search, searchable])
 
   const handleSelect = useMemoizedFn((index: number) => {
     setActiveIndex(null)
@@ -146,8 +127,8 @@ export function useSelect(props: UseSelectProps) {
     setSelectedIndex(foundIndex)
     setSelectedItem(item)
 
-    onChange(item.id)
-    onSelect(item.id, item)
+    onChange?.(item.id)
+    onSelect?.(item.id, item)
   })
 
   const handleOptionClick = useMemoizedFn((index: number) => {
@@ -192,13 +173,6 @@ export function useSelect(props: UseSelectProps) {
     }
   }, [floating.isPositioned, selectedIndex, listItemsRef, searchable])
 
-  useEffect(() => {
-    if (!isOpen) {
-      setSearch('')
-      setActiveIndex(null)
-    }
-  }, [isOpen, setActiveIndex])
-
   const select = useMemo(() => {
     // Prevent input losing focus on Firefox VoiceOver
     const { 'aria-activedescendant': ignoreAria, ...floatingProps } =
@@ -235,6 +209,9 @@ export function useSelect(props: UseSelectProps) {
       handleSelect,
       selectedItem,
       handleKeyDown,
+      matchWidth,
+      listItemsRef,
+      labelKey,
     }
   }, [
     interactions,
@@ -260,9 +237,12 @@ export function useSelect(props: UseSelectProps) {
     options,
     selectedItem,
     handleKeyDown,
+    matchWidth,
+    listItemsRef,
+    labelKey,
   ])
 
-  console.log('selecy', select)
+  // console.log('select', select)
 
   return select
 }

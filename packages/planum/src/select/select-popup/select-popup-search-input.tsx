@@ -1,7 +1,7 @@
-import { Input } from '../input'
-import { Spacer } from '../layout'
-import { SearchIcon } from './icons'
-import type { UseSelectReturn } from './use-select'
+import { Input } from '../../input'
+import { Spacer } from '../../layout'
+import { SearchIcon } from '../icons'
+import type { UseSelectReturn } from '../use-select'
 
 interface Props {
   select: UseSelectReturn
