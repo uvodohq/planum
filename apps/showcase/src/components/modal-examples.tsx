@@ -64,7 +64,9 @@ export function ModalExampleDefault() {
       openOnMobileAs="drawer">
       <ModalContent
         title="This is a dialog"
-        description="This is a dialog description"></ModalContent>
+        description="This is a dialog description">
+        <Input />
+      </ModalContent>
     </Modal>
   )
 }
@@ -80,6 +82,7 @@ export function ModalExampleCustomFooter() {
             <Button onClick={props.closeModal}>Custom close</Button>
           </Box>
         )}>
+        <Input />
         {/* <p id={props.descriptionId}>Modal description</p> */}
       </ModalContent>
     </Modal>

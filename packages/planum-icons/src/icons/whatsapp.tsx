@@ -29,10 +29,10 @@ const weights = {
   regular: Regular,
 }
 
-const WhatsappLogoIcon = forwardRef<SVGSVGElement, IconProps>((props, ref) => (
-  <Icon ref={ref} alt="Whatsapp logo Icon" {...props} weights={weights} />
+const WhatsappIcon = forwardRef<SVGSVGElement, IconProps>((props, ref) => (
+  <Icon ref={ref} alt="Whatsapp Icon" {...props} weights={weights} />
 ))
 
-WhatsappLogoIcon.displayName = 'WhatsappLogoIcon'
+WhatsappIcon.displayName = 'WhatsappIcon'
 
-export default WhatsappLogoIcon
+export default WhatsappIcon

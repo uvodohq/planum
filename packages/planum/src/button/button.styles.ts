@@ -220,15 +220,6 @@ export const StyledButton = styled('button', {
           color: '$info800',
         },
       },
-
-      whatsapp: {
-        backgroundColor: '$success600',
-        color: '$white',
-
-        '&:hover': {
-          backgroundColor: '$success500',
-        },
-      },
     },
 
     rounded: {

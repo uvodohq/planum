@@ -516,6 +516,15 @@ export default function InputContainer() {
           isDisabled
         />
       </RowBox>
+      <RowBox>
+        <InputPassword
+          label="Check password strength"
+          placeholder="Enter your password"
+          checkStrength
+        />
+        <Box />
+        <Box />
+      </RowBox>
 
       {/* URL Input */}
       <H3 css={{ mt: 100, mb: 20 }}>URL input</H3>

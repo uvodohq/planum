@@ -49,7 +49,7 @@ interface Props {
   ) => void | React.RefObject<HTMLDivElement> | null
 
   preserveLabelSpace?: boolean
-  role: string
+  role?: string
 }
 
 export type InputProps = StyledInputVariants &

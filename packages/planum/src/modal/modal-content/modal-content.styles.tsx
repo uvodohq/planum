@@ -29,7 +29,8 @@ export const StyledDialogHeader = styled('div', {
 })
 
 export const StyledDialogBody = styled('div', customScrollbar, {
-  px: '$32',
+  p: '$8 $40',
+  m: -8,
   maxHeight: 'calc(100% - 128px)',
   overflowY: 'auto',
 })

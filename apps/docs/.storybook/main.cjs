@@ -35,6 +35,11 @@ module.exports = {
     // customize the Vite config here
     return {
       ...config,
+      // https://lightrun.com/answers/storybookjs-builder-vite-bug-javascript-heap-out-of-memory-vite-build-works-storybook-wwebpack-4-works // occurs eval error when building
+      build: {
+        minify: false,
+        sourcemap: false,
+      },
       resolve: {
         alias: [
           {

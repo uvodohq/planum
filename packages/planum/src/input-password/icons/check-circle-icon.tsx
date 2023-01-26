@@ -1,16 +1,22 @@
 import type { SVGProps } from 'react'
 
-const EyeIcon = (props: SVGProps<SVGSVGElement>) => (
+interface Props extends SVGProps<SVGSVGElement> {
+  size?: number
+}
+
+const CheckCircleIcon = ({ size = 24, ...rest }: Props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={16}
-    height={16}
+    width={size}
+    height={size}
     fill={'currentColor'}
     viewBox="0 0 256 256"
-    {...props}>
+    {...rest}>
+    <title>Check Circle Icon</title>
     <rect width="256" height="256" fill="none" />
-    <path
-      d="M128,56C48,56,16,128,16,128s32,72,112,72,112-72,112-72S208,56,128,56Z"
+
+    <polyline
+      points="172 104 113.3 160 84 132"
       fill="none"
       stroke="currentColor"
       strokeLinecap="round"
@@ -20,7 +26,7 @@ const EyeIcon = (props: SVGProps<SVGSVGElement>) => (
     <circle
       cx="128"
       cy="128"
-      r="40"
+      r="96"
       fill="none"
       stroke="currentColor"
       strokeLinecap="round"
@@ -30,4 +36,4 @@ const EyeIcon = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 )
 
-export default EyeIcon
+export default CheckCircleIcon
