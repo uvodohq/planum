@@ -18,7 +18,7 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "changeset": "changeset",
     "bump-version": "changeset version",
-    "publish-packages": "turbo run build test --filter=@uvodohq/* && changeset version && changeset publish",
+    "pub": "turbo run build test --filter=@uvodohq/* && changeset version && changeset publish",
     "status": "changeset status --verbose",
     "gen": "plop",
     "update": "yarn upgrade-interactive --latest"

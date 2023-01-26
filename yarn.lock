@@ -1740,19 +1740,19 @@
   dependencies:
     "@floating-ui/core" "^1.0.5"
 
-"@floating-ui/react-dom@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.npmjs.org/@floating-ui/react-dom/-/react-dom-1.1.0.tgz"
-  integrity sha512-xyP9dMqZouuQ7h10DvbEbxZItuUleKHXe7XQFvbpttjXZrfyQMaZVTnWsE/t3hrHakZy18HxEBZRzGNXQHd0GA==
+"@floating-ui/react-dom@^1.2.1":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@floating-ui/react-dom/-/react-dom-1.2.1.tgz#7386c33fa07b0eb2b2a8b3ec9910d70a156f81ef"
+  integrity sha512-YCLlqibZtgUhxUpxkSp1oekvYgH/jI4KdZEJv85E62twlZHN43xdlQNe6JcF4ROD3/Zu6juNHN+aOygN+6yZjg==
   dependencies:
     "@floating-ui/dom" "^1.1.0"
 
-"@floating-ui/react@^0.15.0":
-  version "0.15.0"
-  resolved "https://registry.npmjs.org/@floating-ui/react/-/react-0.15.0.tgz"
-  integrity sha512-zndl3fDlNWNaRgFKCwg3NmlI/b5U3kUA5Ub9GfR0WMdSQ0zUQjU8Y2Wj+eSMlC4+w7Tu/IJ1Nsol4Byyzf4PBQ==
+"@floating-ui/react@^0.18.1":
+  version "0.18.1"
+  resolved "https://registry.yarnpkg.com/@floating-ui/react/-/react-0.18.1.tgz#3a5ea19d22239f6c8d0250121488969680435473"
+  integrity sha512-Uqntjem19/3ghAwKSaMU/719P/riiox13rkAzMhCthmAAhTzvvmNka52L5s9Gi/cjAfNNR5/RjkD0YKqTecWzQ==
   dependencies:
-    "@floating-ui/react-dom" "^1.1.0"
+    "@floating-ui/react-dom" "^1.2.1"
     aria-hidden "^1.1.3"
     tabbable "^6.0.1"
 
@@ -13488,6 +13488,11 @@ requires-port@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/requires-port/-/requires-port-1.0.0.tgz"
   integrity sha512-KigOCHcocU3XODJxsu8i/j8T9tzT4adHiecwORRQ0ZZFcp7ahwXuRU1m+yuO90C5ZUyGeGfocHDI14M3L3yDAQ==
+
+resize-observer-polyfill@^1.5.1:
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/resize-observer-polyfill/-/resize-observer-polyfill-1.5.1.tgz#0e9020dd3d21024458d4ebd27e23e40269810464"
+  integrity sha512-LwZrotdHOo12nQuZlHEmtuXdqGoOD0OhaxopaNFxWzInpEgaLWoVuAMbTzixuosCx2nEG58ngzW3vxdWoxIgdg==
 
 resolve-alpn@^1.0.0:
   version "1.2.1"

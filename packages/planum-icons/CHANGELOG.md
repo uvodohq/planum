@@ -1,5 +1,11 @@
 # @uvodohq/planum-icons
 
+## 1.4.0
+
+### Minor Changes
+
+- [#17](https://github.com/uvodohq/planum/pull/17) [`c320f70`](https://github.com/uvodohq/planum/commit/c320f700309b0ad1022fbfb05175c1288393e156) Thanks [@NijatBakhtiyar](https://github.com/NijatBakhtiyar)! - - add password strength feature
+
 ## 1.3.0
 
 ### Minor Changes

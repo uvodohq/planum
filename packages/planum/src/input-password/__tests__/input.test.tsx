@@ -4,6 +4,8 @@ import type { InputProps } from '../../input/input'
 import { render, screen, userEvent } from '../../test'
 import { InputPassword } from '../input-password'
 
+global.ResizeObserver = require('resize-observer-polyfill')
+
 function renderInput(props?: InputProps) {
   return render(<InputPassword placeholder="0" aria-label="label" {...props} />)
 }

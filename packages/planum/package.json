@@ -1,6 +1,6 @@
 {
   "name": "@uvodohq/planum",
-  "version": "3.2.0",
+  "version": "3.3.0",
   "description": "Planum - A React UI Kit for Uvodo Design System. Uvodo is self-hosted eCommerce platform for digital agencies",
   "author": "UvodoHQ",
   "license": "MIT",
@@ -41,7 +41,7 @@
     "vitest-preview": "vitest-preview"
   },
   "dependencies": {
-    "@floating-ui/react": "^0.15.0",
+    "@floating-ui/react": "^0.18.1",
     "@radix-ui/react-avatar": "^1.0.0",
     "@react-aria/breadcrumbs": "^3.3.0",
     "@react-aria/button": "^3.6.0",
@@ -77,6 +77,7 @@
     "planum-tsconfig": "*",
     "react": "^16.8.0 || ^17.0 || ^18.0.0",
     "react-dom": "^16.8.0 || ^17.0 || ^18.0.0",
+    "resize-observer-polyfill": "^1.5.1",
     "tsup": "^5.10.1",
     "typescript": "^4.5.3",
     "vitest": "^0.21.0",
