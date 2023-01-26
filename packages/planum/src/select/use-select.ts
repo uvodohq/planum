@@ -1,205 +1,234 @@
-import type { Placement } from '@floating-ui/react'
 import {
   autoUpdate,
+  flip,
   offset,
   size,
   useClick,
   useDismiss,
   useFloating,
   useFloatingNodeId,
+  useId,
   useInteractions,
   useListNavigation,
   useRole,
   useTypeahead,
 } from '@floating-ui/react'
-import { useUpdateEffect } from '@react-aria/utils'
-import type { MutableRefObject } from 'react'
-import { useLayoutEffect, useState } from 'react'
+import { useLayoutEffect, useMemo, useRef } from 'react'
 
-import type { SelectState } from './use-select-state'
+import { useLatest } from '../hooks'
+import useMemoizedFn from '../hooks/use-memoized-fn'
+import type { UseSelectProps } from './select.types'
 
-export interface UseSelectProps {
-  listItemsRef: MutableRefObject<(HTMLElement | null)[]>
-  listContentRef: MutableRefObject<(string | null)[]>
-  matchWidth?: boolean
-  position?: Placement
-}
-
-export interface UseSelectReturn {
-  getFloatingProps: (props?: any) => Record<string, unknown>
-  referenceProps: Record<string, unknown>
-  getItemProps: () => Record<string, unknown>
-  direction: any
-  context: any
-  refs: any
-  nodeId: string
-  strategy: string
-  x: number | null
-  y: number | null
-}
-
-export function useSelect(
-  props: UseSelectProps,
-  state: SelectState,
-): UseSelectReturn {
-  const {
-    listItemsRef,
-    listContentRef,
-    matchWidth,
-    position = 'bottom-end',
-  } = props
+export function useSelect(props: UseSelectProps) {
+  const { matchWidth, position = 'bottom-start', labelKey, state } = props
 
   const {
     isOpen,
-    setIsOpen,
     activeIndex,
-    setActiveIndex,
     selectedIndex,
-    setSelectedIndex,
-    prevActiveIndex,
+    search,
+    searchable,
+    items,
+    onChange,
+    onSelect,
+    updateState,
+    toggleOpen,
+    onMatchTypeahead,
+    onNavigate,
   } = state
 
-  const [controlledScrolling, setControlledScrolling] = useState(false)
-
-  // subscribe portalled popup to the tree context. for selects inside modal
-  const nodeId = useFloatingNodeId()
-
-  const { x, y, reference, floating, strategy, context, refs, placement } =
-    useFloating({
-      open: isOpen,
-      onOpenChange: setIsOpen,
-      whileElementsMounted: autoUpdate,
-      placement: position,
-      middleware: [
-        offset(4),
-        size({
-          apply({ rects, elements }) {
-            Object.assign(elements.floating.style, {
-              width: matchWidth ? `${rects.reference.width}px` : 'auto',
-            })
-          },
-          padding: 8,
-        }),
-      ],
-      nodeId,
-    })
-
-  const floatingRef = refs.floating
-
-  const { getReferenceProps, getFloatingProps, getItemProps } = useInteractions(
-    [
-      useClick(context),
-      useRole(context, { role: 'listbox' }),
-      useDismiss(context, {
-        // bubbles: false,
-      }),
-      useListNavigation(context, {
-        listRef: listItemsRef,
-        activeIndex,
-        selectedIndex,
-        onNavigate: setActiveIndex,
-      }),
-      useTypeahead(context, {
-        listRef: listContentRef,
-        onMatch: isOpen ? setActiveIndex : setSelectedIndex,
-        activeIndex,
-        selectedIndex,
-      }),
-    ],
+  const listItemsRef = useRef<Array<HTMLLIElement | null>>([]) // for store li elements
+  const listContentRef = useLatest<string[]>(
+    items.map((item) => item[labelKey]), // for typeahead search
   )
 
-  // Scroll the active or selected item into view when in `controlledScrolling`
-  // mode (i.e. arrow key nav).
-  useLayoutEffect(() => {
-    const floating = floatingRef.current
+  // subscribe popup tree context inside modal/dialog. for not closing modal on ESC
+  const nodeId = useFloatingNodeId()
+  const noResultsId = useId()
+  const buttonId = useId()
+  const listboxId = useId()
 
-    if (isOpen && controlledScrolling && floating) {
-      const item =
-        activeIndex != null
-          ? listItemsRef.current[activeIndex]
-          : selectedIndex != null
-          ? listItemsRef.current[selectedIndex]
-          : null
-
-      if (item && prevActiveIndex != null) {
-        const itemHeight =
-          listItemsRef.current[prevActiveIndex]?.offsetHeight ?? 0
-
-        const floatingHeight = floating.offsetHeight
-        const top = item.offsetTop
-        const bottom = top + itemHeight
-
-        if (top < floating.scrollTop) {
-          floating.scrollTop -= floating.scrollTop - top + 5
-        } else if (bottom > floatingHeight + floating.scrollTop) {
-          floating.scrollTop += bottom - floatingHeight - floating.scrollTop + 5
-        }
-      }
-    }
-  }, [
-    isOpen,
-    controlledScrolling,
-    prevActiveIndex,
-    activeIndex,
-    floatingRef,
-    selectedIndex,
-  ])
-
-  // Sync the height and the scrollTop values
-  useLayoutEffect(() => {
-    requestAnimationFrame(() => {
-      const floating = refs.floating.current
-      if (isOpen && floating && floating.clientHeight < floating.scrollHeight) {
-        const item = listItemsRef.current[selectedIndex]
-        if (item) {
-          floating.scrollTop =
-            item.offsetTop - floating.offsetHeight / 2 + item.offsetHeight / 2
-        }
-      }
-    })
-  }, [isOpen, selectedIndex, refs])
-
-  // return focus to reference when the popup is closed, fix for selects in modal
-  useUpdateEffect(() => {
-    if (!isOpen) {
-      // @ts-expect-error - fix focus
-      refs.reference.current?.focus()
-    }
-  }, [isOpen, refs])
-
-  const direction = placement === 'bottom' ? 1 : -1
-
-  const referenceProps = getReferenceProps({
-    ref: reference,
+  const floating = useFloating({
+    open: isOpen,
+    onOpenChange: toggleOpen,
+    whileElementsMounted: autoUpdate,
+    placement: position,
+    nodeId,
+    middleware: [
+      offset(4),
+      flip({ padding: 8 }),
+      size({
+        apply({ rects, elements }) {
+          Object.assign(elements.floating.style, {
+            maxHeight: `${300}px`,
+            width: matchWidth ? `${rects.reference.width}px` : 'auto',
+          })
+        },
+        padding: 8,
+      }),
+    ],
   })
 
-  const floatingProps = (config?: React.HTMLProps<HTMLElement>) =>
-    isOpen
-      ? getFloatingProps({
-          ref: floating,
-          onPointerEnter() {
-            setControlledScrolling(false)
-          },
-          onPointerMove() {
-            setControlledScrolling(false)
-          },
-          onKeyDown() {
-            setControlledScrolling(true)
-          },
-          ...config,
-        })
-      : {}
+  const { context: floatingCtx, isPositioned } = floating
 
-  return {
-    getFloatingProps: floatingProps,
-    referenceProps,
-    direction,
-    context,
-    getItemProps,
-    refs,
-    nodeId,
-    strategy,
-    x,
-    y,
+  // interactions
+  const click = useClick(floatingCtx)
+  const dismiss = useDismiss(floatingCtx)
+  const role = useRole(floatingCtx)
+  const typeahead = useTypeahead(floatingCtx, {
+    listRef: listContentRef,
+    activeIndex,
+    selectedIndex,
+    onMatch: onMatchTypeahead,
+  })
+
+  const searchableNavigationOptions = {
+    loop: true,
+    focusItemOnOpen: false,
+    virtual: true,
+    allowEscape: true,
   }
+
+  const navigation = useListNavigation(floatingCtx, {
+    listRef: listItemsRef,
+    activeIndex,
+    selectedIndex,
+    onNavigate,
+    ...(searchable ? searchableNavigationOptions : {}),
+  })
+
+  const interactions = useInteractions([
+    click,
+    dismiss,
+    role,
+    ...(searchable ? [undefined, undefined] : [navigation, typeahead]),
+  ])
+
+  const inputInteractions = useInteractions([navigation])
+
+  const options = useMemo(() => {
+    if (searchable) {
+      return items.filter((item) =>
+        item[labelKey].toLowerCase().includes(search?.toLowerCase()),
+      )
+    }
+
+    return items
+  }, [items, labelKey, search, searchable])
+
+  const handleSelect = useMemoizedFn((index: number | null) => {
+    const foundIndex = items.findIndex(
+      (item) => item.id === options[index as any].id,
+    )
+    const item = options[index as any]
+
+    updateState({
+      activeIndex: null,
+      isOpen: false,
+      selectedIndex: foundIndex,
+      selectedItem: item,
+    })
+
+    onChange?.(item.id)
+    onSelect?.(item.id, item)
+  })
+
+  const handleOptionClick = useMemoizedFn((index: number) => {
+    handleSelect(index)
+  })
+
+  const handleKeyDown = useMemoizedFn((event: React.KeyboardEvent) => {
+    if (event.key === 'Enter' && activeIndex !== null) {
+      event.preventDefault()
+      handleSelect(activeIndex)
+    }
+
+    // Only if not using typeahead.
+    if (event.key === ' ' && !floatingCtx.dataRef.current.typing) {
+      event.preventDefault()
+      handleSelect(activeIndex)
+    }
+  })
+
+  const handleKeyDownOnInput = useMemoizedFn((event: React.KeyboardEvent) => {
+    if (event.key === 'Enter' && activeIndex !== null) {
+      event.preventDefault()
+      handleSelect(activeIndex)
+    }
+  })
+
+  const handleInputChange = useMemoizedFn((value: string) => {
+    updateState({
+      activeIndex: null,
+      search: value,
+    })
+  })
+
+  // when popup open, scroll selected into view center
+  useLayoutEffect(() => {
+    if (isPositioned && searchable) {
+      const itemEl = listItemsRef.current[selectedIndex as any]
+
+      if (itemEl) {
+        itemEl.scrollIntoView({
+          behavior: 'auto',
+          block: 'nearest',
+          inline: 'start',
+        })
+      }
+    }
+  }, [isPositioned, selectedIndex, listItemsRef, searchable])
+
+  const select = useMemo(() => {
+    // Prevent input losing focus on Firefox VoiceOver
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { 'aria-activedescendant': ignoreAria, ...floatingProps } =
+      interactions.getFloatingProps(
+        searchable ? inputInteractions.getFloatingProps() : {},
+      )
+
+    return {
+      options,
+      isEmpty: options.length === 0,
+      ...floating,
+      ...interactions,
+      getFloatingProps: () => floatingProps,
+      getItemProps: searchable
+        ? inputInteractions.getItemProps
+        : interactions.getItemProps,
+      nodeId,
+      noResultsId,
+      buttonId,
+      listboxId,
+      inputInteractions,
+      handleInputChange,
+      handleOptionClick,
+      handleKeyDownOnInput,
+      handleSelect,
+      handleKeyDown,
+      matchWidth,
+      listItemsRef,
+      labelKey,
+    }
+  }, [
+    interactions,
+    inputInteractions,
+    nodeId,
+    noResultsId,
+    buttonId,
+    listboxId,
+    floating,
+    searchable,
+    handleInputChange,
+    handleOptionClick,
+    handleKeyDownOnInput,
+    handleSelect,
+    options,
+    handleKeyDown,
+    matchWidth,
+    listItemsRef,
+    labelKey,
+  ])
+
+  return select
 }

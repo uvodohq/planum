@@ -1,50 +1,98 @@
 import { useUpdateEffect } from '@react-aria/utils'
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useReducer } from 'react'
 
-import { usePrevious } from '../hooks'
+import { useControllableValue } from '../hooks'
+import type { UseSelectStateProps } from './select.types'
 
-export interface UseSelectStateProps {
-  items: any[]
-  value?: any
+interface State {
+  isOpen: boolean
+  activeIndex: number | null
+  selectedIndex: number | null
+  search: string
+  selectedItem: any | null
 }
 
-export type SelectState = ReturnType<typeof useSelectState>
-
 export function useSelectState(props: UseSelectStateProps) {
-  const { value, items } = props || {}
+  const { items, onSelect, searchable, ...rest } = props || {}
+  const [value, onChange] = useControllableValue(rest)
 
   // selected item index, which may or may not be active. shown in the trigger button.
   const defaultSelectedIndex = useMemo(() => {
-    return items.findIndex((item) => item.id === value)
+    const foundSelectedIndex = items.findIndex((item) => item.id === value)
+    return foundSelectedIndex > -1 ? foundSelectedIndex : null
   }, [value, items])
 
-  const [selectedIndex, setSelectedIndex] = useState(defaultSelectedIndex)
+  const initialState: State = {
+    isOpen: false,
+    search: '',
+    activeIndex: null,
+    selectedIndex: defaultSelectedIndex,
+    selectedItem: items[defaultSelectedIndex as any] ?? null,
+  }
 
-  const [isOpen, setIsOpen] = useState(false)
+  const [state, updateState] = useReducer(
+    (prev: State, next: Partial<State>) => {
+      return { ...prev, ...next }
+    },
+    initialState,
+  )
 
-  // activeIndex item that's currently highlighted (focused) but not selected.
-  const [activeIndex, setActiveIndex] = useState<number | null>(null)
+  const { isOpen } = state
 
-  const prevActiveIndex = usePrevious<number | null>(activeIndex)
+  const toggleOpen = (isOpen: boolean) => {
+    updateState({
+      isOpen,
+    })
+  }
+
+  const onMatchTypeahead = (index: number) => {
+    if (isOpen) {
+      updateState({
+        activeIndex: index,
+      })
+    } else {
+      updateState({
+        selectedIndex: index,
+      })
+    }
+  }
+
+  const onNavigate = (index: number | null) => {
+    if (isOpen) {
+      updateState({
+        activeIndex: index,
+      })
+    }
+  }
 
   useUpdateEffect(() => {
-    const defaultSelectedIndex = items.findIndex((item) => item.id === value)
-    setSelectedIndex(defaultSelectedIndex)
-  }, [value, items])
+    updateState({
+      selectedIndex: defaultSelectedIndex,
+      selectedItem: items[defaultSelectedIndex as any] ?? null,
+    })
+  }, [defaultSelectedIndex])
+
+  useEffect(() => {
+    if (!isOpen) {
+      updateState({
+        activeIndex: null,
+        search: '',
+      })
+    }
+  }, [isOpen])
 
   return {
-    //
-    isOpen,
-    setIsOpen,
-    openSelect: () => setIsOpen(true),
-    closeSelect: () => setIsOpen(false),
-    //
-    activeIndex,
-    setActiveIndex,
-    selectedIndex,
-    setSelectedIndex,
-    prevActiveIndex,
-    isEmpty: items.length === 0,
+    ...state,
+    toggleOpen,
+    onMatchTypeahead,
+    onNavigate,
+    openSelect: () => toggleOpen(true),
+    closeSelect: () => toggleOpen(false),
+    searchable: searchable ?? items.length > 10, // show search if more items exist
     items,
+    onChange,
+    onSelect,
+    value,
+    updateState,
   }
 }

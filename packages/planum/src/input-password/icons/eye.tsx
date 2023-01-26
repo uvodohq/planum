@@ -8,7 +8,6 @@ const EyeIcon = (props: SVGProps<SVGSVGElement>) => (
     fill={'currentColor'}
     viewBox="0 0 256 256"
     {...props}>
-    <title>Eye Icon</title>
     <rect width="256" height="256" fill="none" />
     <path
       d="M128,56C48,56,16,128,16,128s32,72,112,72,112-72,112-72S208,56,128,56Z"

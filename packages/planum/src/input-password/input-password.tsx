@@ -7,7 +7,7 @@ import type { InputProps } from '../input'
 import { Input } from '../input'
 import { Box } from '../layout'
 import { Tooltip, TooltipPopup, TooltipTrigger } from '../tooltip'
-import { __DEV__ } from '../utils/assertion'
+import { isDev } from '../utils'
 import EyeIcon from './icons/eye'
 import EyeSlashIcon from './icons/eye-slash'
 import type { StrengthType } from './password-strength'
@@ -53,21 +53,19 @@ function _InputPassword(
         type={inputType}
         onChange={handleChange}
         suffix={
-          <Box>
-            <Tooltip>
-              <TooltipTrigger>
-                <Button
-                  aria-label="toggle password visibility"
-                  variant="flatDark"
-                  icon={icon}
-                  size="sm"
-                  css={{ mr: '-$12' }}
-                  onClick={toggle}
-                />
-              </TooltipTrigger>
-              <TooltipPopup>{hoverText}</TooltipPopup>
-            </Tooltip>
-          </Box>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                aria-label="toggle password visibility"
+                variant="flatDark"
+                icon={icon}
+                size="sm"
+                css={{ mr: '-$12' }}
+                onClick={toggle}
+              />
+            </TooltipTrigger>
+            <TooltipPopup>{hoverText}</TooltipPopup>
+          </Tooltip>
         }
         ref={forwardedRef}
       />
@@ -83,4 +81,4 @@ function _InputPassword(
 
 export const InputPassword = React.forwardRef(_InputPassword)
 
-if (__DEV__) InputPassword.displayName = 'InputPassword'
+if (isDev) InputPassword.displayName = 'InputPassword'

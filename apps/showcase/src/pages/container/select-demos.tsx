@@ -1,9 +1,10 @@
-import { Box, H1, Title } from '@uvodohq/planum'
+import { Box, Flag, H1, Title } from '@uvodohq/planum'
 
-import AutoCompleteExampleControlled from '../../components/auto-complete/auto-complete-controlled-example'
-import { AutoCompleteTagsExample } from '../../components/auto-complete/auto-complete-tags-example'
+// import AutoCompleteExampleControlled from '../../components/auto-complete/auto-complete-controlled-example'
+// import { AutoCompleteTagsExample } from '../../components/auto-complete/auto-complete-tags-example'
 
 import SelectExample from '../../components/select/select-example'
+import SelectExampleAsync from '../../components/select/select-example-async'
 import SelectExampleControlled from '../../components/select/select-example-controlled'
 import SelectExampleCustomTrigger from '../../components/select/select-example-custom-trigger'
 import SelectExampleMinimal from '../../components/select/select-example-minimal'
@@ -42,7 +43,12 @@ const SelectDemos = () => {
       <Grid title="With many options">
         <SelectExample />
         <SelectExample defaultValue={14} />
-
+        <SelectExampleAsync />
+      </Grid>
+      <Grid title="Phone">
+        {/* <PhoneInput
+        //  defaultCountry="az"
+        /> */}
         <Box />
         <Box />
       </Grid>
@@ -50,6 +56,7 @@ const SelectDemos = () => {
       <Grid title="With a few options">
         <SelectExampleMinimal />
         <SelectExampleMinimal defaultValue={1} />
+
         <Box />
         <Box />
       </Grid>
@@ -140,15 +147,37 @@ const SelectDemos = () => {
 
       <Grid>
         <SelectExample label="No match width" matchWidth={false} />
-        <Box />
-        <Box />
+        <SelectExample
+          label="Custom options"
+          renderOption={(props) => {
+            const { OptionComponent, item } = props
+            return (
+              <OptionComponent>
+                <Flag country={'az'} />
+                {item['name']} (+994)
+              </OptionComponent>
+            )
+          }}
+        />
+        <SelectExampleMinimal
+          label="Custom Single option"
+          renderOption={(props) => {
+            const { OptionComponent, item } = props
+
+            return (
+              <OptionComponent>
+                {item['name']} {item.rightIcon}
+              </OptionComponent>
+            )
+          }}
+        />
         <Box />
       </Grid>
 
       {/* Autocomplete */}
       <H1 css={{ mb: 66, fw: 700 }}>Autocomplete</H1>
-
-      {/* <Grid>
+      {/* 
+      <Grid>
         <AutoCompleteExampleControlled
           label="Country"
           errorMessage="Error message"
@@ -164,7 +193,7 @@ const SelectDemos = () => {
 
         <AutoCompleteExampleControlled isDisabled label="Disabled" />
         <AutoCompleteExampleControlled isLoading label="Loading" />
-      </Grid> */}
+      </Grid>
 
       <Grid>
         <AutoCompleteExampleControlled />
@@ -173,7 +202,7 @@ const SelectDemos = () => {
           errorMessage="Error message with filled value"
           status="error"
         />
-      </Grid>
+      </Grid> */}
     </Box>
   )
 }

@@ -147,7 +147,6 @@ export const IconWrapper = styled('span', {
 })
 
 export const inputCss = css(subheaderCss, {
-  fw: '$regular',
   display: 'block',
   width: '100%',
   maxWidth: '100%',

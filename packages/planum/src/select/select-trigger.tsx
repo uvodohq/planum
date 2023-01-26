@@ -5,8 +5,8 @@ import { subheaderCss } from '../text'
 import type { VariantProps } from '../theme'
 import { styled } from '../theme'
 import { IconContainer, SelectDownIcon } from './icons'
-import type { UseSelectReturn } from './use-select'
-import type { SelectState } from './use-select-state'
+import type { SelectTriggerProps } from './select.types'
+import { useSelectContext } from './select-context'
 
 const StyledButton = styled('button', subheaderCss, {
   fw: '$regular',
@@ -83,6 +83,12 @@ const StyledButton = styled('button', subheaderCss, {
       },
     },
 
+    isOpen: {
+      true: {
+        backgroundColor: '$surface50',
+      },
+    },
+
     isDisabled: {
       true: {
         '&&': {
@@ -110,38 +116,56 @@ export const InnerText = styled('span', {
 
 export type StyledMessageVariants = VariantProps<typeof SelectTrigger>
 
-export interface SelectTriggerProps extends HTMLAttributes<HTMLButtonElement> {
-  state: SelectState
-  select: UseSelectReturn
-  isDisabled?: boolean
-  isLoading?: boolean
-  status?: 'normal' | 'error' | 'success'
-  placeholder?: string
-  label?: string
-  fallbackLabel?: string
-  items: any[]
-  labelKey?: string
-}
+type Props = SelectTriggerProps & HTMLAttributes<HTMLButtonElement>
 
-export function SelectTrigger(props: SelectTriggerProps) {
+export function SelectTrigger(props: Props) {
   const {
-    state,
-    select,
+    status,
+    placeholder,
     isDisabled,
     isLoading,
-    label,
-    placeholder,
-    items,
+    fallbackLabel,
+    fieldProps,
+    renderTrigger,
     ...rest
   } = props
 
+  const { select, state } = useSelectContext()
+
+  const { buttonId, reference, getReferenceProps, labelKey } = select
+  const { isOpen, selectedItem, value } = state
+
+  const selectedLabel = selectedItem?.[labelKey]
+
+  // show fallback label if options not loaded yet
+  const label = selectedLabel || (value ? fallbackLabel : undefined)
+
+  const triggerProps = {
+    id: buttonId,
+    ref: reference,
+    status,
+    disabled: isDisabled || isLoading, // native way to disable the button
+    'aria-label': label,
+    'aria-autocomplete': 'none' as any,
+    'data-open': isOpen,
+    ...rest,
+    ...fieldProps,
+    ...getReferenceProps(),
+  }
+
+  if (typeof renderTrigger === 'function') {
+    return renderTrigger({ ...triggerProps, label })
+  }
+
   return (
     <StyledButton
+      {...triggerProps}
+      isOpen={isOpen}
       isDisabled={isDisabled} // for disabled variant style
-      disabled={isDisabled || isLoading} // native way to disable the button
       type="button" // prevent unwanted form submits within <form>
-      {...rest}
-      {...select.referenceProps}>
+      // The default role for the reference using a "listbox"
+      // is a "combobox", but Safari has a bug with VoiceOver
+      role={undefined}>
       <InnerText
         css={{
           color: label ? '$textDark' : '',
@@ -153,7 +177,7 @@ export function SelectTrigger(props: SelectTriggerProps) {
           <Loader size="small" />
         </IconContainer>
       ) : (
-        <SelectDownIcon isOpen={state.isOpen} />
+        <SelectDownIcon isOpen={isOpen} />
       )}
     </StyledButton>
   )

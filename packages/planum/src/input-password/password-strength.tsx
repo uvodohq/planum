@@ -1,5 +1,6 @@
-import { Flex, Stack } from '../layout'
+import { Box, Flex, Stack } from '../layout'
 import { Paragraph } from '../text'
+import { fadeIn } from '../theme'
 import CheckCircleIcon from './icons/check-circle-icon'
 import XCircleIcon from './icons/x-circle'
 import {
@@ -54,7 +55,10 @@ export function PasswordStrength({ strength }: { strength: StrengthType }) {
       : 'strong'
 
   return (
-    <>
+    <Box
+      css={{
+        animation: `${fadeIn} 0.25s`,
+      }}>
       <StyledIndicator strength={strengthValue} />
 
       <Flex
@@ -73,6 +77,6 @@ export function PasswordStrength({ strength }: { strength: StrengthType }) {
           {strengthValue === 'tooWeak' ? 'too weak' : strengthValue}
         </Paragraph>
       </Flex>
-    </>
+    </Box>
   )
 }

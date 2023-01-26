@@ -101,11 +101,11 @@ type FormValues = z.infer<typeof schema>
 function useInitialValues() {
   const [inc, setState] = useState(0)
 
-  useEffect(() => {
-    setInterval(() => {
-      setState((prev) => prev + 1)
-    }, 5000)
-  }, [])
+  // useEffect(() => {
+  //   setInterval(() => {
+  //     setState((prev) => prev + 1)
+  //   }, 5000)
+  // }, [])
 
   const initialValues = useMemo(() => {
     return {
@@ -123,7 +123,7 @@ function useInitialValues() {
       toggle_field: false,
       radio_field: 'first',
       textarea_field: '',
-      select_field: 1,
+      select_field: null,
       auto_complete_field: [{ id: 1, name: 'first' }],
       tag_select_field: [{ id: 1, name: 'tag 1' }],
       checkbox_group_field: [],

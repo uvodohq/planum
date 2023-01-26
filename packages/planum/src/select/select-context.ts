@@ -1,20 +1,14 @@
-import type { ContextData } from '@floating-ui/react'
-import type React from 'react'
-import { createContext } from 'react'
+import { createContext, useContext } from 'react'
 
-import type { Value } from './select-component'
-import type { UseSelectReturn } from './use-select'
-import type { SelectState } from './use-select-state'
+import type { SelectState, UseSelectReturn } from './select.types'
 
 export interface SelectContextValue {
-  listRef: React.MutableRefObject<Array<HTMLLIElement | null>>
-  onChange: (value: Value) => void
-  onSelect: (value: Value, selected: any) => void
-  dataRef: ContextData
-
-  state: SelectState
   select: UseSelectReturn
-  matchWidth?: boolean
+  state: SelectState
 }
 
 export const SelectContext = createContext({} as SelectContextValue)
+
+export function useSelectContext() {
+  return useContext(SelectContext)
+}

@@ -7,9 +7,7 @@ interface Country {
   name: string
 }
 
-export default function SelectExampleControlled(
-  props?: Partial<SelectProps<Country>>,
-) {
+export default function SelectExampleControlled(props?: Partial<SelectProps>) {
   return (
     <Select
       items={countryList}

@@ -3,7 +3,7 @@ import * as React from 'react'
 import { Input } from '../input'
 import type { InputProps } from '../input/input'
 import { Subheader } from '../text'
-import { __DEV__ } from '../utils/assertion'
+import { isDev } from '../utils'
 
 export interface InputUrlProps extends Omit<InputProps, 'prefix' | 'suffix'> {
   prefix?: React.ReactNode
@@ -42,4 +42,4 @@ function _InputUrl(
 
 export const InputUrl = React.forwardRef(_InputUrl)
 
-if (__DEV__) InputUrl.displayName = 'InputUrl'
+if (isDev) InputUrl.displayName = 'InputUrl'

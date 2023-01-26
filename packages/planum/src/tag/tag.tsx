@@ -3,7 +3,7 @@ import { useHover } from '@react-aria/interactions'
 import type { Ref } from 'react'
 import { forwardRef, useRef } from 'react'
 
-import { __DEV__ } from '../utils/assertion'
+import { isDev } from '../utils'
 import { RemoveIcon } from './remove-icon'
 import {
   IconContainer,
@@ -80,4 +80,4 @@ export const Tag = forwardRef((props: TagProps, ref: Ref<HTMLDivElement>) => {
   )
 })
 
-if (__DEV__) Tag.displayName = 'Tag'
+if (isDev) Tag.displayName = 'Tag'

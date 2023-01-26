@@ -1,141 +1,88 @@
-import type { AriaLabelingProps, DOMProps } from '@react-types/shared'
-import React, { Children, cloneElement, isValidElement, useRef } from 'react'
-
-import type { CSS } from '../theme'
-import { styled } from '../theme'
+import type { SelectProps } from './select.types'
 import { SelectContext } from './select-context'
-import SelectPopup from './select-popup'
-import type { SelectTriggerProps } from './select-trigger'
+import { SelectEmptyContent } from './select-empty-content'
+import { Option } from './select-option'
+import { SelectPopup } from './select-popup/select-popup'
+import { SelectTrigger } from './select-trigger'
 import { useSelect } from './use-select'
 import { useSelectState } from './use-select-state'
 
-const StyledEmpty = styled('span', {
-  py: 16,
-  dflex: 'center',
-})
-
-export type Value = string | number | null | undefined
-
-export interface InputProps {
-  value?: Value
-  defaultValue?: Value
-  onChange?: (value: Value) => void
-  onSelect?: (value: Value, item: any) => void
-  placeholder?: string
-  isDisabled?: boolean
-  isLoading?: boolean
-  status?: 'success' | 'normal' | 'error'
-
-  /**
-   *  you can show labels while async select options are loading.
-   *  if options not loaded yet, provided value can't be shown.
-   *
-   */
-  fallbackLabel?: string
-  popupCss?: CSS
-}
-
-export interface SelectComponentProps extends InputProps {
-  renderTrigger?: (props: SelectTriggerProps) => React.ReactNode
-  renderEmpty?: () => React.ReactNode
-  children: React.ReactNode
-  fieldProps?: AriaLabelingProps & DOMProps
-  items: any[]
-  labelKey: any
-  matchWidth?: boolean
-}
-
-export const SelectComponent: React.FC<SelectComponentProps> = (props) => {
+export const SelectComponent = (props: SelectProps) => {
   const {
-    items,
-    labelKey,
+    // input props
     value,
-    onChange = () => {},
-    onSelect = () => {},
+    defaultValue,
+    onChange,
+
+    // select props
+    items = [],
+    labelKey = 'id',
+    onSelect,
     renderTrigger,
     renderEmpty,
-    children,
-    fallbackLabel,
-    matchWidth = true,
+    renderOption,
 
-    // field props
+    // trigger props
     status,
-    fieldProps,
     placeholder,
     isDisabled,
     isLoading,
+    fieldProps,
+    fallbackLabel,
+
+    // popup props
+    matchWidth = true,
     popupCss,
+    searchable,
   } = props
 
-  const listItemsRef = useRef<Array<HTMLLIElement | null>>([])
-  const listContentRef = useRef(items.map((item) => item[labelKey]))
-
   const state = useSelectState({
-    items,
     value,
-  })
-
-  const select = useSelect(
-    {
-      listItemsRef,
-      listContentRef,
-      matchWidth,
-    },
-    state,
-  )
-
-  const renderOptions = () =>
-    Children.map(
-      children,
-      (child, index) =>
-        isValidElement(child) &&
-        cloneElement(child, {
-          // @ts-expect-error - custom prop
-          index,
-        }),
-    ) ?? []
-
-  const selectContextValue = {
-    state,
-    select,
-    listRef: listItemsRef,
+    defaultValue,
     onChange,
     onSelect,
-    dataRef: select.context.dataRef,
-    listContentRef,
-    matchWidth,
-  }
-
-  const triggerProps = {
-    state,
-    select,
-    placeholder,
-    isDisabled,
-    isLoading,
-    status,
-    fallbackLabel,
     items,
+    searchable,
+  })
+
+  const select = useSelect({
+    matchWidth,
     labelKey,
-    ...fieldProps,
-  }
+    state,
+  })
 
-  let popupContent
+  const { isEmpty, options } = select
 
-  if (state.isOpen) {
-    if (state.isEmpty) {
-      popupContent = renderEmpty ? (
-        renderEmpty()
-      ) : (
-        <StyledEmpty>No options available</StyledEmpty>
-      )
-    } else {
-      popupContent = renderOptions()
-    }
-  }
+  const popupContent = isEmpty ? (
+    <SelectEmptyContent renderEmpty={renderEmpty} />
+  ) : (
+    options.map((item, index) => (
+      <Option
+        key={item.id}
+        index={index}
+        item={item}
+        renderOption={renderOption}
+      />
+    ))
+  )
 
   return (
-    <SelectContext.Provider value={selectContextValue}>
-      {renderTrigger?.(triggerProps)}
+    <SelectContext.Provider
+      value={{
+        select,
+        state,
+      }}>
+      <SelectTrigger
+        {...{
+          status,
+          placeholder,
+          isDisabled,
+          isLoading,
+          fallbackLabel,
+          fieldProps,
+          renderTrigger,
+        }}
+      />
       <SelectPopup popupCss={popupCss}>{popupContent}</SelectPopup>
     </SelectContext.Provider>
   )

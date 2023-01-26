@@ -55,7 +55,7 @@ export function usePopover(props: UsePopoverProps = {}): UsePopoverReturn {
 
   const nodeId = useFloatingNodeId()
 
-  const data = useFloating({
+  const floating = useFloating({
     placement,
     open,
     onOpenChange: setOpen,
@@ -64,7 +64,7 @@ export function usePopover(props: UsePopoverProps = {}): UsePopoverReturn {
     nodeId,
   })
 
-  const context = data.context
+  const context = floating.context
 
   const click = useClick(context, {
     enabled: controlledOpen == null,
@@ -82,7 +82,7 @@ export function usePopover(props: UsePopoverProps = {}): UsePopoverReturn {
       open,
       setOpen,
       ...interactions,
-      ...data,
+      ...floating,
       modal,
       labelId,
       descriptionId,
@@ -90,7 +90,16 @@ export function usePopover(props: UsePopoverProps = {}): UsePopoverReturn {
       setDescriptionId,
       nodeId,
     }),
-    [open, setOpen, modal, interactions, data, labelId, descriptionId, nodeId],
+    [
+      open,
+      setOpen,
+      modal,
+      interactions,
+      floating,
+      labelId,
+      descriptionId,
+      nodeId,
+    ],
   )
 
   return popover

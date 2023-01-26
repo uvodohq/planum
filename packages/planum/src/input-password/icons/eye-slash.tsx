@@ -8,7 +8,6 @@ const EyeSlashIcon = (props: SVGProps<SVGSVGElement>) => (
     fill={'currentColor'}
     viewBox="0 0 256 256"
     {...props}>
-    <title>Eye Slash Icon</title>
     <rect width="256" height="256" fill="none" />
 
     <line

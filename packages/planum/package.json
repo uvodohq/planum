@@ -58,7 +58,6 @@
     "@react-stately/searchfield": "^3.3.0",
     "@react-stately/toggle": "^3.4.0",
     "@stitches/react": "^1.2.8",
-    "ahooks": "^3.7.0",
     "rc-input-number": "^7.4.0",
     "react-hot-toast": "^2.2.0"
   },
