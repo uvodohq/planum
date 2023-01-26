@@ -1,3 +1,5 @@
+import { ArrowsDownUpIcon } from '@uvodohq/planum-icons'
+
 // countries list
 export const countryList = [
   'Afghanistan',
@@ -67,6 +69,7 @@ export const statusList = [
   {
     id: 1,
     name: 'Published',
+    rightIcon: <ArrowsDownUpIcon />,
   },
   {
     id: 3,

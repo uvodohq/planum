@@ -85,8 +85,6 @@ function _Input(
   const { isFocused, focusProps } = useFocused()
   const { keyboardProps } = useKeyboard({
     onKeyUp: (e) => {
-      e.stopPropagation()
-
       if (e.key === 'Enter') {
         onEnterKeyPress?.()
       }

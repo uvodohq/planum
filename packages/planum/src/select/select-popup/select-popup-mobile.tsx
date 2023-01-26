@@ -107,7 +107,7 @@ export const MobilePopup = (
           }}>
           {searchable && (
             <StyledSearchWrapper>
-              <PopupSearchInput select={select} />
+              <PopupSearchInput />
             </StyledSearchWrapper>
           )}
           <StyledList

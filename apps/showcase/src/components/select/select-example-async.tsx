@@ -3,14 +3,7 @@ import { Select } from '@uvodohq/planum'
 import { countryList } from './select-options'
 import { useState, useEffect } from 'react'
 
-interface Country {
-  id: number
-  name: string
-}
-
-export default function SelectExampleAsync(
-  props?: Partial<SelectProps<Country>>,
-) {
+export default function SelectExampleAsync(props?: Partial<SelectProps>) {
   const [list, setList] = useState<any>()
 
   // simulating async list load for testing select

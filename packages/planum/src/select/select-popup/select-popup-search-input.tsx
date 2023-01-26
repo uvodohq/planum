@@ -1,17 +1,12 @@
 import { Input } from '../../input'
 import { Spacer } from '../../layout'
 import { SearchIcon } from '../icons'
-import type { UseSelectReturn } from '../use-select'
+import { useSelectContext } from '../select-context'
 
-interface Props {
-  select: UseSelectReturn
-}
-
-export const PopupSearchInput = (props: Props) => {
-  const { select } = props
+export const PopupSearchInput = () => {
+  const { select, state } = useSelectContext()
 
   const {
-    search,
     inputInteractions,
     handleInputChange,
     handleKeyDownInput,
@@ -26,13 +21,13 @@ export const PopupSearchInput = (props: Props) => {
         placeholder="Search"
         role="combobox"
         leftIcon={<SearchIcon />}
-        value={search}
+        value={state.search}
         aria-controls={isEmpty ? noResultsId : listboxId}
         aria-expanded="true"
         aria-autocomplete="list"
         aria-label="search"
+        onChange={handleInputChange}
         {...inputInteractions.getReferenceProps({
-          onChange: handleInputChange,
           onKeyDown: handleKeyDownInput,
         })}
       />

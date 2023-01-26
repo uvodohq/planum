@@ -28,7 +28,9 @@ export function useControllableValue<T>(
     trigger = 'onChange',
   } = options
   const value = props[valuePropName]
-  const isControlled = props.hasOwnProperty(valuePropName)
+  const isControlled =
+    props.hasOwnProperty(valuePropName) &&
+    typeof props[valuePropName] !== 'undefined'
 
   const initialValue = useMemo(() => {
     if (isControlled) {
@@ -48,6 +50,7 @@ export function useControllableValue<T>(
 
   const update = useUpdate()
 
+  // @ts-expect-error useless
   function setState(v, ...args) {
     const r = isFunction(v) ? v(stateRef.current) : v
     if (!isControlled) {

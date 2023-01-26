@@ -2,14 +2,7 @@ import type { SelectProps } from '@uvodohq/planum'
 import { Select } from '@uvodohq/planum'
 import { statusList } from './select-options'
 
-export default function SelectExampleMinimal(
-  props?: Partial<
-    SelectProps<{
-      name: string
-      id: number
-    }>
-  >,
-) {
+export default function SelectExampleMinimal(props?: Partial<SelectProps>) {
   return (
     <Select
       items={statusList}
@@ -17,6 +10,7 @@ export default function SelectExampleMinimal(
       labelKey="name"
       aria-label="label"
       {...props}
+      defaultValue={'1'}
     />
   )
 }

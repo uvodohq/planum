@@ -17,7 +17,7 @@ export function SelectPopup(props: React.PropsWithChildren<SelectPopupProps>) {
     <FloatingNode id={select.nodeId}>
       <FloatingPortal id="planum-portal">
         <AnimatePresence>
-          {state.isOpen && <Popup {...{ select, popupCss }}>{children}</Popup>}
+          {state.isOpen && <Popup popupCss={popupCss}>{children}</Popup>}
         </AnimatePresence>
       </FloatingPortal>
     </FloatingNode>

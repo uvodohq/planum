@@ -20,6 +20,7 @@ export const SelectComponent = (props: SelectProps) => {
     onSelect,
     renderTrigger,
     renderEmpty,
+    renderOption,
 
     // trigger props
     status,
@@ -32,6 +33,7 @@ export const SelectComponent = (props: SelectProps) => {
     // popup props
     matchWidth = true,
     popupCss,
+    searchable,
   } = props
 
   const state = useSelectState({
@@ -40,6 +42,7 @@ export const SelectComponent = (props: SelectProps) => {
     onChange,
     onSelect,
     items,
+    searchable,
   })
 
   const select = useSelect({
@@ -56,11 +59,10 @@ export const SelectComponent = (props: SelectProps) => {
     options.map((item, index) => (
       <Option
         key={item.id}
-        value={item.id}
-        label={item[labelKey]}
-        index={index}>
-        {item[labelKey]}
-      </Option>
+        index={index}
+        item={item}
+        renderOption={renderOption}
+      />
     ))
   )
 

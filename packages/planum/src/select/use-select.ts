@@ -24,19 +24,17 @@ export function useSelect(props: UseSelectProps) {
 
   const {
     isOpen,
-    setIsOpen,
     activeIndex,
-    setActiveIndex,
     selectedIndex,
-    setSelectedIndex,
     search,
-    setSearch,
-    selectedItem,
-    setSelectedItem,
     searchable,
     items,
     onChange,
     onSelect,
+    updateState,
+    toggleOpen,
+    onMatchTypeahead,
+    onNavigate,
   } = state
 
   const listItemsRef = useRef<Array<HTMLLIElement | null>>([]) // for store li elements
@@ -52,7 +50,7 @@ export function useSelect(props: UseSelectProps) {
 
   const floating = useFloating({
     open: isOpen,
-    onOpenChange: setIsOpen,
+    onOpenChange: toggleOpen,
     whileElementsMounted: autoUpdate,
     placement: position,
     nodeId,
@@ -71,17 +69,18 @@ export function useSelect(props: UseSelectProps) {
     ],
   })
 
-  const context = floating.context
+  const { context: floatingCtx, isPositioned } = floating
 
   // interactions
-  const click = useClick(context)
-  const dismiss = useDismiss(context)
-  const role = useRole(context)
-  const typeahead = useTypeahead(context, {
+  const click = useClick(floatingCtx)
+  const dismiss = useDismiss(floatingCtx)
+  const role = useRole(floatingCtx)
+  const typeahead = useTypeahead(floatingCtx, {
     listRef: listContentRef,
     activeIndex,
     selectedIndex,
-    onMatch: isOpen ? setActiveIndex : setSelectedIndex,
+    onMatch: onMatchTypeahead,
+    // enabled: searchable,
   })
 
   const searchableNavigationOptions = {
@@ -91,11 +90,12 @@ export function useSelect(props: UseSelectProps) {
     allowEscape: true,
   }
 
-  const navigation = useListNavigation(context, {
+  const navigation = useListNavigation(floatingCtx, {
     listRef: listItemsRef,
     activeIndex,
     selectedIndex,
-    onNavigate: isOpen ? setActiveIndex : undefined,
+    onNavigate,
+    // enabled: searchable,
     ...(searchable ? searchableNavigationOptions : {}),
   })
 
@@ -103,7 +103,7 @@ export function useSelect(props: UseSelectProps) {
     click,
     dismiss,
     role,
-    ...(searchable ? [] : [navigation, typeahead]),
+    ...(searchable ? [undefined, undefined] : [navigation, typeahead]),
   ])
 
   const inputInteractions = useInteractions([navigation])
@@ -111,21 +111,26 @@ export function useSelect(props: UseSelectProps) {
   const options = useMemo(() => {
     if (searchable) {
       return items.filter((item) =>
-        item[labelKey].toLowerCase().includes(search.toLowerCase()),
+        item[labelKey].toLowerCase().includes(search?.toLowerCase()),
       )
     }
 
     return items
   }, [items, labelKey, search, searchable])
 
-  const handleSelect = useMemoizedFn((index: number) => {
-    setActiveIndex(null)
-    setIsOpen(false)
+  const handleSelect = useMemoizedFn((index: number | null) => {
+    const foundIndex =
+      index === null
+        ? null
+        : items.findIndex((item) => item.id === options[index].id)
+    const item = index === null ? null : options[index]
 
-    const foundIndex = items.findIndex((item) => item.id === options[index].id)
-    const item = options[index]
-    setSelectedIndex(foundIndex)
-    setSelectedItem(item)
+    updateState({
+      activeIndex: null,
+      isOpen: false,
+      selectedIndex: foundIndex,
+      selectedItem: item,
+    })
 
     onChange?.(item.id)
     onSelect?.(item.id, item)
@@ -142,7 +147,7 @@ export function useSelect(props: UseSelectProps) {
     }
 
     // Only if not using typeahead.
-    if (event.key === ' ' && !floating.context.dataRef.current.typing) {
+    if (event.key === ' ' && !floatingCtx.dataRef.current.typing) {
       event.preventDefault()
       handleSelect(activeIndex)
     }
@@ -156,38 +161,37 @@ export function useSelect(props: UseSelectProps) {
   })
 
   const handleInputChange = useMemoizedFn((value: string) => {
-    setActiveIndex(null)
-    setSearch(value)
+    updateState({
+      activeIndex: null,
+      search: value,
+    })
   })
 
   // when popup open, scroll selected into view center
   useLayoutEffect(() => {
-    if (floating.isPositioned && searchable) {
-      const itemEl = listItemsRef.current[selectedIndex]
+    if (isPositioned && searchable) {
+      const itemEl =
+        selectedIndex === null ? null : listItemsRef.current[selectedIndex]
 
       if (itemEl) {
         itemEl.scrollIntoView({
-          block: 'center',
+          behavior: 'auto',
+          block: 'nearest',
+          inline: 'start',
         })
       }
     }
-  }, [floating.isPositioned, selectedIndex, listItemsRef, searchable])
+  }, [isPositioned, selectedIndex, listItemsRef, searchable])
 
   const select = useMemo(() => {
     // Prevent input losing focus on Firefox VoiceOver
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { 'aria-activedescendant': ignoreAria, ...floatingProps } =
       interactions.getFloatingProps(
         searchable ? inputInteractions.getFloatingProps() : {},
       )
 
     return {
-      isOpen,
-      setIsOpen,
-      selectedIndex,
-      activeIndex,
-      setActiveIndex,
-      setSelectedIndex,
-      items,
       options,
       isEmpty: options.length === 0,
       ...floating,
@@ -204,10 +208,7 @@ export function useSelect(props: UseSelectProps) {
       handleInputChange,
       handleOptionClick,
       handleKeyDownInput,
-      search,
-      searchable,
       handleSelect,
-      selectedItem,
       handleKeyDown,
       matchWidth,
       listItemsRef,
@@ -221,28 +222,17 @@ export function useSelect(props: UseSelectProps) {
     buttonId,
     listboxId,
     floating,
-    isOpen,
-    setIsOpen,
-    selectedIndex,
-    items,
-    activeIndex,
-    setActiveIndex,
-    setSelectedIndex,
     searchable,
     handleInputChange,
     handleOptionClick,
     handleKeyDownInput,
-    search,
     handleSelect,
     options,
-    selectedItem,
     handleKeyDown,
     matchWidth,
     listItemsRef,
     labelKey,
   ])
-
-  // console.log('select', select)
 
   return select
 }

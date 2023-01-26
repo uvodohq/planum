@@ -1,9 +1,8 @@
 import { useId } from '@floating-ui/react'
-import React from 'react'
 
 import { subheaderCss } from '../text'
 import { styled } from '../theme'
-import type { Value } from './select.types'
+import type { SelectOptionProps } from './select.types'
 import { useSelectContext } from './select-context'
 
 const StyledOption = styled('li', subheaderCss, {
@@ -84,17 +83,15 @@ const StyledOption = styled('li', subheaderCss, {
   },
 })
 
-export interface OptionProps {
-  value: Value
-  label: string
-  children: React.ReactNode
-  index?: number
+interface OptionProps extends SelectOptionProps {
+  item: any
 }
 
 export const Option = (props: OptionProps) => {
-  const { children, index = 0 } = props
+  const { index = 0, renderOption, item } = props
   const { select, state } = useSelectContext()
-  const { handleSelect, handleKeyDown, matchWidth, listItemsRef } = select
+  const { handleSelect, handleKeyDown, matchWidth, listItemsRef, labelKey } =
+    select
   const { selectedIndex, activeIndex, searchable } = state
 
   const id = useId()
@@ -102,23 +99,43 @@ export const Option = (props: OptionProps) => {
   const isSelected = selectedIndex === index
   const isActive = activeIndex === index
 
-  return (
-    <StyledOption
-      id={id}
-      role="option"
-      ref={(node) => {
-        listItemsRef.current[index] = node
-      }}
-      tabIndex={isActive ? 0 : -1}
-      aria-selected={isActive && isSelected}
-      isSelected={isSelected}
-      isFocused={isActive}
-      matchWidth={matchWidth}
-      {...select.getItemProps({
-        onClick: () => handleSelect(index), // Handle pointer select.
-        onKeyDown: searchable ? undefined : handleKeyDown, // Handle keyboard select.
-      })}>
-      {children}
-    </StyledOption>
-  )
+  const optionProps = {
+    id,
+    role: 'option',
+    tabIndex: isActive ? 0 : -1,
+    'aria-selected': isActive && isSelected,
+    'data-selected': isSelected,
+    matchWidth,
+    ref: (node: HTMLLIElement | null) => {
+      listItemsRef.current[index] = node
+    },
+    ...select.getItemProps({
+      onClick: () => handleSelect(index), // Handle pointer select.
+      onKeyDown: searchable ? undefined : handleKeyDown, // Handle keyboard select.
+    }),
+  }
+
+  const DefaultOptionComponent = (props: any) => {
+    return (
+      <StyledOption
+        isSelected={isSelected}
+        isFocused={isActive}
+        {...optionProps}
+        {...props}
+      />
+    )
+  }
+
+  if (typeof renderOption === 'function') {
+    return renderOption({
+      ...optionProps,
+      item,
+      select,
+      state,
+      OptionComponent: DefaultOptionComponent,
+      index,
+    })
+  }
+
+  return <DefaultOptionComponent>{item[labelKey]}</DefaultOptionComponent>
 }

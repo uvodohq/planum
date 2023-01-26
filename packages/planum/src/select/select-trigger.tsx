@@ -83,6 +83,12 @@ const StyledButton = styled('button', subheaderCss, {
       },
     },
 
+    isOpen: {
+      true: {
+        backgroundColor: '$surface50',
+      },
+    },
+
     isDisabled: {
       true: {
         '&&': {
@@ -141,6 +147,7 @@ export function SelectTrigger(props: Props) {
     disabled: isDisabled || isLoading, // native way to disable the button
     'aria-label': label,
     'aria-autocomplete': 'none' as any,
+    'data-open': isOpen,
     ...rest,
     ...fieldProps,
     ...getReferenceProps(),
@@ -153,6 +160,7 @@ export function SelectTrigger(props: Props) {
   return (
     <StyledButton
       {...triggerProps}
+      isOpen={isOpen}
       isDisabled={isDisabled} // for disabled variant style
       type="button" // prevent unwanted form submits within <form>
       // The default role for the reference using a "listbox"

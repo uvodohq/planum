@@ -65,7 +65,7 @@ export const DesktopPopup = (
           zIndex: 1000,
         }}
         {...desktopMotionConfig}>
-        {searchable && <PopupSearchInput select={select} />}
+        {searchable && <PopupSearchInput />}
         <StyledList role="listbox" id={select.listboxId}>
           {children}
         </StyledList>

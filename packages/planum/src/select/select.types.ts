@@ -39,8 +39,26 @@ export interface SelectPopupProps {
   popupCss?: CSS
 }
 
+export interface SelectOptionProps {
+  renderOption?: (optionProps: {
+    id: string
+    role: string
+    tabIndex: number
+    'aria-selected': boolean
+    'data-selected': boolean
+    matchWidth: boolean | undefined
+    ref: (node: HTMLLIElement | null) => void
+    item?: any
+    state: SelectState
+    select: UseSelectReturn
+    OptionComponent: React.FC<any>
+    index: number
+  }) => JSX.Element
+  index?: number
+  matchWidth?: boolean
+}
+
 export interface SelectComponentProps {
-  children: React.ReactNode
   items?: any[]
 
   /**
@@ -49,8 +67,7 @@ export interface SelectComponentProps {
    * items[selectedIndex][labelKey]
    */
   labelKey: string
-  renderOption?: (props: {}) => React.ReactNode
-  matchWidth?: boolean
+  searchable?: boolean
   popupCss?: CSS
   /**
    *  you can show labels while async select options are loading.
@@ -60,8 +77,18 @@ export interface SelectComponentProps {
   fallbackLabel?: string
 }
 
-export type SelectProps = InputProps &
+export interface SelectFieldProps {
+  label?: React.ReactNode
+  description?: React.ReactNode
+  errorMessage?: React.ReactNode
+  successMessage?: React.ReactNode
+  preserveLabelSpace?: boolean
+}
+
+export type SelectProps = SelectFieldProps &
+  InputProps &
   SelectTriggerProps &
+  SelectOptionProps &
   SelectEmptyContentProps &
   SelectPopupProps &
   SelectComponentProps
@@ -75,4 +102,5 @@ export interface UseSelectProps {
 
 export type UseSelectStateProps = InputProps & {
   items: any[]
+  searchable?: boolean
 }

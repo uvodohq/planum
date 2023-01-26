@@ -1,7 +1,7 @@
-import { Box, H1, PhoneInput, Title } from '@uvodohq/planum'
+import { Box, Flag, H1, Title } from '@uvodohq/planum'
 
-import AutoCompleteExampleControlled from '../../components/auto-complete/auto-complete-controlled-example'
-import { AutoCompleteTagsExample } from '../../components/auto-complete/auto-complete-tags-example'
+// import AutoCompleteExampleControlled from '../../components/auto-complete/auto-complete-controlled-example'
+// import { AutoCompleteTagsExample } from '../../components/auto-complete/auto-complete-tags-example'
 
 import SelectExample from '../../components/select/select-example'
 import SelectExampleAsync from '../../components/select/select-example-async'
@@ -46,9 +46,9 @@ const SelectDemos = () => {
         <SelectExampleAsync />
       </Grid>
       <Grid title="Phone">
-        <PhoneInput
+        {/* <PhoneInput
         //  defaultCountry="az"
-        />
+        /> */}
         <Box />
         <Box />
       </Grid>
@@ -56,6 +56,7 @@ const SelectDemos = () => {
       <Grid title="With a few options">
         <SelectExampleMinimal />
         <SelectExampleMinimal defaultValue={1} />
+
         <Box />
         <Box />
       </Grid>
@@ -146,8 +147,30 @@ const SelectDemos = () => {
 
       <Grid>
         <SelectExample label="No match width" matchWidth={false} />
-        <Box />
-        <Box />
+        <SelectExample
+          label="Custom options"
+          renderOption={(props) => {
+            const { OptionComponent, item } = props
+            return (
+              <OptionComponent>
+                <Flag country={'az'} />
+                {item['name']} (+994)
+              </OptionComponent>
+            )
+          }}
+        />
+        <SelectExampleMinimal
+          label="Custom Single option"
+          renderOption={(props) => {
+            const { OptionComponent, item } = props
+
+            return (
+              <OptionComponent>
+                {item['name']} {item.rightIcon}
+              </OptionComponent>
+            )
+          }}
+        />
         <Box />
       </Grid>
 

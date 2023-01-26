@@ -2,13 +2,12 @@ import { useField } from '@react-aria/label'
 import type { Ref } from 'react'
 import { forwardRef } from 'react'
 
-import type { FieldProps } from '../field'
 import { Field } from '../field'
 import type { SelectProps } from './select.types'
 import { SelectComponent } from './select-component'
 
 export const Select = forwardRef(
-  (props: FieldProps & SelectProps, ref: Ref<HTMLDivElement>) => {
+  (props: SelectProps, ref: Ref<HTMLDivElement>) => {
     const {
       label,
       description,
@@ -19,8 +18,7 @@ export const Select = forwardRef(
       ...rest
     } = props
 
-    const { labelProps, descriptionProps, errorMessageProps, fieldProps } =
-      useField(props)
+    const { fieldProps, ...restFieldProps } = useField(props)
 
     return (
       <Field
@@ -32,9 +30,7 @@ export const Select = forwardRef(
           successMessage,
           status,
           preserveLabelSpace,
-          labelProps,
-          descriptionProps,
-          errorMessageProps,
+          ...restFieldProps,
         }}>
         <SelectComponent fieldProps={fieldProps} status={status} {...rest} />
       </Field>
