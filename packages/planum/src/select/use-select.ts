@@ -80,7 +80,6 @@ export function useSelect(props: UseSelectProps) {
     activeIndex,
     selectedIndex,
     onMatch: onMatchTypeahead,
-    // enabled: searchable,
   })
 
   const searchableNavigationOptions = {
@@ -95,7 +94,6 @@ export function useSelect(props: UseSelectProps) {
     activeIndex,
     selectedIndex,
     onNavigate,
-    // enabled: searchable,
     ...(searchable ? searchableNavigationOptions : {}),
   })
 
@@ -119,11 +117,10 @@ export function useSelect(props: UseSelectProps) {
   }, [items, labelKey, search, searchable])
 
   const handleSelect = useMemoizedFn((index: number | null) => {
-    const foundIndex =
-      index === null
-        ? null
-        : items.findIndex((item) => item.id === options[index].id)
-    const item = index === null ? null : options[index]
+    const foundIndex = items.findIndex(
+      (item) => item.id === options[index as any].id,
+    )
+    const item = options[index as any]
 
     updateState({
       activeIndex: null,
@@ -153,7 +150,7 @@ export function useSelect(props: UseSelectProps) {
     }
   })
 
-  const handleKeyDownInput = useMemoizedFn((event: React.KeyboardEvent) => {
+  const handleKeyDownOnInput = useMemoizedFn((event: React.KeyboardEvent) => {
     if (event.key === 'Enter' && activeIndex !== null) {
       event.preventDefault()
       handleSelect(activeIndex)
@@ -170,8 +167,7 @@ export function useSelect(props: UseSelectProps) {
   // when popup open, scroll selected into view center
   useLayoutEffect(() => {
     if (isPositioned && searchable) {
-      const itemEl =
-        selectedIndex === null ? null : listItemsRef.current[selectedIndex]
+      const itemEl = listItemsRef.current[selectedIndex as any]
 
       if (itemEl) {
         itemEl.scrollIntoView({
@@ -207,7 +203,7 @@ export function useSelect(props: UseSelectProps) {
       inputInteractions,
       handleInputChange,
       handleOptionClick,
-      handleKeyDownInput,
+      handleKeyDownOnInput,
       handleSelect,
       handleKeyDown,
       matchWidth,
@@ -225,7 +221,7 @@ export function useSelect(props: UseSelectProps) {
     searchable,
     handleInputChange,
     handleOptionClick,
-    handleKeyDownInput,
+    handleKeyDownOnInput,
     handleSelect,
     options,
     handleKeyDown,

@@ -1,5 +1,7 @@
 import { useId } from '@floating-ui/react'
+import { useCallback, useMemo } from 'react'
 
+import useMemoizedFn from '../hooks/use-memoized-fn'
 import { subheaderCss } from '../text'
 import { styled } from '../theme'
 import type { SelectOptionProps } from './select.types'
@@ -115,7 +117,7 @@ export const Option = (props: OptionProps) => {
     }),
   }
 
-  const DefaultOptionComponent = (props: any) => {
+  const DefaultOptionComponent = useMemoizedFn((props: any) => {
     return (
       <StyledOption
         isSelected={isSelected}
@@ -124,7 +126,7 @@ export const Option = (props: OptionProps) => {
         {...props}
       />
     )
-  }
+  })
 
   if (typeof renderOption === 'function') {
     return renderOption({

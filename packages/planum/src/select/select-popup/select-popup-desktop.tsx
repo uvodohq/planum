@@ -18,7 +18,6 @@ const StyledSelectPopupDesktop = styled('div', {
   borderRadius: '$sm',
   boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)',
   p: 8,
-  // pr: 4, // + 4px scrollbar width = 8px
 })
 
 const StyledList = styled('ul', customScrollbar, {
@@ -26,6 +25,7 @@ const StyledList = styled('ul', customScrollbar, {
   overflowY: 'scroll',
   maxHeight: 220,
   overscrollBehavior: 'contain',
+  mr: -4, // scrollbar width
 })
 
 const desktopMotionConfig = {

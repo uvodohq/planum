@@ -1,5 +1,5 @@
 import { useUpdateEffect } from '@react-aria/utils'
-import { useCallback, useEffect, useMemo, useReducer } from 'react'
+import { useEffect, useMemo, useReducer } from 'react'
 
 import { useControllableValue } from '../hooks'
 import type { UseSelectStateProps } from './select.types'
@@ -27,7 +27,7 @@ export function useSelectState(props: UseSelectStateProps) {
     search: '',
     activeIndex: null,
     selectedIndex: defaultSelectedIndex,
-    selectedItem: defaultSelectedIndex ? items[defaultSelectedIndex] : null,
+    selectedItem: items[defaultSelectedIndex as any] ?? null,
   }
 
   const [state, updateState] = useReducer(
@@ -39,42 +39,36 @@ export function useSelectState(props: UseSelectStateProps) {
 
   const { isOpen } = state
 
-  const toggleOpen = useCallback((isOpen: boolean) => {
+  const toggleOpen = (isOpen: boolean) => {
     updateState({
       isOpen,
     })
-  }, [])
+  }
 
-  const onMatchTypeahead = useCallback(
-    (index: number) => {
-      if (isOpen) {
-        updateState({
-          activeIndex: index,
-        })
-      } else {
-        updateState({
-          selectedIndex: index,
-        })
-      }
-    },
-    [isOpen],
-  )
+  const onMatchTypeahead = (index: number) => {
+    if (isOpen) {
+      updateState({
+        activeIndex: index,
+      })
+    } else {
+      updateState({
+        selectedIndex: index,
+      })
+    }
+  }
 
-  const onNavigate = useCallback(
-    (index: number | null) => {
-      if (isOpen) {
-        updateState({
-          activeIndex: index,
-        })
-      }
-    },
-    [isOpen],
-  )
+  const onNavigate = (index: number | null) => {
+    if (isOpen) {
+      updateState({
+        activeIndex: index,
+      })
+    }
+  }
 
   useUpdateEffect(() => {
     updateState({
       selectedIndex: defaultSelectedIndex,
-      selectedItem: defaultSelectedIndex ? items[defaultSelectedIndex] : null,
+      selectedItem: items[defaultSelectedIndex as any] ?? null,
     })
   }, [defaultSelectedIndex])
 

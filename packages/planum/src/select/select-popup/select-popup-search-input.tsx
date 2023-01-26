@@ -9,7 +9,7 @@ export const PopupSearchInput = () => {
   const {
     inputInteractions,
     handleInputChange,
-    handleKeyDownInput,
+    handleKeyDownOnInput,
     isEmpty,
     noResultsId,
     listboxId,
@@ -28,7 +28,7 @@ export const PopupSearchInput = () => {
         aria-label="search"
         onChange={handleInputChange}
         {...inputInteractions.getReferenceProps({
-          onKeyDown: handleKeyDownInput,
+          onKeyDown: handleKeyDownOnInput,
         })}
       />
       <Spacer y={8} />

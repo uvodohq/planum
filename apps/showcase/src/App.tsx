@@ -31,7 +31,7 @@ export default function DemoApp() {
       css={{
         flexWrap: 'nowrap',
       }}>
-      {/* <HomePage />
+      <HomePage />
       <ColorPage />
       <TypographyPage />
       <EffectPage />
@@ -41,15 +41,15 @@ export default function DemoApp() {
       <InputPage />
       <TextareaPage />
       <FormElementsPage />
-      <FormHookPage /> */}
+      <FormHookPage />
       <SelectPage />
-      {/* <OverlaysPage />
+      <OverlaysPage />
       <TagsBadgePage />
       <NotificationPage />
       <AlertPage />
       <EditorPage />
       <ImagePage />
-      <ExtraComponentsPage /> */}
+      <ExtraComponentsPage />
     </Flex>
   )
 }
