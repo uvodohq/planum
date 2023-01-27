@@ -1,3 +1,5 @@
+import React from 'react'
+
 import { Box, Flex, Stack } from '../layout'
 import { Paragraph } from '../text'
 import { fadeIn } from '../theme'
@@ -33,7 +35,7 @@ function Option(props: OptionProps) {
   )
 }
 
-export function PasswordStrength({ strength }: { strength: StrengthType }) {
+const _PasswordStrength = ({ strength }: { strength: StrengthType }) => {
   const containsValue = strength.contains
 
   const hasNumber = strength.contains?.includes('number')
@@ -80,3 +82,5 @@ export function PasswordStrength({ strength }: { strength: StrengthType }) {
     </Box>
   )
 }
+
+export const PasswordStrength = React.memo(_PasswordStrength)
