@@ -1,4 +1,4 @@
-import { Box, Flag, H1, Title } from '@uvodohq/planum'
+import { Box, Flag, H1, Title, PhoneInput } from '@uvodohq/planum'
 
 // import AutoCompleteExampleControlled from '../../components/auto-complete/auto-complete-controlled-example'
 // import { AutoCompleteTagsExample } from '../../components/auto-complete/auto-complete-tags-example'
@@ -46,9 +46,7 @@ const SelectDemos = () => {
         <SelectExampleAsync />
       </Grid>
       <Grid title="Phone">
-        {/* <PhoneInput
-        //  defaultCountry="az"
-        /> */}
+        <PhoneInput defaultCountry="az" />
         <Box />
         <Box />
       </Grid>

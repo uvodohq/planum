@@ -1,4 +1,4 @@
-import { FloatingFocusManager } from '@floating-ui/react'
+import { FloatingFocusManager, FloatingOverlay } from '@floating-ui/react'
 import { motion } from 'framer-motion'
 
 import { customScrollbar, styled } from '../../theme'
@@ -48,28 +48,40 @@ export const DesktopPopup = (
   const { searchable } = state
 
   return (
-    <FloatingFocusManager
-      context={select.context}
-      modal={false}
-      initialFocus={searchable ? undefined : -1}>
-      <StyledSelectPopupDesktop
-        ref={select.floating}
-        css={popupCss}
-        as={motion.div}
-        {...select.getFloatingProps()}
-        aria-labelledby={select.buttonId}
-        style={{
-          position: select.strategy,
-          top: select.y ?? 0,
-          left: select.x ?? 0,
-          zIndex: 1000,
-        }}
-        {...desktopMotionConfig}>
-        {searchable && <PopupSearchInput />}
-        <StyledList role="listbox" id={select.listboxId}>
-          {children}
-        </StyledList>
-      </StyledSelectPopupDesktop>
-    </FloatingFocusManager>
+    <FloatingOverlay
+      lockScroll
+      style={{
+        isolation: 'isolate',
+        position: 'fixed',
+        zIndex: 999,
+        display: 'flex',
+        justifyContent: 'center',
+        height: '100%',
+        overflow: 'hidden',
+      }}>
+      <FloatingFocusManager
+        context={select.context}
+        modal={false}
+        initialFocus={searchable ? undefined : -1}>
+        <StyledSelectPopupDesktop
+          ref={select.floating}
+          css={popupCss}
+          as={motion.div}
+          {...select.getFloatingProps()}
+          aria-labelledby={select.buttonId}
+          style={{
+            position: select.strategy,
+            top: select.y ?? 0,
+            left: select.x ?? 0,
+            zIndex: 1000,
+          }}
+          {...desktopMotionConfig}>
+          {searchable && <PopupSearchInput />}
+          <StyledList role="listbox" id={select.listboxId}>
+            {children}
+          </StyledList>
+        </StyledSelectPopupDesktop>
+      </FloatingFocusManager>
+    </FloatingOverlay>
   )
 }

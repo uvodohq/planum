@@ -1,4 +1,4 @@
-import { FloatingFocusManager } from '@floating-ui/react'
+import { FloatingFocusManager, FloatingOverlay } from '@floating-ui/react'
 import { motion } from 'framer-motion'
 
 import type { CSS } from '../theme'
@@ -50,29 +50,41 @@ export const DesktopPopup = (props: SelectPopupProps) => {
   const { children, select, popupCss } = props
 
   return (
-    <FloatingFocusManager
-      context={select.context}
-      modal={false}
-      initialFocus={select.searchable ? undefined : -1}
-      returnFocus={false}>
-      <StyledSelectPopupDesktop
-        ref={select.floating}
-        css={popupCss}
-        as={motion.div}
-        {...select.getFloatingProps()}
-        aria-labelledby={select.buttonId}
-        style={{
-          position: select.strategy,
-          top: select.y ?? 0,
-          left: select.x ?? 0,
-          zIndex: 1000,
-        }}
-        {...desktopMotionConfig}>
-        {select.searchable && <PopupSearchInput select={select} />}
-        <StyledList role="listbox" id={select.listboxId}>
-          {children}
-        </StyledList>
-      </StyledSelectPopupDesktop>
-    </FloatingFocusManager>
+    <FloatingOverlay
+      lockScroll
+      style={{
+        isolation: 'isolate',
+        position: 'fixed',
+        zIndex: 999,
+        display: 'flex',
+        justifyContent: 'center',
+        height: '100%',
+        overflow: 'hidden',
+      }}>
+      <FloatingFocusManager
+        context={select.context}
+        modal={false}
+        initialFocus={select.searchable ? undefined : -1}
+        returnFocus={false}>
+        <StyledSelectPopupDesktop
+          ref={select.floating}
+          css={popupCss}
+          as={motion.div}
+          {...select.getFloatingProps()}
+          aria-labelledby={select.buttonId}
+          style={{
+            position: select.strategy,
+            top: select.y ?? 0,
+            left: select.x ?? 0,
+            zIndex: 1000,
+          }}
+          {...desktopMotionConfig}>
+          {select.searchable && <PopupSearchInput select={select} />}
+          <StyledList role="listbox" id={select.listboxId}>
+            {children}
+          </StyledList>
+        </StyledSelectPopupDesktop>
+      </FloatingFocusManager>
+    </FloatingOverlay>
   )
 }

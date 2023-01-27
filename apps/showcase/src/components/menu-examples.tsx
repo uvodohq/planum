@@ -1,5 +1,5 @@
 /* eslint-disable no-alert */
-import { forwardRef } from 'react'
+import { forwardRef, useState } from 'react'
 import { DotsThreeIcon, ListIcon } from '@uvodohq/planum-icons'
 import { Menu, MenuItem, Button, Box, Flex } from '@uvodohq/planum'
 
@@ -43,6 +43,23 @@ export const RowBox = (props) => {
   )
 }
 
+function ControlledMenu() {
+  const [open, setOpen] = useState(true)
+
+  return (
+    <Menu
+      trigger={<button> controlled menu</button>}
+      isOpen={open}
+      onChangeOpen={setOpen}>
+      <MenuItem label="Undo" onSelect={alert} />
+      <MenuItem label="Redo" />
+      <MenuItem label="Cut" disabled />
+      <MenuItem label="Mail" />
+      <MenuItem label="Instagram" />
+    </Menu>
+  )
+}
+
 export default function MenuExamples() {
   return (
     <>
@@ -53,6 +70,7 @@ export default function MenuExamples() {
         <MenuItem label="Mail" />
         <MenuItem label="Instagram" />
       </Menu>
+      <ControlledMenu />
 
       <Menu
         trigger={<Button icon={<DotsThreeIcon />} variant="secondaryDark" />}>

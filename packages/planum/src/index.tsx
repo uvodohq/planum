@@ -98,7 +98,7 @@ export { InputUrl } from './input-url'
 export type { InputUrlProps } from './input-url'
 
 // PhoneInput
-// export { PhoneInput } from './phone-input'
+export { PhoneInput } from './phone-input'
 
 // Radio
 export { Radio, RadioGroup } from './radio'

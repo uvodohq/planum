@@ -48,7 +48,7 @@ interface WeightUnit {
 }
 
 export default function SelectExampleCustomTrigger(
-  props?: Partial<SelectProps<WeightUnit>>,
+  props?: Partial<SelectProps>,
 ) {
   return (
     <Select
