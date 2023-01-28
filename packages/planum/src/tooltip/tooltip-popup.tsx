@@ -25,7 +25,7 @@ export const TooltipPopup = React.forwardRef<
   const ref = useMergeRefs([state.floating, propRef])
 
   return (
-    <FloatingPortal>
+    <FloatingPortal id="planum-portal">
       <AnimatePresence>
         {state.open && (
           <StyledTooltipContainer

@@ -1,4 +1,5 @@
 import {
+  Badge,
   Box,
   Button,
   CheckboxGroupItem,
@@ -34,13 +35,14 @@ import {
   PriceField,
   QuantityField,
   PercentField,
+  PhoneInputField,
 } from '../../components/form'
 import { DEFAULT_NUMBER } from '../../components/form/schemas'
 import { Subheader } from '@uvodohq/planum/src'
 
 const StyledTitle = styled(Subheader, {
   my: '$16',
-
+  borderBottom: '1px solid',
   '& + &': {
     mt: 50,
   },
@@ -81,6 +83,7 @@ const schema = z.object({
   radio_field: requiredSchema,
   textarea_field: requiredSchema,
   select_field: z.number(),
+  phone_field: z.string(),
   auto_complete_field: z.array(
     z.object({
       id: z.number(),
@@ -97,6 +100,28 @@ const schema = z.object({
 })
 
 type FormValues = z.infer<typeof schema>
+
+const filledValues = {
+  text_field: 'Uvodo',
+  password_field: 'admin123',
+  facebook_url: 'https://uvodo.com/',
+  amountNumber: 123,
+  amountNull: null, //DEFAULT_NUMBER,
+  price_field: DEFAULT_NUMBER,
+  quantity_field: DEFAULT_NUMBER,
+  percent_field: DEFAULT_NUMBER,
+  inc: 2,
+  editor_field: null,
+  checkbox_item_field: true,
+  toggle_field: false,
+  radio_field: 'first',
+  textarea_field: '',
+  select_field: null,
+  phone_field: null,
+  auto_complete_field: [{ id: 1, name: 'first' }],
+  tag_select_field: [{ id: 1, name: 'tag 1' }],
+  checkbox_group_field: [],
+}
 
 function useInitialValues() {
   const [inc, setState] = useState(0)
@@ -124,6 +149,7 @@ function useInitialValues() {
       radio_field: 'first',
       textarea_field: '',
       select_field: null,
+      phone_field: null,
       auto_complete_field: [{ id: 1, name: 'first' }],
       tag_select_field: [{ id: 1, name: 'tag 1' }],
       checkbox_group_field: [],
@@ -157,13 +183,46 @@ function Container() {
     },
   })
 
+  const FormButtons = () => (
+    <Box css={{ d: 'flex', gap: 12, py: 24 }}>
+      <Button variant="danger" onClick={() => form.reset()}>
+        Reset
+      </Button>
+
+      <Button
+        onClick={() => {
+          form.reset(filledValues)
+        }}>
+        Fill
+      </Button>
+
+      <Button
+        onClick={async () => {
+          await form.trigger()
+
+          const firstErrorField = Object.keys(form.formState.errors)[0]
+
+          if (firstErrorField) {
+            await form.trigger(firstErrorField as any, {
+              shouldFocus: true,
+            })
+          }
+        }}>
+        Validate
+      </Button>
+
+      <Button type="submit" isDisabled={!handlers.isDirty}>
+        Submit
+      </Button>
+    </Box>
+  )
+
   return (
     <Form {...handlers}>
+      <FormButtons />
       <Flex css={{ gap: 64, justifyContent: 'space-between' }}>
         <Stack y={24} css={{ flex: 1 }}>
-          <Button type="submit" isDisabled={!handlers.isDirty}>
-            Submit {initialValues.inc}
-          </Button>
+          <Badge>render {initialValues.inc}</Badge>
 
           <TextField
             name="text_field"
@@ -182,6 +241,12 @@ function Container() {
             prefix="/products/"
             placeholder="slug"
             label="URL"
+          />
+
+          <TextareaField
+            name="textarea_field"
+            label="Textarea field"
+            placeholder="Type something..."
           />
 
           <NumberField
@@ -211,6 +276,13 @@ function Container() {
             name="percent_field"
             label="Percent"
             aria-label="Percent"
+          />
+
+          <ToggleField
+            name="toggle_field"
+            aria-label="Toggle"
+            labelTextOff="activate"
+            labelTextOn="deactivate"
           />
         </Stack>
         <Stack y={32} css={{ flex: 1 }}>
@@ -243,12 +315,6 @@ function Container() {
             </StyledChecksContainer>
           </CheckboxGroupField>
 
-          <TextareaField
-            name="textarea_field"
-            label="Textarea field"
-            placeholder="Type something..."
-          />
-
           <Paragraph>Radio group field</Paragraph>
           <RadioGroupField
             name="radio_field"
@@ -267,6 +333,11 @@ function Container() {
             items={selectItems}
           />
 
+          <PhoneInputField
+            name="phone_field"
+            label="Phone field"
+            placeholder="Enter number"
+          />
           <AutoCompleteTagsField
             label="Autocomplete field"
             labelKey="name"
@@ -282,41 +353,48 @@ function Container() {
             label="Tag field"
           />
 
-          <ToggleField
-            name="toggle_field"
-            aria-label="Toggle"
-            labelTextOff="activate"
-            labelTextOn="deactivate"
-          />
-
           <EditorField name="editor_field" aria-label="Editor" label="Policy" />
         </Stack>
       </Flex>
 
-      <Box css={{ mt: 64, d: 'flex', gap: 12 }}>
-        <Button variant="secondary" onClick={() => form.reset()}>
-          Reset
-        </Button>
+      <FormButtons />
 
-        <Button type="submit" isDisabled={!handlers.isDirty}>
-          Submit
-        </Button>
-      </Box>
+      <Box
+        css={{
+          display: 'flex',
+          gap: '$24',
+          justifyContent: 'space-between',
+          p: '$24',
+          bg: '$surface800',
+          color: '$surface50',
+          font: 'Consolas',
+          fontSize: 13,
+          lineHeight: 1.4,
 
-      <Flex css={{ gap: '$24', justifyContent: 'space-between', mt: '$24' }}>
+          '&>div': {
+            flex: 1,
+            whiteSpace: 'pre-wrap',
+          },
+        }}>
         <Box>
           <StyledTitle>Form values:</StyledTitle>
-          <pre>{JSON.stringify(form.watch(), null, 2)}</pre>
+          <pre>
+            <code>{JSON.stringify(form.watch(), null, 4)}</code>
+          </pre>
         </Box>
         <Box>
           <StyledTitle>Form errors:</StyledTitle>
-          <pre>{JSON.stringify(form.formState.errors, null, 2)}</pre>
+          <pre>
+            <code>{JSON.stringify(form.formState.errors, null, 4)}</code>
+          </pre>
         </Box>
         <Box>
           <StyledTitle>Form dirty fields:</StyledTitle>
-          <pre>{JSON.stringify(form.formState.dirtyFields, null, 2)}</pre>
+          <pre>
+            <code>{JSON.stringify(form.formState.dirtyFields, null, 4)}</code>
+          </pre>
         </Box>
-      </Flex>
+      </Box>
     </Form>
   )
 }

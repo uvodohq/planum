@@ -3,6 +3,7 @@ import {
   autoUpdate,
   flip,
   offset,
+  shift,
   useDismiss,
   useFloating,
   useFocus,
@@ -42,7 +43,13 @@ export function useTooltip(props: UseTooltipProps = {}) {
     strategy,
     onOpenChange: setOpen,
     whileElementsMounted: autoUpdate,
-    middleware: [offset(offsetValue), flip()],
+    middleware: [
+      offset(offsetValue),
+      flip(),
+      shift({
+        padding: 8,
+      }),
+    ],
   })
 
   const context = data.context

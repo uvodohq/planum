@@ -261,7 +261,7 @@ export function useSelect(props: UseSelectProps) {
     phoneInputRef,
   }
 
-  console.log('selecy', select)
+  console.log('select', select)
 
   return select
 }

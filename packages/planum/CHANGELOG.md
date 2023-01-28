@@ -1,5 +1,11 @@
 # @uvodohq/planum
 
+## 3.3.1
+
+### Patch Changes
+
+- Select poup block scroll
+
 ## 3.3.0
 
 ### Minor Changes

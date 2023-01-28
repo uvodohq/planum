@@ -103,7 +103,7 @@ export function useSelectState(props: UseSelectStateProps) {
     setActiveIndex,
     selectedIndex,
     setSelectedIndex,
-    searchable: items.length > 10, // show search if more items exist
+    searchable: true,
     items,
     search,
     setSearch,

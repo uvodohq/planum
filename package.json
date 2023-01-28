@@ -17,7 +17,7 @@
     "clean": "turbo run clean && rimraf node_modules",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "changeset": "changeset",
-    "bump-version": "changeset version",
+    "bump": "changeset version",
     "pub": "turbo run build test --filter=@uvodohq/* && changeset version && changeset publish",
     "status": "changeset status --verbose",
     "gen": "plop",

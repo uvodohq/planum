@@ -1,12 +1,11 @@
 import { useId } from '@floating-ui/react'
-import React, { useContext } from 'react'
 
 import { Flag } from '../flag'
 import { Box } from '../layout'
 import { subheaderCss } from '../text'
 import { styled } from '../theme'
-import type { Value } from './phone-component'
-import { SelectContext } from './phone-context'
+import type { PhoneOptionProps } from './phone.types'
+import { usePhoneContext } from './phone-context'
 
 const StyledOption = styled('li', subheaderCss, {
   fw: '$regular',
@@ -20,9 +19,7 @@ const StyledOption = styled('li', subheaderCss, {
   cursor: 'pointer',
   oneLineClamp: true,
   whiteSpace: 'nowrap',
-  overflow: 'hidden',
-  display: 'flex',
-  alignItems: 'center',
+  wordBreak: 'break-all',
   gap: 4,
 
   // from floating
@@ -31,7 +28,7 @@ const StyledOption = styled('li', subheaderCss, {
     position: 'relative',
     zIndex: 1,
   },
-
+  '&': { display: 'flex', alignItems: 'center', gap: '10px' },
   '&::marker': { display: 'none' },
 
   //
@@ -65,16 +62,6 @@ const StyledOption = styled('li', subheaderCss, {
         '&:hover': {},
       },
     },
-    matchWidth: {
-      false: {
-        oneLineClamp: true,
-        whiteSpace: 'nowrap',
-        minWidth: 200,
-      },
-      true: {
-        wordBreak: 'break-all',
-      },
-    },
   },
   compoundVariants: [
     {
@@ -85,60 +72,48 @@ const StyledOption = styled('li', subheaderCss, {
       },
     },
   ],
-  defaultVariants: {
-    matchWidth: true,
-  },
 })
 
-export interface OptionProps {
-  value: Value
-  label: string
-  children: React.ReactNode
-  index?: number
+interface OptionProps extends PhoneOptionProps {
+  item: any
 }
 
-export const Option: React.FC<OptionProps> = (props) => {
-  const { item: country, index = 0 } = props
-
-  const { select, listRef, matchWidth } = useContext(SelectContext)
-
-  const {
-    selectedIndex,
-    activeIndex,
-    searchable,
-    handleSelect,
-    handleKeyDown,
-  } = select
+export const Option = (props: OptionProps) => {
+  const { index = 0, item, ...rest } = props
+  const { phone, state } = usePhoneContext()
+  const { handleSelect, handleKeyDown, listItemsRef } = phone
+  const { selectedIndex, activeIndex } = state
 
   const id = useId()
 
   const isSelected = selectedIndex === index
   const isActive = activeIndex === index
 
-  const countryCode = country[2]
-  const countryName = country[0]
-  const countryPrefix = country[3]
+  const optionProps = {
+    id,
+    role: 'option',
+    tabIndex: isActive ? 0 : -1,
+    'aria-selected': isActive && isSelected,
+    'data-selected': isSelected,
+    ref: (node: HTMLLIElement | null) => {
+      listItemsRef.current[index] = node
+    },
+    ...phone.getItemProps({
+      onClick: () => handleSelect(index), // Handle pointer select.
+      onKeyDown: handleKeyDown, // Handle keyboard select.
+    }),
+  }
 
   return (
     <StyledOption
-      id={id}
-      role="option"
-      ref={(node) => {
-        listRef.current[index] = node
-      }}
-      tabIndex={isActive ? 0 : -1}
-      aria-selected={isActive && isSelected}
       isSelected={isSelected}
       isFocused={isActive}
-      matchWidth={matchWidth}
-      {...select.getItemProps({
-        onClick: () => handleSelect(index), // Handle pointer select.
-        onKeyDown: searchable ? undefined : handleKeyDown, // Handle keyboard select.
-      })}>
-      <Flag country={countryCode} css={{ width: 24, minWidth: 24 }} />
-      <Box css={{ oneLineClamp: true }}>{countryName}</Box>
+      {...optionProps}
+      {...rest}>
+      <Flag country={item?.id || ''} css={{ width: 24, minWidth: 24 }} />
+      <Box css={{ oneLineClamp: true }}>{item.countryName}</Box>
       <Box as="span" css={{ color: '$textDisabled' }}>
-        (+{countryPrefix})
+        ({item.prefix})
       </Box>
     </StyledOption>
   )

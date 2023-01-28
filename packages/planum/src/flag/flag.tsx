@@ -9,8 +9,10 @@ export interface FlagProps {
   css?: CSS
 }
 
+// https://flagcdn.com/16x12/za.svg
+
 function getImgSrc(alpha: CountryCode) {
-  return `https://flagcdn.com/${alpha.toLowerCase()}.svg`
+  return `https://purecatamphetamine.github.io/country-flag-icons/3x2/${alpha.toUpperCase()}.svg`
 }
 
 export function Flag(props: FlagProps) {

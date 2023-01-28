@@ -4,14 +4,12 @@ import type { UseControllerProps } from 'react-hook-form'
 import { useController, useFormContext } from 'react-hook-form'
 
 // TODO: get select item types
-interface SelectFieldProps<T extends object>
-  extends SelectProps<T>,
-    UseControllerProps<any> {
+interface SelectFieldProps extends SelectProps, UseControllerProps<any> {
   name: string
   defaultValue?: string
 }
 
-export function SelectField<T extends object>(props: SelectFieldProps<T>) {
+export function SelectField(props: SelectFieldProps) {
   const {
     name,
     rules,

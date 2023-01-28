@@ -1,5 +1,5 @@
-import { Box, Flag, H1, Title, PhoneInput } from '@uvodohq/planum'
-
+import { Box, Flag, H1, Title } from '@uvodohq/planum'
+import { PhoneInput } from '@uvodohq/planum-phone'
 // import AutoCompleteExampleControlled from '../../components/auto-complete/auto-complete-controlled-example'
 // import { AutoCompleteTagsExample } from '../../components/auto-complete/auto-complete-tags-example'
 
@@ -46,9 +46,17 @@ const SelectDemos = () => {
         <SelectExampleAsync />
       </Grid>
       <Grid title="Phone">
-        <PhoneInput defaultCountry="az" />
-        <Box />
-        <Box />
+        <PhoneInput label="Without defaults" placeholder="Enter number" />
+        {/* <PhoneInput
+          label="Default AZ given"
+          defaultCountryCode="AZ"
+          placeholder="Enter number"
+        />
+        <PhoneInput
+          label="With value(country not provided)"
+          value="+99455"
+          placeholder="Enter number"
+        /> */}
       </Grid>
 
       <Grid title="With a few options">

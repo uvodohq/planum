@@ -1,8 +1,8 @@
 import { mergeProps } from '@uvodohq/planum'
+import { PhoneInput } from '@uvodohq/planum-phone'
+
 import type { UseControllerProps } from 'react-hook-form'
 import { useController, useFormContext } from 'react-hook-form'
-
-// import { PhoneInput } from '@/ui'
 
 interface PhoneInputFieldProps extends UseControllerProps<any> {
   name: string
@@ -27,11 +27,10 @@ export function PhoneInputField(props: PhoneInputFieldProps) {
   })
 
   return (
-    // <PhoneInput
-    //   {...mergeProps(field, rest)}
-    //   errorMessage={error?.message}
-    //   status={error?.message ? 'error' : undefined}
-    // />
-    null
+    <PhoneInput
+      {...mergeProps(field, rest)}
+      errorMessage={error?.message}
+      status={error?.message ? 'error' : undefined}
+    />
   )
 }
