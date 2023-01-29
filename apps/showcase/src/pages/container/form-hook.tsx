@@ -68,36 +68,38 @@ const selectItems = [
 
 const requiredSchema = z.string().min(1, { message: 'This field required' })
 
-const schema = z.object({
-  text_field: requiredSchema,
-  password_field: requiredSchema,
-  facebook_url: schemas.url(),
-  amountNumber: schemas.number(),
-  amountNull: schemas.number(),
-  price_field: schemas.number(),
-  quantity_field: schemas.number(),
-  percent_field: schemas.number(),
-  editor_field: z.union([z.string(), z.null()]),
-  checkbox_item_field: z.boolean(),
-  toggle_field: z.boolean(),
-  radio_field: requiredSchema,
-  textarea_field: requiredSchema,
-  select_field: z.number(),
-  phone_field: z.string(),
-  auto_complete_field: z.array(
-    z.object({
-      id: z.number(),
-      name: requiredSchema,
-    }),
-  ),
-  tag_select_field: z.array(
-    z.object({
-      id: z.number(),
-      name: requiredSchema,
-    }),
-  ),
-  checkbox_group_field: z.array(requiredSchema),
-})
+const schema = z
+  .object({
+    text_field: requiredSchema,
+    password_field: requiredSchema,
+    facebook_url: schemas.url(),
+    amountNumber: schemas.number(),
+    amountNull: schemas.number(),
+    price_field: schemas.number(),
+    quantity_field: schemas.number(),
+    percent_field: schemas.number(),
+    editor_field: z.union([z.string(), z.null()]),
+    checkbox_item_field: z.boolean(),
+    toggle_field: z.boolean(),
+    radio_field: requiredSchema,
+    textarea_field: requiredSchema,
+    select_field: z.number().nullable(),
+    phone_field: z.string(),
+    auto_complete_field: z.array(
+      z.object({
+        id: z.number(),
+        name: requiredSchema,
+      }),
+    ),
+    tag_select_field: z.array(
+      z.object({
+        id: z.number(),
+        name: requiredSchema,
+      }),
+    ),
+    checkbox_group_field: z.array(requiredSchema),
+  })
+  .nullable()
 
 type FormValues = z.infer<typeof schema>
 
@@ -117,7 +119,7 @@ const filledValues = {
   radio_field: 'first',
   textarea_field: '',
   select_field: null,
-  phone_field: null,
+  phone_field: '+994557773322',
   auto_complete_field: [{ id: 1, name: 'first' }],
   tag_select_field: [{ id: 1, name: 'tag 1' }],
   checkbox_group_field: [],
@@ -191,7 +193,9 @@ function Container() {
 
       <Button
         onClick={() => {
-          form.reset(filledValues)
+          Object.entries(filledValues).forEach(([key, value]) => {
+            form.setValue(key as any, value, { shouldValidate: true })
+          })
         }}>
         Fill
       </Button>
@@ -337,6 +341,7 @@ function Container() {
             name="phone_field"
             label="Phone field"
             placeholder="Enter number"
+            defaultCountryCode="AZ"
           />
           <AutoCompleteTagsField
             label="Autocomplete field"

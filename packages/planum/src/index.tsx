@@ -7,6 +7,7 @@ export {
   useMobileMedia,
   useTabletMedia,
   useControllableValue,
+  useMemoizedFn,
 } from './hooks'
 export * from './theme'
 export { useButton, useToggleButton } from '@react-aria/button'

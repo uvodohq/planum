@@ -1,3 +1,7 @@
 export { Phone as PhoneInput } from './phone'
 export type { PhoneProps } from './phone.types'
-export { isPossiblePhoneNumber, isValidPhoneNumber } from 'libphonenumber-js'
+export {
+  formatPhoneNumberIntl,
+  isPossiblePhoneNumber,
+  isValidPhoneNumber,
+} from 'react-phone-number-input'

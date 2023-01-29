@@ -15,7 +15,12 @@ export default defineConfig((options: Options) => {
     minify: isProd,
     format: formats,
     dts: true,
-    external: ['react', '@uvodohq/planum', 'framer-motion'],
+    external: [
+      'react',
+      '@uvodohq/planum',
+      'framer-motion',
+      '@floating-ui/react',
+    ],
     metafile: isProd,
   }
 })

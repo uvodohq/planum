@@ -25,7 +25,6 @@ export function usePhone(props: UsePhoneProps) {
     activeIndex,
     selectedIndex,
     search,
-    searchable,
     items,
     onChange,
     updateState,
@@ -153,7 +152,7 @@ export function usePhone(props: UsePhoneProps) {
 
   // when popup open, scroll selected into view center
   useLayoutEffect(() => {
-    if (isPositioned && searchable) {
+    if (isPositioned) {
       const itemEl = listItemsRef.current[selectedIndex as any]
 
       if (itemEl) {
@@ -164,7 +163,7 @@ export function usePhone(props: UsePhoneProps) {
         })
       }
     }
-  }, [isPositioned, selectedIndex, listItemsRef, searchable])
+  }, [isPositioned, selectedIndex, listItemsRef])
 
   const phone = useMemo(() => {
     // Prevent input losing focus on Firefox VoiceOver
@@ -173,12 +172,12 @@ export function usePhone(props: UsePhoneProps) {
       interactions.getFloatingProps(inputInteractions.getFloatingProps())
 
     return {
-      options,
-      isEmpty: options.length === 0,
       ...floating,
       ...interactions,
+      options,
       getFloatingProps: () => floatingProps,
       getItemProps: inputInteractions.getItemProps,
+      isEmpty: options.length === 0,
       nodeId,
       noResultsId,
       buttonId,

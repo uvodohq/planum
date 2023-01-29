@@ -47,16 +47,16 @@ const SelectDemos = () => {
       </Grid>
       <Grid title="Phone">
         <PhoneInput label="Without defaults" placeholder="Enter number" />
-        {/* <PhoneInput
+        <PhoneInput
           label="Default AZ given"
           defaultCountryCode="AZ"
           placeholder="Enter number"
         />
         <PhoneInput
           label="With value(country not provided)"
-          value="+99455"
+          value="+90"
           placeholder="Enter number"
-        /> */}
+        />
       </Grid>
 
       <Grid title="With a few options">

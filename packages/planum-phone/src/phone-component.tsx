@@ -1,7 +1,4 @@
-import {
-  getCountries,
-  getCountryCallingCode,
-} from 'react-phone-number-input/input'
+import { getCountries, getCountryCallingCode } from 'react-phone-number-input'
 import countryNamesEn from 'react-phone-number-input/locale/en.json'
 
 import type { PhoneProps } from './phone.types'
@@ -46,10 +43,6 @@ export const PhoneComponent = (props: PhoneProps) => {
   const phone = usePhone({
     labelKey: 'countryName',
     state,
-  })
-
-  console.log({
-    value: state.value,
   })
 
   return (

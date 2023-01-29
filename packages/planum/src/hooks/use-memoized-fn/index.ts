@@ -15,10 +15,10 @@ function useMemoizedFn<T extends noop>(fn: T): T {
   // why not write `fnRef.current = fn`?
   // https://github.com/alibaba/hooks/issues/728
   fnRef.current = useMemo(() => fn, [fn])
-  const memoizedFn = useRef()
+  const memoizedFn = useRef<any>()
 
   if (!memoizedFn.current) {
-    memoizedFn.current = function (...args) {
+    memoizedFn.current = function (...args: any[]) {
       return fnRef.current.apply(this, args)
     }
   }

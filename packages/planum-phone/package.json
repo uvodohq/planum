@@ -29,7 +29,8 @@
     "clean": "rimraf .turbo node_modules dist"
   },
   "dependencies": {
-    "libphonenumber-js": "^1.10.18"
+    "libphonenumber-js": "^1.10.18",
+    "react-phone-number-input": "^3.2.16"
   },
   "devDependencies": {
     "@floating-ui/react": "^0.18.1",
