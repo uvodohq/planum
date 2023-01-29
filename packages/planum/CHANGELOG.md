@@ -1,5 +1,11 @@
 # @uvodohq/planum
 
+## 3.3.3
+
+### Patch Changes
+
+- [#19](https://github.com/uvodohq/planum/pull/19) [`6acbc46`](https://github.com/uvodohq/planum/commit/6acbc466772a1751d7eb11f9b049e1056d12205f) Thanks [@NijatBakhtiyar](https://github.com/NijatBakhtiyar)! - fix password strength rerendering
+
 ## 3.3.2
 
 ### Patch Changes
