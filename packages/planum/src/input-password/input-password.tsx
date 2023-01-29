@@ -1,5 +1,6 @@
 import { useToggleState } from '@react-stately/toggle'
 import * as React from 'react'
+import { memo, useCallback } from 'react'
 
 import { useStrengthIndicator } from '../../hooks'
 import { Button } from '../button'
@@ -38,13 +39,13 @@ function _InputPassword(
   const [strength, setStrength] = React.useState<StrengthType>()
   const passwordStrength = useStrengthIndicator()
 
-  function handleChange(value: string) {
+  const handleChange = useCallback((value: string) => {
     setStrength(passwordStrength(value))
 
     if (props.onChange) {
       props.onChange(value)
     }
-  }
+  }, [])
 
   return (
     <Box>
