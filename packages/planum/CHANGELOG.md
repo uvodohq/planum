@@ -1,5 +1,11 @@
 # @uvodohq/planum
 
+## 3.3.2
+
+### Patch Changes
+
+- Phone component moved from planum to planum-phone package
+
 ## 3.3.1
 
 ### Patch Changes
