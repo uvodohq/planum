@@ -39,6 +39,7 @@ import {
 } from '../../components/form'
 import { DEFAULT_NUMBER } from '../../components/form/schemas'
 import { Subheader } from '@uvodohq/planum/src'
+import { isValidPhoneNumber } from '@uvodohq/planum-phone'
 
 const StyledTitle = styled(Subheader, {
   my: '$16',
@@ -84,7 +85,16 @@ const schema = z
     radio_field: requiredSchema,
     textarea_field: requiredSchema,
     select_field: z.number().nullable(),
-    phone_field: z.string(),
+    phone_field: z
+      .string()
+      .nullable()
+      .refine(
+        (value) =>
+          typeof value === 'string' ? isValidPhoneNumber(value) : true,
+        {
+          message: 'Not Valid number',
+        },
+      ),
     auto_complete_field: z.array(
       z.object({
         id: z.number(),
