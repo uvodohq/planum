@@ -1,6 +1,6 @@
 import { useControllableValue, useUpdateEffect } from '@uvodohq/planum'
-import { AsYouType } from 'libphonenumber-js'
-import { useEffect, useMemo, useReducer } from 'react'
+import { AsYouType } from 'libphonenumber-js/min'
+import { useEffect, useReducer } from 'react'
 
 import type { UsePhoneStateProps } from './phone.types'
 

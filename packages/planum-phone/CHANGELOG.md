@@ -1,5 +1,11 @@
 # @uvodohq/planum-phone
 
+## 0.0.3
+
+### Patch Changes
+
+- libnumber/min version used
+
 ## 0.0.2
 
 ### Patch Changes
