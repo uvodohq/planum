@@ -73,7 +73,9 @@ export function useSelect(props: UseSelectProps) {
 
   // interactions
   const click = useClick(floatingCtx)
-  const dismiss = useDismiss(floatingCtx)
+  const dismiss = useDismiss(floatingCtx, {
+    bubbles: false,
+  })
   const role = useRole(floatingCtx)
   const typeahead = useTypeahead(floatingCtx, {
     listRef: listContentRef,

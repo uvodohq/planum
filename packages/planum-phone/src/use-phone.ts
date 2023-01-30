@@ -65,7 +65,7 @@ export function usePhone(props: UsePhoneProps) {
 
   // interactions
   const click = useClick(floatingCtx)
-  const dismiss = useDismiss(floatingCtx)
+  const dismiss = useDismiss(floatingCtx, { bubbles: false })
   const role = useRole(floatingCtx)
 
   const searchableNavigationOptions = {
