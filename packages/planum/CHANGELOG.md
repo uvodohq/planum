@@ -1,5 +1,11 @@
 # @uvodohq/planum
 
+## 3.3.5
+
+### Patch Changes
+
+- [#20](https://github.com/uvodohq/planum/pull/20) [`f7382a0`](https://github.com/uvodohq/planum/commit/f7382a0c2d64e66124eb65cdf1b979905fed4894) Thanks [@EminQasimov](https://github.com/EminQasimov)! - country multi select add
+
 ## 3.3.4
 
 ### Patch Changes
