@@ -112,6 +112,10 @@ export type { RadioGroupProps, RadioProps } from './radio'
 export { Select } from './select'
 export type { SelectProps } from './select'
 
+// MultiSelect
+export { MultiSelect } from './multi-select'
+export type { MultiSelectProps } from './multi-select'
+
 //  tag select
 export { TagSelect } from './tag-select'
 export type { TagItem, TagSelectProps } from './tag-select'
