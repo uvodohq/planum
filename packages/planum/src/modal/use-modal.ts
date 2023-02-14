@@ -37,6 +37,7 @@ export function useModal(props: UseModalProps, state: ModalState) {
   ])
 
   const triggerProps = trigger ? trigger.props : {}
+
   const referenceProps = trigger
     ? getReferenceProps({
         ref: reference,
@@ -48,6 +49,7 @@ export function useModal(props: UseModalProps, state: ModalState) {
         },
       })
     : {}
+
   const makeFloatingProps = (props?: any) =>
     state.isOpen
       ? getFloatingProps({
