@@ -5,9 +5,9 @@
     "apps/*"
   ],
   "scripts": {
-    "start": "yarn dev --filter=showcase... --no-daemon",
+    "start": "yarn dev --filter=showcase...",
     "build": "turbo run build",
-    "dev": "turbo run dev --no-cache --parallel --continue --no-daemon",
+    "dev": "turbo run dev --no-cache --parallel --continue",
     "test": "turbo run test",
     "test:watch": "turbo run test:watch",
     "deploy:apps": "turbo run deploy --filter=./apps/*",

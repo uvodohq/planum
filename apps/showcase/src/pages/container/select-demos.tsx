@@ -1,5 +1,6 @@
 import { Box, Flag, H1, Title } from '@uvodohq/planum'
 import { PhoneInput } from '@uvodohq/planum-phone'
+import MultiSelectExample from '../../components/multi-select/multi-select-example'
 // import AutoCompleteExampleControlled from '../../components/auto-complete/auto-complete-controlled-example'
 // import { AutoCompleteTagsExample } from '../../components/auto-complete/auto-complete-tags-example'
 
@@ -57,6 +58,16 @@ const SelectDemos = () => {
           value="+90"
           placeholder="Enter number"
         />
+      </Grid>
+
+      <Grid title="Multi Select">
+        <Box>
+          <MultiSelectExample
+            label="Group Options"
+            value={['Austria', 'Azerbaijan', 'Zelandiya']}
+          />
+        </Box>
+        <Box />
       </Grid>
 
       <Grid title="With a few options">
