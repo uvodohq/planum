@@ -46,7 +46,7 @@ export const TooltipPopup = React.forwardRef<
                 top: state.y ?? 0,
                 left: state.x ?? 0,
                 visibility: state.x == null ? 'hidden' : 'visible',
-                zIndex: 1,
+                zIndex: 2,
               },
               props.style ?? {},
             )}

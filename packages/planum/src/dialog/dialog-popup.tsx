@@ -17,11 +17,12 @@ export const underlayVariants = {
 
 type DialogPopupProps = React.HTMLProps<HTMLDivElement> & {
   overlayProps?: React.ComponentProps<typeof FloatingOverlay>
+  initialFocus?: number
 }
 
 export const DialogPopup = React.forwardRef<HTMLDivElement, DialogPopupProps>(
   (props, propRef) => {
-    const { children, overlayProps, ...rest } = props
+    const { children, overlayProps, initialFocus = -1, ...rest } = props
     const state = useDialogState()
 
     const ref = useMergeRefs([state.floating, propRef])
@@ -37,7 +38,9 @@ export const DialogPopup = React.forwardRef<HTMLDivElement, DialogPopupProps>(
                 animate="visible"
                 exit="hidden"
               />
-              <FloatingFocusManager context={state.context}>
+              <FloatingFocusManager
+                context={state.context}
+                initialFocus={initialFocus}>
                 <Overlay
                   ref={ref}
                   aria-labelledby={state.labelId}
