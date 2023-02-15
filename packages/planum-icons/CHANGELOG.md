@@ -1,5 +1,12 @@
 # @uvodohq/planum-icons
 
+## 1.4.1
+
+### Patch Changes
+
+- [#21](https://github.com/uvodohq/planum/pull/21) [`37fb7db`](https://github.com/uvodohq/planum/commit/37fb7db47d94249b516708dc5ebe7c8113c4d8ee) Thanks [@NijatBakhtiyar](https://github.com/NijatBakhtiyar)! - - add icons
+  - increase tooltip index
+
 ## 1.4.0
 
 ### Minor Changes
