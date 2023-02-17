@@ -52,6 +52,7 @@ export interface Option {
 export interface GroupItem {
   name: string
   id: string | number
+  withAccordion?: boolean
   children: Option[]
 }
 

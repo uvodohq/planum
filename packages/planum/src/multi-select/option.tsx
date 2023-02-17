@@ -12,13 +12,15 @@ const StyledOption = styled('li', subheaderCss, {
   userSelect: 'none',
   transition: 'background-color 0.15s',
   outline: 'none',
-  borderRadius: '$sm',
   color: '$textDark',
   fontWeight: '$regular',
   cursor: 'pointer',
   oneLineClamp: true,
   whiteSpace: 'nowrap',
   pl: 70,
+  display: 'flex',
+  alignItems: 'center',
+  gap: 4,
 
   // from floating
   '&:focus': {
@@ -26,10 +28,9 @@ const StyledOption = styled('li', subheaderCss, {
     position: 'relative',
     zIndex: 1,
   },
-  '&': { display: 'flex', alignItems: 'center', gap: 4 },
+
   '&::marker': { display: 'none' },
 
-  //
   '&:hover': {
     backgroundColor: '$surface100',
   },
@@ -56,6 +57,18 @@ const StyledOption = styled('li', subheaderCss, {
         wordBreak: 'break-all',
       },
     },
+    asHeader: {
+      true: {
+        paddingLeft: 8,
+        borderBottom: '1px solid $colors$surface200',
+        fontSize: '$min',
+        lineHeight: '$xxl',
+        textTransform: 'uppercase',
+        letterSpacing: '0.1em',
+        fontWeight: '$semibold',
+        gap: 12,
+      },
+    },
   },
   compoundVariants: [
     {
@@ -73,10 +86,11 @@ const StyledOption = styled('li', subheaderCss, {
 interface OptionProps extends SelectOptionProps {
   item: any
   groupId: string
+  asHeader?: boolean
 }
 
 export const Option = (props: OptionProps) => {
-  const { index = 0, item, groupId } = props
+  const { index = 0, item, groupId, ...rest } = props
   const { select, state } = useSelectContext()
   const { matchWidth, listItemsRef, labelKey } = select
   const { activeIndex, selectedItemsMap, updateState } = state
@@ -123,13 +137,13 @@ export const Option = (props: OptionProps) => {
   }
 
   return (
-    <StyledOption isFocused={isActive} {...optionProps} {...props}>
+    <StyledOption isFocused={isActive} {...optionProps} {...rest}>
       <Checkbox
         isSelected={isChecked}
         onChange={toggleCheckbox}
         aria-label={item[labelKey]}
       />
-      <Flag country={item.countryCode} />
+      {item.countryCode && <Flag country={item.countryCode} />}
       {item[labelKey]}
     </StyledOption>
   )

@@ -64,7 +64,7 @@ const SelectDemos = () => {
         <Box>
           <MultiSelectExample
             label="Group Options"
-            value={['Austria', 'Azerbaijan', 'Zelandiya']}
+            value={[555555, 2222, 1, 2, 3434]}
           />
         </Box>
         <Box />

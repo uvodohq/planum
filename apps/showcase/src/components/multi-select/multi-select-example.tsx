@@ -5,7 +5,6 @@ export default function MultiSelectExample(props?: Partial<MultiSelectProps>) {
   return (
     <MultiSelect
       items={countryGroupList}
-      labelKey="name"
       aria-label="label"
       placeholder="Multi Select a country"
       {...props}

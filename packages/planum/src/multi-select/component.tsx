@@ -60,18 +60,38 @@ export const SelectComponent = (props: SelectProps) => {
       value={openedGroupIds}
       onValueChange={onAccordionChange}>
       <ul>
-        {groups.map((group) => (
-          <SelectOptionGroup key={group.id} group={group}>
-            {group.children.map((option, index) => (
-              <Option
-                key={option.id}
-                index={index}
-                item={option}
-                groupId={group.id.toString()}
-              />
-            ))}
-          </SelectOptionGroup>
-        ))}
+        {groups.map((group) => {
+          if (group.withAccordion === false) {
+            return (
+              <li key={group.id}>
+                <ul>
+                  {group.children.map((option, index) => (
+                    <Option
+                      key={option.id}
+                      index={index}
+                      item={option}
+                      groupId={group.id.toString()}
+                      asHeader
+                    />
+                  ))}
+                </ul>
+              </li>
+            )
+          }
+
+          return (
+            <SelectOptionGroup key={group.id} group={group}>
+              {group.children.map((option, index) => (
+                <Option
+                  key={option.id}
+                  index={index}
+                  item={option}
+                  groupId={group.id.toString()}
+                />
+              ))}
+            </SelectOptionGroup>
+          )
+        })}
       </ul>
     </Accordion.Root>
   )

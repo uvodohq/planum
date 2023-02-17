@@ -29,7 +29,7 @@ const slideUp = keyframes({
 const headerCss = css(overlineCss, {
   position: 'sticky',
   top: 0,
-  zIndex: 1,
+  zIndex: 3,
   bg: '$white',
 })
 
@@ -39,23 +39,23 @@ const groupHeaderCss = css(overlineCss, {
   userSelect: 'none',
   transition: 'background-color 0.15s',
   outline: 'none',
-  borderRadius: '$sm',
   color: '$textDark',
   cursor: 'pointer',
   oneLineClamp: true,
   whiteSpace: 'nowrap',
   wordBreak: 'break-all',
   width: '100%',
+  display: 'flex',
+  alignItems: 'center',
+  gap: 8,
 
   '&:focus': {
     backgroundColor: '$surface200',
     position: 'relative',
-    zIndex: 1,
+    zIndex: 2,
   },
-  '&': { display: 'flex', alignItems: 'center', gap: '10px' },
   '&::marker': { display: 'none' },
 
-  //
   '&:hover': {
     backgroundColor: '$surface100',
   },
