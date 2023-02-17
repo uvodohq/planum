@@ -12,7 +12,7 @@ export const countryGroupList = [
       },
       {
         id: 2222,
-        name: 'Home country - Algeria',
+        name: 'Home country - Azerbaijan',
       },
     ],
   },
@@ -20,11 +20,6 @@ export const countryGroupList = [
     name: 'Africa',
     id: 'africa',
     children: [
-      {
-        id: 1,
-        name: 'Algeria',
-        countryCode: 'DZ',
-      },
       {
         id: 2,
         name: 'Angola',

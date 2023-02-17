@@ -1,8 +1,8 @@
 import { Box, Flag, H1, Title } from '@uvodohq/planum'
 import { PhoneInput } from '@uvodohq/planum-phone'
 import MultiSelectExample from '../../components/multi-select/multi-select-example'
-// import AutoCompleteExampleControlled from '../../components/auto-complete/auto-complete-controlled-example'
-// import { AutoCompleteTagsExample } from '../../components/auto-complete/auto-complete-tags-example'
+import AutoCompleteExampleControlled from '../../components/auto-complete/auto-complete-controlled-example'
+import { AutoCompleteTagsExample } from '../../components/auto-complete/auto-complete-tags-example'
 
 import SelectExample from '../../components/select/select-example'
 import SelectExampleAsync from '../../components/select/select-example-async'
@@ -64,7 +64,7 @@ const SelectDemos = () => {
         <Box>
           <MultiSelectExample
             label="Group Options"
-            value={[555555, 2222, 1, 2, 3434]}
+            value={[555555, 2222, 1, 4, 3434]}
           />
         </Box>
         <Box />
@@ -193,7 +193,7 @@ const SelectDemos = () => {
 
       {/* Autocomplete */}
       <H1 css={{ mb: 66, fw: 700 }}>Autocomplete</H1>
-      {/* 
+
       <Grid>
         <AutoCompleteExampleControlled
           label="Country"
@@ -219,7 +219,7 @@ const SelectDemos = () => {
           errorMessage="Error message with filled value"
           status="error"
         />
-      </Grid> */}
+      </Grid>
     </Box>
   )
 }

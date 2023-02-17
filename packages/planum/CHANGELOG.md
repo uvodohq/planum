@@ -1,5 +1,11 @@
 # @uvodohq/planum
 
+## 3.4.0
+
+### Minor Changes
+
+- groupless multiselect
+
 ## 3.3.6
 
 ### Patch Changes
