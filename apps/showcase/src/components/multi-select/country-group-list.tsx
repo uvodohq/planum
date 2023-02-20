@@ -1,6 +1,18 @@
 // countries list
 export const countryGroupList = [
   {
+    id: 'not show group',
+    name: '',
+    withAccordion: false,
+    children: [
+      {
+        id: 234,
+        name: 'hoho',
+        countryCode: 'AZ',
+      },
+    ],
+  },
+  {
     id: 'not show accordion',
     name: '',
     withAccordion: false,
