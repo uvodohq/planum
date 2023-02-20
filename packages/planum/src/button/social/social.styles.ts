@@ -1,6 +1,7 @@
 import { styled } from '../../theme'
 
 export const StyledContainer = styled('button', {
+  minWidth: 'fit-content',
   display: 'flex',
   alignItems: 'center',
   background: '$white',
