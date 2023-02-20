@@ -1,5 +1,11 @@
 # @uvodohq/planum
 
+## 3.4.1
+
+### Patch Changes
+
+- deps updated, icons add
+
 ## 3.4.0
 
 ### Minor Changes

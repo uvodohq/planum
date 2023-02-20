@@ -1,5 +1,11 @@
 # @uvodohq/planum-editor
 
+## 0.3.2
+
+### Patch Changes
+
+- deps updated, icons add
+
 ## 0.3.1
 
 ### Patch Changes

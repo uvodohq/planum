@@ -1,5 +1,11 @@
 # @uvodohq/planum-icons
 
+## 1.4.2
+
+### Patch Changes
+
+- deps updated, icons add
+
 ## 1.4.1
 
 ### Patch Changes
