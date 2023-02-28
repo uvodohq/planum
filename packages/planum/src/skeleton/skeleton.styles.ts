@@ -40,6 +40,7 @@ export const SkeletonCard = styled('div', {
   display: 'flex',
   alignItems: 'center',
   gap: '$16',
+  pointerEvents: 'none',
 
   // '@media (prefers-reduced-motion:reduce)': {
   //   animation: 'none !important',
@@ -51,7 +52,8 @@ export const SkeletonCard = styled('div', {
         [`${RectInner}, ${SkeletonImg}`]: {
           background:
             'linear-gradient(-45deg, transparent 20%, #fbfbfb, transparent 40% ) 0 0 / 200% 100%, #f6f6f6',
-          animation: `${shadowAnim} 1.6s infinite linear`,
+          // animation: `${shadowAnim} 1.6s infinite linear`,
+          // animation disabled due to scroll performance issue
           backgroundAttachment: `fixed`,
         },
       },

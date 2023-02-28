@@ -36,10 +36,12 @@ import {
   QuantityField,
   PercentField,
   PhoneInputField,
+  MultiSelectField,
 } from '../../components/form'
 import { DEFAULT_NUMBER } from '../../components/form/schemas'
 import { Subheader } from '@uvodohq/planum/src'
 import { isValidPhoneNumber } from '@uvodohq/planum-phone'
+import { countryGroupList } from '../../components/multi-select/country-group-list'
 
 const StyledTitle = styled(Subheader, {
   my: '$16',
@@ -133,6 +135,7 @@ const filledValues = {
   auto_complete_field: [{ id: 1, name: 'first' }],
   tag_select_field: [{ id: 1, name: 'tag 1' }],
   checkbox_group_field: [],
+  multi_select: [555555, 2222, 1, 4, 3434],
 }
 
 function useInitialValues() {
@@ -165,6 +168,7 @@ function useInitialValues() {
       auto_complete_field: [{ id: 1, name: 'first' }],
       tag_select_field: [{ id: 1, name: 'tag 1' }],
       checkbox_group_field: [],
+      multi_select: [],
     }
   }, [inc])
 
@@ -345,6 +349,14 @@ function Container() {
             name="select_field"
             labelKey="name"
             items={selectItems}
+          />
+
+          <MultiSelectField
+            items={countryGroupList}
+            label="Multi Select field"
+            aria-label="label"
+            placeholder="Multi Select a country"
+            name="multi_select"
           />
 
           <PhoneInputField
