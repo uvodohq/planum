@@ -6,7 +6,7 @@ exports[`<Skeleton /> > should render default skeleton as 1 line paragraph 1`] =
   aria-valuemax="100"
   aria-valuemin="0"
   aria-valuetext="loading"
-  class="Planum-c-lfOXhj Planum-c-lfOXhj-gfMShL-animated-true"
+  class="Planum-c-erjuRH Planum-c-erjuRH-imORTH-animated-true"
   role="progressbar"
 >
   <div
@@ -30,7 +30,7 @@ exports[`<Skeleton /> > should render default skeleton as 2 line texts 1`] = `
   aria-valuemax="100"
   aria-valuemin="0"
   aria-valuetext="loading"
-  class="Planum-c-lfOXhj Planum-c-lfOXhj-gfMShL-animated-true"
+  class="Planum-c-erjuRH Planum-c-erjuRH-imORTH-animated-true"
   role="progressbar"
 >
   <div
@@ -62,7 +62,7 @@ exports[`<Skeleton /> > should render default skeleton as Single image 1`] = `
   aria-valuemax="100"
   aria-valuemin="0"
   aria-valuetext="loading"
-  class="Planum-c-lfOXhj Planum-c-lfOXhj-gfMShL-animated-true"
+  class="Planum-c-erjuRH Planum-c-erjuRH-imORTH-animated-true"
   role="progressbar"
 >
   <div
@@ -78,7 +78,7 @@ exports[`<Skeleton /> > should render default skeleton as item card with image 1
   aria-valuemax="100"
   aria-valuemin="0"
   aria-valuetext="loading"
-  class="Planum-c-lfOXhj Planum-c-lfOXhj-gfMShL-animated-true"
+  class="Planum-c-erjuRH Planum-c-erjuRH-imORTH-animated-true"
   role="progressbar"
 >
   <div
