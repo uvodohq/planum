@@ -26,7 +26,7 @@ interface ComponentProps {
   children?: any
 }
 
-const Circle = (props: ComponentProps) => (
+export const Circle = (props: ComponentProps) => (
   <>
     <StyledRadioSvgCircle
       isSelected={props.isSelected}
