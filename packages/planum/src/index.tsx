@@ -105,7 +105,7 @@ export { InputUrl } from './input-url'
 export type { InputUrlProps } from './input-url'
 
 // Radio
-export { Radio, RadioGroup } from './radio'
+export { Radio, RadioGroup, RadioCircleIcon, useRadioProps } from './radio'
 export type { RadioGroupProps, RadioProps } from './radio'
 
 // Select
