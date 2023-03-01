@@ -1,5 +1,11 @@
 # @uvodohq/planum-icons
 
+## 1.4.3
+
+### Patch Changes
+
+- [#23](https://github.com/uvodohq/planum/pull/23) [`1b0408a`](https://github.com/uvodohq/planum/commit/1b0408a58de420cd9cdb586d19f70200f12c348d) Thanks [@NijatBakhtiyar](https://github.com/NijatBakhtiyar)! - - create shopping-cart-simple icon
+
 ## 1.4.2
 
 ### Patch Changes
