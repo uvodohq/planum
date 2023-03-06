@@ -1,5 +1,11 @@
 # @uvodohq/planum
 
+## 3.5.1
+
+### Patch Changes
+
+- multi select onchange and hook form integration
+
 ## 3.5.0
 
 ### Minor Changes

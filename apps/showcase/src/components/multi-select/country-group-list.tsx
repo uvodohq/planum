@@ -1,4 +1,10 @@
 // countries list
+
+// 555555,
+// 2222,
+// 1,
+// 4,
+// 3434
 export const countryGroupList = [
   {
     id: 'not show group',
@@ -28,132 +34,7 @@ export const countryGroupList = [
       },
     ],
   },
-  {
-    name: 'Africa',
-    id: 'africa',
-    children: [
-      {
-        id: 2,
-        name: 'Angola',
-        countryCode: 'AO',
-      },
-      {
-        id: 3,
-        name: 'Benin',
-        countryCode: 'BJ',
-      },
-      {
-        id: 4,
-        name: 'Botswana',
-        countryCode: 'BW',
-      },
-      {
-        id: 5,
-        name: 'Burkina Faso',
-        countryCode: 'BF',
-      },
-      {
-        id: 6,
-        name: 'Burundi',
-        countryCode: 'BI',
-      },
-      {
-        id: 7,
-        name: 'Cameroon',
-        countryCode: 'CM',
-      },
-      {
-        id: 8,
-        name: 'Cape Verde',
-        countryCode: 'CV',
-      },
-      {
-        id: 9,
-        name: 'Central African Republic',
-        countryCode: 'CF',
-      },
-      {
-        id: 10,
-        name: 'Chad',
-        countryCode: 'TD',
-      },
-      {
-        id: 11,
-        name: 'Comoros',
-        countryCode: 'KM',
-      },
-      {
-        id: 12,
-        name: 'Democratic Republic of the Congo',
-        countryCode: 'CD',
-      },
-      {
-        id: 13,
-        name: 'Republic of the Congo',
-        countryCode: 'CG',
-      },
-      {
-        id: 14,
-        name: 'Djibouti',
-        countryCode: 'DJ',
-      },
-      {
-        id: 15,
-        name: 'Egypt',
-        countryCode: 'EG',
-      },
-      {
-        id: 16,
-        name: 'Equatorial Guinea',
-        countryCode: 'GQ',
-      },
-      {
-        id: 17,
-        name: 'Eritrea',
-        countryCode: 'ER',
-      },
-      {
-        id: 18,
-        name: 'Eswatini',
-        countryCode: 'SZ',
-      },
-      {
-        id: 19,
-        name: 'Ethiopia',
-        countryCode: 'ET',
-      },
-      {
-        id: 20,
-        name: 'Gabon',
-        countryCode: 'GA',
-      },
-      {
-        id: 21,
-        name: 'Gambia',
-        countryCode: 'GM',
-      },
-      {
-        id: 22,
-        name: 'Ghana',
-        countryCode: 'GH',
-      },
-      {
-        id: 23,
-        name: 'Guinea',
-        countryCode: 'GN',
-      },
-      {
-        id: 24,
-        name: 'Guinea-Bissau',
-        countryCode: 'GW',
-      },
-      {
-        id: 25,
-        name: 'Ivory Coast',
-        countryCode: 'CI',
-      },
-    ],
-  },
+
   {
     name: 'Europe',
     id: 'europe',
@@ -286,31 +167,153 @@ export const countryGroupList = [
     ],
   },
   {
-    name: 'Asia',
-    id: 'asia',
+    name: 'Africa',
+    id: 'africaaa',
     children: [
       {
+        id: 3,
+        name: 'Benin',
+        countryCode: 'BJ',
+      },
+      {
+        id: 4,
+        name: 'Botswana',
+        countryCode: 'BW',
+      },
+      {
+        id: 5,
+        name: 'Burkina Faso',
+        countryCode: 'BF',
+      },
+      {
+        id: 6,
+        name: 'Burundi',
+        countryCode: 'BI',
+      },
+      {
+        id: 7,
+        name: 'Cameroon',
+        countryCode: 'CM',
+      },
+      {
+        id: 8,
+        name: 'Cape Verde',
+        countryCode: 'CV',
+      },
+      {
+        id: 9,
+        name: 'Central African Republic',
+        countryCode: 'CF',
+      },
+      {
+        id: 10,
+        name: 'Chad',
+        countryCode: 'TD',
+      },
+      {
+        id: 11,
+        name: 'Comoros',
+        countryCode: 'KM',
+      },
+      {
         id: 12,
+        name: 'Democratic Republic of the Congo',
+        countryCode: 'CD',
+      },
+      {
+        id: 13,
+        name: 'Republic of the Congo',
+        countryCode: 'CG',
+      },
+      {
+        id: 14,
+        name: 'Djibouti',
+        countryCode: 'DJ',
+      },
+      {
+        id: 15,
+        name: 'Egypt',
+        countryCode: 'EG',
+      },
+      {
+        id: 16,
+        name: 'Equatorial Guinea',
+        countryCode: 'GQ',
+      },
+      {
+        id: 17,
+        name: 'Eritrea',
+        countryCode: 'ER',
+      },
+      {
+        id: 18,
+        name: 'Eswatini',
+        countryCode: 'SZ',
+      },
+      {
+        id: 19,
+        name: 'Ethiopia',
+        countryCode: 'ET',
+      },
+      {
+        id: 20,
+        name: 'Gabon',
+        countryCode: 'GA',
+      },
+      {
+        id: 21,
+        name: 'Gambia',
+        countryCode: 'GM',
+      },
+      {
+        id: 22,
+        name: 'Ghana',
+        countryCode: 'GH',
+      },
+      {
+        id: 23,
+        name: 'Guinea',
+        countryCode: 'GN',
+      },
+      {
+        id: 24,
+        name: 'Guinea-Bissau',
+        countryCode: 'GW',
+      },
+      {
+        id: 25,
+        name: 'Ivory Coast',
+        countryCode: 'CI',
+      },
+    ],
+  },
+
+  {
+    name: 'Asia region',
+    id: 'asiaasd',
+    children: [
+      {
+        id: 125,
         name: 'China',
         countryCode: 'CN',
       },
       {
-        id: 13,
+        id: 135,
         name: 'India',
         countryCode: 'IN',
       },
       {
-        id: 14,
+        id: 145,
         name: 'Japan',
         countryCode: 'JP',
       },
       {
-        id: 15,
+        id: 155,
         name: 'South Korea',
         countryCode: 'KR',
       },
       {
-        id: 16,
+        id: 165,
         name: 'Thailand',
         countryCode: 'TH',
       },

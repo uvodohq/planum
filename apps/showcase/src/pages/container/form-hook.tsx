@@ -135,7 +135,7 @@ const filledValues = {
   auto_complete_field: [{ id: 1, name: 'first' }],
   tag_select_field: [{ id: 1, name: 'tag 1' }],
   checkbox_group_field: [],
-  multi_select: [555555, 2222, 1, 4, 3434],
+  multi_select: [555555, 2222, 4, 3434],
 }
 
 function useInitialValues() {
@@ -303,7 +303,7 @@ function Container() {
             labelTextOn="deactivate"
           />
         </Stack>
-        <Stack y={32} css={{ flex: 1 }}>
+        <Stack y={32} css={{ flex: 1, overflow: 'hidden' }}>
           <Box>
             <Paragraph>Checkbox item</Paragraph>
             <CheckboxField

@@ -1,3 +1,4 @@
+import { useUpdateEffect } from '@react-aria/utils'
 import { useEffect, useMemo, useReducer } from 'react'
 
 import { useControllableValue } from '../hooks'
@@ -83,8 +84,6 @@ export function useSelectState(props: UseSelectStateProps) {
 
   const { isOpen, groups } = state
 
-  // const groups = useMemo(() => {}, [labelKey, search])
-
   const toggleOpen = (isOpen: boolean) => {
     updateState({
       isOpen,
@@ -128,6 +127,12 @@ export function useSelectState(props: UseSelectStateProps) {
       })
     }
   }, [isOpen, items])
+
+  useUpdateEffect(() => {
+    updateState({
+      selectedItemsMap: defaultSelectedItemsMap,
+    })
+  }, [defaultSelectedItemsMap])
 
   return {
     ...state,
