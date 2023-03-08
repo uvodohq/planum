@@ -15,7 +15,7 @@ export interface InputProps {
   value?: Value
   defaultValue?: Value
   onChange?: (value: Value) => void
-  onSelect?: (value: Value, item: any) => void
+  onSelect?: (value: Map<string, Option[]>, selected: Option | Option[]) => void
 }
 
 export interface SelectTriggerProps {

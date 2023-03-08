@@ -357,6 +357,7 @@ function Container() {
             aria-label="label"
             placeholder="Multi Select a country"
             name="multi_select"
+            onSelect={(value, item) => console.log('onSelect', { value, item })}
           />
 
           <PhoneInputField

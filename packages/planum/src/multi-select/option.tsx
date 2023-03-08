@@ -93,7 +93,8 @@ export const Option = (props: OptionProps) => {
   const { index = 0, item, groupId, ...rest } = props
   const { select, state } = useSelectContext()
   const { matchWidth, listItemsRef, labelKey } = select
-  const { activeIndex, selectedItemsMap, updateState, onChange } = state
+  const { activeIndex, selectedItemsMap, updateState, onChange, onSelect } =
+    state
 
   const id = useId()
   const isChecked = selectedItemsMap
@@ -125,6 +126,10 @@ export const Option = (props: OptionProps) => {
       updateState({
         selectedItemsMap,
       })
+    }
+
+    if (typeof onSelect === 'function') {
+      onSelect(selectedItemsMap, item)
     }
   }
 

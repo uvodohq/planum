@@ -156,7 +156,7 @@ interface Props {
 export const SelectOptionGroup = ({ children, group }: Props) => {
   const { state } = useSelectContext()
   const groupId = group.id.toString()
-  const { selectedItemsMap, updateState, itemsMap, onChange } = state
+  const { selectedItemsMap, updateState, itemsMap, onChange, onSelect } = state
 
   const notFilteredGroup = itemsMap.get(groupId)
 
@@ -177,6 +177,10 @@ export const SelectOptionGroup = ({ children, group }: Props) => {
       updateState({
         selectedItemsMap,
       })
+    }
+
+    if (typeof onSelect === 'function') {
+      onSelect(selectedItemsMap, selectedItemsOfGroup)
     }
   }
 
