@@ -1,5 +1,11 @@
 # @uvodohq/planum
 
+## 3.6.0
+
+### Minor Changes
+
+- [`c7e611e`](https://github.com/uvodohq/planum/commit/c7e611ef50b4de32f85e12e6138882120681ec7d) Thanks [@NijatBakhtiyar](https://github.com/NijatBakhtiyar)! - - add onSelect function in multi-select
+
 ## 3.5.1
 
 ### Patch Changes
