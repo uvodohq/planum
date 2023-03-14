@@ -20,6 +20,7 @@ export interface ModalContentProps {
   children?: React.ReactNode
   renderFooter?: (props: ModalState) => React.ReactNode
   scrollBodyRef?: React.RefObject<HTMLDivElement>
+  css?: CSS
 }
 
 export const ModalContent = (props: ModalContentProps) => {
@@ -30,13 +31,14 @@ export const ModalContent = (props: ModalContentProps) => {
     titleCss,
     renderFooter,
     scrollBodyRef,
+    ...rest
   } = props
 
   const state = useContext(ModalContext)
   const { closeModal, labelId, descriptionId } = state
 
   return (
-    <StyledDialogContainer>
+    <StyledDialogContainer {...rest}>
       <StyledDialogHeader>
         <StyledCloseButton
           aria-label="close modal"
