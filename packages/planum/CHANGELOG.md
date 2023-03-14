@@ -1,5 +1,11 @@
 # @uvodohq/planum
 
+## 3.6.1
+
+### Patch Changes
+
+- modal content width
+
 ## 3.6.0
 
 ### Minor Changes
