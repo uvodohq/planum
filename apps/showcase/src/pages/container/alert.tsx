@@ -14,9 +14,7 @@ export default function AlertContainer() {
 
   return (
     <>
-      <Flex
-        css={{ flexDirection: 'column', py: 80, '&>div': { mt: 32 } }}
-        id="alert">
+      <Flex css={{ flexDirection: 'column', py: 80 }} id="alert">
         {alertList.map((variant) => (
           <Alert
             key={variant}
@@ -35,6 +33,7 @@ export default function AlertContainer() {
                 </Button>
               </Flex>
             }
+            css={{ mt: 32 }}
           />
         ))}
 
@@ -44,6 +43,7 @@ export default function AlertContainer() {
             variant={variant}
             closable
             key={variant + 2}
+            css={{ mt: 32 }}
           />
         ))}
       </Flex>

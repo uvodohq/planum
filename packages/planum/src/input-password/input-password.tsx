@@ -1,6 +1,6 @@
 import { useToggleState } from '@react-stately/toggle'
 import * as React from 'react'
-import { memo, useCallback } from 'react'
+import { useCallback } from 'react'
 
 import { useStrengthIndicator } from '../../hooks'
 import { Button } from '../button'

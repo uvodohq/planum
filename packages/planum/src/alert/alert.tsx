@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 
 import { Button } from '../button'
-import { Flex } from '../layout'
+import { Box, Flex } from '../layout'
 import { CloseIcon } from '../modal/modal-content/close-icon'
 import {
   AlertContainer,
@@ -22,7 +22,6 @@ export const Alert = (props: AlertProps) => {
     closable = true,
     actions,
     isOpen = true,
-
     ...rest
   } = props
   const [isAlertOpen, setOpen] = useState(isOpen)
@@ -66,48 +65,55 @@ export const Alert = (props: AlertProps) => {
   return (
     <AnimatePresence>
       {isAlertOpen && (
-        <AlertContainer
+        <Box
           role="alert"
-          variant={variant}
           as={motion.div}
-          initial={{ height: 'auto' }}
-          animate={{ height: 'auto' }}
+          animate={{
+            height: 'auto',
+            opacity: 1,
+          }}
           exit={{
-            height: 0,
-            paddingTop: 0,
-            paddingBottom: 0,
+            height: '0px',
             opacity: 0,
           }}
+          initial={{
+            height: 'auto',
+            opacity: 1,
+          }}
           transition={{ duration: 0.3 }}
-          {...rest}>
-          <Flex>
-            <StyledIcon>{alertIcon}</StyledIcon>
+          css={{ overflow: 'hidden' }}>
+          <AlertContainer variant={variant} {...rest}>
+            <Flex>
+              <StyledIcon>{alertIcon}</StyledIcon>
 
-            <StyledContent>
-              {title && (
-                <StyledText css={{ fw: '$semibold' }} role="title">
-                  {title}
-                </StyledText>
-              )}
-              {message && <StyledText role="description">{message}</StyledText>}
-              {actions}
-            </StyledContent>
-          </Flex>
+              <StyledContent>
+                {title && (
+                  <StyledText css={{ fw: '$semibold' }} role="title">
+                    {title}
+                  </StyledText>
+                )}
+                {message && (
+                  <StyledText role="description">{message}</StyledText>
+                )}
+                {actions}
+              </StyledContent>
+            </Flex>
 
-          {closable && (
-            <Button
-              icon={<CloseIcon size={24} />}
-              aria-label="close alert"
-              variant={variant}
-              onClick={onCloseAlert}
-              size="min"
-              css={{
-                color: variantMap[variant].color,
-              }}
-              compact
-            />
-          )}
-        </AlertContainer>
+            {closable && (
+              <Button
+                icon={<CloseIcon size={24} />}
+                aria-label="close alert"
+                variant={variant}
+                onClick={onCloseAlert}
+                size="min"
+                css={{
+                  color: variantMap[variant].color,
+                }}
+                compact
+              />
+            )}
+          </AlertContainer>
+        </Box>
       )}
     </AnimatePresence>
   )
