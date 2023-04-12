@@ -60,7 +60,8 @@
     "@react-stately/toggle": "^3.4.0",
     "@stitches/react": "^1.2.8",
     "rc-input-number": "^7.4.0",
-    "react-hot-toast": "^2.2.0"
+    "react-hot-toast": "^2.2.0",
+    "rifm": "^0.12.1"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.5",

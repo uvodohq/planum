@@ -37,6 +37,7 @@ import {
   PercentField,
   PhoneInputField,
   MultiSelectField,
+  MaskField,
 } from '../../components/form'
 import { DEFAULT_NUMBER } from '../../components/form/schemas'
 import { Subheader } from '@uvodohq/planum/src'
@@ -74,6 +75,7 @@ const requiredSchema = z.string().min(1, { message: 'This field required' })
 const schema = z
   .object({
     text_field: requiredSchema,
+    credit_card: z.string().transform((value) => value.replace(/\D/g, '')),
     password_field: requiredSchema,
     facebook_url: schemas.url(),
     amountNumber: schemas.number(),
@@ -117,6 +119,7 @@ type FormValues = z.infer<typeof schema>
 
 const filledValues = {
   text_field: 'Uvodo',
+  credit_card: '3333 3333 4555 5666',
   password_field: 'admin123',
   facebook_url: 'https://uvodo.com/',
   amountNumber: 123,
@@ -150,6 +153,7 @@ function useInitialValues() {
   const initialValues = useMemo(() => {
     return {
       text_field: '',
+      credit_card: '',
       password_field: '',
       facebook_url: '',
       amountNumber: 123, //DEFAULT_NUMBER,
@@ -246,6 +250,40 @@ function Container() {
             name="text_field"
             label="Title"
             placeholder="Input Placeholder"
+          />
+
+          <MaskField
+            name="credit_card"
+            label="Credit card"
+            type="tel"
+            placeholder="0000 0000 0000 0000"
+            format={(expDate: string) => {
+              // Remove all non-digit characters
+              const cleaned = expDate.replace(/\D/g, '')
+
+              // Split into month and year components
+              const month = cleaned.slice(0, 2)
+              const year = cleaned.slice(2, 4)
+
+              // Check if year component is present
+              if (year) {
+                // Create a new date object with the month and year components
+                const expDateObj = new Date(`20${year}`, month - 1, 1)
+
+                // Check if the resulting date object is a valid date
+                if (expDateObj.getMonth() === month - 1) {
+                  // Join the components with a slash between them
+                  const formatted = `${month}/${year}`
+                  return formatted
+                }
+              } else {
+                // Return only the month component
+                return month
+              }
+
+              // If the input date is not valid, return an empty string
+              return ''
+            }}
           />
 
           <PasswordField

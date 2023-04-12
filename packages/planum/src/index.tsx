@@ -88,6 +88,9 @@ export type { FieldProps } from './field'
 export { Input } from './input'
 export type { InputProps } from './input'
 
+export type { InputMaskProps } from './input-mask'
+export { InputMask } from './input-mask'
+
 // InputNumber
 export { InputNumber } from './input-number'
 export type { InputNumberProps } from './input-number'
