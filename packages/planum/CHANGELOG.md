@@ -1,5 +1,11 @@
 # @uvodohq/planum
 
+## 3.10.0
+
+### Minor Changes
+
+- mask input error
+
 ## 3.9.0
 
 ### Minor Changes
