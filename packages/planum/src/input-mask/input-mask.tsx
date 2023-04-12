@@ -7,7 +7,7 @@ import { isDev } from '../utils'
 
 export interface InputMaskProps extends Omit<InputProps, 'prefix' | 'suffix'> {
   format: (value: string) => string
-  accept: RegExp | undefined
+  accept?: RegExp | undefined
 }
 
 function _InputMask(

@@ -148,8 +148,11 @@ function _Input(
           disabled={isDisabled}
           {...mergedInputProps}
           onChange={(e) => {
-            props?.onChange?.(e.target.value)
-            onChangeNative?.(e)
+            if (onChangeNative) {
+              onChangeNative(e)
+            } else {
+              props?.onChange?.(e.target.value)
+            }
           }}
           ref={inputRef}
         />
