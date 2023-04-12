@@ -6,7 +6,9 @@ export const toast = (message: string) =>
   hotToast((notification) => (
     <Notification
       message={message}
-      onCloseClick={() => {
+      onCloseClick={(e) => {
+        e.preventDefault()
+        e.stopPropagation()
         hotToast.dismiss(notification.id)
       }}
     />

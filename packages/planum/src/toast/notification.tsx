@@ -9,7 +9,7 @@ import {
 
 export interface NotificationProps extends StyledNotificationVariants {
   message?: React.ReactNode
-  onCloseClick?: () => void
+  onCloseClick?: (e: any) => void
 }
 
 export const Notification = (props: NotificationProps) => {
@@ -17,7 +17,12 @@ export const Notification = (props: NotificationProps) => {
 
   return (
     <StyledNotification role="alert" {...rest}>
-      <StyledBody>
+      <StyledBody
+        onClick={(e) => {
+          debugger
+          e.preventDefault()
+          e.stopPropagation()
+        }}>
         <StyledMessage>{message}</StyledMessage>
         <Button
           variant="flatWhite"

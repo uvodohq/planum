@@ -2,30 +2,33 @@ import {
   Box,
   Button,
   Dialog,
-  DialogTrigger,
-  DialogPopup,
-  DialogHeading,
-  DialogDescription,
   DialogClose,
+  DialogDescription,
+  DialogHeading,
+  DialogPopup,
+  DialogTrigger,
   Drawer,
   H1,
   H3,
   Paragraph,
-  Tooltip,
-  styled,
   Popover,
   PopoverClose,
   PopoverDescription,
   PopoverHeading,
   PopoverPopup,
   PopoverTrigger,
-  TooltipTrigger,
+  Toaster,
+  Tooltip,
   TooltipPopup,
+  TooltipTrigger,
   css,
+  styled,
+  toast,
 } from '@uvodohq/planum'
-import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
+import { useState } from 'react'
 
+import { CloseIcon, DotsThreeIcon } from '@uvodohq/planum-icons'
 import MenuExamples from '../../components/menu-examples'
 import {
   ModalExampleAsBottomSheet,
@@ -39,7 +42,6 @@ import {
   ModalExampleUnClosable,
   NestedModalExample,
 } from '../../components/modal-examples'
-import { CloseIcon, DotsThreeIcon } from '@uvodohq/planum-icons'
 
 const mobileBottomSheetMotion = {
   initial: { opacity: 0, y: 200 },
@@ -106,9 +108,15 @@ function ControlledDialog() {
   return (
     <div>
       <p>
-        <button onClick={() => setOpen(true)}> open dialog </button>
+        <button onClick={() => setOpen(true)}> open controlled dialog </button>
+        <Toaster />
       </p>
-      <Dialog open={open} onOpenChange={setOpen}>
+      <Dialog
+        open={open}
+        onOpenChange={(state) => {
+          setOpen(state)
+          console.log('------------', state)
+        }}>
         <DialogPopup>
           <Box css={{ bg: '#fff', w: 200, h: 200 }}>
             <DialogHeading>controlled dialog</DialogHeading>
@@ -116,6 +124,16 @@ function ControlledDialog() {
               this dialog controled by state
             </DialogDescription>
             <DialogClose>Close</DialogClose>
+
+            <H1 css={{ mb: 20, fontWeight: '$bold' }}>Toast</H1>
+
+            <Button
+              onClick={() =>
+                toast('We have e-mailed your password reset link!')
+              }
+              css={{ mt: 20, display: 'block' }}>
+              Make me a toast
+            </Button>
           </Box>
         </DialogPopup>
       </Dialog>

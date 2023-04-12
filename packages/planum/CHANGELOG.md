@@ -1,5 +1,23 @@
 # @uvodohq/planum
 
+## 3.8.0
+
+### Minor Changes
+
+- fix toast click dialog close
+
+## 3.7.1
+
+### Patch Changes
+
+- fix toast click modal close
+
+## 3.7.0
+
+### Minor Changes
+
+- fix alert close anim
+
 ## 3.6.1
 
 ### Patch Changes
