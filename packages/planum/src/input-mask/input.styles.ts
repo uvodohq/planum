@@ -2,37 +2,43 @@ import { subheaderCss } from '../text'
 import type { VariantProps } from '../theme'
 import { css, styled } from '../theme'
 
-export const StyledInputContainer = styled('div', {
-  position: 'relative',
+export const Prefix = styled('span', {
+  dflex: 'center',
+  minWidth: 'fit-content',
+  color: '$textDisabled',
+})
+
+export const Suffix = styled('span', {
+  dflex: 'center',
+  color: '$textDisabled',
+  gap: '$4',
+  ml: '$10',
+})
+
+export const sharedInputCss = css({
   width: '100%',
   color: '$textDark',
   display: 'flex',
-  alignItems: 'center',
+  alignItems: 'stretch',
   border: '1px solid',
   backgroundColor: '$white',
-  transition: 'all 0.2s ease-in-out',
+  transition: 'border-color 0.2s, box-shadow 0.2s',
+  cursor: 'text',
 
-  '&:hover': {
-    borderColor: '$surface600',
-    cursor: 'text',
+  '[placeholder]': {
+    textOverflow: 'ellipsis',
+    overflow: 'hidden',
+    whiteSpace: 'nowrap',
   },
 
   variants: {
-    size: {
-      default: {
-        height: '$48',
-        borderRadius: '$sm',
-        padding: '$8 $16',
-      },
-    },
-
-    isFocused: {
-      true: {},
-    },
-
     status: {
       normal: {
         borderColor: '$surface400',
+
+        '&:hover': {
+          borderColor: '$surface600',
+        },
       },
 
       error: {
@@ -52,23 +58,56 @@ export const StyledInputContainer = styled('div', {
           backgroundColor: '$surface100',
           boxShadow: 'none',
           disableActions: true,
-
-          '&:hover': {
-            borderColor: 'unset',
-            cursor: 'unset',
-          },
         },
       },
     },
-
-    hasLeftIcon: { true: {} },
-
-    hasRightIcon: { true: {} },
   },
 
   defaultVariants: {
-    size: 'default',
     status: 'normal',
+  },
+})
+
+export const StyledInputContainer = styled('div', sharedInputCss, {
+  position: 'relative',
+  height: '$48',
+  borderRadius: '$sm',
+  padding: '$8 $16',
+
+  variants: {
+    isFocused: {
+      true: {},
+    },
+
+    status: {
+      normal: {
+        borderColor: '$surface400',
+
+        '&:hover': {
+          borderColor: '$surface600',
+        },
+      },
+
+      error: {
+        borderColor: '$danger700',
+      },
+
+      success: {
+        borderColor: '$success700',
+      },
+    },
+
+    isDisabled: {
+      true: {
+        '&&': {
+          color: '$surface500',
+          borderColor: '$surface400',
+          backgroundColor: '$surface100',
+          boxShadow: 'none',
+          disableActions: true,
+        },
+      },
+    },
   },
 
   compoundVariants: [
@@ -78,6 +117,9 @@ export const StyledInputContainer = styled('div', {
       css: {
         borderColor: '$primary600',
         boxShadow: '0 0 0 3px $colors$primary100',
+        '&:hover': {
+          borderColor: '$primary600',
+        },
       },
     },
     {
@@ -97,29 +139,14 @@ export const StyledInputContainer = styled('div', {
   ],
 })
 
-export const StyledIconsOverlay = styled('div', {
-  position: 'absolute',
-  display: 'flex',
-  alignItems: 'center',
-  inset: 0,
-  padding: '$8 $16',
-  disableActions: true,
-})
-
-export const LeftIconWrapper = styled('span', {
+export const IconWrapper = styled('span', {
   dflex: 'center',
   display: 'inline-flex',
   size: '$16',
   color: '$surface600',
-  width: 'unset',
-})
-
-export const RightIconWrapper = styled(LeftIconWrapper, {
-  marginLeft: 'auto',
 })
 
 export const inputCss = css(subheaderCss, {
-  fw: '$regular',
   display: 'block',
   width: '100%',
   maxWidth: '100%',
@@ -130,25 +157,23 @@ export const inputCss = css(subheaderCss, {
   fontWeight: '$regular',
   outline: 'none',
 
+  '&:-webkit-autofill': {
+    '&, &:hover, &:focus': {
+      boxShadow: '0 0 0px 1000px white inset !important',
+      transition: 'background-color 0s',
+    },
+  },
+
   '&::placeholder': {
     font: 'inherit',
     color: '$surface500',
     disableActions: true,
   },
-
-  '&:-webkit-autofill': {
-    boxShadow: 'inset 0 0 0 100px $colors$primary100',
-  },
-
-  '&:-webkit-autofill::first-line': {
-    font: 'inherit',
-    color: 'hsl(208 12% 5%)',
-  },
 })
 
-export const StyledInput = styled('input', inputCss)
+export const StyledInput = styled('input', inputCss, {})
 
 export type StyledInputVariants = Omit<
-  VariantProps<typeof StyledInput>,
+  VariantProps<typeof StyledInputContainer>,
   'hasLeftIcon' | 'hasRightIcon'
 >

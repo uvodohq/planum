@@ -50,7 +50,6 @@ interface Props {
 
   preserveLabelSpace?: boolean
   role?: string
-  onChangeNative?: (e: any) => void
 }
 
 export type InputProps = StyledInputVariants &
@@ -76,7 +75,6 @@ function _Input(
     inputContainerRef,
     onEnterKeyPress,
     preserveLabelSpace,
-    onChangeNative,
     ...rest
   } = props
 
@@ -148,11 +146,7 @@ function _Input(
           disabled={isDisabled}
           {...mergedInputProps}
           onChange={(e) => {
-            if (onChangeNative) {
-              onChangeNative(e)
-            } else {
-              props?.onChange?.(e.target.value)
-            }
+            props?.onChange?.(e.target.value)
           }}
           ref={inputRef}
         />

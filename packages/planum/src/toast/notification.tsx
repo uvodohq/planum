@@ -19,7 +19,6 @@ export const Notification = (props: NotificationProps) => {
     <StyledNotification role="alert" {...rest}>
       <StyledBody
         onClick={(e) => {
-          debugger
           e.preventDefault()
           e.stopPropagation()
         }}>

@@ -1,25 +1,17 @@
-import type { InputProps } from '@uvodohq/planum'
+import type { InputMaskProps } from '@uvodohq/planum'
 import { mergeProps } from '@uvodohq/planum'
 import { InputMask } from '@uvodohq/planum/src'
 import type { UseControllerProps } from 'react-hook-form'
 import { useController, useFormContext } from 'react-hook-form'
 
-interface MaskFieldProps extends InputProps, UseControllerProps<any> {
+interface MaskFieldProps extends InputMaskProps, UseControllerProps<any> {
   name: string
   defaultValue?: string
   format: any
 }
 
 export function MaskField(props: MaskFieldProps) {
-  const {
-    name,
-    control,
-    rules,
-    defaultValue = '',
-    format,
-    // shouldDirty = true,
-    ...rest
-  } = props
+  const { name, control, rules, defaultValue = '', format, ...rest } = props
 
   const context = useFormContext()
 
@@ -32,11 +24,6 @@ export function MaskField(props: MaskFieldProps) {
     rules,
     defaultValue,
   })
-
-  // exclude field to affect form dirty state onChange
-  // field.onChange = function onChange(value) {
-  //   context.setValue(name, value, { shouldDirty })
-  // }
 
   return (
     <InputMask

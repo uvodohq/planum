@@ -70,11 +70,55 @@ const selectItems = [
   },
 ]
 
+function formatRawStringAsCreditCardNumber(rawString: string) {
+  if (rawString === null) return ''
+
+  // Remove all non-digit characters
+  rawString = rawString.replace(/\D/g, '')
+
+  // Limit to 16 digits
+  rawString = rawString.slice(0, 16)
+
+  // Add a space every 4 digits
+  rawString = rawString.replace(/(\d{4})/g, '$1 ')
+
+  return rawString.trim()
+}
+
+function formatExpireDate(expDate: string) {
+  // Remove all non-digit characters
+  const cleaned = expDate.replace(/\D/g, '')
+
+  // Split into month and year components
+  const month = cleaned.slice(0, 2)
+  const year = cleaned.slice(2, 4)
+
+  // Check if year component is present
+  if (year) {
+    // Create a new date object with the month and year components
+    const expDateObj = new Date(`20${year}`, month - 1, 1)
+
+    // Check if the resulting date object is a valid date
+    if (expDateObj.getMonth() === month - 1) {
+      // Join the components with a slash between them
+      const formatted = `${month}/${year}`
+      return formatted
+    }
+  } else {
+    // Return only the month component
+    return month
+  }
+
+  // If the input date is not valid, return an empty string
+  return ''
+}
+
 const requiredSchema = z.string().min(1, { message: 'This field required' })
 
 const schema = z
   .object({
     text_field: requiredSchema,
+    expire_date: z.string(),
     credit_card: z.string().transform((value) => value.replace(/\D/g, '')),
     password_field: requiredSchema,
     facebook_url: schemas.url(),
@@ -120,6 +164,7 @@ type FormValues = z.infer<typeof schema>
 const filledValues = {
   text_field: 'Uvodo',
   credit_card: '3333 3333 4555 5666',
+  expire_date: '',
   password_field: 'admin123',
   facebook_url: 'https://uvodo.com/',
   amountNumber: 123,
@@ -154,6 +199,7 @@ function useInitialValues() {
     return {
       text_field: '',
       credit_card: '',
+      expire_date: '',
       password_field: '',
       facebook_url: '',
       amountNumber: 123, //DEFAULT_NUMBER,
@@ -257,33 +303,16 @@ function Container() {
             label="Credit card"
             type="tel"
             placeholder="0000 0000 0000 0000"
-            format={(expDate: string) => {
-              // Remove all non-digit characters
-              const cleaned = expDate.replace(/\D/g, '')
-
-              // Split into month and year components
-              const month = cleaned.slice(0, 2)
-              const year = cleaned.slice(2, 4)
-
-              // Check if year component is present
-              if (year) {
-                // Create a new date object with the month and year components
-                const expDateObj = new Date(`20${year}`, month - 1, 1)
-
-                // Check if the resulting date object is a valid date
-                if (expDateObj.getMonth() === month - 1) {
-                  // Join the components with a slash between them
-                  const formatted = `${month}/${year}`
-                  return formatted
-                }
-              } else {
-                // Return only the month component
-                return month
-              }
-
-              // If the input date is not valid, return an empty string
-              return ''
-            }}
+            accept={/[\d,.]+/g}
+            format={formatRawStringAsCreditCardNumber}
+          />
+          <MaskField
+            name="expire_date"
+            label="Expire Date"
+            type="text"
+            placeholder="00/00"
+            accept={/[\d,.]+/g}
+            format={formatExpireDate}
           />
 
           <PasswordField
