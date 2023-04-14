@@ -1,5 +1,11 @@
 # @uvodohq/planum
 
+## 3.11.0
+
+### Minor Changes
+
+- mask input refactored
+
 ## 3.10.0
 
 ### Minor Changes
