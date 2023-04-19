@@ -29,14 +29,14 @@
     "clean": "rimraf .turbo node_modules dist"
   },
   "dependencies": {
-    "@tiptap/extension-color": "^2.0.0-beta.218",
-    "@tiptap/extension-link": "^2.0.0-beta.218",
-    "@tiptap/extension-placeholder": "^2.0.0-beta.218",
-    "@tiptap/extension-text-align": "^2.0.0-beta.218",
-    "@tiptap/extension-text-style": "^2.0.0-beta.218",
-    "@tiptap/pm": "^2.0.0-beta.218",
-    "@tiptap/react": "^2.0.0-beta.218",
-    "@tiptap/starter-kit": "^2.0.0-beta.218"
+    "@tiptap/extension-color": "2.0.0-beta.218",
+    "@tiptap/extension-link": "2.0.0-beta.218",
+    "@tiptap/extension-placeholder": "2.0.0-beta.218",
+    "@tiptap/extension-text-align": "2.0.0-beta.218",
+    "@tiptap/extension-text-style": "2.0.0-beta.218",
+    "@tiptap/pm": "2.0.0-beta.218",
+    "@tiptap/react": "2.0.0-beta.218",
+    "@tiptap/starter-kit": "2.0.0-beta.218"
   },
   "devDependencies": {
     "@types/react": "^18.0.9",

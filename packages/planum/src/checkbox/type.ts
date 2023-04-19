@@ -9,13 +9,13 @@ import type { ReactNode } from 'react'
 import type { CSS } from '../theme'
 import type { StyledCheckboxVariants } from './checkbox.styles'
 
-interface Props {
+export interface CustomProps {
   css?: CSS
   label?: string
   children?: string
 }
 
-export type CheckboxProps = Props &
+export type CheckboxProps = CustomProps &
   StyledCheckboxVariants &
   ToggleProps &
   AriaCheckboxProps

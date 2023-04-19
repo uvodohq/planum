@@ -2,16 +2,15 @@
 import { useCheckbox } from '@react-aria/checkbox'
 import { useFocusRing } from '@react-aria/focus'
 import { usePress } from '@react-aria/interactions'
+import { useFocusableRef } from '@react-spectrum/utils'
 import { useToggleState } from '@react-stately/toggle'
 import type { FocusableRef } from '@react-types/shared'
 import * as React from 'react'
-import { useObjectRef } from '..'
 
 import { CheckboxBase } from './checkbox-base'
 import type { CheckboxProps } from './type'
-import { useFocusableRef } from '@react-spectrum/utils'
 
-function _Checkbox(
+function CheckboxComponent(
   props: CheckboxProps,
   forwardRef: FocusableRef<HTMLInputElement>,
 ) {
@@ -43,6 +42,6 @@ function _Checkbox(
   )
 }
 
-export const Checkbox = React.forwardRef(_Checkbox)
+export const Checkbox = React.forwardRef(CheckboxComponent)
 
 Checkbox.displayName = 'Checkbox'
