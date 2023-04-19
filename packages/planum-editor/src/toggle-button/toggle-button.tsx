@@ -22,7 +22,11 @@ function _ToggleButton(props: ToggleButtonProps, forwardedRef: any) {
   const { buttonProps, isPressed } = useToggleButton(props, state, ref)
   const { isFocusVisible, focusProps } = useFocusRing()
 
-  const mergedProps = mergeProps(props, buttonProps, focusProps)
+  const { onPress, isDisabled, ...mergedProps } = mergeProps(
+    props,
+    buttonProps,
+    focusProps,
+  )
 
   return (
     <StyledButton

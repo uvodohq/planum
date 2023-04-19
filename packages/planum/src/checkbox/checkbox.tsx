@@ -3,15 +3,22 @@ import { useCheckbox } from '@react-aria/checkbox'
 import { useFocusRing } from '@react-aria/focus'
 import { usePress } from '@react-aria/interactions'
 import { useToggleState } from '@react-stately/toggle'
+import type { FocusableRef } from '@react-types/shared'
 import * as React from 'react'
+import { useObjectRef } from '..'
 
 import { CheckboxBase } from './checkbox-base'
 import type { CheckboxProps } from './type'
+import { useFocusableRef } from '@react-spectrum/utils'
 
-export function Checkbox(props: CheckboxProps) {
+function _Checkbox(
+  props: CheckboxProps,
+  forwardRef: FocusableRef<HTMLInputElement>,
+) {
   const { isDisabled, isIndeterminate, label, children } = props
 
-  const ref = React.useRef<HTMLInputElement>(null)
+  const inputRef = React.useRef<HTMLInputElement>(null)
+  const ref = useFocusableRef(forwardRef, inputRef)
   const state = useToggleState(props)
   const { inputProps } = useCheckbox(props, state, ref)
 
@@ -35,3 +42,7 @@ export function Checkbox(props: CheckboxProps) {
     />
   )
 }
+
+export const Checkbox = React.forwardRef(_Checkbox)
+
+Checkbox.displayName = 'Checkbox'

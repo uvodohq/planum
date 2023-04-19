@@ -29,7 +29,7 @@ export const Dialog = (props: DialogProps) => {
 
   if (isFirstRootDialog) {
     return (
-      // flaoting tree provides to close popups properly when nested modals,selects exist inside dialog.
+      // floating tree provides to close popups properly when nested modals,selects exist inside dialog.
       <FloatingTree>
         <DialogComponent {...props} />
       </FloatingTree>
