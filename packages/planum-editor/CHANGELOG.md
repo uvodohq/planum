@@ -1,5 +1,16 @@
 # @uvodohq/planum-editor
 
+## 1.0.0
+
+### Major Changes
+
+- [`b074d55`](https://github.com/uvodohq/planum/commit/b074d553a9d5fe567cf29d5aa7f590d243992b99) Thanks [@NijatBakhtiyar](https://github.com/NijatBakhtiyar)! - - checkbox forward ref
+  - editor toggle button
+
+### Minor Changes
+
+- fix planum type and editor lock versions
+
 ## 0.3.2
 
 ### Patch Changes
