@@ -1,5 +1,11 @@
 # @uvodohq/planum-editor
 
+## 1.1.0
+
+### Minor Changes
+
+- editor value update fix
+
 ## 1.0.0
 
 ### Major Changes
