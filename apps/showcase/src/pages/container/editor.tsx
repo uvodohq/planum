@@ -1,14 +1,23 @@
 import { Box, Flex } from '@uvodohq/planum'
 import { Editor } from '@uvodohq/planum-editor'
+import { useState } from 'react'
 
 export default function ExtraContainer() {
+  const [value, setValue] = useState('')
   return (
     <>
       <Flex css={{ gap: 32, py: 64 }}>
         <Box css={{ flex: 2, maxWidth: 608 }}>
+          <button onClick={() => setValue('buuu---')}>asd</button>
           <Editor
+            label={'Controlled'}
             aria-label="Description"
             placeholder="Product description (optional)"
+            value={value}
+            onChange={(value) => {
+              console.log('Editor', value)
+              setValue(value)
+            }}
           />
         </Box>
         <Box css={{ flex: 1 }}>

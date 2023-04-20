@@ -6,6 +6,7 @@ export type EditorProps = {
   onChange?: (value?: string | null) => void
   onBlur?: () => void
   value?: string
+  defaultValue?: string
   autoFocus?: boolean
 
   // TODO: use shared

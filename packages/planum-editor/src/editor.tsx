@@ -7,7 +7,13 @@ import TextStyle from '@tiptap/extension-text-style'
 import { EditorContent } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 //
-import { Field, mergeProps, useField, usePress } from '@uvodohq/planum'
+import {
+  Field,
+  mergeProps,
+  useField,
+  usePress,
+  useUpdateEffect,
+} from '@uvodohq/planum'
 //
 import type { RefObject } from 'react'
 import { forwardRef, useEffect, useImperativeHandle } from 'react'
@@ -26,7 +32,8 @@ export const Editor = forwardRef<RefObject<TipTapEditor | null>, EditorProps>(
       placeholder,
       label,
       onChange,
-      value,
+      defaultValue,
+      value = defaultValue,
       autoFocus,
       onBlur,
       //
@@ -76,6 +83,7 @@ export const Editor = forwardRef<RefObject<TipTapEditor | null>, EditorProps>(
         ],
 
         content: value,
+
         onUpdate: ({ editor }) => {
           // remove default empty <p> tag -https://github.com/ueberdosis/tiptap/issues/154
           const content = !editor.isEmpty ? editor.getHTML() : null
@@ -124,10 +132,9 @@ export const Editor = forwardRef<RefObject<TipTapEditor | null>, EditorProps>(
       })
     }, [status, isDisabled, editor])
 
-    useEffect(() => {
-      editor.commands.setContent(value as string)
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [value])
+    useUpdateEffect(() => {
+      editor.commands.setContent(defaultValue as string)
+    }, [defaultValue])
 
     // TODO: fix react hook form focus case on error,
     useImperativeHandle(ref, () => ({

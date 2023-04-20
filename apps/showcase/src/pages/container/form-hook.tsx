@@ -127,7 +127,7 @@ const schema = z
     price_field: schemas.number(),
     quantity_field: schemas.number(),
     percent_field: schemas.number(),
-    editor_field: z.union([z.string(), z.null()]),
+    editor_field: z.string(),
     checkbox_item_field: z.boolean(),
     toggle_field: z.boolean(),
     radio_field: requiredSchema,
@@ -173,7 +173,7 @@ const filledValues = {
   quantity_field: DEFAULT_NUMBER,
   percent_field: DEFAULT_NUMBER,
   inc: 2,
-  editor_field: null,
+  editor_field: 'asdasdasdasd asd',
   checkbox_item_field: true,
   toggle_field: false,
   radio_field: 'first',
@@ -208,7 +208,7 @@ function useInitialValues() {
       quantity_field: DEFAULT_NUMBER,
       percent_field: DEFAULT_NUMBER,
       inc,
-      editor_field: null,
+      editor_field: '',
       checkbox_item_field: true,
       toggle_field: false,
       radio_field: 'first',
@@ -259,6 +259,9 @@ function Container() {
         onClick={() => {
           Object.entries(filledValues).forEach(([key, value]) => {
             form.setValue(key as any, value, { shouldValidate: true })
+          })
+          form.reset((prev) => prev, {
+            // keepDefaultValues: true,
           })
         }}>
         Fill
