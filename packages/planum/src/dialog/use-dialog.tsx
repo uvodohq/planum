@@ -13,6 +13,7 @@ export interface UseDialogProps {
   initialOpen?: boolean
   open?: boolean
   onOpenChange?: (open: boolean) => void
+  outsidePress?: (event: any) => boolean
 }
 
 export type UseDialogReturn = {
@@ -31,6 +32,7 @@ export function useDialog(props: UseDialogProps = {}): UseDialogReturn {
     initialOpen = false,
     open: controlledOpen,
     onOpenChange: setControlledOpen,
+    outsidePress,
   } = props
 
   const [uncontrolledOpen, setUncontrolledOpen] = React.useState(initialOpen)
@@ -55,6 +57,12 @@ export function useDialog(props: UseDialogProps = {}): UseDialogReturn {
   })
   const dismiss = useDismiss(context, {
     outsidePressEvent: 'mousedown',
+    outsidePress(event) {
+      if (outsidePress) {
+        return outsidePress(event)
+      }
+      return true
+    },
     bubbles: false,
   })
   const role = useRole(context, {
