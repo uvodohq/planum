@@ -75,7 +75,10 @@ export function useAutoComplete(
       useDismiss(context, {
         bubbles: false,
       }),
-      useClick(context),
+      useClick(context, {
+        // when this is true, it'll prevent to add space in text input
+        keyboardHandlers: false,
+      }),
       useListNavigation(context, {
         listRef,
         activeIndex,
