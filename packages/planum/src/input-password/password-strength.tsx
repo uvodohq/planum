@@ -40,6 +40,7 @@ const _PasswordStrength = ({ strength }: { strength: StrengthType }) => {
 
   const hasNumber = strength.contains?.includes('number')
   const hasUppercase = strength.contains?.includes('uppercase')
+  const hasLowercase = strength.contains?.includes('lowercase')
   const hasMinLength = strength.value?.length >= 8
 
   if (hasMinLength) {
@@ -73,6 +74,7 @@ const _PasswordStrength = ({ strength }: { strength: StrengthType }) => {
           <Option isPassed={hasMinLength} strengthText="8 characters minimum" />
           <Option isPassed={hasNumber} strengthText="a number" />
           <Option isPassed={hasUppercase} strengthText="an uppercase letter" />
+          <Option isPassed={hasLowercase} strengthText="a lowercase letter" />
         </Stack>
 
         <Paragraph css={{ fw: '$medium', textTransform: 'capitalize' }}>
