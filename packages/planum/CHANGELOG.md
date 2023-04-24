@@ -1,5 +1,11 @@
 # @uvodohq/planum
 
+## 6.0.0
+
+### Major Changes
+
+- [#27](https://github.com/uvodohq/planum/pull/27) [`4f44faa`](https://github.com/uvodohq/planum/commit/4f44faaaee5032a419e565a740a0bf503f5f1b0e) Thanks [@NijatBakhtiyar](https://github.com/NijatBakhtiyar)! - fix closing dialogs on outside press
+
 ## 5.0.0
 
 ### Major Changes
