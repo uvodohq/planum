@@ -16,7 +16,7 @@ export const Notification = (props: NotificationProps) => {
   const { message, onCloseClick, ...rest } = props
 
   return (
-    <StyledNotification role="alert" {...rest}>
+    <StyledNotification role="alert" {...rest} className="planum-toast">
       <StyledBody
         onClick={(e) => {
           e.preventDefault()

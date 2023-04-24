@@ -14,10 +14,11 @@ export interface UseModalProps {
   trigger?: JSX.Element
   closable?: boolean
   onClose?: () => void
+  outsidePress?: (event: any) => boolean
 }
 
 export function useModal(props: UseModalProps, state: ModalState) {
-  const { trigger, closable = true, onClose } = props
+  const { trigger, closable = true, onClose, outsidePress } = props
 
   const nodeId = useFloatingNodeId()
 
@@ -33,6 +34,19 @@ export function useModal(props: UseModalProps, state: ModalState) {
     useDismiss(context, {
       bubbles: false,
       enabled: closable,
+      outsidePress(event) {
+        // ignore closing dialog when clicking on toast
+        const toastContainer = document.querySelector('.planum-toast')
+        if (toastContainer?.contains(event.target as Node)) {
+          return false
+        }
+
+        if (outsidePress) {
+          return outsidePress(event)
+        }
+
+        return true
+      },
     }),
   ])
 
