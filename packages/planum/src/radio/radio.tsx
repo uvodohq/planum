@@ -19,10 +19,10 @@ interface Variants {
 export type RadioProps = AriaRadioProps & Variants
 
 interface ComponentProps {
-  isSelected: boolean
-  isDisabled: any
-  isHovered: boolean
-  isFocusVisible: boolean
+  isSelected?: boolean
+  isDisabled?: any
+  isHovered?: boolean
+  isFocusVisible?: boolean
   children?: any
 }
 
@@ -64,21 +64,25 @@ function _Radio(props: RadioProps, ref: FocusableRef<HTMLLabelElement>) {
     domRef,
   } = useRadioProps(props, ref)
 
-  const Component = type === 'button' ? 'span' : Circle
-  const Label = type === 'button' ? StyledButtonLabel : StyledRadioLabel
+  const isButton = type === 'button'
+  const Component = isButton ? 'span' : Circle
+  const Label = isButton ? StyledButtonLabel : StyledRadioLabel
+  const stateProps = {
+    isSelected,
+    isDisabled,
+    isHovered,
+    isFocusVisible,
+  }
+
+  const componentProps = isButton ? {} : stateProps
 
   return (
-    <Label
-      {...hoverProps}
-      {...{ isSelected, isDisabled, isHovered, isFocusVisible, full }}
-      ref={domRef}>
+    <Label {...hoverProps} {...stateProps} full={full} ref={domRef}>
       <VisuallyHidden>
         <input {...inputProps} {...focusProps} ref={inputRef} />
       </VisuallyHidden>
 
-      <Component
-        {...{ isSelected, isDisabled, isHovered, isFocusVisible, children }}
-      />
+      <Component {...componentProps}>{children}</Component>
     </Label>
   )
 }
