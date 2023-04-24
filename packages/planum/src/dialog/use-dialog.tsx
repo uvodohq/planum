@@ -58,9 +58,16 @@ export function useDialog(props: UseDialogProps = {}): UseDialogReturn {
   const dismiss = useDismiss(context, {
     outsidePressEvent: 'mousedown',
     outsidePress(event) {
+      // ignore closing dialog when clicking on toast
+      const toastContainer = document.querySelector('.planum-toast')
+      if (toastContainer?.contains(event.target as Node)) {
+        return false
+      }
+
       if (outsidePress) {
         return outsidePress(event)
       }
+
       return true
     },
     bubbles: false,

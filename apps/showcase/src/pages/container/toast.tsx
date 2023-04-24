@@ -5,7 +5,6 @@ export default function NotificationContainer() {
     <>
       <Toaster />
       <H1 css={{ mb: 20, fontWeight: '$bold' }}>Toast</H1>
-
       <Box css={{ display: 'flex', gap: 56, mb: 32 }}>
         <Box css={{ flex: 1 }}>
           <Notification message="We have e-mailed your password reset link!" />

@@ -21,6 +21,7 @@ export interface DrawerProps {
   isOpen?: boolean
   defaultIsOpen?: boolean
   onOpenChange?: (isOpen: boolean) => void
+  outsidePress?: (event: any) => boolean
 }
 
 export default function useDrawer(props: DrawerProps) {
@@ -28,7 +29,7 @@ export default function useDrawer(props: DrawerProps) {
     isOpen: value,
     defaultIsOpen: defaultValue = false,
     onOpenChange,
-    //
+    outsidePress,
   } = props
 
   const [open, setOpen] = useControllableValue(
@@ -53,7 +54,21 @@ export default function useDrawer(props: DrawerProps) {
   const { getReferenceProps, getFloatingProps } = useInteractions([
     useClick(context),
     useRole(context),
-    useDismiss(context),
+    useDismiss(context, {
+      outsidePress(event) {
+        // ignore closing dialog when clicking on toast
+        const toastContainer = document.querySelector('.planum-toast')
+        if (toastContainer?.contains(event.target as Node)) {
+          return false
+        }
+
+        if (outsidePress) {
+          return outsidePress(event)
+        }
+
+        return true
+      },
+    }),
   ])
 
   return {
