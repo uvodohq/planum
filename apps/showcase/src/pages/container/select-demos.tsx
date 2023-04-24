@@ -11,6 +11,7 @@ import SelectExampleCustomTrigger from '../../components/select/select-example-c
 import SelectExampleMinimal from '../../components/select/select-example-minimal'
 import SelectExampleSmallWidth from '../../components/select/select-example-small-width'
 import { weightUnits } from '../../components/select/select-options'
+import { useState } from 'react'
 
 const Grid = (props: any) => {
   return (
@@ -39,6 +40,8 @@ const Grid = (props: any) => {
 }
 
 const SelectDemos = () => {
+  const [defaultCountry, setDefautlCountry] = useState('AZ')
+
   return (
     <Box>
       <Grid title="With many options">
@@ -50,9 +53,12 @@ const SelectDemos = () => {
         <PhoneInput label="Without defaults" placeholder="Enter number" />
         <PhoneInput
           label="Default AZ given"
-          defaultCountryCode="AZ"
+          defaultCountryCode={defaultCountry}
           placeholder="Enter number"
         />
+        <button onClick={() => setDefautlCountry('TR')}>
+          set country turkey
+        </button>
         <PhoneInput
           label="With value(country not provided)"
           value="+90"

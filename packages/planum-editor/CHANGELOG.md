@@ -1,5 +1,11 @@
 # @uvodohq/planum-editor
 
+## 2.0.0
+
+### Major Changes
+
+- [#26](https://github.com/uvodohq/planum/pull/26) [`d5eedb1`](https://github.com/uvodohq/planum/commit/d5eedb1873c8a26591285fa51a003b691b88e35e) Thanks [@NijatBakhtiyar](https://github.com/NijatBakhtiyar)! - - check lowercase letter in password strength
+
 ## 1.1.0
 
 ### Minor Changes

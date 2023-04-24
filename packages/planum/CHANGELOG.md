@@ -1,5 +1,15 @@
 # @uvodohq/planum
 
+## 5.0.0
+
+### Major Changes
+
+- [#25](https://github.com/uvodohq/planum/pull/25) [`ab27a61`](https://github.com/uvodohq/planum/commit/ab27a6171c50c9206a4843b13ec95ea316573e8d) Thanks [@NijatBakhtiyar](https://github.com/NijatBakhtiyar)! - - fix adding space in search input
+
+  - prevent outside pressing on dialogs
+
+- [#26](https://github.com/uvodohq/planum/pull/26) [`d5eedb1`](https://github.com/uvodohq/planum/commit/d5eedb1873c8a26591285fa51a003b691b88e35e) Thanks [@NijatBakhtiyar](https://github.com/NijatBakhtiyar)! - - check lowercase letter in password strength
+
 ## 4.0.0
 
 ### Major Changes
