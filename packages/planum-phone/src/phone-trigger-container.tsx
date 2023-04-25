@@ -109,7 +109,7 @@ const FlagButtonContainer = styled('button', {
   },
 })
 
-const StyledLine = styled('span', {
+const StyledVerticalLine = styled('span', {
   bg: '$surface400',
   width: 1,
   height: '100%',
@@ -133,6 +133,7 @@ type Props = PhoneTriggerProps & HTMLAttributes<HTMLButtonElement>
 export function PhoneTriggerContainer(props: Props) {
   const { isDisabled, isLoading, status, children, ...rest } = props
   const { phone, state } = usePhoneContext()
+
   const { buttonId, reference, getReferenceProps } = phone
   const { isOpen, selectedItem } = state
 
@@ -154,7 +155,6 @@ export function PhoneTriggerContainer(props: Props) {
         data-open={isOpen}
         {...rest}
         {...getReferenceProps()}
-        // "combobox", but Safari has a bug with VoiceOver
         role={undefined}>
         <Flag
           country={selectedItem?.id || ''}
@@ -162,9 +162,8 @@ export function PhoneTriggerContainer(props: Props) {
         />
         <SelectDownIcon isOpen={isOpen} />
       </FlagButtonContainer>
-      <StyledLine />
-      {/* phone input goes here as children */}
-      {children}
+      <StyledVerticalLine />
+      {children} {/* children is phone input */}
     </StyledTriggerContainer>
   )
 }

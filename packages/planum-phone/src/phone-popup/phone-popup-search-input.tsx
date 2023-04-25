@@ -7,8 +7,8 @@ export const PopupSearchInput = () => {
   const { phone, state } = usePhoneContext()
 
   const {
-    inputInteractions,
-    handleInputChange,
+    searchInputInteractions,
+    onSearchInputChange,
     handleKeyDownOnInput,
     isEmpty,
     noResultsId,
@@ -26,8 +26,8 @@ export const PopupSearchInput = () => {
         aria-expanded="true"
         aria-autocomplete="list"
         aria-label="search"
-        onChange={handleInputChange}
-        {...inputInteractions.getReferenceProps({
+        onChange={onSearchInputChange}
+        {...searchInputInteractions.getReferenceProps({
           onKeyDown: handleKeyDownOnInput,
         })}
       />

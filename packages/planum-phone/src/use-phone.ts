@@ -67,24 +67,19 @@ export function usePhone(props: UsePhoneProps) {
   const click = useClick(floatingCtx)
   const dismiss = useDismiss(floatingCtx, { bubbles: false })
   const role = useRole(floatingCtx)
-
-  const searchableNavigationOptions = {
-    loop: true,
-    focusItemOnOpen: false,
-    virtual: true,
-    allowEscape: true,
-  }
-
   const navigation = useListNavigation(floatingCtx, {
     listRef: listItemsRef,
     activeIndex,
     selectedIndex,
     onNavigate,
-    ...searchableNavigationOptions,
+    // searchable Navigation Options
+    loop: true,
+    focusItemOnOpen: false,
+    virtual: true,
+    allowEscape: true,
   })
-
   const interactions = useInteractions([click, dismiss, role])
-  const inputInteractions = useInteractions([navigation])
+  const searchInputInteractions = useInteractions([navigation])
 
   const options = useMemo(() => {
     if (search) {
@@ -107,6 +102,7 @@ export function usePhone(props: UsePhoneProps) {
       isOpen: false,
       selectedIndex: foundIndex,
       selectedItem: item,
+      countryCode: item.id,
     })
 
     onChange?.(item.prefix)
@@ -116,11 +112,15 @@ export function usePhone(props: UsePhoneProps) {
     handleSelect(index)
   })
 
-  const handleKeyDown = useMemoizedFn((event: React.KeyboardEvent) => {
+  const handleKeyDownOnInput = useMemoizedFn((event: React.KeyboardEvent) => {
     if (event.key === 'Enter' && activeIndex !== null) {
       event.preventDefault()
       handleSelect(activeIndex)
     }
+  })
+
+  const handleKeyDown = useMemoizedFn((event: React.KeyboardEvent) => {
+    handleKeyDownOnInput(event)
 
     // Only if not using typeahead.
     if (event.key === ' ' && !floatingCtx.dataRef.current.typing) {
@@ -129,21 +129,14 @@ export function usePhone(props: UsePhoneProps) {
     }
   })
 
-  const handleKeyDownOnInput = useMemoizedFn((event: React.KeyboardEvent) => {
-    if (event.key === 'Enter' && activeIndex !== null) {
-      event.preventDefault()
-      handleSelect(activeIndex)
-    }
-  })
-
-  const handleInputChange = useMemoizedFn((value: string) => {
+  const onSearchInputChange = useMemoizedFn((value: string) => {
     updateState({
       activeIndex: null,
       search: value,
     })
   })
 
-  // onClose  focus input
+  // onClose focus input
   useUpdateEffect(() => {
     if (!isOpen) {
       phoneInputRef.current?.focus({ preventScroll: true })
@@ -169,21 +162,21 @@ export function usePhone(props: UsePhoneProps) {
     // Prevent input losing focus on Firefox VoiceOver
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { 'aria-activedescendant': ignoreAria, ...floatingProps } =
-      interactions.getFloatingProps(inputInteractions.getFloatingProps())
+      interactions.getFloatingProps(searchInputInteractions.getFloatingProps())
 
     return {
       ...floating,
       ...interactions,
       options,
       getFloatingProps: () => floatingProps,
-      getItemProps: inputInteractions.getItemProps,
+      getItemProps: searchInputInteractions.getItemProps,
       isEmpty: options.length === 0,
       nodeId,
       noResultsId,
       buttonId,
       listboxId,
-      inputInteractions,
-      handleInputChange,
+      searchInputInteractions,
+      onSearchInputChange,
       handleOptionClick,
       handleKeyDownOnInput,
       handleSelect,
@@ -194,13 +187,13 @@ export function usePhone(props: UsePhoneProps) {
     }
   }, [
     interactions,
-    inputInteractions,
+    searchInputInteractions,
     nodeId,
     noResultsId,
     buttonId,
     listboxId,
     floating,
-    handleInputChange,
+    onSearchInputChange,
     handleOptionClick,
     handleKeyDownOnInput,
     handleSelect,

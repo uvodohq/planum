@@ -61,9 +61,7 @@ export const MobilePopup = (
   props: React.PropsWithChildren<PhonePopupProps>,
 ) => {
   const { children, popupCss } = props
-  const { phone, state } = usePhoneContext()
-
-  const { searchable } = state
+  const { phone } = usePhoneContext()
 
   return (
     <FloatingOverlay
@@ -86,7 +84,7 @@ export const MobilePopup = (
       <FloatingFocusManager
         context={phone.context}
         modal={false}
-        initialFocus={searchable ? undefined : -1}>
+        initialFocus={undefined}>
         <StyledPhonePopupMobile
           ref={phone.floating}
           as={motion.div}
@@ -102,20 +100,18 @@ export const MobilePopup = (
             top: 'auto',
             minWidth: '100%',
             zIndex: 902,
-            height: searchable ? '80%' : 'auto',
-            paddingTop: searchable ? 0 : undefined,
+            height: '80%',
+            paddingTop: 0,
           }}>
-          {searchable && (
-            <StyledSearchWrapper>
-              <PopupSearchInput />
-            </StyledSearchWrapper>
-          )}
+          <StyledSearchWrapper>
+            <PopupSearchInput />
+          </StyledSearchWrapper>
           <StyledList
             role="listbox"
             id={phone.listboxId}
             style={{
-              maxHeight: searchable ? 'calc(100% - 72px)' : '100%',
-              paddingTop: searchable ? 0 : undefined,
+              maxHeight: 'calc(100% - 72px)',
+              paddingTop: 0,
             }}>
             {children}
           </StyledList>

@@ -1,5 +1,5 @@
 import { FloatingNode, FloatingPortal } from '@floating-ui/react'
-import { useMediaQuery } from '@uvodohq/planum'
+import { useTabletMedia } from '@uvodohq/planum'
 import { AnimatePresence } from 'framer-motion'
 import { useMemo } from 'react'
 
@@ -13,22 +13,19 @@ import { MobilePopup } from './phone-popup-mobile'
 export function PhonePopup(props: React.PropsWithChildren<PhonePopupProps>) {
   const { renderEmpty, popupCss } = props
   const { phone, state } = usePhoneContext()
-  const isMobile = useMediaQuery('(max-width: 768px)')
-  const Popup = isMobile ? MobilePopup : DesktopPopup
+  const isTablet = useTabletMedia()
+  const Popup = isTablet ? DesktopPopup : MobilePopup
 
   const { isEmpty, options, nodeId } = phone
   const { isOpen } = state
 
   const popupContent = useMemo(() => {
     if (!isOpen) return null
+    if (isEmpty) return <PhoneEmptyContent renderEmpty={renderEmpty} />
 
-    return isEmpty ? (
-      <PhoneEmptyContent renderEmpty={renderEmpty} />
-    ) : (
-      options.map((item, index) => (
-        <Option key={item.id} index={index} item={item} />
-      ))
-    )
+    return options.map((item, index) => (
+      <Option key={item.id} index={index} item={item} />
+    ))
   }, [isEmpty, isOpen, options, renderEmpty])
 
   return (

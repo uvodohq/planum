@@ -230,6 +230,8 @@ export default function FormHookContainer() {
 }
 
 function Container() {
+  const [defaultCountryCode, setDefautlCountryCode] = useState('AZ')
+
   const initialValues = useInitialValues()
   const form = useForm<FormValues>({
     resolver: zodResolver(schema),
@@ -430,12 +432,19 @@ function Container() {
             onSelect={(value, item) => console.log('onSelect', { value, item })}
           />
 
-          <PhoneInputField
-            name="phone_field"
-            label="Phone field"
-            placeholder="Enter number"
-            defaultCountryCode="AZ"
-          />
+          <div>
+            <button type="button" onClick={() => setDefautlCountryCode('TR')}>
+              set country TR
+            </button>
+
+            <PhoneInputField
+              name="phone_field"
+              label="Phone field"
+              placeholder="Enter number"
+              defaultCountryCode={defaultCountryCode}
+            />
+          </div>
+
           <AutoCompleteTagsField
             label="Autocomplete field"
             labelKey="name"

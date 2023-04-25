@@ -22,7 +22,7 @@ export const PhoneComponent = (props: PhoneProps) => {
     value,
     defaultValue,
     onChange,
-    defaultCountryCode = 'US',
+    defaultCountryCode,
     renderEmpty,
     status,
     placeholder,

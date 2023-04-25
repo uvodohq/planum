@@ -38,13 +38,14 @@ export function PhoneInput(props: Props) {
   const { placeholder, fieldProps } = props
   const { phone, state } = usePhoneContext()
   const { phoneInputRef } = phone
-  const { value, closeSelect, onChange, defaultCountryCode } = state
+  const { value, closeSelect, onChange, countryCode } = state
 
   return (
     <RFNInput
       tabIndex={0}
-      key={defaultCountryCode}
-      country={defaultCountryCode as any}
+      country={countryCode}
+      withCountryCallingCode
+      international
       ref={phoneInputRef}
       placeholder={placeholder}
       type="tel"
@@ -54,8 +55,6 @@ export function PhoneInput(props: Props) {
       onFocus={() => {
         closeSelect()
       }}
-      withCountryCallingCode
-      international
       {...fieldProps}
     />
   )

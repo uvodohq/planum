@@ -44,8 +44,7 @@ export const DesktopPopup = (
   props: React.PropsWithChildren<PhonePopupProps>,
 ) => {
   const { children, popupCss } = props
-  const { phone, state } = usePhoneContext()
-  const { searchable } = state
+  const { phone } = usePhoneContext()
 
   return (
     <FloatingOverlay
@@ -62,7 +61,7 @@ export const DesktopPopup = (
       <FloatingFocusManager
         context={phone.context}
         modal={false}
-        initialFocus={searchable ? undefined : -1}>
+        initialFocus={undefined}>
         <StyledPhonePopupDesktop
           ref={phone.floating}
           css={popupCss}
@@ -76,7 +75,7 @@ export const DesktopPopup = (
             zIndex: 1000,
           }}
           {...desktopMotionConfig}>
-          {searchable && <PopupSearchInput />}
+          <PopupSearchInput />
           <StyledList role="listbox" id={phone.listboxId}>
             {children}
           </StyledList>

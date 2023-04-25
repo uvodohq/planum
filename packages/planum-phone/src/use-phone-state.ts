@@ -1,6 +1,7 @@
+/* eslint-disable unicorn/consistent-destructuring */
 import { useControllableValue, useUpdateEffect } from '@uvodohq/planum'
 import { AsYouType } from 'libphonenumber-js/min'
-import { useEffect, useReducer } from 'react'
+import { useCallback, useEffect, useReducer } from 'react'
 
 import type { UsePhoneStateProps } from './phone.types'
 
@@ -11,25 +12,35 @@ interface State {
   search: string
   defaultValue?: string | null
   selectedItem: any | null
+  countryCode: any
 }
 
 export function usePhoneState(props: UsePhoneStateProps) {
-  const { items, value, onChange, defaultValue, defaultCountryCode } =
-    props || {}
+  const {
+    items,
+    value,
+    onChange,
+    defaultValue,
+    defaultCountryCode = 'US',
+  } = props || {}
+
+  const initialState: State = {
+    isOpen: false,
+    search: '',
+    activeIndex: null,
+    selectedIndex: null,
+    selectedItem: null,
+    defaultValue,
+    countryCode: defaultCountryCode,
+  }
 
   const [state, updateState] = useReducer(
     (prev: State, next: Partial<State>) => {
       return { ...prev, ...next }
     },
-    {
-      isOpen: false,
-      search: '',
-      activeIndex: null,
-      selectedIndex: null,
-      selectedItem: null,
-      defaultValue,
-    },
+    initialState,
   )
+
   const [_value, _onChange] = useControllableValue(
     {
       value,
@@ -43,8 +54,10 @@ export function usePhoneState(props: UsePhoneStateProps) {
   const { isOpen, selectedItem } = state
 
   const isValueNotProvided = _value === null || _value === undefined
+  const isDefaultValueNotProvided =
+    state.defaultValue === null || state.defaultValue === undefined
 
-  if (isValueNotProvided && selectedItem?.prefix && !state.defaultValue) {
+  if (isValueNotProvided && selectedItem?.prefix && isDefaultValueNotProvided) {
     updateState({
       defaultValue: selectedItem.prefix,
     })
@@ -56,18 +69,6 @@ export function usePhoneState(props: UsePhoneStateProps) {
     })
   }
 
-  const onMatchTypeahead = (index: number) => {
-    if (isOpen) {
-      updateState({
-        activeIndex: index,
-      })
-    } else {
-      updateState({
-        selectedIndex: index,
-      })
-    }
-  }
-
   const onNavigate = (index: number | null) => {
     if (isOpen) {
       updateState({
@@ -76,28 +77,65 @@ export function usePhoneState(props: UsePhoneStateProps) {
     }
   }
 
-  useEffect(() => {
-    let countryCode = defaultCountryCode
+  const onMatchTypeahead = (index: number) => {
+    onNavigate(index)
 
-    if (_value) {
-      const formatter = new AsYouType()
-      formatter.input(_value)
-      const parsedCountry = formatter.getCountry()
-
-      if (parsedCountry) {
-        countryCode = parsedCountry
-      }
+    if (!isOpen) {
+      updateState({
+        selectedIndex: index,
+      })
     }
+  }
 
-    const foundSelectedIndex = items.findIndex(
-      (item) => item.id === countryCode,
-    )
+  const getCountryByValue = useCallback(
+    (value: string | null) => {
+      let countryCode = state.countryCode
 
+      if (value) {
+        const formatter = new AsYouType()
+        formatter.input(value)
+        const parsedCountryCode = formatter.getCountry()
+
+        if (parsedCountryCode) {
+          countryCode = parsedCountryCode
+        }
+      }
+
+      const foundSelectedIndex = items.findIndex(
+        (item) => item.id === countryCode,
+      )
+
+      return {
+        foundSelectedIndex,
+        selectedItem: items[foundSelectedIndex] ?? {},
+        countryCode,
+      }
+    },
+    [items, state.countryCode],
+  )
+
+  const onChangePhoneInputValue = (newValue?: string) => {
+    if (newValue === undefined) return _onChange('')
+
+    const country = getCountryByValue(newValue)
+
+    updateState(country)
+    _onChange(newValue)
+  }
+
+  // on initial mount find country code
+  useEffect(() => {
+    const country = getCountryByValue(_value)
+    updateState(country)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [getCountryByValue])
+
+  // sync state when defaultCountryCode change
+  useUpdateEffect(() => {
     updateState({
-      selectedIndex: foundSelectedIndex,
-      selectedItem: items[foundSelectedIndex] ?? {},
+      countryCode: defaultCountryCode,
     })
-  }, [_value, defaultCountryCode, items])
+  }, [defaultCountryCode])
 
   useUpdateEffect(() => {
     if (!isOpen) {
@@ -108,15 +146,6 @@ export function usePhoneState(props: UsePhoneStateProps) {
     }
   }, [isOpen])
 
-  function onChangeValue(newValue?: string) {
-    if (newValue === undefined) {
-      _onChange('')
-      return
-    }
-
-    _onChange(newValue)
-  }
-
   return {
     ...state,
     toggleOpen,
@@ -126,9 +155,8 @@ export function usePhoneState(props: UsePhoneStateProps) {
     closeSelect: () => isOpen && toggleOpen(false),
     searchable: true,
     items,
-    onChange: onChangeValue,
-    value: isValueNotProvided ? state.defaultValue : _value,
+    onChange: onChangePhoneInputValue,
+    value: _value,
     updateState,
-    defaultCountryCode,
   }
 }
