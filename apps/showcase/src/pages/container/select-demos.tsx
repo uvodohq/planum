@@ -50,7 +50,7 @@ const SelectDemos = () => {
         <SelectExampleAsync />
       </Grid>
       <Grid title="Phone">
-        {/* <PhoneInput label="Without defaults" placeholder="Enter number" />
+        <PhoneInput label="Without defaults" placeholder="Enter number" />
         <PhoneInput
           label="Default AZ given"
           defaultCountryCode={defaultCountry}
@@ -63,7 +63,7 @@ const SelectDemos = () => {
           label="With value(country not provided)"
           value="+90"
           placeholder="Enter number"
-        /> */}
+        />
       </Grid>
 
       <Grid title="Multi Select">
