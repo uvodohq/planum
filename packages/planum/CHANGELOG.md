@@ -1,5 +1,15 @@
 # @uvodohq/planum
 
+## 6.1.0
+
+### Minor Changes
+
+- [`50bc9f7`](https://github.com/uvodohq/planum/commit/50bc9f70914b65a15d81637a8acf369aefc01f4b) Thanks [@EminQasimov](https://github.com/EminQasimov)! - phone fix
+
+### Patch Changes
+
+- [`39a375c`](https://github.com/uvodohq/planum/commit/39a375c03451537efddd1262ae185da6588c9d8a) Thanks [@EminQasimov](https://github.com/EminQasimov)! - phone input fix default country and radio error cleaned
+
 ## 6.0.0
 
 ### Major Changes
