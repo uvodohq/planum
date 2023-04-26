@@ -1,5 +1,6 @@
 /* eslint-disable unicorn/consistent-destructuring */
 import { useControllableValue, useUpdateEffect } from '@uvodohq/planum'
+import { isSupportedCountry } from 'libphonenumber-js'
 import { AsYouType } from 'libphonenumber-js/min'
 import { useCallback, useEffect, useReducer } from 'react'
 
@@ -14,14 +15,14 @@ interface State {
   selectedItem: any | null
   countryCode: any
 }
-
+const initialCountryCode = 'US'
 export function usePhoneState(props: UsePhoneStateProps) {
   const {
     items,
     value,
     onChange,
     defaultValue,
-    defaultCountryCode = 'US',
+    defaultCountryCode = initialCountryCode,
   } = props || {}
 
   const initialState: State = {
@@ -31,7 +32,9 @@ export function usePhoneState(props: UsePhoneStateProps) {
     selectedIndex: null,
     selectedItem: null,
     defaultValue,
-    countryCode: defaultCountryCode,
+    countryCode: isSupportedCountry(defaultCountryCode)
+      ? defaultCountryCode
+      : initialCountryCode,
   }
 
   const [state, updateState] = useReducer(
@@ -132,9 +135,11 @@ export function usePhoneState(props: UsePhoneStateProps) {
 
   // sync state when defaultCountryCode change
   useUpdateEffect(() => {
-    updateState({
-      countryCode: defaultCountryCode,
-    })
+    if (isSupportedCountry(defaultCountryCode)) {
+      updateState({
+        countryCode: defaultCountryCode,
+      })
+    }
   }, [defaultCountryCode])
 
   useUpdateEffect(() => {
