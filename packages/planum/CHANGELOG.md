@@ -1,5 +1,11 @@
 # @uvodohq/planum
 
+## 6.1.1
+
+### Patch Changes
+
+- - refactor hooks
+
 ## 6.1.0
 
 ### Minor Changes

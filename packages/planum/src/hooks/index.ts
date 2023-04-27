@@ -11,3 +11,4 @@ export {
 export { default as useMemoizedFn } from './use-memoized-fn'
 export { useMergeRefs } from './use-merge-refs'
 export { usePrevious } from './use-previous/use-previous'
+export { useStrengthIndicator } from './use-strength-indicator/use-strength-indicator'
