@@ -1,6 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
-
 import { Button } from '../button'
 import { Box, Flex } from '../layout'
 import { CloseIcon } from '../modal/modal-content/close-icon'
