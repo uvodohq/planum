@@ -1,5 +1,11 @@
 # @uvodohq/planum
 
+## 6.1.2
+
+### Patch Changes
+
+- [#28](https://github.com/uvodohq/planum/pull/28) [`1e8250c`](https://github.com/uvodohq/planum/commit/1e8250c260bcafdfb6b36b6288c3c1c05b521bfa) Thanks [@NijatBakhtiyar](https://github.com/NijatBakhtiyar)! - test publishing
+
 ## 6.1.1
 
 ### Patch Changes
