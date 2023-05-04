@@ -1,0 +1,109 @@
+// Vitest Snapshot v1
+
+exports[`<Skeleton /> > should render default skeleton as 1 line paragraph 1`] = `
+<div
+  aria-busy="true"
+  aria-valuemax="100"
+  aria-valuemin="0"
+  aria-valuetext="loading"
+  class="Planum-c-erjuRH Planum-c-erjuRH-imORTH-animated-true"
+  role="progressbar"
+>
+  <div
+    class="Planum-c-cRMbGV"
+  >
+    <div
+      class="Planum-c-fCqUlT"
+      style="width: 45%;"
+    >
+      <p
+        class="Planum-c-iPYhUp Planum-c-kLRYwF Planum-c-hAVAWC Planum-c-iPYhUp-iiODFRR-css"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Skeleton /> > should render default skeleton as 2 line texts 1`] = `
+<div
+  aria-busy="true"
+  aria-valuemax="100"
+  aria-valuemin="0"
+  aria-valuetext="loading"
+  class="Planum-c-erjuRH Planum-c-erjuRH-imORTH-animated-true"
+  role="progressbar"
+>
+  <div
+    class="Planum-c-cRMbGV"
+  >
+    <div
+      class="Planum-c-fCqUlT"
+      style="width: 45%;"
+    >
+      <p
+        class="Planum-c-iPYhUp Planum-c-kLRYwF Planum-c-hAVAWC Planum-c-iPYhUp-iiODFRR-css"
+      />
+    </div>
+    <div
+      class="Planum-c-fCqUlT"
+      style="width: 20%;"
+    >
+      <p
+        class="Planum-c-iPYhUp Planum-c-kLRYwF Planum-c-hAVAWC Planum-c-iPYhUp-iiODFRR-css"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Skeleton /> > should render default skeleton as Single image 1`] = `
+<div
+  aria-busy="true"
+  aria-valuemax="100"
+  aria-valuemin="0"
+  aria-valuetext="loading"
+  class="Planum-c-erjuRH Planum-c-erjuRH-imORTH-animated-true"
+  role="progressbar"
+>
+  <div
+    class="Planum-c-dbbEBI Planum-c-dbbEBI-iiODFRR-css"
+    data-testid="skeleton-img"
+  />
+</div>
+`;
+
+exports[`<Skeleton /> > should render default skeleton as item card with image 1`] = `
+<div
+  aria-busy="true"
+  aria-valuemax="100"
+  aria-valuemin="0"
+  aria-valuetext="loading"
+  class="Planum-c-erjuRH Planum-c-erjuRH-imORTH-animated-true"
+  role="progressbar"
+>
+  <div
+    class="Planum-c-dbbEBI Planum-c-dbbEBI-iiODFRR-css"
+    data-testid="skeleton-img"
+  />
+  <div
+    class="Planum-c-cRMbGV"
+  >
+    <div
+      class="Planum-c-fCqUlT"
+      style="width: 45%;"
+    >
+      <p
+        class="Planum-c-iPYhUp Planum-c-kLRYwF Planum-c-hAVAWC Planum-c-iPYhUp-iiODFRR-css"
+      />
+    </div>
+    <div
+      class="Planum-c-fCqUlT"
+      style="width: 20%;"
+    >
+      <p
+        class="Planum-c-iPYhUp Planum-c-kLRYwF Planum-c-hAVAWC Planum-c-iPYhUp-iiODFRR-css"
+      />
+    </div>
+  </div>
+</div>
+`;

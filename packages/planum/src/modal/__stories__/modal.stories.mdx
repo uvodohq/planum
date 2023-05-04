@@ -1,0 +1,330 @@
+import { Box, Flex, Paragraph, Button } from '../../..'
+import { Modal, Dialog } from '../'
+import { ArgsTable, Story, Canvas, Meta } from '@storybook/addon-docs'
+import SelectComponent from '../../select/__stories__/select-example'
+import { ModalExampleUnClosable } from './examples'
+
+<Meta
+  title="Components/Modal"
+  component={Modal}
+  parameters={{
+    chromatic: { disableSnapshot: true },
+  }}
+/>
+
+<!--- Component template -->
+
+export const modalTemplate = (args) => <Modal {...args} />
+
+<!--- Component documentation -->
+
+# Modal
+
+- [Overview](#overview)
+- [Variants](#variants)
+- [Props](#props)
+
+## Overview
+
+<b>Modal</b> is a dialog that appears on top of the app’s content to provide critical
+information or ask for a decision. It appears in front of all screen content, typically
+as a result of an action. Modals are purposefully interruptive, so they should be
+used sparingly.
+
+<Canvas>
+  <Modal trigger={<button>Open modal</button>}>
+    <Dialog title="This is a dialog" description="This is a dialog description">
+      <Paragraph>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, placeat,
+        explicabo repellendus sed eum natus repellat, quod ipsum beatae culpa
+        suscipit. Saepe, sunt. Ad in animi alias doloribus ex ab, asperiores,
+        autem vel at repellendus a maiores veniam est sapiente dignissimos
+        inventore blanditiis repellat quisquam odit sit optio eum fugiat
+        mollitia quas! Adipisci, exercitationem beatae? Dicta deserunt doloribus
+        maiores. Minima, recusandae laboriosam! Facere voluptas cupiditate
+        fugiat id impedit! Sunt eligendi voluptate, voluptatum molestias
+        delectus, expedita reiciendis qui ut accusamus fuga dolorem soluta
+        deleniti autem suscipit dignissimos consectetur voluptates dicta ratione
+        natus, ullam nihil cumque nostrum! Odit sequi accusantium architecto
+        repellat.
+      </Paragraph>
+    </Dialog>
+  </Modal>
+</Canvas>
+
+## Variants
+
+### Simple modal
+
+with simple content
+
+<Canvas>
+  <Story name="Simple modal">
+    <Modal trigger={<Button>Open modal</Button>}>
+      <Box css={{ bg: '#fff', p: 50 }}>Simple content</Box>
+    </Modal>
+  </Story>
+</Canvas>
+
+### Modal with customised trigger
+
+You can pass custom trigger component to the modal. Be sure you forwarded ref to the trigger component to make it work.
+
+<Canvas>
+  <Story name="Custom trigger">
+    <Modal trigger={<Button>Open modal</Button>}>
+      <Dialog title="Dialog title" description="Dialog description">
+        <Paragraph>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, placeat,
+          explicabo repellendus sed eum natus repellat, quod ipsum beatae culpa
+          suscipit. Saepe, sunt. Ad in animi alias doloribus ex ab, asperiores,
+          autem vel at repellendus a maiores veniam est sapiente dignissimos
+          inventore blanditiis repellat quisquam odit sit optio eum fugiat
+          mollitia quas! Adipisci, exercitationem beatae? Dicta deserunt
+          doloribus maiores. Minima, recusandae laboriosam! Facere voluptas
+          cupiditate fugiat id impedit! Sunt eligendi voluptate, voluptatum
+          molestias delectus, expedita reiciendis qui ut accusamus fuga dolorem
+          soluta deleniti autem suscipit dignissimos consectetur voluptates
+          dicta ratione natus, ullam nihil cumque nostrum! Odit sequi
+          accusantium architecto repellat.
+        </Paragraph>
+      </Dialog>
+    </Modal>
+  </Story>
+</Canvas>
+
+### Modal with custom width
+
+You can pass custom width to the modal.
+
+<Canvas>
+  <Story name="Custom width">
+    <Modal trigger={<Button>Open modal</Button>}>
+      <Box
+        css={{
+          bg: '#fff',
+          size: '100%',
+          maxWidth: 1000,
+          p: 32,
+          borderRadius: 8,
+        }}>
+        <Paragraph>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, placeat,
+          explicabo repellendus sed eum natus repellat, quod ipsum beatae culpa
+          suscipit. Saepe, sunt. Ad in animi alias doloribus ex ab, asperiores,
+          autem vel at repellendus a maiores veniam est sapiente dignissimos
+          inventore blanditiis repellat quisquam odit sit optio eum fugiat
+          mollitia quas! Adipisci, exercitationem beatae? Dicta deserunt
+          doloribus maiores. Minima, recusandae laboriosam! Facere voluptas
+          cupiditate fugiat id impedit! Sunt eligendi voluptate, voluptatum
+          molestias delectus, expedita reiciendis qui ut accusamus fuga dolorem
+          soluta deleniti autem suscipit dignissimos consectetur voluptates
+          dicta ratione natus, ullam nihil cumque nostrum! Odit sequi
+          accusantium architecto repellat.
+        </Paragraph>
+      </Box>
+    </Modal>
+  </Story>
+</Canvas>
+
+### Modal with custom footer
+
+You can pass custom footer to the modal.
+
+<Canvas>
+  <Story name="Custom footer">
+    <Modal trigger={<Button>Open modal</Button>}>
+      <Dialog
+        title="Dialog title"
+        description="Dialog description"
+        renderFooter={(props) => (
+          <Flex
+            css={{
+              justifyContent: 'flex-end',
+              gap: 20,
+              width: '100%',
+              px: 32,
+              mt: 32,
+            }}>
+            <Button variant="secondaryDark">Save</Button>
+            <Button onClick={() => props.closeModal()}>Close</Button>
+          </Flex>
+        )}>
+        <Paragraph>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, placeat,
+          explicabo repellendus sed eum natus repellat, quod ipsum beatae culpa
+          suscipit. Saepe, sunt. Ad in animi alias doloribus ex ab, asperiores,
+          autem vel at repellendus a maiores veniam est sapiente dignissimos
+          inventore blanditiis repellat quisquam odit sit optio eum fugiat
+          mollitia quas! Adipisci, exercitationem beatae? Dicta deserunt
+          doloribus maiores. Minima, recusandae laboriosam! Facere voluptas
+          cupiditate fugiat id impedit! Sunt eligendi voluptate, voluptatum
+          molestias delectus, expedita reiciendis qui ut accusamus fuga dolorem
+          soluta deleniti autem suscipit dignissimos consectetur voluptates
+          dicta ratione natus, ullam nihil cumque nostrum! Odit sequi
+          accusantium architecto repellat.
+        </Paragraph>
+      </Dialog>
+    </Modal>
+  </Story>
+</Canvas>
+
+### Modal with nested modal
+
+Nested modals will close respectively on escape key press or on click outside.
+
+<Canvas>
+  <Story name="Nested modal">
+    <Modal trigger={<Button>Open modal</Button>}>
+      <Dialog
+        title="Dialog title"
+        description="Dialog description"
+        renderFooter={(props) => (
+          <Flex
+            css={{
+              justifyContent: 'flex-end',
+              gap: 20,
+              width: '100%',
+              px: 32,
+            }}>
+            <Button variant="secondaryDark">Save</Button>
+            <Button onClick={props.closeModal}>Close</Button>
+          </Flex>
+        )}>
+        <Paragraph>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, placeat,
+          explicabo repellendus sed eum natus repellat, quod ipsum beatae culpa
+          suscipit.
+        </Paragraph>
+        <Modal
+          trigger={
+            <Button variant="secondary" css={{ my: 32 }}>
+              Open second modal
+            </Button>
+          }>
+          <Dialog
+            title="Dialog title 2"
+            description="Dialog description 2"
+            renderFooter={(props) => (
+              <Flex
+                css={{
+                  justifyContent: 'flex-end',
+                  gap: 20,
+                  width: '100%',
+                  px: 32,
+                  mt: 32,
+                }}>
+                <Button variant="secondaryDark">Delete</Button>
+                <Button onClick={props.closeModal}>Return</Button>
+              </Flex>
+            )}>
+            <Paragraph>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic,
+              placeat, explicabo repellendus sed eum natus repellat, quod ipsum
+              beatae culpa suscipit.
+            </Paragraph>
+          </Dialog>
+        </Modal>
+      </Dialog>
+    </Modal>
+  </Story>
+</Canvas>
+
+### Modal with overflow scroll
+
+When the content of the modal is too long, body will have overflow scroll.
+
+<Canvas>
+  <Story name="Scrolled content">
+    <Modal trigger={<Button>Open modal</Button>}>
+      <Dialog
+        title="Dialog title"
+        description="Dialog description"
+        renderFooter={(props) => (
+          <Flex
+            css={{
+              justifyContent: 'flex-end',
+              gap: 20,
+              width: '100%',
+              px: 32,
+              mt: 32,
+            }}>
+            <Button variant="secondaryDark">Save</Button>
+            <Button onClick={props.closeModal}>Close</Button>
+          </Flex>
+        )}>
+        <Paragraph css={{ h: 1000 }}>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, placeat,
+          explicabo repellendus sed eum natus repellat, quod ipsum beatae culpa
+          suscipit. Saepe, sunt. Ad in animi alias doloribus ex ab, asperiores,
+          autem vel at repellendus a maiores veniam est sapiente dignissimos
+          inventore blanditiis repellat quisquam odit sit optio eum fugiat
+          mollitia quas! Adipisci, exercitationem beatae? Dicta deserunt
+          doloribus maiores. Minima, recusandae laboriosam! Facere voluptas
+          cupiditate fugiat id impedit! Sunt eligendi voluptate, voluptatum
+          molestias delectus, expedita reiciendis qui ut accusamus fuga dolorem
+          soluta deleniti autem suscipit dignissimos consectetur voluptates
+          dicta ratione natus, ullam nihil cumque nostrum! Odit sequi
+          accusantium architecto repellat. Lorem ipsum dolor sit amet
+          consectetur adipisicing elit. Hic, placeat, explicabo repellendus sed
+          eum natus repellat, quod ipsum beatae culpa suscipit. Saepe, sunt. Ad
+          in animi alias doloribus ex ab, asperiores, autem vel at repellendus a
+          maiores veniam est sapiente dignissimos inventore blanditiis repellat
+          quisquam odit sit optio eum fugiat mollitia quas! Adipisci,
+          exercitationem beatae? Dicta deserunt doloribus maiores. Minima,
+          recusandae laboriosam! Facere voluptas cupiditate fugiat id impedit!
+          Sunt eligendi voluptate, voluptatum molestias delectus, expedita
+          repellat.
+        </Paragraph>
+      </Dialog>
+    </Modal>
+  </Story>
+</Canvas>
+
+### Modal with select popups
+
+Selects can be used in modal dialogs. While the modal is open, the select will be rendered on top of the modal and select will close first when escape key is pressed.
+
+<Canvas>
+  <Story name="With select">
+    <Modal trigger={<Button>Open modal</Button>}>
+      <Dialog
+        title="Dialog title"
+        description="Dialog description"
+        renderFooter={(props) => (
+          <Flex
+            css={{
+              justifyContent: 'flex-end',
+              gap: 20,
+              width: '100%',
+              px: 32,
+              mt: 32,
+            }}>
+            <Button variant="secondaryDark">Save</Button>
+            <Button onClick={props.closeModal}>Close</Button>
+          </Flex>
+        )}>
+        <Box css={{ my: 20 }}>
+          <SelectComponent defaultValue={14} />
+        </Box>
+        <Box css={{ my: 20 }}>
+          <SelectComponent defaultValue={12} />
+        </Box>
+      </Dialog>
+    </Modal>
+  </Story>
+</Canvas>
+
+### Unclosable modal
+
+Modal will not close on escape key pressed or clicked outside. closable={false} prop can be used to toggle this behavior.
+
+<Canvas>
+  <Story name="unclosable">
+    <ModalExampleUnClosable />
+  </Story>
+</Canvas>
+
+## Props
+
+<ArgsTable of={Modal} />

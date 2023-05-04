@@ -1,0 +1,88 @@
+{
+  "name": "@uvodohq/planum",
+  "version": "6.1.2",
+  "description": "Planum - A React UI Kit for Uvodo Design System. Uvodo is self-hosted eCommerce platform for digital agencies",
+  "author": "UvodoHQ",
+  "license": "MIT",
+  "homepage": "https://uvodo.design",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uvodohq/planum.git"
+  },
+  "bugs": {
+    "url": "https://github.com/uvodohq/planum/issues"
+  },
+  "keywords": [
+    "ecommerce",
+    "uvodo",
+    "planum",
+    "react",
+    "ui"
+  ],
+  "sideEffects": false,
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "lint": "cross-env TIMING=1 eslint \"src/**/*.ts*\"",
+    "clean": "rimraf .turbo node_modules dist",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:ui": "vitest --ui",
+    "test:cov": "vitest run --coverage",
+    "vitest-preview": "vitest-preview"
+  },
+  "dependencies": {
+    "@floating-ui/react": "^0.18.1",
+    "@radix-ui/react-accordion": "^1.1.0",
+    "@radix-ui/react-avatar": "^1.0.0",
+    "@react-aria/breadcrumbs": "^3.3.0",
+    "@react-aria/button": "^3.6.0",
+    "@react-aria/checkbox": "^3.5.0",
+    "@react-aria/label": "^3.4.0",
+    "@react-aria/progress": "^3.3.0",
+    "@react-aria/radio": "^3.3.0",
+    "@react-aria/searchfield": "^3.4.0",
+    "@react-aria/separator": "^3.2.2",
+    "@react-aria/switch": "^3.2.2",
+    "@react-aria/visually-hidden": "^3.4.0",
+    "@react-spectrum/utils": "^3.7.2",
+    "@react-stately/radio": "^3.5.0",
+    "@react-stately/searchfield": "^3.3.0",
+    "@react-stately/toggle": "^3.4.0",
+    "@stitches/react": "^1.2.8",
+    "rc-input-number": "^7.4.0",
+    "react-hot-toast": "^2.2.0",
+    "rifm": "^0.12.1"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.3.0",
+    "@testing-library/react-hooks": "^8.0.1",
+    "@testing-library/user-event": "^14.4.2",
+    "@types/react": "^18.0.9",
+    "@types/react-dom": "^18.0.4",
+    "@uvodohq/eslint-config": "*",
+    "@vitejs/plugin-react": "^2.2.0",
+    "@vitest/ui": "^0.25.1",
+    "eslint": "^8.15.0",
+    "framer-motion": "^6.5.1",
+    "jsdom": "^20.0.2",
+    "planum-tsconfig": "*",
+    "react": "^16.8.0 || ^17.0 || ^18.0.0",
+    "react-dom": "^16.8.0 || ^17.0 || ^18.0.0",
+    "resize-observer-polyfill": "^1.5.1",
+    "tsup": "^5.10.1",
+    "typescript": "^4.5.3",
+    "vitest": "^0.21.0",
+    "vitest-preview": "^0.0.1"
+  }
+}

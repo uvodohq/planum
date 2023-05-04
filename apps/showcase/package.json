@@ -1,0 +1,34 @@
+{
+  "name": "showcase",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --port=5174",
+    "build": "vite build",
+    "preview": "yarn build && vite preview",
+    "deploy": "yarn build && netlify deploy --dir=./dist --prod --site planum-demo",
+    "clean": "rimraf .turbo node_modules dist"
+  },
+  "dependencies": {
+    "@uvodohq/planum": "*",
+    "@uvodohq/planum-editor": "*",
+    "@uvodohq/planum-icons": "*",
+    "@uvodohq/planum-phone": "*",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-error-boundary": "^3.1.4",
+    "react-intersection-observer": "^9.4.0",
+    "@hookform/resolvers": "^2.9.6",
+    "react-hook-form": "^7.40.0",
+    "zod": "^3.19.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.22",
+    "@types/react-dom": "^18.0.7",
+    "@vitejs/plugin-react": "^3.1.0",
+    "rollup-plugin-visualizer": "^5.7.1",
+    "typescript": "^4.6.4",
+    "vite": "^4.1.1"
+  }
+}

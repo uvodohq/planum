@@ -1,0 +1,254 @@
+// Vitest Snapshot v1
+
+exports[`Checkbox > isDisabled 1`] = `
+<div>
+  <label
+    class="Planum-c-iPYhUp Planum-c-kLRYwF Planum-c-edbEbA Planum-c-edbEbA-ietuGy-isDisabled-true"
+  >
+    <div
+      style="border: 0px; clip-path: inset(50%); height: 1px; margin: 0px -1px -1px 0px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap;"
+    >
+      <input
+        disabled=""
+        type="checkbox"
+      />
+    </div>
+    <div
+      class="Planum-c-hyHTE Planum-c-hyHTE-koxIsH-isSelected-false Planum-c-hyHTE-hxNqoz-isDisabled-true"
+    >
+      <span
+        class="Planum-c-filUNh"
+      >
+        <svg
+          height="14"
+          viewBox="0 0 256 256"
+          width="14"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0 0h256v256H0z"
+            fill="none"
+          />
+          <path
+            d="M216 72 104 184l-56-56"
+            fill="none"
+            stroke="currentColor"
+            stroke-dasharray="400"
+            stroke-dashoffset="-400"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="28"
+            style="transition: all .2s;"
+          />
+        </svg>
+      </span>
+    </div>
+    <p
+      class="Planum-c-iPYhUp Planum-c-kLRYwF Planum-c-iPYhUp-ikmBbln-css"
+    >
+      check me
+    </p>
+  </label>
+</div>
+`;
+
+exports[`Checkbox > isIndeterminate 1`] = `
+<div>
+  <label
+    class="Planum-c-iPYhUp Planum-c-kLRYwF Planum-c-edbEbA"
+  >
+    <div
+      style="border: 0px; clip-path: inset(50%); height: 1px; margin: 0px -1px -1px 0px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap;"
+    >
+      <input
+        checked=""
+        type="checkbox"
+      />
+    </div>
+    <div
+      class="Planum-c-hyHTE Planum-c-hyHTE-hkrvYr-isSelected-true"
+    >
+      <span
+        class="Planum-c-filUNh"
+      >
+        <svg
+          height="14"
+          viewBox="0 0 256 256"
+          width="14"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0 0h256v256H0z"
+            fill="none"
+          />
+          <path
+            d="M216 72 104 184l-56-56"
+            fill="none"
+            stroke="currentColor"
+            stroke-dasharray="400"
+            stroke-dashoffset="0"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="28"
+            style="transition: all .2s;"
+          />
+        </svg>
+      </span>
+    </div>
+    <p
+      class="Planum-c-iPYhUp Planum-c-kLRYwF Planum-c-iPYhUp-ikmBbln-css"
+    >
+      check me
+    </p>
+  </label>
+</div>
+`;
+
+exports[`Checkbox > isSelected 1`] = `
+<div>
+  <label
+    class="Planum-c-iPYhUp Planum-c-kLRYwF Planum-c-edbEbA"
+  >
+    <div
+      style="border: 0px; clip-path: inset(50%); height: 1px; margin: 0px -1px -1px 0px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap;"
+    >
+      <input
+        checked=""
+        type="checkbox"
+      />
+    </div>
+    <div
+      class="Planum-c-hyHTE Planum-c-hyHTE-hkrvYr-isSelected-true"
+    >
+      <span
+        class="Planum-c-filUNh"
+      >
+        <svg
+          height="14"
+          viewBox="0 0 256 256"
+          width="14"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0 0h256v256H0z"
+            fill="none"
+          />
+          <path
+            d="M216 72 104 184l-56-56"
+            fill="none"
+            stroke="currentColor"
+            stroke-dasharray="400"
+            stroke-dashoffset="0"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="28"
+            style="transition: all .2s;"
+          />
+        </svg>
+      </span>
+    </div>
+    <p
+      class="Planum-c-iPYhUp Planum-c-kLRYwF Planum-c-iPYhUp-ikmBbln-css"
+    >
+      check me
+    </p>
+  </label>
+</div>
+`;
+
+exports[`Checkbox > should render simple checkbox 1`] = `
+<div>
+  <label
+    class="Planum-c-iPYhUp Planum-c-kLRYwF Planum-c-edbEbA"
+  >
+    <div
+      style="border: 0px; clip-path: inset(50%); height: 1px; margin: 0px -1px -1px 0px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap;"
+    >
+      <input
+        type="checkbox"
+      />
+    </div>
+    <div
+      class="Planum-c-hyHTE Planum-c-hyHTE-koxIsH-isSelected-false"
+    >
+      <span
+        class="Planum-c-filUNh"
+      >
+        <svg
+          height="14"
+          viewBox="0 0 256 256"
+          width="14"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0 0h256v256H0z"
+            fill="none"
+          />
+          <path
+            d="M216 72 104 184l-56-56"
+            fill="none"
+            stroke="currentColor"
+            stroke-dasharray="400"
+            stroke-dashoffset="-400"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="28"
+            style="transition: all .2s;"
+          />
+        </svg>
+      </span>
+    </div>
+  </label>
+</div>
+`;
+
+exports[`Checkbox > with label 1`] = `
+<div>
+  <label
+    class="Planum-c-iPYhUp Planum-c-kLRYwF Planum-c-edbEbA"
+  >
+    <div
+      style="border: 0px; clip-path: inset(50%); height: 1px; margin: 0px -1px -1px 0px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap;"
+    >
+      <input
+        type="checkbox"
+      />
+    </div>
+    <div
+      class="Planum-c-hyHTE Planum-c-hyHTE-koxIsH-isSelected-false"
+    >
+      <span
+        class="Planum-c-filUNh"
+      >
+        <svg
+          height="14"
+          viewBox="0 0 256 256"
+          width="14"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0 0h256v256H0z"
+            fill="none"
+          />
+          <path
+            d="M216 72 104 184l-56-56"
+            fill="none"
+            stroke="currentColor"
+            stroke-dasharray="400"
+            stroke-dashoffset="-400"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="28"
+            style="transition: all .2s;"
+          />
+        </svg>
+      </span>
+    </div>
+    <p
+      class="Planum-c-iPYhUp Planum-c-kLRYwF Planum-c-iPYhUp-ikmBbln-css"
+    >
+      check me
+    </p>
+  </label>
+</div>
+`;

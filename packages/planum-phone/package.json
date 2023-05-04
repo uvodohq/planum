@@ -1,0 +1,48 @@
+{
+  "name": "@uvodohq/planum-phone",
+  "version": "0.2.0",
+  "description": "Planum Phone - phone input for Planum",
+  "author": "UvodoHQ",
+  "license": "MIT",
+  "homepage": "https://uvodo.design",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uvodohq/planum.git"
+  },
+  "bugs": {
+    "url": "https://github.com/uvodohq/planum/issues"
+  },
+  "sideEffects": false,
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "lint": "cross-env TIMING=1 eslint \"src/**/*.ts*\"",
+    "clean": "rimraf .turbo node_modules dist"
+  },
+  "dependencies": {
+    "libphonenumber-js": "^1.10.18",
+    "react-phone-number-input": "^3.2.16"
+  },
+  "devDependencies": {
+    "@floating-ui/react": "^0.18.1",
+    "@types/react": "^18.0.9",
+    "@types/react-dom": "^18.0.4",
+    "@uvodohq/eslint-config": "*",
+    "@uvodohq/planum": "*",
+    "eslint": "^8.15.0",
+    "framer-motion": "^6.5.1",
+    "planum-tsconfig": "*",
+    "react": "^18.1.0",
+    "tsup": "^5.10.1",
+    "typescript": "^4.5.3"
+  }
+}

@@ -1,0 +1,214 @@
+import { ArgsTable, Story, Canvas, Meta } from '@storybook/addon-docs'
+import { Flex, Box } from '../../layout'
+import { Button } from '../../button'
+import { Tooltip } from '../tooltip.tsx'
+import { TooltipPopup } from '../tooltip-popup.tsx'
+import { TooltipTrigger } from '../tooltip-trigger.tsx'
+
+<Meta
+  title="Components/Tooltip"
+  component={Tooltip}
+  parameters={{
+    chromatic: { disableSnapshot: true },
+  }}
+/>
+
+<!--- Component template -->
+
+export const tooltipTemplate = (args) => <Tooltip {...args} />
+
+<!--- Component documentation -->
+
+# Tooltip
+
+- [Overview](#overview)
+- [Variants](#variants)
+- [Props](#props)
+
+## Overview
+
+Tooltip components are used to display additional information about an element when the user hovers over or focuses on the element. They are shown on hover and focus, and are hidden on mouse leave or blur. The tooltips can be placed on the top, bottom, left, right and so on.
+
+## Variants
+
+### Simple
+
+In the simple variant of tooltip, you can add a label and children elements.
+
+<Canvas>
+  <Story name="Simple">
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <Button css={{ width: 80 }} variant="secondary" size="sm">
+          Simple
+        </Button>
+      </TooltipTrigger>
+      <TooltipPopup>text</TooltipPopup>
+    </Tooltip>
+  </Story>
+</Canvas>
+
+### With shown always
+
+The tooltip will be shown always when you set the <b>isOpen</b> prop to <b>true</b>.
+
+<Canvas>
+  <Story name="Shown always">
+    <Tooltip placement="top" open>
+      <TooltipTrigger asChild>
+        <Button css={{ width: 80 }} variant="secondary" size="sm">
+          Simple
+        </Button>
+      </TooltipTrigger>
+      <TooltipPopup>text</TooltipPopup>
+    </Tooltip>
+  </Story>
+</Canvas>
+
+### Tooltips with placements
+
+The tooltips can be placed on the top, bottom, left, right of elements.
+
+<Canvas>
+  <Story name="With placements">
+    <Box>
+      <Flex
+        css={{
+          ml: 100,
+          mb: 20,
+          maxWidth: 'fit-content',
+          justifyContent: 'space-between',
+          gap: 20,
+        }}>
+        <Tooltip placement="top-start">
+          <TooltipTrigger asChild>
+            <Button css={{ width: 80 }} variant="secondary" size="sm">
+              TS
+            </Button>
+          </TooltipTrigger>
+          <TooltipPopup>text</TooltipPopup>
+        </Tooltip>
+        <Tooltip placement="top">
+          <TooltipTrigger asChild>
+            <Button css={{ width: 80 }} variant="secondary" size="sm">
+              TOP
+            </Button>
+          </TooltipTrigger>
+          <TooltipPopup>text</TooltipPopup>
+        </Tooltip>
+        <Tooltip placement="top-end">
+          <TooltipTrigger asChild>
+            <Button css={{ width: 80 }} variant="secondary" size="sm">
+              TE
+            </Button>
+          </TooltipTrigger>
+          <TooltipPopup>text</TooltipPopup>
+        </Tooltip>
+      </Flex>
+      <Flex css={{ justifyContent: 'space-between' }}>
+        <Flex
+          css={{
+            width: 100,
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            gap: 20,
+          }}>
+          <Tooltip placement="left-start">
+            <TooltipTrigger asChild>
+              <Button css={{ width: 80 }} variant="secondary" size="sm">
+                LS
+              </Button>
+            </TooltipTrigger>
+            <TooltipPopup>text</TooltipPopup>
+          </Tooltip>
+          <Tooltip placement="left">
+            <TooltipTrigger asChild>
+              <Button css={{ width: 80 }} variant="secondary" size="sm">
+                LEFT
+              </Button>
+            </TooltipTrigger>
+            <TooltipPopup>text</TooltipPopup>
+          </Tooltip>
+          <Tooltip placement="left-end">
+            <TooltipTrigger asChild>
+              <Button css={{ width: 80 }} variant="secondary" size="sm">
+                LE
+              </Button>
+            </TooltipTrigger>
+            <TooltipPopup>text</TooltipPopup>
+          </Tooltip>
+        </Flex>
+        <Flex
+          css={{
+            ml: 300,
+            width: 100,
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            gap: 20,
+          }}>
+          <Tooltip placement="right-start">
+            <TooltipTrigger asChild>
+              <Button css={{ width: 80 }} variant="secondary" size="sm">
+                RS
+              </Button>
+            </TooltipTrigger>
+            <TooltipPopup>text</TooltipPopup>
+          </Tooltip>
+          <Tooltip placement="right">
+            <TooltipTrigger asChild>
+              <Button css={{ width: 80 }} variant="secondary" size="sm">
+                RIGHT
+              </Button>
+            </TooltipTrigger>
+            <TooltipPopup>text</TooltipPopup>
+          </Tooltip>
+          <Tooltip placement="right-end">
+            <TooltipTrigger asChild>
+              <Button css={{ width: 80 }} variant="secondary" size="sm">
+                RE
+              </Button>
+            </TooltipTrigger>
+            <TooltipPopup>text</TooltipPopup>
+          </Tooltip>
+        </Flex>
+      </Flex>
+      <Flex
+        css={{
+          ml: 100,
+          mt: 20,
+          maxWidth: 'fit-content',
+          justifyContent: 'space-between',
+          gap: 20,
+        }}>
+        <Tooltip placement="bottom-start">
+          <TooltipTrigger asChild>
+            <Button css={{ width: 80 }} variant="secondary" size="sm">
+              BS
+            </Button>
+          </TooltipTrigger>
+          <TooltipPopup>text</TooltipPopup>
+        </Tooltip>
+        <Tooltip placement="bottom">
+          <TooltipTrigger asChild>
+            <Button css={{ width: 80 }} variant="secondary" size="sm">
+              BUTTON
+            </Button>
+          </TooltipTrigger>
+          <TooltipPopup>text</TooltipPopup>
+        </Tooltip>
+        <Tooltip placement="bottom-end">
+          <TooltipTrigger asChild>
+            <Button css={{ width: 80 }} variant="secondary" size="sm">
+              BE
+            </Button>
+          </TooltipTrigger>
+          <TooltipPopup>text</TooltipPopup>
+        </Tooltip>
+      </Flex>
+    </Box>
+  </Story>
+</Canvas>
+
+## Props
+
+<ArgsTable of={Tooltip} />

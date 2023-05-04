@@ -1,0 +1,103 @@
+import { PhUser as UserIcon } from './user-icon.tsx'
+
+import { InputPassword } from '..'
+import { ArgsTable, Story, Canvas, Meta } from '@storybook/addon-docs'
+import { InputPasswordExample } from './example.tsx'
+
+<Meta title="Components/InputPassword" component={InputPassword} />
+
+<!--- Component template -->
+
+export const inputPasswordTemplate = (args) => <InputPassword {...args} />
+
+<!--- Component documentation -->
+
+# Input
+
+- [Overview](#overview)
+- [Props](#props)
+- [Usage](#usage)
+- [Variants](#variants)
+
+## Overview
+
+An input field includes a label and a text field users can type text into. They typically appear in forms and dialogs.
+
+<Canvas>
+  <InputPasswordExample />
+</Canvas>
+
+## Variants
+
+### Default
+
+<Canvas>
+  <Story name="Default">
+    <InputPassword placeholder="Input Placeholder" />
+  </Story>
+</Canvas>
+
+### States
+
+<Canvas>
+  <Story name="States">
+    <InputPassword label="Normal" placeholder="Input Placeholder" />
+    <InputPassword
+      label="Disabled"
+      placeholder="Input Placeholder"
+      isDisabled
+    />
+    <InputPassword
+      label="Error"
+      placeholder="Input Placeholder"
+      status="error"
+    />
+    <InputPassword
+      label="Success"
+      placeholder="Input Placeholder"
+      status="success"
+    />
+  </Story>
+</Canvas>
+
+### With States Messages
+
+<Canvas>
+  <Story name="States with messages">
+    <InputPassword
+      label="Normal"
+      placeholder="Input Placeholder"
+      description="Normal input"
+    />
+    <InputPassword
+      label="Disabled"
+      placeholder="Input Placeholder"
+      isDisabled
+      description="Disabled input"
+    />
+    <InputPassword
+      label="Error"
+      placeholder="Input Placeholder"
+      status="error"
+      errorMessage="Error input"
+    />
+    <InputPassword
+      label="Success"
+      placeholder="Input Placeholder"
+      status="success"
+      successMessage="Success input"
+    />
+  </Story>
+</Canvas>
+
+### With Icons
+
+<Canvas>
+  <Story name="With Icons">
+    <InputPassword placeholder="Input Placeholder" leftIcon={<UserIcon />} />
+  </Story>
+</Canvas>
+
+## Props
+
+<ArgsTable of={InputPassword} />

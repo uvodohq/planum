@@ -1,0 +1,61 @@
+// Vitest Snapshot v1
+
+exports[`<Badge /> > should renders danger variant badge with right text 1`] = `
+<div>
+  <span
+    class="Planum-c-iPYhUp Planum-c-kLRYwF Planum-c-dtudLY Planum-c-dtudLY-eNlZJL-variant-danger Planum-c-dtudLY-gTzoIO-roundness-pill"
+  >
+    danger
+  </span>
+</div>
+`;
+
+exports[`<Badge /> > should renders neutral variant badge with right text 1`] = `
+<div>
+  <span
+    class="Planum-c-iPYhUp Planum-c-kLRYwF Planum-c-dtudLY Planum-c-dtudLY-eQBtDl-variant-neutral Planum-c-dtudLY-gTzoIO-roundness-pill"
+  >
+    neutral
+  </span>
+</div>
+`;
+
+exports[`<Badge /> > should renders outlinePrimary variant badge with right text 1`] = `
+<div>
+  <span
+    class="Planum-c-iPYhUp Planum-c-kLRYwF Planum-c-dtudLY Planum-c-dtudLY-jJsbnp-variant-outlinePrimary Planum-c-dtudLY-gTzoIO-roundness-pill"
+  >
+    outlinePrimary
+  </span>
+</div>
+`;
+
+exports[`<Badge /> > should renders secondary variant badge with right text 1`] = `
+<div>
+  <span
+    class="Planum-c-iPYhUp Planum-c-kLRYwF Planum-c-dtudLY Planum-c-dtudLY-ebPlNg-variant-secondary Planum-c-dtudLY-gTzoIO-roundness-pill"
+  >
+    secondary
+  </span>
+</div>
+`;
+
+exports[`<Badge /> > should renders success variant badge with right text 1`] = `
+<div>
+  <span
+    class="Planum-c-iPYhUp Planum-c-kLRYwF Planum-c-dtudLY Planum-c-dtudLY-jhsIH-variant-success Planum-c-dtudLY-gTzoIO-roundness-pill"
+  >
+    success
+  </span>
+</div>
+`;
+
+exports[`<Badge /> > should renders warning variant badge with right text 1`] = `
+<div>
+  <span
+    class="Planum-c-iPYhUp Planum-c-kLRYwF Planum-c-dtudLY Planum-c-dtudLY-gHSaia-variant-warning Planum-c-dtudLY-gTzoIO-roundness-pill"
+  >
+    warning
+  </span>
+</div>
+`;

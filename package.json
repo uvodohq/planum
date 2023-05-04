@@ -1,0 +1,41 @@
+{
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "start": "yarn dev --filter=showcase...",
+    "build": "turbo run build",
+    "dev": "turbo run dev --no-cache --parallel --continue",
+    "test": "turbo run test",
+    "test:watch": "turbo run test:watch",
+    "deploy:apps": "turbo run deploy --filter=./apps/*",
+    "build:storybook": "turbo run build --filter=./apps/docs",
+    "build:showcase": "turbo run build --filter=./apps/showcase",
+    "lint": "turbo run lint",
+    "manypkg:check": "manypkg check",
+    "manypkg:depcheck": "manypkg exec depcheck --json",
+    "clean": "turbo run clean && rimraf node_modules",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "changeset": "changeset",
+    "bump": "changeset version",
+    "pub": "turbo run build test --filter=@uvodohq/* && changeset version && changeset publish",
+    "status": "changeset status --verbose",
+    "gen": "plop",
+    "update": "yarn upgrade-interactive --latest"
+  },
+  "devDependencies": {
+    "@changesets/changelog-github": "^0.4.7",
+    "@changesets/cli": "^2.22.0",
+    "@manypkg/cli": "^0.19.2",
+    "@uvodohq/eslint-config": "*",
+    "cross-env": "^7.0.3",
+    "depcheck": "^1.4.3",
+    "eslint": "^8.27.0",
+    "plop": "^3.1.0",
+    "prettier": "^2.7.1",
+    "rimraf": "^3.0.2",
+    "turbo": "latest"
+  }
+}

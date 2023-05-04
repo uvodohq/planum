@@ -1,0 +1,46 @@
+[
+  {
+    "name": "Australia",
+    "localName": "Australia",
+    "alpha2": "AU",
+    "alpha3": "AUS",
+    "numericCode": 36,
+    "officialName": null
+  },
+  {
+    "name": "Austria",
+    "localName": "Austria",
+    "alpha2": "AT",
+    "alpha3": "AUT",
+    "numericCode": 40,
+    "officialName": "Republic of Austria"
+  },
+  {
+    "name": "Azerbaijan",
+    "localName": "Azerbaijan",
+    "alpha2": "AZ",
+    "alpha3": "AZE",
+    "numericCode": 31,
+    "officialName": "Republic of Azerbaijan"
+  },
+  {
+    "name": "Belgium",
+    "localName": "Belgium",
+    "alpha2": "BE",
+    "alpha3": "BEL",
+    "numericCode": 56,
+    "officialName": "Kingdom of Belgium"
+  },
+  {
+    "name": "Benin",
+    "localName": "Benin",
+    "alpha2": "BJ",
+    "alpha3": "BEN",
+    "numericCode": 204,
+    "officialName": "Republic of Benin"
+  },
+  {
+    "name": "World Wide",
+    "alpha2": "WW"
+  }
+]

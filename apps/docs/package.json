@@ -1,0 +1,47 @@
+{
+  "name": "planum-storybook",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "start-storybook -p 6006 -s .storybook --no-open",
+    "build": "build-storybook --docs --loglevel error",
+    "preview": "serve storybook-static",
+    "deploy": "yarn build && netlify deploy --dir=./storybook-static --prod --site planum-storybook",
+    "clean": "rimraf .turbo  node_modules",
+    "chromatic": "chromatic --exit-zero-on-changes",
+    "chromatic:check": "cross-env npx chromatic --project-token=$CHROMATIC_PROJECT_TOKEN"
+  },
+  "dependencies": {
+    "@uvodohq/planum": "*",
+    "@uvodohq/planum-editor": "*",
+    "@uvodohq/planum-icons": "*",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "devDependencies": {
+    "@storybook/addon-a11y": "^6.5.9",
+    "@storybook/addon-actions": "^6.5.9",
+    "@storybook/addon-docs": "^6.5.13",
+    "@storybook/addon-essentials": "^6.5.9",
+    "@storybook/addon-interactions": "^6.5.9",
+    "@storybook/addon-links": "^6.5.9",
+    "@storybook/addons": "^6.5.9",
+    "@storybook/builder-vite": "^0.2.2",
+    "@storybook/react": "^6.5.9",
+    "@storybook/testing-library": "^0.0.13",
+    "@storybook/theming": "^6.5.9",
+    "@uvodohq/eslint-config": "*",
+    "babel-loader": "^8.2.5",
+    "chromatic": "^6.7.2",
+    "classnames": "^2.3.1",
+    "cross-env": "^7.0.3",
+    "monday-ui-style": "^0.1.102",
+    "planum-tsconfig": "*",
+    "sass": "^1.56.0",
+    "serve": "^13.0.2",
+    "storybook-addon-react-docgen": "^1.2.42",
+    "storybook-addon-themes": "^6.1.0",
+    "typescript": "^4.6.4",
+    "vite": "3.0.4"
+  }
+}

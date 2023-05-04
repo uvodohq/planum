@@ -1,0 +1,52 @@
+// Vitest Snapshot v1
+
+exports[`<Button /> > should show loading and not accept onClick 1`] = `
+<button
+  aria-busy="true"
+  aria-label="Loading"
+  class="Planum-c-eDYXqN Planum-c-eDYXqN-KUnxm-size-md Planum-c-eDYXqN-eEPmHB-variant-primary Planum-c-eDYXqN-jUrwBA-isLoading-true"
+  disabled=""
+  type="button"
+>
+  <span
+    class="Planum-c-kxAGWb Planum-c-kxAGWb-icKbjjX-css"
+  >
+    <span
+      class="Planum-c-dbzzBd"
+    >
+      Button
+    </span>
+  </span>
+  <span
+    class="Planum-c-gXYcWj"
+  >
+    <span
+      class="Planum-c-ihyEMT Planum-c-ihyEMT-fEcTqV-speed-fast Planum-c-ihyEMT-hRvkRI-size-default Planum-c-ihyEMT-eGYJCk-theme-dark"
+      role="progressbar"
+      style="--planum-loader-percentage: 100;"
+    >
+      <svg
+        class="Planum-c-dIfLHp"
+        viewBox="0 0 50 50"
+      >
+        <circle
+          class="Planum-c-jlBdpC"
+          cx="25"
+          cy="25"
+          fill="none"
+          r="22"
+          stroke-width="4"
+        />
+        <circle
+          class="Planum-c-PJLV"
+          cx="25"
+          cy="25"
+          fill="none"
+          r="22"
+          stroke-width="4"
+        />
+      </svg>
+    </span>
+  </span>
+</button>
+`;
