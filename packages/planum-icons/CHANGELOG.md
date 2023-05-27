@@ -1,5 +1,11 @@
 # @uvodohq/planum-icons
 
+## 1.4.4
+
+### Patch Changes
+
+- - add caret-up-down icon
+
 ## 1.4.3
 
 ### Patch Changes
