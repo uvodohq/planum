@@ -10,7 +10,6 @@ const Regular: IconWeightComponent = ({ color }) => (
 )
 
 const weights = {
-  // duotone: Duotone,
   regular: Regular,
 }
 
