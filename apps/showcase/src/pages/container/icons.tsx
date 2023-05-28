@@ -1,5 +1,6 @@
 import { H3, Toaster } from '@uvodohq/planum'
 import * as icons from '@uvodohq/planum-icons'
+
 import { IconGrid, IconWrapper } from '../../components/icon-wrapper'
 
 interface Item {

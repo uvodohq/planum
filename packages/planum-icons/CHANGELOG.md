@@ -1,5 +1,11 @@
 # @uvodohq/planum-icons
 
+## 1.5.1
+
+### Patch Changes
+
+- add signin/signout/prohibit/target icons
+
 ## 1.5.0
 
 ### Minor Changes
