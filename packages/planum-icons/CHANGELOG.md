@@ -1,5 +1,11 @@
 # @uvodohq/planum-icons
 
+## 1.5.2
+
+### Patch Changes
+
+- add currency-circle-dollar icon
+
 ## 1.5.1
 
 ### Patch Changes

@@ -68,7 +68,7 @@ export const Icon = forwardRef<SVGSVGElement, IconProps & WeightComponentMap>(
         {...(isAccessible ? {} : iconAriaProps)}
         //
       >
-        {!!alt && isAccessible && <title>{alt}</title>}
+        {!!alt && isAccessible && <p>{alt}</p>}
         <rect width="256" height="256" fill="none" />
         <IconWeightComponent color={color} />
       </svg>
