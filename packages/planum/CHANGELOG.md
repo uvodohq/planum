@@ -1,5 +1,11 @@
 # @uvodohq/planum
 
+## 6.2.0
+
+### Minor Changes
+
+- add disabled feature for multi select options
+
 ## 6.1.2
 
 ### Patch Changes

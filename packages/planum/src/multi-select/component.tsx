@@ -71,6 +71,7 @@ export const SelectComponent = (props: SelectProps) => {
                       index={index}
                       item={option}
                       groupId={group.id.toString()}
+                      isDisabled={option.isDisabled}
                       asHeader
                     />
                   ))}
@@ -87,6 +88,7 @@ export const SelectComponent = (props: SelectProps) => {
                   index={index}
                   item={option}
                   groupId={group.id.toString()}
+                  isDisabled={option.isDisabled}
                 />
               ))}
             </SelectOptionGroup>

@@ -27,10 +27,12 @@ export const countryGroupList = [
         id: 555555,
         name: 'Worldwide',
         countryCode: 'WW',
+        isDisabled: true,
       },
       {
         id: 2222,
         name: 'Home country - Azerbaijan',
+        isDisabled: true,
       },
     ],
   },
@@ -43,6 +45,7 @@ export const countryGroupList = [
         id: 26,
         name: 'Albania',
         countryCode: 'AL',
+        isDisabled: true,
       },
       {
         id: 27,

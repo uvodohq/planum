@@ -2,7 +2,8 @@ import { useId } from '@floating-ui/react'
 
 import { Checkbox } from '../checkbox'
 import { Flag } from '../flag'
-import { subheaderCss } from '../text'
+import { Flex } from '../layout'
+import { Paragraph, subheaderCss } from '../text'
 import { styled } from '../theme'
 import { useSelectContext } from './context'
 import type { SelectOptionProps } from './select.types'
@@ -20,7 +21,8 @@ const StyledOption = styled('li', subheaderCss, {
   pl: 70,
   display: 'flex',
   alignItems: 'center',
-  gap: 4,
+  justifyContent: 'space-between',
+  gap: 8,
 
   // from floating
   '&:focus': {
@@ -44,7 +46,10 @@ const StyledOption = styled('li', subheaderCss, {
     },
     isDisabled: {
       true: {
-        '&:hover': {},
+        cursor: 'default',
+        '&:hover': {
+          background: 'none',
+        },
       },
     },
     matchWidth: {
@@ -87,10 +92,11 @@ interface OptionProps extends SelectOptionProps {
   item: any
   groupId: string
   asHeader?: boolean
+  isDisabled?: boolean
 }
 
 export const Option = (props: OptionProps) => {
-  const { index = 0, item, groupId, ...rest } = props
+  const { index = 0, item, groupId, isDisabled = false, ...rest } = props
   const { select, state } = useSelectContext()
   const { matchWidth, listItemsRef, labelKey } = select
   const { activeIndex, selectedItemsMap, updateState, onChange, onSelect } =
@@ -149,14 +155,37 @@ export const Option = (props: OptionProps) => {
   }
 
   return (
-    <StyledOption isFocused={isActive} {...optionProps} {...rest}>
-      <Checkbox
-        isSelected={isChecked}
-        onChange={toggleCheckbox}
-        aria-label={item[labelKey]}
-      />
-      {item.countryCode && <Flag country={item.countryCode} />}
-      {item[labelKey]}
+    <StyledOption
+      isFocused={isActive}
+      {...optionProps}
+      {...rest}
+      isDisabled={isDisabled}>
+      <Flex
+        css={{
+          alignItems: 'center',
+          gap: '$8',
+          opacity: isDisabled ? 0.4 : 1,
+        }}>
+        <Checkbox
+          isSelected={isChecked || isDisabled}
+          onChange={toggleCheckbox}
+          aria-label={item[labelKey]}
+        />
+        {item.countryCode && <Flag country={item.countryCode} />}
+        {item[labelKey]}
+      </Flex>
+
+      {isDisabled && (
+        <Paragraph
+          css={{
+            color: '$textDisabled',
+            textTransform: 'lowercase',
+            fontWeight: '$regular',
+            letterSpacing: 0,
+          }}>
+          used
+        </Paragraph>
+      )}
     </StyledOption>
   )
 }

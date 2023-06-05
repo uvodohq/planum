@@ -2,7 +2,7 @@ import * as Accordion from '@radix-ui/react-accordion'
 import * as React from 'react'
 
 import { Checkbox } from '../checkbox'
-import { overlineCss } from '../text'
+import { overlineCss, Paragraph } from '../text'
 import { css, keyframes } from '../theme'
 import { useSelectContext } from './context'
 import { SelectDownIcon } from './icons'
@@ -196,6 +196,9 @@ export const SelectOptionGroup = ({ children, group }: Props) => {
             onChange={toggleGroup}
           />
           {group.name}
+          {group.isDisabled && (
+            <Paragraph css={{ color: '$textLight' }}>used</Paragraph>
+          )}
         </AccordionTrigger>
         <AccordionContent>{children}</AccordionContent>
       </li>

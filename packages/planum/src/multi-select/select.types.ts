@@ -47,6 +47,7 @@ export interface SelectOptionProps {
 export interface Option {
   id: string | number
   name: string
+  isDisabled?: boolean
 }
 
 export interface GroupItem {
@@ -54,6 +55,7 @@ export interface GroupItem {
   id: string | number
   withAccordion?: boolean
   children: Option[]
+  isDisabled?: boolean
 }
 
 export interface SelectComponentProps {
