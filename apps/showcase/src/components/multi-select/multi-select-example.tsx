@@ -7,6 +7,7 @@ export default function MultiSelectExample(props?: Partial<MultiSelectProps>) {
       items={countryGroupList}
       aria-label="label"
       placeholder="Multi Select a country"
+      onChange={(value) => console.log(value)}
       {...props}
     />
   )

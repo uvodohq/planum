@@ -95,12 +95,14 @@ export const Option = (props: OptionProps) => {
   const toggleCheckbox = (value: boolean) => {
     let selectedItemsOfGroup = [...selectedItemsMap.get(groupId)!]
 
-    if (value) {
-      selectedItemsOfGroup.push(item)
-    } else {
-      selectedItemsOfGroup = selectedItemsOfGroup.filter(
-        ({ id }) => id !== item.id,
-      )
+    if (!isDisabled) {
+      if (value) {
+        selectedItemsOfGroup.push(item)
+      } else {
+        selectedItemsOfGroup = selectedItemsOfGroup.filter(
+          ({ id }) => id !== item.id,
+        )
+      }
     }
 
     selectedItemsMap.set(groupId, selectedItemsOfGroup)
@@ -138,7 +140,7 @@ export const Option = (props: OptionProps) => {
 
   return (
     <StyledOption
-      isFocused={isActive}
+      // isFocused={isActive}
       {...optionProps}
       {...rest}
       isDisabled={isDisabled}>

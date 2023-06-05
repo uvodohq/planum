@@ -1,5 +1,17 @@
 # @uvodohq/planum
 
+## 6.2.3
+
+### Patch Changes
+
+- fix multi select disable issue
+
+## 6.2.2
+
+### Patch Changes
+
+- fix multi select disable issue
+
 ## 6.2.1
 
 ### Patch Changes
