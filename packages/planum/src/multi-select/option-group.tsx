@@ -2,8 +2,9 @@ import * as Accordion from '@radix-ui/react-accordion'
 import * as React from 'react'
 
 import { Checkbox } from '../checkbox'
+import { Flex } from '../layout'
 import { overlineCss, Paragraph } from '../text'
-import { css, keyframes } from '../theme'
+import { css, keyframes, styled } from '../theme'
 import { useSelectContext } from './context'
 import { SelectDownIcon } from './icons'
 import type { GroupItem } from './select.types'
@@ -26,14 +27,14 @@ const slideUp = keyframes({
   },
 })
 
-const headerCss = css(overlineCss, {
+const StyledHeader = styled(Accordion.Header, overlineCss, {
   position: 'sticky',
   top: 0,
   zIndex: 3,
   bg: '$white',
 })
 
-const groupHeaderCss = css(overlineCss, {
+const StyledTrigger = styled(Accordion.Trigger, overlineCss, {
   fontWeight: '$semibold',
   padding: 8,
   userSelect: 'none',
@@ -47,7 +48,8 @@ const groupHeaderCss = css(overlineCss, {
   width: '100%',
   display: 'flex',
   alignItems: 'center',
-  gap: 8,
+  justifyContent: 'space-between',
+  gap: 4,
 
   '&:focus': {
     backgroundColor: '$surface200',
@@ -60,10 +62,14 @@ const groupHeaderCss = css(overlineCss, {
     backgroundColor: '$surface100',
   },
 
-  [`&[data-state='open'] > span`]: {
+  '& .arrow-icon': {
+    transition: 'transform 300ms cubic-bezier(0.87, 0, 0.13, 1)',
+  },
+
+  [`&[data-state='open']  .arrow-icon`]: {
     transform: 'rotate(0deg)',
   },
-  [`&[data-state='closed'] > span`]: {
+  [`&[data-state='closed']  .arrow-icon`]: {
     transform: 'rotate(-90deg)',
   },
 
@@ -88,9 +94,19 @@ const groupHeaderCss = css(overlineCss, {
         '&:hover': {},
       },
     },
+
     isDisabled: {
       true: {
-        '&:hover': {},
+        cursor: 'default',
+
+        background: 'none',
+        '&:hover': {
+          background: 'none',
+        },
+
+        '&:focus': {
+          background: 'none',
+        },
       },
     },
   },
@@ -117,16 +133,19 @@ const groupContentCss = css({
 })
 
 const AccordionTrigger = React.forwardRef<{}, any>(
-  ({ children, ...props }, forwardedRef) => (
-    <Accordion.Header className={headerCss()}>
-      <Accordion.Trigger
-        className={groupHeaderCss()}
-        {...props}
-        ref={forwardedRef}>
-        {children}
-      </Accordion.Trigger>
-    </Accordion.Header>
-  ),
+  ({ children, isDisabled = false, css = {}, ...props }, forwardedRef) => {
+    return (
+      <StyledHeader>
+        <StyledTrigger
+          // className={groupHeaderCss()}
+          {...props}
+          isDisabled={isDisabled}
+          ref={forwardedRef}>
+          {children}
+        </StyledTrigger>
+      </StyledHeader>
+    )
+  },
 )
 
 AccordionTrigger.displayName = 'AccordionTrigger'
@@ -159,12 +178,15 @@ export const SelectOptionGroup = ({ children, group }: Props) => {
   const { selectedItemsMap, updateState, itemsMap, onChange, onSelect } = state
 
   const notFilteredGroup = itemsMap.get(groupId)
+  const isDisabled = notFilteredGroup?.isDisabled ?? false
 
   const checkedCount = selectedItemsMap.get(groupId)?.length ?? 0
   const isAllChecked = checkedCount === notFilteredGroup.children.length
   const isIndeterminate = checkedCount > 0 && !isAllChecked
 
   const toggleGroup = (value: boolean) => {
+    if (isDisabled) return
+
     const selectedItemsOfGroup = value ? [...notFilteredGroup.children] : []
     selectedItemsMap.set(groupId, selectedItemsOfGroup)
 
@@ -187,17 +209,32 @@ export const SelectOptionGroup = ({ children, group }: Props) => {
   return (
     <Accordion.Item value={groupId.toString()} asChild>
       <li className={liCss()}>
-        <AccordionTrigger>
-          <SelectDownIcon size={24} />
-          <Checkbox
-            isSelected={isAllChecked}
-            isIndeterminate={isIndeterminate}
-            aria-label={group.name}
-            onChange={toggleGroup}
-          />
-          {group.name}
-          {group.isDisabled && (
-            <Paragraph css={{ color: '$textLight' }}>used</Paragraph>
+        <AccordionTrigger isDisabled={isDisabled}>
+          <Flex
+            css={{
+              alignItems: 'center',
+              gap: '$8',
+              opacity: isDisabled ? 0.4 : 1,
+            }}>
+            <SelectDownIcon size={24} className="arrow-icon" />
+            <Checkbox
+              isSelected={isAllChecked || isDisabled}
+              isIndeterminate={isIndeterminate}
+              aria-label={group.name}
+              onChange={toggleGroup}
+            />
+            {group.name}
+          </Flex>
+          {isDisabled && (
+            <Paragraph
+              css={{
+                color: '$textLight',
+                textTransform: 'lowercase',
+                letterSpacing: 0,
+                fw: '$regular',
+              }}>
+              used
+            </Paragraph>
           )}
         </AccordionTrigger>
         <AccordionContent>{children}</AccordionContent>

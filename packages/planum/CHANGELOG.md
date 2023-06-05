@@ -1,5 +1,11 @@
 # @uvodohq/planum
 
+## 6.3.0
+
+### Minor Changes
+
+- fix all continent selection issue
+
 ## 6.2.3
 
 ### Patch Changes

@@ -93,16 +93,15 @@ export const Option = (props: OptionProps) => {
   const isActive = activeIndex === index
 
   const toggleCheckbox = (value: boolean) => {
+    if (isDisabled) return
     let selectedItemsOfGroup = [...selectedItemsMap.get(groupId)!]
 
-    if (!isDisabled) {
-      if (value) {
-        selectedItemsOfGroup.push(item)
-      } else {
-        selectedItemsOfGroup = selectedItemsOfGroup.filter(
-          ({ id }) => id !== item.id,
-        )
-      }
+    if (value) {
+      selectedItemsOfGroup.push(item)
+    } else {
+      selectedItemsOfGroup = selectedItemsOfGroup.filter(
+        ({ id }) => id !== item.id,
+      )
     }
 
     selectedItemsMap.set(groupId, selectedItemsOfGroup)
@@ -139,11 +138,7 @@ export const Option = (props: OptionProps) => {
   }
 
   return (
-    <StyledOption
-      // isFocused={isActive}
-      {...optionProps}
-      {...rest}
-      isDisabled={isDisabled}>
+    <StyledOption {...optionProps} {...rest} isDisabled={isDisabled}>
       <Flex
         css={{
           alignItems: 'center',
