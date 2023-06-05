@@ -25,11 +25,6 @@ const StyledOption = styled('li', subheaderCss, {
   gap: 8,
 
   // from floating
-  '&:focus': {
-    backgroundColor: '$surface200',
-    position: 'relative',
-    zIndex: 1,
-  },
 
   '&::marker': { display: 'none' },
 
@@ -38,12 +33,6 @@ const StyledOption = styled('li', subheaderCss, {
   },
 
   variants: {
-    isFocused: {
-      true: {
-        backgroundColor: '$surface200',
-        '&:hover': {},
-      },
-    },
     isDisabled: {
       true: {
         cursor: 'default',
@@ -75,14 +64,7 @@ const StyledOption = styled('li', subheaderCss, {
       },
     },
   },
-  compoundVariants: [
-    {
-      isFocused: true,
-      css: {
-        backgroundColor: '$primary100',
-      },
-    },
-  ],
+
   defaultVariants: {
     matchWidth: true,
   },
@@ -170,6 +152,7 @@ export const Option = (props: OptionProps) => {
           isSelected={isChecked || isDisabled}
           onChange={toggleCheckbox}
           aria-label={item[labelKey]}
+          isDisabled={isDisabled}
         />
         {item.countryCode && <Flag country={item.countryCode} />}
         {item[labelKey]}
