@@ -1,4 +1,13 @@
-import React from 'react'
+import type { AriaTextFieldOptions } from '@react-aria/textfield'
+import type { CSSProperties } from 'react'
+import React, { Fragment } from 'react'
+
+import type { CSS } from '../theme'
+import {
+  StyledContainer,
+  styledInput,
+  StyledSeparator,
+} from './otp-input.styles'
 
 type AllowedInputTypes = 'password' | 'text' | 'number' | 'tel'
 
@@ -23,42 +32,45 @@ type InputProps = Required<
   }
 >
 
-interface OTPInputProps {
+export type OTPInputProps = AriaTextFieldOptions<'input'> & {
   /** Value of the OTP input */
   value?: string
   /** Number of OTP inputs to be rendered */
   numInputs?: number
   /** Callback to be called when the OTP value changes */
-  onChange: (otp: string) => void
   /** Function to render the input */
-  renderInput: (inputProps: InputProps, index: number) => React.ReactNode
+  // renderInput: (inputProps: InputProps, index: number) => React.ReactNode
   /** Whether the first input should be auto focused */
   shouldAutoFocus?: boolean
   /** Placeholder for the inputs */
   placeholder?: string
-  /** Function to render the separator */
-  renderSeparator?: ((index: number) => React.ReactNode) | React.ReactNode
-  /** Style for the container */
-  containerStyle?: React.CSSProperties | string
-  /** Style for the input */
-  inputStyle?: React.CSSProperties | string
+  /** Separator between the inputs */
+  separator?: string
   /** The type that will be passed to the input being rendered */
   inputType?: AllowedInputTypes
+  /** Style for the container */
+  containerCss?: CSS
+  /** Style for the input */
+  inputCss?: CSSProperties
+  /** Style for the separator */
+  separatorCss?: CSS
 }
-
-const isStyleObject = (obj: unknown) => typeof obj === 'object' && obj !== null
 
 export const OTPInput = ({
   value = '',
   numInputs = 4,
   onChange,
-  renderInput,
+  // renderInput,
   shouldAutoFocus = false,
   inputType = 'text',
-  renderSeparator,
   placeholder,
-  containerStyle,
-  inputStyle,
+  containerCss,
+  inputCss,
+  separatorCss,
+  separator = '',
+  isDisabled,
+  isReadOnly,
+  ...rest
 }: OTPInputProps) => {
   const [activeInput, setActiveInput] = React.useState(0)
   const inputRefs = React.useRef<Array<HTMLInputElement | null>>([])
@@ -78,25 +90,16 @@ export const OTPInput = ({
   }, [shouldAutoFocus])
 
   const getPlaceholderValue = () => {
-    if (typeof placeholder === 'string') {
-      if (placeholder.length === numInputs) {
-        return placeholder
-      }
-
-      if (placeholder.length > 0) {
-        console.error(
-          'Length of the placeholder should be equal to the number of inputs.',
-        )
-      }
+    if (typeof placeholder === 'string' && placeholder.length === numInputs) {
+      return placeholder
     }
+
     return undefined
   }
 
-  const isInputValueValid = (value: string) => {
-    const isTypeValid = isInputNum
-      ? !Number.isNaN(Number(value))
-      : typeof value === 'string'
-    return isTypeValid && value.trim().length === 1
+  const handleOTPChange = (otp: Array<string>) => {
+    const otpValue = otp.join('')
+    onChange(otpValue)
   }
 
   const focusInput = (index: number) => {
@@ -109,15 +112,17 @@ export const OTPInput = ({
     }
   }
 
-  const handleOTPChange = (otp: Array<string>) => {
-    const otpValue = otp.join('')
-    onChange(otpValue)
-  }
-
   const changeCodeAtFocus = (value: string) => {
     const otp = getOTPValue()
     otp[activeInput] = value[0]
     handleOTPChange(otp)
+  }
+
+  const isInputValueValid = (value: string) => {
+    const isTypeValid = isInputNum
+      ? !Number.isNaN(Number(value))
+      : typeof value === 'string'
+    return isTypeValid && value.trim().length === 1
   }
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -199,6 +204,7 @@ export const OTPInput = ({
     event.preventDefault()
 
     const otp = getOTPValue()
+
     let nextActiveInput = activeInput
 
     // Get pastedData in an array of max size (num of inputs - current position)
@@ -226,45 +232,33 @@ export const OTPInput = ({
   }
 
   return (
-    <div
-      style={Object.assign(
-        { display: 'flex', alignItems: 'center' },
-        isStyleObject(containerStyle) && containerStyle,
-      )}
-      className={
-        typeof containerStyle === 'string' ? containerStyle : undefined
-      }>
+    <StyledContainer css={containerCss}>
       {Array.from({ length: numInputs }, (_, index) => index).map((index) => (
-        <React.Fragment key={index}>
-          {renderInput(
-            {
-              value: getOTPValue()[index] ?? '',
-              placeholder: getPlaceholderValue()?.[index] ?? undefined,
-              ref: (element) => (inputRefs.current[index] = element),
-              onChange: handleChange,
-              onFocus: (event) => handleFocus(event)(index),
-              onBlur: handleBlur,
-              onKeyDown: handleKeyDown,
-              onPaste: handlePaste,
-              autoComplete: 'off',
-              maxLength: 1,
-              'aria-label': `Please enter OTP character ${index + 1}`,
-              style: Object.assign(
-                { width: '1em', textAlign: 'center' } as const,
-                isStyleObject(inputStyle) && inputStyle,
-              ),
-              className:
-                typeof inputStyle === 'string' ? inputStyle : undefined,
-              type: inputType,
-            },
-            index,
+        <Fragment key={index}>
+          <input
+            value={getOTPValue()[index] ?? ''}
+            placeholder={getPlaceholderValue()?.[index] ?? undefined}
+            ref={(element) => (inputRefs.current[index] = element)}
+            onChange={handleChange}
+            onFocus={(event) => handleFocus(event)(index)}
+            onBlur={handleBlur}
+            onKeyDown={handleKeyDown}
+            onPaste={handlePaste}
+            autoComplete="off"
+            maxLength={1}
+            aria-label={`Please enter OTP character ${index + 1}`}
+            type={inputType}
+            className={styledInput()}
+            disabled={isDisabled || isReadOnly}
+            style={inputCss}
+            {...rest}
+          />
+
+          {index < numInputs - 1 && (
+            <StyledSeparator css={separatorCss}>{separator}</StyledSeparator>
           )}
-          {index < numInputs - 1 &&
-            (typeof renderSeparator === 'function'
-              ? renderSeparator(index)
-              : renderSeparator)}
-        </React.Fragment>
+        </Fragment>
       ))}
-    </div>
+    </StyledContainer>
   )
 }

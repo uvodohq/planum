@@ -112,6 +112,7 @@ export { MultiSelect } from './multi-select'
 export type { MultiSelectProps } from './multi-select'
 // Otp Input
 export { OTPInput } from './otp-input'
+export type { OTPInputProps } from './otp-input'
 // popover
 export {
   Popover,

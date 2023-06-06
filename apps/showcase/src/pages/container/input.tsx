@@ -149,6 +149,7 @@ const InputSearchExample = () => {
 
 export default function InputContainer() {
   const [number, setNumber] = useState()
+  const [otp, setOtp] = useState('')
 
   return (
     <>
@@ -157,24 +158,19 @@ export default function InputContainer() {
       {/* Empty Idle */}
       <RowBox>
         <OTPInput
-          onChange={(value) => console.warn('OTPInput', value)}
-          renderInput={(props) => (
-            <input
-              {...props}
-              style={{
-                border: '1px solid #000',
-                color: 'red',
-                textAlign: 'center',
-              }}
-            />
-          )}
-          value="1234"
-          numInputs={6}
-          placeholder="Otp placeholder"
-          inputType="number"
+          onChange={(value) => {
+            console.warn(value)
+            setOtp(value)
+          }}
+          value={otp}
+          numInputs={4}
+          placeholder="1"
           shouldAutoFocus
-          renderSeparator={<span>-</span>}
+          containerCss={{
+            gap: 8,
+          }}
         />
+
         <Input aria-label="label" placeholder="Input Placeholder" autoFocus />
         <Input
           aria-label="label"

@@ -9,39 +9,40 @@ import {
   Stack,
   styled,
 } from '@uvodohq/planum'
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import * as z from 'zod'
 
+import { isValidPhoneNumber } from '@uvodohq/planum-phone'
+import { Subheader } from '@uvodohq/planum/src'
 import {
   AutoCompleteTagsField,
   CheckboxField,
   CheckboxGroupField,
   EditorField,
   Form,
+  MaskField,
+  MultiSelectField,
   NumberField,
+  OTPInputField,
   PasswordField,
-  RadioGroupField,
-  schemas,
-  SelectField,
-  TagSelectField,
-  TextareaField,
-  TextField,
-  ToggleField,
-  UrlField,
-  useFormHandlers,
-  PriceField,
-  QuantityField,
   PercentField,
   PhoneInputField,
-  MultiSelectField,
-  MaskField,
+  PriceField,
+  QuantityField,
+  RadioGroupField,
+  SelectField,
+  TagSelectField,
+  TextField,
+  TextareaField,
+  ToggleField,
+  UrlField,
+  schemas,
+  useFormHandlers,
 } from '../../components/form'
 import { DEFAULT_NUMBER } from '../../components/form/schemas'
-import { Subheader } from '@uvodohq/planum/src'
-import { isValidPhoneNumber } from '@uvodohq/planum-phone'
 import { countryGroupList } from '../../components/multi-select/country-group-list'
 
 const StyledTitle = styled(Subheader, {
@@ -117,6 +118,7 @@ const requiredSchema = z.string().min(1, { message: 'This field required' })
 
 const schema = z
   .object({
+    otp_field: z.string(),
     text_field: requiredSchema,
     expire_date: z.string(),
     credit_card: z.string().transform((value) => value.replace(/\D/g, '')),
@@ -162,6 +164,7 @@ const schema = z
 type FormValues = z.infer<typeof schema>
 
 const filledValues = {
+  otp_field: '123456',
   text_field: 'Uvodo',
   credit_card: '3333 3333 4555 5666',
   expire_date: '',
@@ -197,6 +200,7 @@ function useInitialValues() {
 
   const initialValues = useMemo(() => {
     return {
+      otp_field: '',
       text_field: '',
       credit_card: '',
       expire_date: '',
@@ -461,6 +465,8 @@ function Container() {
           />
 
           <EditorField name="editor_field" aria-label="Editor" label="Policy" />
+
+          <OTPInputField name="otp_field" numInputs={6} />
         </Stack>
       </Flex>
 
