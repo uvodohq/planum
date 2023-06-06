@@ -24,8 +24,6 @@ const StyledOption = styled('li', subheaderCss, {
   justifyContent: 'space-between',
   gap: 8,
 
-  // from floating
-
   '&::marker': { display: 'none' },
 
   '&:hover': {

@@ -1,5 +1,11 @@
 # @uvodohq/planum
 
+## 6.3.1
+
+### Patch Changes
+
+- fix all continent selection issue in multi select
+
 ## 6.3.0
 
 ### Minor Changes

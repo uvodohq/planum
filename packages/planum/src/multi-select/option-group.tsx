@@ -133,14 +133,10 @@ const groupContentCss = css({
 })
 
 const AccordionTrigger = React.forwardRef<{}, any>(
-  ({ children, isDisabled = false, css = {}, ...props }, forwardedRef) => {
+  ({ children, isDisabled = false, ...props }, forwardedRef) => {
     return (
       <StyledHeader>
-        <StyledTrigger
-          // className={groupHeaderCss()}
-          {...props}
-          isDisabled={isDisabled}
-          ref={forwardedRef}>
+        <StyledTrigger {...props} isDisabled={isDisabled} ref={forwardedRef}>
           {children}
         </StyledTrigger>
       </StyledHeader>
@@ -178,16 +174,19 @@ export const SelectOptionGroup = ({ children, group }: Props) => {
   const { selectedItemsMap, updateState, itemsMap, onChange, onSelect } = state
 
   const notFilteredGroup = itemsMap.get(groupId)
+  const notFilteredGroupChildren =
+    notFilteredGroup?.children.filter((country: any) => !country.isDisabled) ??
+    []
   const isDisabled = notFilteredGroup?.isDisabled ?? false
 
   const checkedCount = selectedItemsMap.get(groupId)?.length ?? 0
-  const isAllChecked = checkedCount === notFilteredGroup.children.length
+  const isAllChecked = checkedCount === notFilteredGroupChildren?.length
   const isIndeterminate = checkedCount > 0 && !isAllChecked
 
   const toggleGroup = (value: boolean) => {
     if (isDisabled) return
 
-    const selectedItemsOfGroup = value ? [...notFilteredGroup.children] : []
+    const selectedItemsOfGroup = value ? [...notFilteredGroupChildren] : []
     selectedItemsMap.set(groupId, selectedItemsOfGroup)
 
     if (typeof onChange === 'function') {
