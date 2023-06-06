@@ -9,6 +9,7 @@ import {
   InputUrl,
 } from '@uvodohq/planum'
 import { CopySimpleIcon, UserIcon } from '@uvodohq/planum-icons'
+import { OTPInput } from '@uvodohq/planum/src'
 import { useState } from 'react'
 import { useFormatCurrency } from '../../components'
 import { Currency } from '../../components/form'
@@ -155,6 +156,25 @@ export default function InputContainer() {
 
       {/* Empty Idle */}
       <RowBox>
+        <OTPInput
+          onChange={(value) => console.warn('OTPInput', value)}
+          renderInput={(props) => (
+            <input
+              {...props}
+              style={{
+                border: '1px solid #000',
+                color: 'red',
+                textAlign: 'center',
+              }}
+            />
+          )}
+          value="1234"
+          numInputs={6}
+          placeholder="Otp placeholder"
+          inputType="number"
+          shouldAutoFocus
+          renderSeparator={<span>-</span>}
+        />
         <Input aria-label="label" placeholder="Input Placeholder" autoFocus />
         <Input
           aria-label="label"
