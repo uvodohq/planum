@@ -91,13 +91,13 @@ function formatExpireDate(expDate: string) {
   const cleaned = expDate.replace(/\D/g, '')
 
   // Split into month and year components
-  const month = cleaned.slice(0, 2)
-  const year = cleaned.slice(2, 4)
+  const month = Number(cleaned.slice(0, 2))
+  const year = Number(cleaned.slice(2, 4))
 
   // Check if year component is present
   if (year) {
     // Create a new date object with the month and year components
-    const expDateObj = new Date(`20${year}`, month - 1, 1)
+    const expDateObj = new Date(Number(`20${year}`), month - 1, 1)
 
     // Check if the resulting date object is a valid date
     if (expDateObj.getMonth() === month - 1) {
@@ -116,50 +116,47 @@ function formatExpireDate(expDate: string) {
 
 const requiredSchema = z.string().min(1, { message: 'This field required' })
 
-const schema = z
-  .object({
-    otp_field: z.string(),
-    text_field: requiredSchema,
-    expire_date: z.string(),
-    credit_card: z.string().transform((value) => value.replace(/\D/g, '')),
-    password_field: requiredSchema,
-    facebook_url: schemas.url(),
-    amountNumber: schemas.number(),
-    amountNull: schemas.number(),
-    price_field: schemas.number(),
-    quantity_field: schemas.number(),
-    percent_field: schemas.number(),
-    editor_field: z.string(),
-    checkbox_item_field: z.boolean(),
-    toggle_field: z.boolean(),
-    radio_field: requiredSchema,
-    textarea_field: requiredSchema,
-    select_field: z.number().nullable(),
-    phone_field: z
-      .string()
-      .nullable()
-      .refine(
-        (value) =>
-          typeof value === 'string' ? isValidPhoneNumber(value) : true,
-        {
-          message: 'Not Valid number',
-        },
-      ),
-    auto_complete_field: z.array(
-      z.object({
-        id: z.number(),
-        name: requiredSchema,
-      }),
+const schema = z.object({
+  otp_field: z.string(),
+  text_field: requiredSchema,
+  expire_date: z.string(),
+  credit_card: z.string().transform((value) => value.replace(/\D/g, '')),
+  password_field: requiredSchema,
+  facebook_url: schemas.url(),
+  amountNumber: schemas.number(),
+  amountNull: schemas.number(),
+  price_field: schemas.number(),
+  quantity_field: schemas.number(),
+  percent_field: schemas.number(),
+  editor_field: z.string(),
+  checkbox_item_field: z.boolean(),
+  toggle_field: z.boolean(),
+  radio_field: requiredSchema,
+  textarea_field: requiredSchema,
+  select_field: z.number().nullable(),
+  phone_field: z
+    .string()
+    .nullable()
+    .refine(
+      (value) => (typeof value === 'string' ? isValidPhoneNumber(value) : true),
+      {
+        message: 'Not Valid number',
+      },
     ),
-    tag_select_field: z.array(
-      z.object({
-        id: z.number(),
-        name: requiredSchema,
-      }),
-    ),
-    checkbox_group_field: z.array(requiredSchema),
-  })
-  .nullable()
+  auto_complete_field: z.array(
+    z.object({
+      id: z.number(),
+      name: requiredSchema,
+    }),
+  ),
+  tag_select_field: z.array(
+    z.object({
+      id: z.number(),
+      name: requiredSchema,
+    }),
+  ),
+  checkbox_group_field: z.array(requiredSchema),
+})
 
 type FormValues = z.infer<typeof schema>
 
@@ -180,7 +177,7 @@ const filledValues = {
   checkbox_item_field: true,
   toggle_field: false,
   radio_field: 'first',
-  textarea_field: '',
+  textarea_field: 'text area',
   select_field: null,
   phone_field: '+994557773322',
   auto_complete_field: [{ id: 1, name: 'first' }],
@@ -234,7 +231,7 @@ export default function FormHookContainer() {
 }
 
 function Container() {
-  const [defaultCountryCode, setDefautlCountryCode] = useState('AZ')
+  const [defaultCountryCode, setDefaultCountryCode] = useState('AZ')
 
   const initialValues = useInitialValues()
   const form = useForm<FormValues>({
@@ -437,7 +434,7 @@ function Container() {
           />
 
           <div>
-            <button type="button" onClick={() => setDefautlCountryCode('TR')}>
+            <button type="button" onClick={() => setDefaultCountryCode('TR')}>
               set country TR
             </button>
 
@@ -445,7 +442,8 @@ function Container() {
               name="phone_field"
               label="Phone field"
               placeholder="Enter number"
-              defaultCountryCode={defaultCountryCode}
+
+              // defaultCountryCode={defaultCountryCode}
             />
           </div>
 

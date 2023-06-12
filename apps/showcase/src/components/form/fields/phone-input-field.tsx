@@ -1,10 +1,10 @@
 import { mergeProps } from '@uvodohq/planum'
-import { PhoneInput } from '@uvodohq/planum-phone'
+import { PhoneInput, PhoneProps } from '@uvodohq/planum-phone'
 
 import type { UseControllerProps } from 'react-hook-form'
 import { useController, useFormContext } from 'react-hook-form'
 
-interface PhoneInputFieldProps extends UseControllerProps<any> {
+interface PhoneInputFieldProps extends PhoneProps, UseControllerProps<any> {
   name: string
   defaultValue?: string
   label?: string

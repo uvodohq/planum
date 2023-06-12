@@ -11,35 +11,11 @@ import {
 
 type AllowedInputTypes = 'password' | 'text' | 'number' | 'tel'
 
-type InputProps = Required<
-  Pick<
-    React.InputHTMLAttributes<HTMLInputElement>,
-    | 'value'
-    | 'onChange'
-    | 'onFocus'
-    | 'onBlur'
-    | 'onKeyDown'
-    | 'onPaste'
-    | 'aria-label'
-    | 'maxLength'
-    | 'autoComplete'
-    | 'style'
-  > & {
-    ref: React.RefCallback<HTMLInputElement>
-    placeholder: string | undefined
-    className: string | undefined
-    type: AllowedInputTypes
-  }
->
-
 export type OTPInputProps = AriaTextFieldOptions<'input'> & {
   /** Value of the OTP input */
   value?: string
   /** Number of OTP inputs to be rendered */
   numInputs?: number
-  /** Callback to be called when the OTP value changes */
-  /** Function to render the input */
-  // renderInput: (inputProps: InputProps, index: number) => React.ReactNode
   /** Whether the first input should be auto focused */
   shouldAutoFocus?: boolean
   /** Placeholder for the inputs */
@@ -99,7 +75,7 @@ export const OTPInput = ({
 
   const handleOTPChange = (otp: Array<string>) => {
     const otpValue = otp.join('')
-    onChange(otpValue)
+    onChange?.(otpValue)
   }
 
   const focusInput = (index: number) => {
@@ -132,18 +108,18 @@ export const OTPInput = ({
       changeCodeAtFocus(value)
       focusInput(activeInput + 1)
     } else {
-      const { nativeEvent } = event
-      // @ts-expect-error - This was added previosly to handle and edge case
-      // for dealing with keyCode "229 Unidentified" on Android. Check if this is
-      // still needed.
-      if (
-        nativeEvent.data === null &&
-        nativeEvent.inputType === 'deleteContentBackward'
-      ) {
-        event.preventDefault()
-        changeCodeAtFocus('')
-        focusInput(activeInput - 1)
-      }
+      // const { nativeEvent } = event
+      // // @ts-expect-error - This was added previosly to handle and edge case
+      // // for dealing with keyCode "229 Unidentified" on Android. Check if this is
+      // // still needed.
+      // if (
+      //   nativeEvent.data === null &&
+      //   nativeEvent.inputType === 'deleteContentBackward'
+      // ) {
+      //   event.preventDefault()
+      //   changeCodeAtFocus('')
+      //   focusInput(activeInput - 1)
+      // }
     }
   }
 
