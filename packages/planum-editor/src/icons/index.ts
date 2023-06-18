@@ -1,4 +1,5 @@
 export { CloseIcon } from './close-icon'
+export { ImageIcon } from './image-icon'
 export { LinkIcon } from './link-icon'
 export { ListBulletsIcon } from './list-bullets-icon'
 export { PaletteIcon } from './palette-icon'

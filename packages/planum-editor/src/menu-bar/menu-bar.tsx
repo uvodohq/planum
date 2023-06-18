@@ -1,4 +1,5 @@
 import type { Editor } from '@tiptap/react'
+import type { ModalState } from '@uvodohq/planum'
 import {
   Tooltip,
   TooltipPopup,
@@ -8,6 +9,7 @@ import {
 import * as React from 'react'
 
 import {
+  ImageIcon,
   ListBulletsIcon,
   PaletteIcon,
   TextAlignCenterIcon,
@@ -37,6 +39,8 @@ export interface MenuBarProps {
   isH2: boolean
   isBulletList: boolean
   isLink: boolean
+  imageModal?: ModalState
+  imageUpload?: (editor: Editor) => void
 }
 
 const EditorTooltip = ({
@@ -67,6 +71,8 @@ export const MenuBar = React.memo((props: MenuBarProps) => {
     isH2,
     isBulletList,
     isLink,
+    imageModal,
+    imageUpload,
   } = props
 
   function focusEditor() {
@@ -91,6 +97,22 @@ export const MenuBar = React.memo((props: MenuBarProps) => {
           </ToggleButton>
         </EditorTooltip>
 
+        {/* Image */}
+        {imageModal && imageUpload && (
+          <EditorTooltip label="Image">
+            <ToggleButton
+              isDisabled={isDisabled}
+              // isSelected={isBold}
+              onChange={() => {
+                // focusEditor().setIma
+                imageModal.openModal()
+                imageUpload(editor)
+              }}
+              aria-label="Bold">
+              <ImageIcon />
+            </ToggleButton>
+          </EditorTooltip>
+        )}
         {/* Italic */}
         <EditorTooltip label="Italic">
           <ToggleButton
@@ -194,7 +216,6 @@ export const MenuBar = React.memo((props: MenuBarProps) => {
 
       <ButtonsGroup>
         {/* Link */}
-
         <LinkButtonWithModal
           editor={editor}
           isSelected={isLink}

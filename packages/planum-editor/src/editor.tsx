@@ -1,5 +1,6 @@
 import type { Editor as TipTapEditor } from '@tiptap/core'
 import { Color } from '@tiptap/extension-color'
+import Image from '@tiptap/extension-image'
 import Link from '@tiptap/extension-link'
 import Placeholder from '@tiptap/extension-placeholder'
 import TextAlign from '@tiptap/extension-text-align'
@@ -42,6 +43,8 @@ export const Editor = forwardRef<RefObject<TipTapEditor | null>, EditorProps>(
       successMessage,
       status,
       isDisabled,
+      imageModal,
+      imageUpload,
       ...rest
       //
     } = props
@@ -79,6 +82,12 @@ export const Editor = forwardRef<RefObject<TipTapEditor | null>, EditorProps>(
           }),
           TextAlign.configure({
             types: ['heading', 'paragraph'],
+          }),
+          Image.configure({
+            inline: true,
+            HTMLAttributes: {
+              class: 'image',
+            },
           }),
         ],
 
@@ -160,6 +169,8 @@ export const Editor = forwardRef<RefObject<TipTapEditor | null>, EditorProps>(
       isH2: editor.isActive('heading', { level: 2 }),
       isBulletList: editor.isActive('bulletList'),
       isLink: editor.isActive('link'),
+      imageModal,
+      imageUpload,
     }
 
     return (

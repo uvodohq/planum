@@ -1,5 +1,6 @@
 import type { EditorOptions } from '@tiptap/core'
-import type { LabelAriaProps } from '@uvodohq/planum'
+import type { Editor } from '@tiptap/react'
+import type { LabelAriaProps, ModalState } from '@uvodohq/planum'
 
 export type EditorProps = {
   placeholder?: string
@@ -16,5 +17,9 @@ export type EditorProps = {
   successMessage?: string
   status?: 'success' | 'normal' | 'error'
   isDisabled?: boolean
+
+  // image
+  imageModal: ModalState
+  imageUpload: (editor: Editor) => void
 } & LabelAriaProps &
   Partial<EditorOptions>
