@@ -11,9 +11,17 @@ export default function ExtraContainer() {
           aria-label="Description"
           placeholder="Product description (optional)"
           imageModal={modalState}
-          onChange={(value) => console.warn('valueeee', value)}
+          // onChange={(value) => console.warn('valueeee', value)}
           imageUpload={(editor) => {
             // editor.chain().focus().to
+            const postImage = document.querySelector('.postimage')
+            console.warn('postImage', postImage)
+
+            postImage?.setAttribute(
+              'src',
+              'https://images.pexels.com/photos/6054896/pexels-photo-6054896.jpeg',
+            )
+
             editor
               .chain()
               .focus()
@@ -28,9 +36,9 @@ export default function ExtraContainer() {
               .run()
             //https://dev.to/brampayrequest/tiptap-image-resize-extension-2328
             //images.pexels.com/photos/443446/pexels-photo-443446.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2
-            console.warn('editor', {
-              editor,
-            })
+            // console.warn('editor', {
+            //   editor,
+            // })
           }}
         />
       </Flex>

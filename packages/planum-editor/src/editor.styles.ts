@@ -17,6 +17,24 @@ export const editorClass = css(subheaderCss, customScrollbar, {
   transition: 'box-shadow 0.2s ease-in-out, border-color 0.2s ease-in-out',
   wordBreak: 'break-all',
 
+  // '.image-resizer': {
+  //   display: 'inline-flex',
+  //   position: relative,
+  //   flexGrow: 0,
+  // },
+
+  // '.image-resizer .resize-trigger' {
+  // position: absolute;
+  // right: -6px;
+  // bottom: -9px;
+  // opacity: 0;
+  // transition: opacity .3s ease;
+  // color: #3259a5;
+  // }
+  // .image-resizer:hover .resize-trigger {
+  // opacity: 1;
+  // }
+
   '&[contenteditable]:focus': {
     outline: 'none',
   },

@@ -1,6 +1,7 @@
+import './a.css'
+
 import type { Editor as TipTapEditor } from '@tiptap/core'
 import { Color } from '@tiptap/extension-color'
-import Image from '@tiptap/extension-image'
 import Link from '@tiptap/extension-link'
 import Placeholder from '@tiptap/extension-placeholder'
 import TextAlign from '@tiptap/extension-text-align'
@@ -21,9 +22,13 @@ import { forwardRef, useEffect, useImperativeHandle } from 'react'
 
 import { editorClass, EditorContainer, placeholderClass } from './editor.styles'
 import type { EditorProps } from './editor.type'
+import { ImageIcon } from './icons'
+import { ImageResize } from './image-resize-core'
 import type { MenuBarProps } from './menu-bar/menu-bar'
 import { MenuBar } from './menu-bar/menu-bar'
 import { useEditor } from './use-editor'
+
+export const inputRegex = /(!\[(.+|:?)]\((\S+)(?:\s+["'](\S+)["'])?\))$/
 
 // TODO: fix hover on label
 // resolve peer deps error by removing starterkit
@@ -83,11 +88,9 @@ export const Editor = forwardRef<RefObject<TipTapEditor | null>, EditorProps>(
           TextAlign.configure({
             types: ['heading', 'paragraph'],
           }),
-          Image.configure({
-            inline: true,
-            HTMLAttributes: {
-              class: 'image',
-            },
+          ImageResize.configure({
+            resizeIcon: <ImageIcon />,
+            useFigure: true,
           }),
         ],
 
