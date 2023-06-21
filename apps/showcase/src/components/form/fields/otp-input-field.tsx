@@ -1,18 +1,22 @@
 import { mergeProps } from '@uvodohq/planum'
-import { PhoneInput, PhoneProps } from '@uvodohq/planum-phone'
-
+import { OTPInput, OTPInputProps } from '@uvodohq/planum/src'
 import type { UseControllerProps } from 'react-hook-form'
 import { useController, useFormContext } from 'react-hook-form'
 
-interface PhoneInputFieldProps extends PhoneProps, UseControllerProps<any> {
+interface Props extends OTPInputProps, UseControllerProps<any> {
   name: string
   defaultValue?: string
-  label?: string
-  placeholder?: string
 }
 
-export function PhoneInputField(props: PhoneInputFieldProps) {
-  const { name, rules, defaultValue = '', control, ...rest } = props
+export function OTPInputField(props: Props) {
+  const {
+    name,
+    control,
+    rules,
+    defaultValue = '',
+    // shouldDirty = true,
+    ...rest
+  } = props
 
   const context = useFormContext()
 
@@ -26,8 +30,13 @@ export function PhoneInputField(props: PhoneInputFieldProps) {
     defaultValue,
   })
 
+  // exclude field to affect form dirty state onChange
+  // field.onChange = function onChange(value) {
+  //   context.setValue(name, value, { shouldDirty })
+  // }
+
   return (
-    <PhoneInput
+    <OTPInput
       {...mergeProps(field, rest)}
       errorMessage={error?.message}
       status={error?.message ? 'error' : undefined}

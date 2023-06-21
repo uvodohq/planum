@@ -9,6 +9,7 @@ import {
   InputUrl,
 } from '@uvodohq/planum'
 import { CopySimpleIcon, UserIcon } from '@uvodohq/planum-icons'
+import { OTPInput } from '@uvodohq/planum/src'
 import { useState } from 'react'
 import { useFormatCurrency } from '../../components'
 import { Currency } from '../../components/form'
@@ -148,6 +149,7 @@ const InputSearchExample = () => {
 
 export default function InputContainer() {
   const [number, setNumber] = useState()
+  const [otp, setOtp] = useState('123456')
 
   return (
     <>
@@ -647,6 +649,29 @@ export default function InputContainer() {
         <PercentInput leftIcon={<UserIcon />} />
         <PercentInput errorMessage="Error message" status="error" />
         <PercentInput isDisabled />
+      </RowBox>
+
+      {/* Otp */}
+      <H3 css={{ mt: 100, mb: 20 }}>Otp Input</H3>
+      <RowBox>
+        <OTPInput
+          value={otp}
+          onChange={setOtp}
+          inputCount={4}
+          containerCss={{ display: 'flex', justifyContent: 'flex-start' }}
+          preserveLabelSpace
+          label="label"
+        />
+        <OTPInput
+          value={otp}
+          onChange={setOtp}
+          inputCount={4}
+          type="password"
+          preserveLabelSpace
+          label="label"
+          errorMessage="Error message"
+          status="error"
+        />
       </RowBox>
     </>
   )
