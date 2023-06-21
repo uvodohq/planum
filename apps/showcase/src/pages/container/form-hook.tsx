@@ -117,7 +117,7 @@ function formatExpireDate(expDate: string) {
 const requiredSchema = z.string().min(1, { message: 'This field required' })
 
 const schema = z.object({
-  otp_field: z.string(),
+  otp_field: requiredSchema,
   text_field: requiredSchema,
   expire_date: z.string(),
   credit_card: z.string().transform((value) => value.replace(/\D/g, '')),
@@ -464,7 +464,7 @@ function Container() {
 
           <EditorField name="editor_field" aria-label="Editor" label="Policy" />
 
-          <OTPInputField name="otp_field" numInputs={6} />
+          <OTPInputField name="otp_field" />
         </Stack>
       </Flex>
 

@@ -1,7 +1,9 @@
+import { useField } from '@react-aria/label'
 import type { AriaTextFieldOptions } from '@react-aria/textfield'
 import type { CSSProperties } from 'react'
 import React, { Fragment } from 'react'
 
+import { Field } from '../field'
 import type { CSS } from '../theme'
 import {
   StyledContainer,
@@ -12,10 +14,17 @@ import {
 type AllowedInputTypes = 'password' | 'text' | 'number' | 'tel'
 
 export type OTPInputProps = AriaTextFieldOptions<'input'> & {
+  label?: string
+  description?: React.ReactNode
+  errorMessage?: string
+  successMessage?: string
+  status?: 'success' | 'normal' | 'error'
+  preserveLabelSpace?: boolean
+
   /** Value of the OTP input */
   value?: string
   /** Number of OTP inputs to be rendered */
-  numInputs?: number
+  inputCount?: number
   /** Whether the first input should be auto focused */
   shouldAutoFocus?: boolean
   /** Placeholder for the inputs */
@@ -32,32 +41,41 @@ export type OTPInputProps = AriaTextFieldOptions<'input'> & {
   separatorCss?: CSS
 }
 
-export const OTPInput = ({
-  value = '',
-  numInputs = 4,
-  onChange,
-  // renderInput,
-  shouldAutoFocus = false,
-  inputType = 'text',
-  placeholder,
-  containerCss,
-  inputCss,
-  separatorCss,
-  separator = '',
-  isDisabled,
-  isReadOnly,
-  ...rest
-}: OTPInputProps) => {
+export const OTPInput = (props: OTPInputProps) => {
+  const {
+    value = '',
+    inputCount = 6,
+    onChange,
+    // renderInput,
+    shouldAutoFocus = false,
+    inputType = 'text',
+    placeholder,
+    containerCss,
+    inputCss,
+    separatorCss,
+    separator = '',
+    isDisabled,
+    isReadOnly,
+
+    label,
+    description,
+    errorMessage,
+    successMessage,
+    status = 'normal',
+    preserveLabelSpace = false,
+    ...rest
+  } = props
   const [activeInput, setActiveInput] = React.useState(0)
   const inputRefs = React.useRef<Array<HTMLInputElement | null>>([])
+  const { labelProps, descriptionProps, errorMessageProps } = useField(props)
 
   const getOTPValue = () => (value ? [...value.toString()] : [])
 
   const isInputNum = inputType === 'number' || inputType === 'tel'
 
   React.useEffect(() => {
-    inputRefs.current = inputRefs.current.slice(0, numInputs)
-  }, [numInputs])
+    inputRefs.current = inputRefs.current.slice(0, inputCount)
+  }, [inputCount])
 
   React.useEffect(() => {
     if (shouldAutoFocus) {
@@ -66,7 +84,7 @@ export const OTPInput = ({
   }, [shouldAutoFocus])
 
   const getPlaceholderValue = () => {
-    if (typeof placeholder === 'string' && placeholder.length === numInputs) {
+    if (typeof placeholder === 'string' && placeholder.length === inputCount) {
       return placeholder
     }
 
@@ -79,7 +97,7 @@ export const OTPInput = ({
   }
 
   const focusInput = (index: number) => {
-    const activeInput = Math.max(Math.min(numInputs - 1, index), 0)
+    const activeInput = Math.max(Math.min(inputCount - 1, index), 0)
 
     if (inputRefs.current[activeInput]) {
       inputRefs.current[activeInput]?.focus()
@@ -187,7 +205,7 @@ export const OTPInput = ({
     const pastedData = [
       ...event.clipboardData
         .getData('text/plain')
-        .slice(0, numInputs - activeInput),
+        .slice(0, inputCount - activeInput),
     ]
 
     // Prevent pasting if the clipboard data contains non-numeric values for number inputs
@@ -196,7 +214,7 @@ export const OTPInput = ({
     }
 
     // Paste data from focused input onwards
-    for (let pos = 0; pos < numInputs; ++pos) {
+    for (let pos = 0; pos < inputCount; ++pos) {
       if (pos >= activeInput && pastedData.length > 0) {
         otp[pos] = pastedData.shift() ?? ''
         nextActiveInput++
@@ -208,33 +226,51 @@ export const OTPInput = ({
   }
 
   return (
-    <StyledContainer css={containerCss}>
-      {Array.from({ length: numInputs }, (_, index) => index).map((index) => (
-        <Fragment key={index}>
-          <input
-            value={getOTPValue()[index] ?? ''}
-            placeholder={getPlaceholderValue()?.[index] ?? undefined}
-            ref={(element) => (inputRefs.current[index] = element)}
-            onChange={handleChange}
-            onFocus={(event) => handleFocus(event)(index)}
-            onBlur={handleBlur}
-            onKeyDown={handleKeyDown}
-            onPaste={handlePaste}
-            autoComplete="off"
-            maxLength={1}
-            aria-label={`Please enter OTP character ${index + 1}`}
-            type={inputType}
-            className={styledInput()}
-            disabled={isDisabled || isReadOnly}
-            style={inputCss}
-            {...rest}
-          />
+    <Field
+      {...{
+        label,
+        description,
+        errorMessage,
+        successMessage,
+        status,
 
-          {index < numInputs - 1 && (
-            <StyledSeparator css={separatorCss}>{separator}</StyledSeparator>
-          )}
-        </Fragment>
-      ))}
-    </StyledContainer>
+        labelProps,
+        descriptionProps,
+        errorMessageProps,
+        preserveLabelSpace,
+      }}>
+      <StyledContainer css={containerCss} status={status}>
+        {Array.from({ length: inputCount }, (_, index) => index).map(
+          (index) => (
+            <Fragment key={index}>
+              <input
+                value={getOTPValue()[index] ?? ''}
+                placeholder={getPlaceholderValue()?.[index] ?? undefined}
+                ref={(element) => (inputRefs.current[index] = element)}
+                onChange={handleChange}
+                onFocus={(event) => handleFocus(event)(index)}
+                onBlur={handleBlur}
+                onKeyDown={handleKeyDown}
+                onPaste={handlePaste}
+                autoComplete="off"
+                maxLength={1}
+                aria-label={`Please enter OTP character ${index + 1}`}
+                type={inputType}
+                className={styledInput()}
+                disabled={isDisabled || isReadOnly}
+                style={inputCss}
+                {...rest}
+              />
+
+              {index < inputCount - 1 && (
+                <StyledSeparator css={separatorCss}>
+                  {separator}
+                </StyledSeparator>
+              )}
+            </Fragment>
+          ),
+        )}
+      </StyledContainer>
+    </Field>
   )
 }

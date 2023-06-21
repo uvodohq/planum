@@ -3,18 +3,41 @@ import { css, styled } from '../theme'
 export const StyledContainer = styled('div', {
   display: 'flex',
   alignItems: 'center',
-  justifyContent: 'center',
-  gap: '$4',
+  gap: '$8',
   width: '100%',
+  padding: 2,
+
+  variants: {
+    status: {
+      normal: {},
+
+      error: {
+        '& input': {
+          borderColor: '$danger700 !important',
+
+          '&:focus': {
+            boxShadow: '0 0 0 3px $colors$danger100',
+          },
+        },
+      },
+
+      success: {
+        '& input': {
+          borderColor: '$success700 !important',
+        },
+      },
+    },
+  },
 })
 
 export const styledInput = css({
-  width: 30,
-  height: 50,
+  width: 48,
+  height: 48,
   color: '$textDark',
   display: 'flex',
   alignItems: 'center',
   border: '1px solid $surface400',
+  borderRadius: '$sm',
   backgroundColor: '$white',
   transition: 'all 0.2s ease-in-out',
   textAlign: 'center',

@@ -149,7 +149,7 @@ const InputSearchExample = () => {
 
 export default function InputContainer() {
   const [number, setNumber] = useState()
-  const [otp, setOtp] = useState('')
+  const [otp, setOtp] = useState('123456')
 
   return (
     <>
@@ -157,20 +157,6 @@ export default function InputContainer() {
 
       {/* Empty Idle */}
       <RowBox>
-        <OTPInput
-          onChange={(value) => {
-            console.warn(value)
-            setOtp(value)
-          }}
-          value={otp}
-          numInputs={4}
-          placeholder="1"
-          shouldAutoFocus
-          containerCss={{
-            gap: 8,
-          }}
-        />
-
         <Input aria-label="label" placeholder="Input Placeholder" autoFocus />
         <Input
           aria-label="label"
@@ -663,6 +649,29 @@ export default function InputContainer() {
         <PercentInput leftIcon={<UserIcon />} />
         <PercentInput errorMessage="Error message" status="error" />
         <PercentInput isDisabled />
+      </RowBox>
+
+      {/* Otp */}
+      <H3 css={{ mt: 100, mb: 20 }}>Otp Input</H3>
+      <RowBox>
+        <OTPInput
+          value={otp}
+          onChange={setOtp}
+          inputCount={4}
+          containerCss={{ display: 'flex', justifyContent: 'flex-start' }}
+          preserveLabelSpace
+          label="label"
+        />
+        <OTPInput
+          value={otp}
+          onChange={setOtp}
+          inputCount={4}
+          type="password"
+          preserveLabelSpace
+          label="label"
+          errorMessage="Error message"
+          status="error"
+        />
       </RowBox>
     </>
   )

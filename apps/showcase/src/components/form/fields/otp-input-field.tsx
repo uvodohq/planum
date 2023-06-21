@@ -38,8 +38,8 @@ export function OTPInputField(props: Props) {
   return (
     <OTPInput
       {...mergeProps(field, rest)}
-      // errorMessage={error?.message}
-      // status={error?.message ? 'error' : undefined}
+      errorMessage={error?.message}
+      status={error?.message ? 'error' : undefined}
     />
   )
 }
