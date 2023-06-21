@@ -14,6 +14,7 @@ import {
 type AllowedInputTypes = 'password' | 'text' | 'number' | 'tel'
 
 export type OTPInputProps = AriaTextFieldOptions<'input'> & {
+  // form
   label?: string
   description?: React.ReactNode
   errorMessage?: string

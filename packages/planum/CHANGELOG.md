@@ -1,5 +1,11 @@
 # @uvodohq/planum
 
+## 6.4.0
+
+### Minor Changes
+
+- - create otp input
+
 ## 6.3.1
 
 ### Patch Changes
