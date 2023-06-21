@@ -1,5 +1,11 @@
 # @uvodohq/planum-icons
 
+## 1.5.3
+
+### Patch Changes
+
+- - add dots-six/dots-six-vertical icons
+
 ## 1.5.2
 
 ### Patch Changes
