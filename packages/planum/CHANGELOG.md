@@ -1,5 +1,11 @@
 # @uvodohq/planum
 
+## 6.4.1
+
+### Patch Changes
+
+- - expand otp input css
+
 ## 6.4.0
 
 ### Minor Changes

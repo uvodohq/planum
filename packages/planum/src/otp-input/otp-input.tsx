@@ -36,6 +36,8 @@ export type OTPInputProps = AriaTextFieldOptions<'input'> & {
   inputType?: AllowedInputTypes
   /** Style for the container */
   containerCss?: CSS
+  /** Style for the field */
+  fieldCss?: CSS
   /** Style for the input */
   inputCss?: CSSProperties
   /** Style for the separator */
@@ -52,6 +54,7 @@ export const OTPInput = (props: OTPInputProps) => {
     inputType = 'text',
     placeholder,
     containerCss,
+    fieldCss,
     inputCss,
     separatorCss,
     separator = '',
@@ -239,8 +242,9 @@ export const OTPInput = (props: OTPInputProps) => {
         descriptionProps,
         errorMessageProps,
         preserveLabelSpace,
+        css: fieldCss,
       }}>
-      <StyledContainer css={containerCss} status={status}>
+      <StyledContainer status={status} css={containerCss}>
         {Array.from({ length: inputCount }, (_, index) => index).map(
           (index) => (
             <Fragment key={index}>

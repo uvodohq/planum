@@ -2,6 +2,7 @@ import type { HTMLAttributes, ReactNode, Ref } from 'react'
 import * as React from 'react'
 
 import { Box } from '../layout'
+import type { CSS } from '../theme'
 import { isDev } from '../utils'
 import type { StyledMessageVariants } from './field.styles'
 import { FieldContainer, StyledLabel, StyledMessage } from './field.styles'
@@ -18,6 +19,7 @@ export interface FieldProps extends StyledMessageVariants {
   children: ReactNode
 
   preserveLabelSpace?: boolean
+  css?: CSS
 }
 
 function _Field(props: FieldProps, ref: Ref<HTMLDivElement>) {
@@ -32,6 +34,7 @@ function _Field(props: FieldProps, ref: Ref<HTMLDivElement>) {
     descriptionProps = {},
     errorMessageProps = {},
     children,
+    css = {},
   } = props
 
   let messageProps
@@ -59,7 +62,7 @@ function _Field(props: FieldProps, ref: Ref<HTMLDivElement>) {
   const hasMessage = messageProps.children
 
   return (
-    <FieldContainer ref={ref}>
+    <FieldContainer ref={ref} css={css}>
       {(label || preserveLabelSpace) && (
         <StyledLabel {...labelProps}>{label}</StyledLabel>
       )}

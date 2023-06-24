@@ -658,7 +658,6 @@ export default function InputContainer() {
           value={otp}
           onChange={setOtp}
           inputCount={4}
-          containerCss={{ display: 'flex', justifyContent: 'flex-start' }}
           preserveLabelSpace
           label="label"
         />
