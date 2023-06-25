@@ -1,6 +1,10 @@
 import { FloatingFocusManager, FloatingOverlay } from '@floating-ui/react'
-import { motion } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
+import { useRef } from 'react'
 
+import { useUpdateEffect } from '../..'
+import { Box, Flex } from '../../layout'
+import { Loader } from '../../loader'
 import { customScrollbar, styled } from '../../theme'
 import type { SelectPopupProps } from '../select.types'
 import { useSelectContext } from '../select-context'
@@ -45,7 +49,24 @@ export const DesktopPopup = (
 ) => {
   const { children, popupCss } = props
   const { select, state } = useSelectContext()
-  const { searchable } = state
+  const {
+    searchable,
+    fetchNextPage,
+    isFetchingNextPage,
+    hasNextPage,
+    isSearching,
+  } = state
+  const infiniteScrollRef = useRef(null)
+  const isInView = useInView(infiniteScrollRef, {
+    once: !hasNextPage,
+    margin: '50px',
+  })
+
+  useUpdateEffect(() => {
+    if (isInView && !isFetchingNextPage) {
+      fetchNextPage?.()
+    }
+  }, [isInView])
 
   return (
     <FloatingOverlay
@@ -78,7 +99,31 @@ export const DesktopPopup = (
           {...desktopMotionConfig}>
           {searchable && <PopupSearchInput />}
           <StyledList role="listbox" id={select.listboxId}>
-            {children}
+            {isSearching ? (
+              <Flex
+                css={{
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  my: '$24',
+                }}>
+                <Loader />
+              </Flex>
+            ) : (
+              children
+            )}
+            {hasNextPage && (
+              <Box
+                ref={infiniteScrollRef}
+                css={{
+                  dflex: 'center',
+                  pt: 60,
+                  mt: -50,
+                  pb: 10,
+                  disableActions: true,
+                }}>
+                {isFetchingNextPage && hasNextPage && <Loader />}
+              </Box>
+            )}
           </StyledList>
         </StyledSelectPopupDesktop>
       </FloatingFocusManager>

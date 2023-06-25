@@ -1,6 +1,10 @@
 import { FloatingFocusManager, FloatingOverlay } from '@floating-ui/react'
-import { motion } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
+import { useRef } from 'react'
 
+import { useUpdateEffect } from '../..'
+import { Box, Flex } from '../../layout'
+import { Loader } from '../../loader'
 import { customScrollbar, styled } from '../../theme'
 import type { SelectPopupProps } from '../select.types'
 import { useSelectContext } from '../select-context'
@@ -62,8 +66,25 @@ export const MobilePopup = (
 ) => {
   const { children, popupCss } = props
   const { select, state } = useSelectContext()
+  const {
+    searchable,
+    fetchNextPage,
+    isFetchingNextPage,
+    hasNextPage,
+    isSearching,
+  } = state
 
-  const { searchable } = state
+  const infiniteScrollRef = useRef(null)
+  const isInView = useInView(infiniteScrollRef, {
+    once: !hasNextPage,
+    margin: '50px',
+  })
+
+  useUpdateEffect(() => {
+    if (isInView && !isFetchingNextPage) {
+      fetchNextPage?.()
+    }
+  }, [isInView])
 
   return (
     <FloatingOverlay
@@ -117,7 +138,31 @@ export const MobilePopup = (
               maxHeight: searchable ? 'calc(100% - 72px)' : '100%',
               paddingTop: searchable ? 0 : undefined,
             }}>
-            {children}
+            {isSearching ? (
+              <Flex
+                css={{
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  my: '$16',
+                }}>
+                <Loader />
+              </Flex>
+            ) : (
+              children
+            )}
+            {hasNextPage && (
+              <Box
+                ref={infiniteScrollRef}
+                css={{
+                  dflex: 'center',
+                  pt: 60,
+                  mt: -50,
+                  pb: 10,
+                  disableActions: true,
+                }}>
+                {isFetchingNextPage && hasNextPage && <Loader />}
+              </Box>
+            )}
           </StyledList>
         </StyledSelectPopupMobile>
       </FloatingFocusManager>

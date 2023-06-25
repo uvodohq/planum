@@ -13,7 +13,18 @@ interface State {
 }
 
 export function useSelectState(props: UseSelectStateProps) {
-  const { items, onSelect, searchable, ...rest } = props || {}
+  const {
+    items,
+    onSelect,
+    searchable,
+    onSearch,
+    isFetchingNextPage,
+    isSearching,
+    hasNextPage,
+    fetchNextPage,
+    onPopupToggle,
+    ...rest
+  } = props || {}
   const [value, onChange] = useControllableValue(rest)
 
   // selected item index, which may or may not be active. shown in the trigger button.
@@ -40,6 +51,8 @@ export function useSelectState(props: UseSelectStateProps) {
   const { isOpen } = state
 
   const toggleOpen = (isOpen: boolean) => {
+    onPopupToggle?.(isOpen)
+
     updateState({
       isOpen,
     })
@@ -89,8 +102,14 @@ export function useSelectState(props: UseSelectStateProps) {
     openSelect: () => toggleOpen(true),
     closeSelect: () => toggleOpen(false),
     searchable: searchable ?? items.length > 10, // show search if more items exist
+    onSearch,
     items,
     onChange,
+    fetchNextPage,
+    isFetchingNextPage,
+    isSearching,
+    hasNextPage,
+    onPopupToggle,
     onSelect,
     value,
     updateState,

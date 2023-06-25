@@ -29,6 +29,12 @@ export const SelectComponent = (props: SelectProps) => {
     isLoading,
     fieldProps,
     fallbackLabel,
+    onSearch,
+    fetchNextPage,
+    isSearching,
+    isFetchingNextPage,
+    hasNextPage,
+    onPopupToggle,
 
     // popup props
     matchWidth = true,
@@ -43,6 +49,12 @@ export const SelectComponent = (props: SelectProps) => {
     onSelect,
     items,
     searchable,
+    onSearch,
+    fetchNextPage,
+    isSearching,
+    isFetchingNextPage,
+    hasNextPage,
+    onPopupToggle,
   })
 
   const select = useSelect({

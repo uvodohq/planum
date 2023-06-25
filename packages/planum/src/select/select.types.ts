@@ -68,6 +68,12 @@ export interface SelectComponentProps {
    */
   labelKey: string
   searchable?: boolean
+  onSearch?: (searchText: string) => void
+  fetchNextPage?: () => void
+  isSearching?: boolean
+  isFetchingNextPage?: boolean
+  hasNextPage?: boolean
+  onPopupToggle?: (value: boolean) => void
   popupCss?: CSS
   /**
    *  you can show labels while async select options are loading.
@@ -103,4 +109,10 @@ export interface UseSelectProps {
 export type UseSelectStateProps = InputProps & {
   items: any[]
   searchable?: boolean
+  onSearch?: (searchText: string) => void
+  fetchNextPage?: () => void
+  isSearching?: boolean
+  isFetchingNextPage?: boolean
+  hasNextPage?: boolean
+  onPopupToggle?: (value: boolean) => void
 }

@@ -26,7 +26,12 @@ export const PopupSearchInput = () => {
         aria-expanded="true"
         aria-autocomplete="list"
         aria-label="search"
-        onChange={handleInputChange}
+        onChange={(value) => {
+          handleInputChange(value)
+          if (state.searchable) {
+            state.onSearch?.(value)
+          }
+        }}
         {...inputInteractions.getReferenceProps({
           onKeyDown: handleKeyDownOnInput,
         })}

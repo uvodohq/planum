@@ -1,5 +1,11 @@
 # @uvodohq/planum
 
+## 6.5.0
+
+### Minor Changes
+
+- infinite scroll and search feature on select option list
+
 ## 6.4.1
 
 ### Patch Changes
