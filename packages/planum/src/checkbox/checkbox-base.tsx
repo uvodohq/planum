@@ -49,7 +49,12 @@ export function CheckboxBase(props: CheckboxBaseProps) {
         {markIcon}
       </StyledCheckbox>
 
-      {hasLabel && <Paragraph css={{ ml: 10 }}>{labelText}</Paragraph>}
+      {hasLabel &&
+        (typeof labelText === 'string' ? (
+          <Paragraph css={{ ml: 10 }}>{labelText}</Paragraph>
+        ) : (
+          labelText
+        ))}
     </StyledLabel>
   )
 }

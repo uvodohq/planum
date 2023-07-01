@@ -5,6 +5,7 @@ import {
   CheckboxGroupItem,
   H1,
   H3,
+  Paragraph,
   Radio,
   RadioGroup,
   Title,
@@ -107,8 +108,10 @@ export default function FormElementsContainer() {
       <Box css={{ display: 'flex', gap: 40, mb: 22 }}>
         <Box>
           <Checkbox aria-label="label">
-            Add a title and description to see how this product might appear in
-            a search engine listing
+            <Box css={{ ml: '$8' }}>
+              <Paragraph fw="semibold">Title</Paragraph>
+              <Paragraph>Description</Paragraph>
+            </Box>
           </Checkbox>
         </Box>
 

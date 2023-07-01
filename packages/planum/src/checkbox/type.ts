@@ -11,8 +11,8 @@ import type { StyledCheckboxVariants } from './checkbox.styles'
 
 export interface CustomProps {
   css?: CSS
-  label?: string
-  children?: string
+  label?: ReactNode
+  children?: ReactNode
 }
 
 export type CheckboxProps = CustomProps &
@@ -27,11 +27,11 @@ export interface CheckboxBaseProps {
   isIndeterminate?: boolean
   isSelected: boolean
   isFocusVisible?: boolean
-  label?: any
+  label?: ReactNode
   pressProps?: any
   inputProps?: any
   focusProps?: any
-  children?: any
+  children?: ReactNode
   inputRef?: any
 }
 
