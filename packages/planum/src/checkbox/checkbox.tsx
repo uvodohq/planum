@@ -43,5 +43,4 @@ function CheckboxComponent(
 }
 
 export const Checkbox = React.forwardRef(CheckboxComponent)
-
 Checkbox.displayName = 'Checkbox'

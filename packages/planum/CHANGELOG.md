@@ -1,5 +1,11 @@
 # @uvodohq/planum
 
+## 6.5.1
+
+### Patch Changes
+
+- change api of checkox children
+
 ## 6.5.0
 
 ### Minor Changes
