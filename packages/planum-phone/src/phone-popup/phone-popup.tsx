@@ -11,7 +11,7 @@ import { DesktopPopup } from './phone-popup-desktop'
 import { MobilePopup } from './phone-popup-mobile'
 
 export function PhonePopup(props: React.PropsWithChildren<PhonePopupProps>) {
-  const { renderEmpty, popupCss } = props
+  const { renderEmpty, popupCss, popupSearchCss } = props
   const { phone, state } = usePhoneContext()
   const isTablet = useTabletMedia()
   const Popup = isTablet ? DesktopPopup : MobilePopup
@@ -32,7 +32,11 @@ export function PhonePopup(props: React.PropsWithChildren<PhonePopupProps>) {
     <FloatingNode id={nodeId}>
       <FloatingPortal id="planum-portal">
         <AnimatePresence>
-          {isOpen && <Popup popupCss={popupCss}>{popupContent}</Popup>}
+          {isOpen && (
+            <Popup popupCss={popupCss} popupSearchCss={popupSearchCss}>
+              {popupContent}
+            </Popup>
+          )}
         </AnimatePresence>
       </FloatingPortal>
     </FloatingNode>

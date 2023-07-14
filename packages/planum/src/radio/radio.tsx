@@ -13,6 +13,7 @@ import {
 import { useRadioProps } from './use-radio-props'
 
 interface Variants {
+  containerCss?: CSS
   css?: CSS
 }
 
@@ -24,6 +25,7 @@ interface ComponentProps {
   isHovered?: boolean
   isFocusVisible?: boolean
   children?: any
+  css?: CSS
 }
 
 export const Circle = (props: ComponentProps) => (
@@ -33,7 +35,8 @@ export const Circle = (props: ComponentProps) => (
       isFocusVisible={props.isFocusVisible}
       isDisabled={props.isDisabled}
       isHovered={props.isHovered}
-      aria-hidden="true">
+      aria-hidden="true"
+      css={props.css}>
       <circle
         cx={10}
         cy={10}
@@ -48,7 +51,7 @@ export const Circle = (props: ComponentProps) => (
 )
 
 function _Radio(props: RadioProps, ref: FocusableRef<HTMLLabelElement>) {
-  const { children } = props
+  const { children, containerCss, css } = props
 
   const {
     type,
@@ -72,12 +75,19 @@ function _Radio(props: RadioProps, ref: FocusableRef<HTMLLabelElement>) {
     isDisabled,
     isHovered,
     isFocusVisible,
+    css,
+    containerCss,
   }
 
   const componentProps = isButton ? {} : stateProps
 
   return (
-    <Label {...hoverProps} {...stateProps} full={full} ref={domRef}>
+    <Label
+      {...hoverProps}
+      {...stateProps}
+      full={full}
+      ref={domRef}
+      css={containerCss}>
       <VisuallyHidden>
         <input {...inputProps} {...focusProps} ref={inputRef} />
       </VisuallyHidden>

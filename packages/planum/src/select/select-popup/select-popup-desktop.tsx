@@ -47,7 +47,7 @@ const desktopMotionConfig = {
 export const DesktopPopup = (
   props: React.PropsWithChildren<SelectPopupProps>,
 ) => {
-  const { children, popupCss } = props
+  const { children, popupCss, popupSearchCss } = props
   const { select, state } = useSelectContext()
   const {
     searchable,
@@ -97,7 +97,7 @@ export const DesktopPopup = (
             zIndex: 1000,
           }}
           {...desktopMotionConfig}>
-          {searchable && <PopupSearchInput />}
+          {searchable && <PopupSearchInput css={popupSearchCss} />}
           <StyledList role="listbox" id={select.listboxId}>
             {isSearching ? (
               <Flex

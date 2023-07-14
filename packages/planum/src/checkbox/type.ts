@@ -10,6 +10,7 @@ import type { CSS } from '../theme'
 import type { StyledCheckboxVariants } from './checkbox.styles'
 
 export interface CustomProps {
+  containerCss?: CSS
   css?: CSS
   label?: ReactNode
   children?: ReactNode
@@ -33,6 +34,8 @@ export interface CheckboxBaseProps {
   focusProps?: any
   children?: ReactNode
   inputRef?: any
+  containerCss?: CSS
+  css?: CSS
 }
 
 export type CheckboxGroupProps = AriaCheckboxGroupProps & {

@@ -19,17 +19,19 @@ export function CheckboxBase(props: CheckboxBaseProps) {
     focusProps,
     children,
     inputRef,
+    containerCss,
+    css,
   } = props
 
   const labelText = label || children
   const hasLabel = !!labelText
 
   const markIcon = isIndeterminate ? (
-    <StyledIndicator>
+    <StyledIndicator css={css}>
       <MinusIcon />
     </StyledIndicator>
   ) : (
-    <StyledIndicator>
+    <StyledIndicator css={css}>
       <CheckIcon isSelected={isSelected} />
     </StyledIndicator>
   )
@@ -45,6 +47,7 @@ export function CheckboxBase(props: CheckboxBaseProps) {
         isFocusVisible={isFocusVisible}
         isDisabled={isDisabled}
         isIndeterminate={isIndeterminate}
+        css={containerCss}
         {...pressProps}>
         {markIcon}
       </StyledCheckbox>

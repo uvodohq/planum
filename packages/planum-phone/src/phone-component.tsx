@@ -29,6 +29,8 @@ export const PhoneComponent = (props: PhoneProps) => {
     isDisabled,
     isLoading,
     fieldProps,
+    triggerCss,
+    popupSearchCss,
     popupCss,
   } = props
 
@@ -54,10 +56,15 @@ export const PhoneComponent = (props: PhoneProps) => {
       <PhoneTriggerContainer
         status={status}
         isDisabled={isDisabled}
-        isLoading={isLoading}>
+        isLoading={isLoading}
+        triggerCss={triggerCss}>
         <PhoneInput placeholder={placeholder} fieldProps={fieldProps} />
       </PhoneTriggerContainer>
-      <PhonePopup popupCss={popupCss} renderEmpty={renderEmpty} />
+      <PhonePopup
+        popupCss={popupCss}
+        popupSearchCss={popupSearchCss}
+        renderEmpty={renderEmpty}
+      />
     </PhoneContext.Provider>
   )
 }

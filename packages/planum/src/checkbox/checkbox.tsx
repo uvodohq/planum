@@ -14,7 +14,8 @@ function CheckboxComponent(
   props: CheckboxProps,
   forwardRef: FocusableRef<HTMLInputElement>,
 ) {
-  const { isDisabled, isIndeterminate, label, children } = props
+  const { isDisabled, isIndeterminate, label, children, css, containerCss } =
+    props
 
   const inputRef = React.useRef<HTMLInputElement>(null)
   const ref = useFocusableRef(forwardRef, inputRef)
@@ -37,6 +38,8 @@ function CheckboxComponent(
         focusProps,
         children,
         inputRef: ref,
+        css,
+        containerCss,
       }}
     />
   )

@@ -131,7 +131,7 @@ function useFocusedWithin() {
 type Props = PhoneTriggerProps & HTMLAttributes<HTMLButtonElement>
 
 export function PhoneTriggerContainer(props: Props) {
-  const { isDisabled, isLoading, status, children, ...rest } = props
+  const { isDisabled, isLoading, status, children, triggerCss, ...rest } = props
   const { phone, state } = usePhoneContext()
 
   const { buttonId, reference, getReferenceProps } = phone
@@ -146,6 +146,7 @@ export function PhoneTriggerContainer(props: Props) {
       isDisabled={isDisabled}
       isFocused={isFocused}
       status={status}
+      css={triggerCss}
       {...focusWithinProps}>
       <FlagButtonContainer
         id={buttonId}

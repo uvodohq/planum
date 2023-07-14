@@ -25,6 +25,7 @@ export interface SelectTriggerProps {
   isLoading?: boolean
   fallbackLabel?: string
   fieldProps?: AriaLabelingProps & DOMProps
+  triggerCss?: CSS
   renderTrigger?: (
     props: SelectTriggerProps & { label?: string },
   ) => JSX.Element
@@ -37,6 +38,7 @@ export interface SelectEmptyContentProps {
 
 export interface SelectPopupProps {
   popupCss?: CSS
+  popupSearchCss?: CSS
 }
 
 export interface SelectOptionProps {

@@ -1,9 +1,14 @@
 import { Input } from '../../input'
 import { Spacer } from '../../layout'
+import type { CSS } from '../../theme'
 import { SearchIcon } from '../icons'
 import { useSelectContext } from '../select-context'
 
-export const PopupSearchInput = () => {
+interface Props {
+  css?: CSS
+}
+
+export const PopupSearchInput = ({ css }: Props) => {
   const { select, state } = useSelectContext()
 
   const {
@@ -32,6 +37,7 @@ export const PopupSearchInput = () => {
             state.onSearch?.(value)
           }
         }}
+        containerCss={css}
         {...inputInteractions.getReferenceProps({
           onKeyDown: handleKeyDownOnInput,
         })}

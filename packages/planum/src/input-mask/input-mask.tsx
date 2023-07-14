@@ -44,6 +44,7 @@ interface Props {
   prefix?: React.ReactNode
 
   css?: CSS
+  containerCss?: CSS
   status?: 'success' | 'normal' | 'error'
   onEnterKeyPress?: () => void
   inputContainerRef?: (
@@ -84,6 +85,7 @@ function _Input(
     accept,
     value,
     onChange,
+    containerCss,
     ...rest
   } = props
 
@@ -145,7 +147,8 @@ function _Input(
         }
         status={status}
         isFocused={isFocused}
-        isDisabled={isDisabled}>
+        isDisabled={isDisabled}
+        css={containerCss}>
         {hasPrefix && (
           <Prefix>
             {hasLeftIcon && (

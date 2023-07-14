@@ -23,6 +23,7 @@ export interface PhoneTriggerProps {
   isDisabled?: boolean
   isLoading?: boolean
   fieldProps?: AriaLabelingProps & DOMProps
+  triggerCss?: CSS
 }
 
 export interface PhoneEmptyContentProps {
@@ -31,6 +32,7 @@ export interface PhoneEmptyContentProps {
 }
 
 export interface PhonePopupProps {
+  popupSearchCss?: CSS
   popupCss?: CSS
   renderEmpty?: (emptyProps?: {}) => JSX.Element
 }

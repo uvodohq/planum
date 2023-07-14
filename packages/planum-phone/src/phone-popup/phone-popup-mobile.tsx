@@ -60,7 +60,7 @@ const mobileMotionConfig = {
 export const MobilePopup = (
   props: React.PropsWithChildren<PhonePopupProps>,
 ) => {
-  const { children, popupCss } = props
+  const { children, popupCss, popupSearchCss } = props
   const { phone } = usePhoneContext()
 
   return (
@@ -104,7 +104,7 @@ export const MobilePopup = (
             paddingTop: 0,
           }}>
           <StyledSearchWrapper>
-            <PopupSearchInput />
+            <PopupSearchInput css={popupSearchCss} />
           </StyledSearchWrapper>
           <StyledList
             role="listbox"

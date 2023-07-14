@@ -1,5 +1,11 @@
 # @uvodohq/planum-phone
 
+## 0.2.1
+
+### Patch Changes
+
+- - refactor css props
+
 ## 0.2.0
 
 ### Minor Changes

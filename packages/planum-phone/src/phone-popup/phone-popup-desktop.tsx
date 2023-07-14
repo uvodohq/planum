@@ -43,7 +43,7 @@ const desktopMotionConfig = {
 export const DesktopPopup = (
   props: React.PropsWithChildren<PhonePopupProps>,
 ) => {
-  const { children, popupCss } = props
+  const { children, popupCss, popupSearchCss } = props
   const { phone } = usePhoneContext()
 
   return (
@@ -75,7 +75,7 @@ export const DesktopPopup = (
             zIndex: 1000,
           }}
           {...desktopMotionConfig}>
-          <PopupSearchInput />
+          <PopupSearchInput css={popupSearchCss} />
           <StyledList role="listbox" id={phone.listboxId}>
             {children}
           </StyledList>

@@ -338,7 +338,7 @@ export default function InputContainer() {
           label="Label"
           description="This is a textarea real example"
           successMessage="Success message, You did it!"
-          errorMessage="Error message, at least 5 caracters needed"
+          errorMessage="Error message, at least 5 characters needed"
           placeholder="input placeholder"
         />
       </RowBox>

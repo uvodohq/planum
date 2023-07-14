@@ -43,6 +43,7 @@ interface Props {
   prefix?: React.ReactNode
 
   size?: 'default' | any
+  containerCss?: CSS
   css?: CSS
   status?: 'success' | 'normal' | 'error'
   format?: (value: any) => any
@@ -68,6 +69,7 @@ function _InputNumber(
     rightIcon,
     suffix,
     prefix,
+    containerCss,
 
     format = (val) => val,
     ...rest
@@ -106,7 +108,8 @@ function _InputNumber(
         }}
         status={status}
         isFocused={isFocused}
-        isDisabled={isDisabled}>
+        isDisabled={isDisabled}
+        css={containerCss}>
         {hasPrefix && (
           <Prefix
             css={{

@@ -127,6 +127,7 @@ export function SelectTrigger(props: Props) {
     fallbackLabel,
     fieldProps,
     renderTrigger,
+    triggerCss,
     ...rest
   } = props
 
@@ -165,7 +166,8 @@ export function SelectTrigger(props: Props) {
       type="button" // prevent unwanted form submits within <form>
       // The default role for the reference using a "listbox"
       // is a "combobox", but Safari has a bug with VoiceOver
-      role={undefined}>
+      role={undefined}
+      css={triggerCss}>
       <InnerText
         css={{
           color: label ? '$textDark' : '',

@@ -1,5 +1,11 @@
 # @uvodohq/planum
 
+## 6.5.2
+
+### Patch Changes
+
+- - refactor css props
+
 ## 6.5.1
 
 ### Patch Changes

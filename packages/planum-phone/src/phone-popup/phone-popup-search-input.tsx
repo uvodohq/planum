@@ -1,9 +1,14 @@
+import type { CSS } from '@uvodohq/planum'
 import { Input, Spacer } from '@uvodohq/planum'
 
 import { SearchIcon } from '../icons'
 import { usePhoneContext } from '../phone-context'
 
-export const PopupSearchInput = () => {
+interface Props {
+  css?: CSS
+}
+
+export const PopupSearchInput = ({ css }: Props) => {
   const { phone, state } = usePhoneContext()
 
   const {
@@ -27,6 +32,7 @@ export const PopupSearchInput = () => {
         aria-autocomplete="list"
         aria-label="search"
         onChange={onSearchInputChange}
+        containerCss={css}
         {...searchInputInteractions.getReferenceProps({
           onKeyDown: handleKeyDownOnInput,
         })}

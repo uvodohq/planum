@@ -64,7 +64,7 @@ const mobileMotionConfig = {
 export const MobilePopup = (
   props: React.PropsWithChildren<SelectPopupProps>,
 ) => {
-  const { children, popupCss } = props
+  const { children, popupCss, popupSearchCss } = props
   const { select, state } = useSelectContext()
   const {
     searchable,
@@ -128,7 +128,7 @@ export const MobilePopup = (
           }}>
           {searchable && (
             <StyledSearchWrapper>
-              <PopupSearchInput />
+              <PopupSearchInput css={popupSearchCss} />
             </StyledSearchWrapper>
           )}
           <StyledList

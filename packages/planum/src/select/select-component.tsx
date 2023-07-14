@@ -35,11 +35,13 @@ export const SelectComponent = (props: SelectProps) => {
     isFetchingNextPage,
     hasNextPage,
     onPopupToggle,
+    triggerCss,
 
     // popup props
     matchWidth = true,
     popupCss,
     searchable,
+    popupSearchCss,
   } = props
 
   const state = useSelectState({
@@ -93,9 +95,12 @@ export const SelectComponent = (props: SelectProps) => {
           fallbackLabel,
           fieldProps,
           renderTrigger,
+          triggerCss,
         }}
       />
-      <SelectPopup popupCss={popupCss}>{popupContent}</SelectPopup>
+      <SelectPopup popupCss={popupCss} popupSearchCss={popupSearchCss}>
+        {popupContent}
+      </SelectPopup>
     </SelectContext.Provider>
   )
 }
