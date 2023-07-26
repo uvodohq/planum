@@ -1,5 +1,11 @@
 # @uvodohq/planum
 
+## 6.6.0
+
+### Minor Changes
+
+- fix radio start transition bug
+
 ## 6.5.2
 
 ### Patch Changes

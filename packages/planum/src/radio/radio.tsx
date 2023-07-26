@@ -75,8 +75,6 @@ function _Radio(props: RadioProps, ref: FocusableRef<HTMLLabelElement>) {
     isDisabled,
     isHovered,
     isFocusVisible,
-    css,
-    containerCss,
   }
 
   const componentProps = isButton ? {} : stateProps
@@ -92,7 +90,9 @@ function _Radio(props: RadioProps, ref: FocusableRef<HTMLLabelElement>) {
         <input {...inputProps} {...focusProps} ref={inputRef} />
       </VisuallyHidden>
 
-      <Component {...componentProps}>{children}</Component>
+      <Component {...componentProps} css={css}>
+        {children}
+      </Component>
     </Label>
   )
 }
