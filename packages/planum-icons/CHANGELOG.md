@@ -1,5 +1,11 @@
 # @uvodohq/planum-icons
 
+## 1.5.4
+
+### Patch Changes
+
+- add printer icon
+
 ## 1.5.3
 
 ### Patch Changes
