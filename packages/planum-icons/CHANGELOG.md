@@ -1,5 +1,11 @@
 # @uvodohq/planum-icons
 
+## 1.6.4
+
+### Patch Changes
+
+- add airplane icon
+
 ## 1.6.3
 
 ### Patch Changes

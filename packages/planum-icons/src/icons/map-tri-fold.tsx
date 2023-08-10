@@ -14,7 +14,7 @@ const weights = {
 }
 
 const MapTriFoldIcon = forwardRef<SVGSVGElement, IconProps>((props, ref) => (
-  <Icon ref={ref} alt="Map Tri Fold Icon Icon" {...props} weights={weights} />
+  <Icon ref={ref} alt="Map Tri Fold Icon" {...props} weights={weights} />
 ))
 
 MapTriFoldIcon.displayName = 'MapTriFoldIcon'
