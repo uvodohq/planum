@@ -1,5 +1,23 @@
 # @uvodohq/planum-icons
 
+## 1.6.2
+
+### Patch Changes
+
+- - add map-pin icon
+
+## 1.6.1
+
+### Patch Changes
+
+- - add map-pin icon
+
+## 1.6.0
+
+### Minor Changes
+
+- add printer icon
+
 ## 1.5.4
 
 ### Patch Changes
