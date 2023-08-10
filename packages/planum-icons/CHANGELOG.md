@@ -1,5 +1,11 @@
 # @uvodohq/planum-icons
 
+## 1.6.3
+
+### Patch Changes
+
+- add map-tri-fold icon
+
 ## 1.6.2
 
 ### Patch Changes
