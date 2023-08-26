@@ -1,5 +1,11 @@
 # @uvodohq/planum-icons
 
+## 1.6.8
+
+### Patch Changes
+
+- - add duotone type to icons
+
 ## 1.6.7
 
 ### Patch Changes
