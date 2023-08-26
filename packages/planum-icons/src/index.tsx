@@ -37,6 +37,7 @@ export { default as FaceMaskIcon } from './icons/face-mask'
 // social
 export { default as Airplane } from './icons/airplane'
 export { default as ArticleIcon } from './icons/article'
+export { default as ExportIcon } from './icons/export'
 export { default as FacebookIcon } from './icons/facebook'
 export { default as FilesIcon } from './icons/files'
 export { default as FunnelSimpleIcon } from './icons/funnel-simple'

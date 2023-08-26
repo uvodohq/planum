@@ -1,5 +1,11 @@
 # @uvodohq/planum-icons
 
+## 1.6.6
+
+### Patch Changes
+
+- - add export icon
+
 ## 1.6.5
 
 ### Patch Changes
