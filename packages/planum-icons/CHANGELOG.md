@@ -1,5 +1,11 @@
 # @uvodohq/planum-icons
 
+## 1.6.7
+
+### Patch Changes
+
+- - add sun icon
+
 ## 1.6.6
 
 ### Patch Changes
