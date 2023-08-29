@@ -1,5 +1,11 @@
 # @uvodohq/planum-icons
 
+## 1.6.9
+
+### Patch Changes
+
+- - add currency dollar icon
+
 ## 1.6.8
 
 ### Patch Changes
