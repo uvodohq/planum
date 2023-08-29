@@ -1,5 +1,11 @@
 # @uvodohq/planum-icons
 
+## 1.7.0
+
+### Minor Changes
+
+- - add shield-check icon
+
 ## 1.6.12
 
 ### Patch Changes
