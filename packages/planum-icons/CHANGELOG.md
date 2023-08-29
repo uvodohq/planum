@@ -1,5 +1,11 @@
 # @uvodohq/planum-icons
 
+## 1.6.12
+
+### Patch Changes
+
+- - add warning icon
+
 ## 1.6.11
 
 ### Patch Changes
