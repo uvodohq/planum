@@ -1,5 +1,11 @@
 # @uvodohq/planum-icons
 
+## 1.6.10
+
+### Patch Changes
+
+- - add money icon
+
 ## 1.6.9
 
 ### Patch Changes

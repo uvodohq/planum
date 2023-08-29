@@ -24,6 +24,7 @@ const duotoneList = [
   'CreditCardIcon',
   'TargetIcon',
   'LinkIcon',
+  'MoneyIcon',
   'CurrencyDollarIcon',
   'CurrencyCircleDollarIcon',
 ]
