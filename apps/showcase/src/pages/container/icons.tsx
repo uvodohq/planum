@@ -24,6 +24,8 @@ const duotoneList = [
   'CreditCardIcon',
   'TargetIcon',
   'LinkIcon',
+  'CurrencyDollarIcon',
+  'CurrencyCircleDollarIcon',
 ]
 
 const iconList: Item[] = Object.keys(icons).map((key) => {
