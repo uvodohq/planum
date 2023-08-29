@@ -1,5 +1,11 @@
 # @uvodohq/planum-icons
 
+## 1.6.11
+
+### Patch Changes
+
+- - add wallet icon
+
 ## 1.6.10
 
 ### Patch Changes
