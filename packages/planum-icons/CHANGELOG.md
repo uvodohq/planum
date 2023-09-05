@@ -1,5 +1,11 @@
 # @uvodohq/planum-icons
 
+## 1.7.2
+
+### Patch Changes
+
+- - add minus-circle icon
+
 ## 1.7.1
 
 ### Patch Changes
