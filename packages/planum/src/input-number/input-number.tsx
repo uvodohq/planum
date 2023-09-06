@@ -126,6 +126,7 @@ function _InputNumber(
           ref={inputRef}
           controls={false}
           decimalSeparator="."
+          disabled={isDisabled}
           formatter={(value, { userTyping, input }) => {
             if (userTyping) {
               return input
@@ -135,7 +136,7 @@ function _InputNumber(
 
             return format(value)
           }}
-          {...mergeProps(rest, fieldProps, focusProps)}
+          {...mergeProps(fieldProps, focusProps, rest)}
         />
 
         {hasSuffix && (

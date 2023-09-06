@@ -1,5 +1,11 @@
 # @uvodohq/planum
 
+## 6.7.0
+
+### Minor Changes
+
+- - fix input number focusing issue on disabled
+
 ## 6.6.0
 
 ### Minor Changes
