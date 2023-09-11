@@ -43,6 +43,7 @@ export const styledInput = css({
   textAlign: 'center',
   fontSize: 16,
   outline: 'none',
+  opacity: 1,
 
   '&::placeholder': {
     font: 'inherit',

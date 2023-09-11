@@ -17,6 +17,7 @@ const inputCss = css(subheaderCss, {
   backgroundColor: 'transparent',
   color: '$textDark',
   fontWeight: '$regular',
+  opacity: 1,
 
   '&:-webkit-autofill': {
     '&, &:hover, &:focus': {

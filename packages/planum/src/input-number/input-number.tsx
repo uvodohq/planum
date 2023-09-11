@@ -126,7 +126,7 @@ function _InputNumber(
           ref={inputRef}
           controls={false}
           decimalSeparator="."
-          disabled={isDisabled}
+          disabled={Boolean(isDisabled)}
           formatter={(value, { userTyping, input }) => {
             if (userTyping) {
               return input

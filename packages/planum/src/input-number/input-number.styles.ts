@@ -134,6 +134,7 @@ export const inputCss = css(subheaderCss, {
   color: '$textDark',
   fontWeight: '$regular',
   outline: 'none',
+  opacity: 1,
 
   '&:-webkit-autofill': {
     '&, &:hover, &:focus': {

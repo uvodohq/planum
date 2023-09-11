@@ -5,6 +5,7 @@ import { Paragraph } from '../text'
 import { fadeIn } from '../theme'
 import CheckCircleIcon from './icons/check-circle-icon'
 import XCircleIcon from './icons/x-circle'
+import type { OptionsTranslationText } from './input-password'
 import {
   StyledIcon,
   StyledIndicator,
@@ -35,7 +36,13 @@ function Option(props: OptionProps) {
   )
 }
 
-const _PasswordStrength = ({ strength }: { strength: StrengthType }) => {
+const _PasswordStrength = ({
+  strength,
+  optionsTranslationText,
+}: {
+  strength: StrengthType
+  optionsTranslationText?: OptionsTranslationText
+}) => {
   const containsValue = strength.contains
 
   const hasNumber = strength.contains?.includes('number')
@@ -71,10 +78,26 @@ const _PasswordStrength = ({ strength }: { strength: StrengthType }) => {
           gap: '$24',
         }}>
         <Stack y="$4">
-          <Option isPassed={hasMinLength} strengthText="8 characters minimum" />
-          <Option isPassed={hasNumber} strengthText="a number" />
-          <Option isPassed={hasUppercase} strengthText="an uppercase letter" />
-          <Option isPassed={hasLowercase} strengthText="a lowercase letter" />
+          <Option
+            isPassed={hasMinLength}
+            strengthText={optionsTranslationText?.minLength || '8 characters'}
+          />
+          <Option
+            isPassed={hasNumber}
+            strengthText={optionsTranslationText?.number || 'a number'}
+          />
+          <Option
+            isPassed={hasUppercase}
+            strengthText={
+              optionsTranslationText?.uppercase || 'an uppercase letter'
+            }
+          />
+          <Option
+            isPassed={hasLowercase}
+            strengthText={
+              optionsTranslationText?.lowercase || 'a lowercase letter'
+            }
+          />
         </Stack>
 
         <Paragraph css={{ fw: '$medium', textTransform: 'capitalize' }}>

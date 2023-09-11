@@ -13,6 +13,7 @@ export const textareaCss = css(subheaderCss, sharedInputCss, {
   fw: '$regular',
   fontWeight: '$regular',
   outline: 'none',
+  opacity: 1,
 
   '&::placeholder': {
     font: 'inherit',

@@ -27,8 +27,16 @@ function usePasswordToggle() {
   }
 }
 
+export interface OptionsTranslationText {
+  minLength?: string
+  uppercase?: string
+  lowercase?: string
+  number?: string
+}
+
 export interface InputPasswordProps extends InputProps {
   checkStrength?: boolean
+  optionsTranslationText?: OptionsTranslationText
 }
 
 function _InputPassword(
@@ -39,13 +47,16 @@ function _InputPassword(
   const [strength, setStrength] = React.useState<StrengthType>()
   const passwordStrength = useStrengthIndicator()
 
-  const handleChange = useCallback((value: string) => {
-    setStrength(passwordStrength(value))
+  const handleChange = useCallback(
+    (value: string) => {
+      setStrength(passwordStrength(value))
 
-    if (props.onChange) {
-      props.onChange(value)
-    }
-  }, [])
+      if (props.onChange) {
+        props.onChange(value)
+      }
+    },
+    [passwordStrength],
+  )
 
   return (
     <Box>
@@ -72,7 +83,10 @@ function _InputPassword(
       />
 
       {props.checkStrength && strength?.contains.length ? (
-        <PasswordStrength strength={strength} />
+        <PasswordStrength
+          strength={strength}
+          optionsTranslationText={props.optionsTranslationText}
+        />
       ) : (
         ''
       )}

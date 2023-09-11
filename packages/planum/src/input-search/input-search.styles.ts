@@ -28,6 +28,7 @@ export const StyledInput = styled('input', subheaderCss, {
   fontWeight: '$regular',
   outline: 'none',
   appearance: 'none',
+  opacity: 1,
 
   '&::placeholder': {
     font: 'inherit',

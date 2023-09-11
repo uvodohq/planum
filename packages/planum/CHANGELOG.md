@@ -1,5 +1,18 @@
 # @uvodohq/planum
 
+## 6.8.1
+
+### Patch Changes
+
+- - fix number field disabled issue on iphones
+
+## 6.8.0
+
+### Minor Changes
+
+- - disabled input color issue on iphones
+  - password check strength translations
+
 ## 6.7.0
 
 ### Minor Changes
