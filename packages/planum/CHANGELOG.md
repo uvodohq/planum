@@ -1,5 +1,11 @@
 # @uvodohq/planum
 
+## 6.8.2
+
+### Patch Changes
+
+- - dialog popup z-index issue
+
 ## 6.8.1
 
 ### Patch Changes

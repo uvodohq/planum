@@ -28,12 +28,12 @@ export const DialogPopup = React.forwardRef<HTMLDivElement, DialogPopupProps>(
     const ref = useMergeRefs([state.floating, propRef])
 
     return (
-      <FloatingPortal id="portallllllll">
+      <FloatingPortal>
         <AnimatePresence>
           {state.open && (
             <FloatingOverlay
               lockScroll
-              style={{ zIndex: 999 }}
+              style={{ zIndex: 900 }}
               {...overlayProps}>
               <Underlay
                 variants={underlayVariants}
