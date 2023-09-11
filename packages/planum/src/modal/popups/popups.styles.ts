@@ -6,7 +6,7 @@ import { css, styled } from '../../theme'
 export const Underlay = styled(motion.div, {
   position: 'absolute',
   size: '100%',
-  zIndex: 1,
+  zIndex: 900,
   inset: 0,
   background: 'rgba(38, 38, 38, 0.4)',
   disableActions: true,
@@ -14,7 +14,7 @@ export const Underlay = styled(motion.div, {
 
 export const StyledModalDesktop = styled('div', {
   position: 'absolute',
-  zIndex: 2,
+  zIndex: 901,
   maxHeight: '100%',
   height: '100%',
   outline: 'none',
