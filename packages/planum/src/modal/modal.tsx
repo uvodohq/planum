@@ -16,7 +16,7 @@ export interface ModalProps extends UseModalProps {
   children: React.ReactNode
   state?: ModalState
   /**
-   * how to open modal on mobile screens. default is 'fixed'
+   * how to open modal on mobile screens. default is 'fixed'.
    */
   openOnMobileAs?: 'bottomsheet' | 'drawer'
 
