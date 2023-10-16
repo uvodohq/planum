@@ -37,6 +37,7 @@ export { default as FaceMaskIcon } from './icons/face-mask'
 // social
 export { default as Airplane } from './icons/airplane'
 export { default as ArticleIcon } from './icons/article'
+export { default as BankIcon } from './icons/bank'
 export { default as CircleIcon } from './icons/circle'
 export { default as CloudSunIcon } from './icons/cloud-sun'
 export { default as CurrencyDollarIcon } from './icons/currency-dollar'

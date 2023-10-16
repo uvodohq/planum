@@ -1,5 +1,11 @@
 # @uvodohq/planum-icons
 
+## 1.7.3
+
+### Patch Changes
+
+- - add bank icon
+
 ## 1.7.2
 
 ### Patch Changes
